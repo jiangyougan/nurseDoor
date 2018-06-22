@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.protectedpersonmapper.ProtectedPersonMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.ProtectedPerson" >
+    <id column="protected_person_id" property="protectedPersonId" jdbcType="CHAR" />
+    <result column="protected_person_name" property="protectedPersonName" jdbcType="VARCHAR" />
+    <result column="protected_person_sex" property="protectedPersonSex" jdbcType="CHAR" />
+    <result column="protected_person_card" property="protectedPersonCard" jdbcType="CHAR" />
+    <result column="protected_person_age" property="protectedPersonAge" jdbcType="CHAR" />
+    <result column="protected_person_height" property="protectedPersonHeight" jdbcType="DOUBLE" />
+    <result column="protected_person_weight" property="protectedPersonWeight" jdbcType="DOUBLE" />
+    <result column="protected_person_guardian" property="protectedPersonGuardian" jdbcType="VARCHAR" />
+    <result column="protected_person_phone" property="protectedPersonPhone" jdbcType="CHAR" />
+    <result column="protected_person_nexus" property="protectedPersonNexus" jdbcType="VARCHAR" />
+    <result column="protected_address_id" property="protectedAddressId" jdbcType="CHAR" />
+    <result column="protected_person_note" property="protectedPersonNote" jdbcType="VARCHAR" />
+    <result column="protected_address" property="protectedAddress" jdbcType="VARCHAR" />
+    <result column="protected_default" property="protectedDefault" jdbcType="INTEGER" />
+    <result column="protected_user_id" property="protectedUserId" jdbcType="CHAR" />
+    <result column="protected_person_overone" property="protectedPersonOverone" jdbcType="VARCHAR" />
+    <result column="protected_person_overtwo" property="protectedPersonOvertwo" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.ProtectedPersonVO" id="BaseResultMap2">
+  	 <id column="protected_person_id" property="protectedPersonId" jdbcType="CHAR" />
+    <result column="protected_person_name" property="protectedPersonName" jdbcType="VARCHAR" />
+    <result column="protected_person_sex" property="protectedPersonSex" jdbcType="CHAR" />
+    <result column="protected_person_card" property="protectedPersonCard" jdbcType="CHAR" />
+    <result column="protected_person_age" property="protectedPersonAge" jdbcType="CHAR" />
+    <result column="protected_person_height" property="protectedPersonHeight" jdbcType="DOUBLE" />
+    <result column="protected_person_weight" property="protectedPersonWeight" jdbcType="DOUBLE" />
+    <result column="protected_person_guardian" property="protectedPersonGuardian" jdbcType="VARCHAR" />
+    <result column="protected_person_phone" property="protectedPersonPhone" jdbcType="CHAR" />
+    <result column="protected_person_nexus" property="protectedPersonNexus" jdbcType="VARCHAR" />
+    <result column="protected_address_id" property="protectedAddressId" jdbcType="CHAR" />
+    <result column="protected_person_note" property="protectedPersonNote" jdbcType="VARCHAR" />
+    <result column="protected_address" property="protectedAddress" jdbcType="VARCHAR" />
+    <result column="protected_default" property="protectedDefault" jdbcType="INTEGER" />
+    <result column="protected_user_id" property="protectedUserId" jdbcType="CHAR" />
+    <result column="protected_person_overone" property="protectedPersonOverone" jdbcType="VARCHAR" />
+    <result column="protected_person_overtwo" property="protectedPersonOvertwo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    protected_person_id, protected_person_name, protected_person_sex, protected_person_card, 
+    protected_person_age, protected_person_height, protected_person_weight, protected_person_guardian, 
+    protected_person_phone, protected_person_nexus, protected_address_id, protected_person_note, 
+    protected_address, protected_default, protected_user_id, protected_person_overone, 
+    protected_person_overtwo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ProtectedPersonExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from protected_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from protected_person
+    where protected_person_id = #{protectedPersonId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from protected_person
+    where protected_person_id = #{protectedPersonId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ProtectedPersonExample" >
+    delete from protected_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.ProtectedPerson" >
+    insert into protected_person (protected_person_id, protected_person_name, 
+      protected_person_sex, protected_person_card, protected_person_age, 
+      protected_person_height, protected_person_weight, 
+      protected_person_guardian, protected_person_phone, 
+      protected_person_nexus, protected_address_id, 
+      protected_person_note, protected_address, 
+      protected_default, protected_user_id, protected_person_overone, 
+      protected_person_overtwo)
+    values (#{protectedPersonId,jdbcType=CHAR}, #{protectedPersonName,jdbcType=VARCHAR}, 
+      #{protectedPersonSex,jdbcType=CHAR}, #{protectedPersonCard,jdbcType=CHAR}, #{protectedPersonAge,jdbcType=CHAR}, 
+      #{protectedPersonHeight,jdbcType=DOUBLE}, #{protectedPersonWeight,jdbcType=DOUBLE}, 
+      #{protectedPersonGuardian,jdbcType=VARCHAR}, #{protectedPersonPhone,jdbcType=CHAR}, 
+      #{protectedPersonNexus,jdbcType=VARCHAR}, #{protectedAddressId,jdbcType=CHAR}, 
+      #{protectedPersonNote,jdbcType=VARCHAR}, #{protectedAddress,jdbcType=VARCHAR}, 
+      #{protectedDefault,jdbcType=INTEGER}, #{protectedUserId,jdbcType=CHAR}, #{protectedPersonOverone,jdbcType=VARCHAR}, 
+      #{protectedPersonOvertwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.ProtectedPerson" >
+    insert into protected_person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="protectedPersonId != null" >
+        protected_person_id,
+      </if>
+      <if test="protectedPersonName != null" >
+        protected_person_name,
+      </if>
+      <if test="protectedPersonSex != null" >
+        protected_person_sex,
+      </if>
+      <if test="protectedPersonCard != null" >
+        protected_person_card,
+      </if>
+      <if test="protectedPersonAge != null" >
+        protected_person_age,
+      </if>
+      <if test="protectedPersonHeight != null" >
+        protected_person_height,
+      </if>
+      <if test="protectedPersonWeight != null" >
+        protected_person_weight,
+      </if>
+      <if test="protectedPersonGuardian != null" >
+        protected_person_guardian,
+      </if>
+      <if test="protectedPersonPhone != null" >
+        protected_person_phone,
+      </if>
+      <if test="protectedPersonNexus != null" >
+        protected_person_nexus,
+      </if>
+      <if test="protectedAddressId != null" >
+        protected_address_id,
+      </if>
+      <if test="protectedPersonNote != null" >
+        protected_person_note,
+      </if>
+      <if test="protectedAddress != null" >
+        protected_address,
+      </if>
+      <if test="protectedDefault != null" >
+        protected_default,
+      </if>
+      <if test="protectedUserId != null" >
+        protected_user_id,
+      </if>
+      <if test="protectedPersonOverone != null" >
+        protected_person_overone,
+      </if>
+      <if test="protectedPersonOvertwo != null" >
+        protected_person_overtwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="protectedPersonId != null" >
+        #{protectedPersonId,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonName != null" >
+        #{protectedPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonSex != null" >
+        #{protectedPersonSex,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonCard != null" >
+        #{protectedPersonCard,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonAge != null" >
+        #{protectedPersonAge,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonHeight != null" >
+        #{protectedPersonHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedPersonWeight != null" >
+        #{protectedPersonWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedPersonGuardian != null" >
+        #{protectedPersonGuardian,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonPhone != null" >
+        #{protectedPersonPhone,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonNexus != null" >
+        #{protectedPersonNexus,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddressId != null" >
+        #{protectedAddressId,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonNote != null" >
+        #{protectedPersonNote,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddress != null" >
+        #{protectedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedDefault != null" >
+        #{protectedDefault,jdbcType=INTEGER},
+      </if>
+      <if test="protectedUserId != null" >
+        #{protectedUserId,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonOverone != null" >
+        #{protectedPersonOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonOvertwo != null" >
+        #{protectedPersonOvertwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ProtectedPersonExample" resultType="java.lang.Integer" >
+    select count(*) from protected_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update protected_person
+    <set >
+      <if test="record.protectedPersonId != null" >
+        protected_person_id = #{record.protectedPersonId,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonName != null" >
+        protected_person_name = #{record.protectedPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedPersonSex != null" >
+        protected_person_sex = #{record.protectedPersonSex,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonCard != null" >
+        protected_person_card = #{record.protectedPersonCard,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonAge != null" >
+        protected_person_age = #{record.protectedPersonAge,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonHeight != null" >
+        protected_person_height = #{record.protectedPersonHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.protectedPersonWeight != null" >
+        protected_person_weight = #{record.protectedPersonWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.protectedPersonGuardian != null" >
+        protected_person_guardian = #{record.protectedPersonGuardian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedPersonPhone != null" >
+        protected_person_phone = #{record.protectedPersonPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonNexus != null" >
+        protected_person_nexus = #{record.protectedPersonNexus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedAddressId != null" >
+        protected_address_id = #{record.protectedAddressId,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonNote != null" >
+        protected_person_note = #{record.protectedPersonNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedAddress != null" >
+        protected_address = #{record.protectedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedDefault != null" >
+        protected_default = #{record.protectedDefault,jdbcType=INTEGER},
+      </if>
+      <if test="record.protectedUserId != null" >
+        protected_user_id = #{record.protectedUserId,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedPersonOverone != null" >
+        protected_person_overone = #{record.protectedPersonOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedPersonOvertwo != null" >
+        protected_person_overtwo = #{record.protectedPersonOvertwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update protected_person
+    set protected_person_id = #{record.protectedPersonId,jdbcType=CHAR},
+      protected_person_name = #{record.protectedPersonName,jdbcType=VARCHAR},
+      protected_person_sex = #{record.protectedPersonSex,jdbcType=CHAR},
+      protected_person_card = #{record.protectedPersonCard,jdbcType=CHAR},
+      protected_person_age = #{record.protectedPersonAge,jdbcType=CHAR},
+      protected_person_height = #{record.protectedPersonHeight,jdbcType=DOUBLE},
+      protected_person_weight = #{record.protectedPersonWeight,jdbcType=DOUBLE},
+      protected_person_guardian = #{record.protectedPersonGuardian,jdbcType=VARCHAR},
+      protected_person_phone = #{record.protectedPersonPhone,jdbcType=CHAR},
+      protected_person_nexus = #{record.protectedPersonNexus,jdbcType=VARCHAR},
+      protected_address_id = #{record.protectedAddressId,jdbcType=CHAR},
+      protected_person_note = #{record.protectedPersonNote,jdbcType=VARCHAR},
+      protected_address = #{record.protectedAddress,jdbcType=VARCHAR},
+      protected_default = #{record.protectedDefault,jdbcType=INTEGER},
+      protected_user_id = #{record.protectedUserId,jdbcType=CHAR},
+      protected_person_overone = #{record.protectedPersonOverone,jdbcType=VARCHAR},
+      protected_person_overtwo = #{record.protectedPersonOvertwo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.ProtectedPerson" >
+    update protected_person
+    <set >
+      <if test="protectedPersonName != null" >
+        protected_person_name = #{protectedPersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonSex != null" >
+        protected_person_sex = #{protectedPersonSex,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonCard != null" >
+        protected_person_card = #{protectedPersonCard,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonAge != null" >
+        protected_person_age = #{protectedPersonAge,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonHeight != null" >
+        protected_person_height = #{protectedPersonHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedPersonWeight != null" >
+        protected_person_weight = #{protectedPersonWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedPersonGuardian != null" >
+        protected_person_guardian = #{protectedPersonGuardian,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonPhone != null" >
+        protected_person_phone = #{protectedPersonPhone,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonNexus != null" >
+        protected_person_nexus = #{protectedPersonNexus,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddressId != null" >
+        protected_address_id = #{protectedAddressId,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonNote != null" >
+        protected_person_note = #{protectedPersonNote,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddress != null" >
+        protected_address = #{protectedAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedDefault != null" >
+        protected_default = #{protectedDefault,jdbcType=INTEGER},
+      </if>
+      <if test="protectedUserId != null" >
+        protected_user_id = #{protectedUserId,jdbcType=CHAR},
+      </if>
+      <if test="protectedPersonOverone != null" >
+        protected_person_overone = #{protectedPersonOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedPersonOvertwo != null" >
+        protected_person_overtwo = #{protectedPersonOvertwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where protected_person_id = #{protectedPersonId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.ProtectedPerson" >
+    update protected_person
+    set protected_person_name = #{protectedPersonName,jdbcType=VARCHAR},
+      protected_person_sex = #{protectedPersonSex,jdbcType=CHAR},
+      protected_person_card = #{protectedPersonCard,jdbcType=CHAR},
+      protected_person_age = #{protectedPersonAge,jdbcType=CHAR},
+      protected_person_height = #{protectedPersonHeight,jdbcType=DOUBLE},
+      protected_person_weight = #{protectedPersonWeight,jdbcType=DOUBLE},
+      protected_person_guardian = #{protectedPersonGuardian,jdbcType=VARCHAR},
+      protected_person_phone = #{protectedPersonPhone,jdbcType=CHAR},
+      protected_person_nexus = #{protectedPersonNexus,jdbcType=VARCHAR},
+      protected_address_id = #{protectedAddressId,jdbcType=CHAR},
+      protected_person_note = #{protectedPersonNote,jdbcType=VARCHAR},
+      protected_address = #{protectedAddress,jdbcType=VARCHAR},
+      protected_default = #{protectedDefault,jdbcType=INTEGER},
+      protected_user_id = #{protectedUserId,jdbcType=CHAR},
+      protected_person_overone = #{protectedPersonOverone,jdbcType=VARCHAR},
+      protected_person_overtwo = #{protectedPersonOvertwo,jdbcType=VARCHAR}
+    where protected_person_id = #{protectedPersonId,jdbcType=CHAR}
+  </update>
+  
+  <!-- 根据条件查询数据，返回vo扩展类 -->
+  <select id="selectByExampleRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.ProtectedPersonExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from protected_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据订单id和受护人id得到该订单的受护人详细信息 -->
+  <select id="selectProtectedPersonDetails" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.OrderSend">
+    SELECT  protected_person_id,protected_person_name,protected_person_sex,protected_person_card,protected_person_age,protected_person_height,protected_person_weight
+	FROM protected_person,order_send 
+	WHERE order_send_username=protected_person_id 
+	AND order_send_username=#{0}
+	AND order_send_id = #{1}
+  </select>
+  <!-- 根据身份证号查询有没有相同的 -->
+  <select id="selectPersonCountByCard" resultType="java.lang.Integer" parameterType="java.lang.String">
+  SELECT COUNT(*) FROM protected_person WHERE protected_person_card = #{protectedPersonCard,jdbcType=CHAR}
+  </select>
+  <!-- 根据用户ID查询患者信息 -->
+  <select id="selectPersionInfoByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM protected_person WHERE protected_user_id = #{protectedUserId,jdbcType=CHAR}
+  </select>
+</mapper>

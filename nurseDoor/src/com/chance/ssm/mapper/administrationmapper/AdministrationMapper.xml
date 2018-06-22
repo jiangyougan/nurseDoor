@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.administrationmapper.AdministrationMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Administration" >
+    <id column="administration_id" property="administrationId" jdbcType="CHAR" />
+    <result column="administration_name" property="administrationName" jdbcType="VARCHAR" />
+    <result column="administration_pwd" property="administrationPwd" jdbcType="VARCHAR" />
+    <result column="administration_nick" property="administrationNick" jdbcType="VARCHAR" />
+    <result column="administration_true_name" property="administrationTrueName" jdbcType="VARCHAR" />
+    <result column="administration_department" property="administrationDepartment" jdbcType="VARCHAR" />
+    <result column="administration_sex" property="administrationSex" jdbcType="INTEGER" />
+    <result column="administration_email" property="administrationEmail" jdbcType="VARCHAR" />
+    <result column="administration_phone" property="administrationPhone" jdbcType="CHAR" />
+    <result column="administration_address" property="administrationAddress" jdbcType="VARCHAR" />
+    <result column="administration_grade" property="administrationGrade" jdbcType="INTEGER" />
+    <result column="administration_state" property="administrationState" jdbcType="INTEGER" />
+    <result column="administration_createtime" property="administrationCreatetime" jdbcType="TIMESTAMP" />
+    <result column="administration_createter" property="administrationCreateter" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    administration_id, administration_name, administration_pwd, administration_nick, 
+    administration_true_name, administration_department, administration_sex, administration_email, 
+    administration_phone, administration_address, administration_grade, administration_state, 
+    administration_createtime, administration_createter
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.AdministrationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from administration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from administration
+    where administration_id = #{administrationId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from administration
+    where administration_id = #{administrationId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.AdministrationExample" >
+    delete from administration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Administration" >
+    insert into administration (administration_id, administration_name, 
+      administration_pwd, administration_nick, 
+      administration_true_name, administration_department, 
+      administration_sex, administration_email, 
+      administration_phone, administration_address, 
+      administration_grade, administration_state, 
+      administration_createtime, administration_createter
+      )
+    values (#{administrationId,jdbcType=CHAR}, #{administrationName,jdbcType=VARCHAR}, 
+      #{administrationPwd,jdbcType=VARCHAR}, #{administrationNick,jdbcType=VARCHAR}, 
+      #{administrationTrueName,jdbcType=VARCHAR}, #{administrationDepartment,jdbcType=VARCHAR}, 
+      #{administrationSex,jdbcType=INTEGER}, #{administrationEmail,jdbcType=VARCHAR}, 
+      #{administrationPhone,jdbcType=CHAR}, #{administrationAddress,jdbcType=VARCHAR}, 
+      #{administrationGrade,jdbcType=INTEGER}, #{administrationState,jdbcType=INTEGER}, 
+      #{administrationCreatetime,jdbcType=TIMESTAMP}, #{administrationCreateter,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Administration" >
+    insert into administration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="administrationId != null" >
+        administration_id,
+      </if>
+      <if test="administrationName != null" >
+        administration_name,
+      </if>
+      <if test="administrationPwd != null" >
+        administration_pwd,
+      </if>
+      <if test="administrationNick != null" >
+        administration_nick,
+      </if>
+      <if test="administrationTrueName != null" >
+        administration_true_name,
+      </if>
+      <if test="administrationDepartment != null" >
+        administration_department,
+      </if>
+      <if test="administrationSex != null" >
+        administration_sex,
+      </if>
+      <if test="administrationEmail != null" >
+        administration_email,
+      </if>
+      <if test="administrationPhone != null" >
+        administration_phone,
+      </if>
+      <if test="administrationAddress != null" >
+        administration_address,
+      </if>
+      <if test="administrationGrade != null" >
+        administration_grade,
+      </if>
+      <if test="administrationState != null" >
+        administration_state,
+      </if>
+      <if test="administrationCreatetime != null" >
+        administration_createtime,
+      </if>
+      <if test="administrationCreateter != null" >
+        administration_createter,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="administrationId != null" >
+        #{administrationId,jdbcType=CHAR},
+      </if>
+      <if test="administrationName != null" >
+        #{administrationName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationPwd != null" >
+        #{administrationPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationNick != null" >
+        #{administrationNick,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationTrueName != null" >
+        #{administrationTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationDepartment != null" >
+        #{administrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationSex != null" >
+        #{administrationSex,jdbcType=INTEGER},
+      </if>
+      <if test="administrationEmail != null" >
+        #{administrationEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationPhone != null" >
+        #{administrationPhone,jdbcType=CHAR},
+      </if>
+      <if test="administrationAddress != null" >
+        #{administrationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationGrade != null" >
+        #{administrationGrade,jdbcType=INTEGER},
+      </if>
+      <if test="administrationState != null" >
+        #{administrationState,jdbcType=INTEGER},
+      </if>
+      <if test="administrationCreatetime != null" >
+        #{administrationCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="administrationCreateter != null" >
+        #{administrationCreateter,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.AdministrationExample" resultType="java.lang.Integer" >
+    select count(*) from administration
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update administration
+    <set >
+      <if test="record.administrationId != null" >
+        administration_id = #{record.administrationId,jdbcType=CHAR},
+      </if>
+      <if test="record.administrationName != null" >
+        administration_name = #{record.administrationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationPwd != null" >
+        administration_pwd = #{record.administrationPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationNick != null" >
+        administration_nick = #{record.administrationNick,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationTrueName != null" >
+        administration_true_name = #{record.administrationTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationDepartment != null" >
+        administration_department = #{record.administrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationSex != null" >
+        administration_sex = #{record.administrationSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.administrationEmail != null" >
+        administration_email = #{record.administrationEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationPhone != null" >
+        administration_phone = #{record.administrationPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.administrationAddress != null" >
+        administration_address = #{record.administrationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.administrationGrade != null" >
+        administration_grade = #{record.administrationGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.administrationState != null" >
+        administration_state = #{record.administrationState,jdbcType=INTEGER},
+      </if>
+      <if test="record.administrationCreatetime != null" >
+        administration_createtime = #{record.administrationCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.administrationCreateter != null" >
+        administration_createter = #{record.administrationCreateter,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update administration
+    set administration_id = #{record.administrationId,jdbcType=CHAR},
+      administration_name = #{record.administrationName,jdbcType=VARCHAR},
+      administration_pwd = #{record.administrationPwd,jdbcType=VARCHAR},
+      administration_nick = #{record.administrationNick,jdbcType=VARCHAR},
+      administration_true_name = #{record.administrationTrueName,jdbcType=VARCHAR},
+      administration_department = #{record.administrationDepartment,jdbcType=VARCHAR},
+      administration_sex = #{record.administrationSex,jdbcType=INTEGER},
+      administration_email = #{record.administrationEmail,jdbcType=VARCHAR},
+      administration_phone = #{record.administrationPhone,jdbcType=CHAR},
+      administration_address = #{record.administrationAddress,jdbcType=VARCHAR},
+      administration_grade = #{record.administrationGrade,jdbcType=INTEGER},
+      administration_state = #{record.administrationState,jdbcType=INTEGER},
+      administration_createtime = #{record.administrationCreatetime,jdbcType=TIMESTAMP},
+      administration_createter = #{record.administrationCreateter,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Administration" >
+    update administration
+    <set >
+      <if test="administrationName != null" >
+        administration_name = #{administrationName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationPwd != null" >
+        administration_pwd = #{administrationPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationNick != null" >
+        administration_nick = #{administrationNick,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationTrueName != null" >
+        administration_true_name = #{administrationTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationDepartment != null" >
+        administration_department = #{administrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationSex != null" >
+        administration_sex = #{administrationSex,jdbcType=INTEGER},
+      </if>
+      <if test="administrationEmail != null" >
+        administration_email = #{administrationEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationPhone != null" >
+        administration_phone = #{administrationPhone,jdbcType=CHAR},
+      </if>
+      <if test="administrationAddress != null" >
+        administration_address = #{administrationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationGrade != null" >
+        administration_grade = #{administrationGrade,jdbcType=INTEGER},
+      </if>
+      <if test="administrationState != null" >
+        administration_state = #{administrationState,jdbcType=INTEGER},
+      </if>
+      <if test="administrationCreatetime != null" >
+        administration_createtime = #{administrationCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="administrationCreateter != null" >
+        administration_createter = #{administrationCreateter,jdbcType=CHAR},
+      </if>
+    </set>
+    where administration_id = #{administrationId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Administration" >
+    update administration
+    set administration_name = #{administrationName,jdbcType=VARCHAR},
+      administration_pwd = #{administrationPwd,jdbcType=VARCHAR},
+      administration_nick = #{administrationNick,jdbcType=VARCHAR},
+      administration_true_name = #{administrationTrueName,jdbcType=VARCHAR},
+      administration_department = #{administrationDepartment,jdbcType=VARCHAR},
+      administration_sex = #{administrationSex,jdbcType=INTEGER},
+      administration_email = #{administrationEmail,jdbcType=VARCHAR},
+      administration_phone = #{administrationPhone,jdbcType=CHAR},
+      administration_address = #{administrationAddress,jdbcType=VARCHAR},
+      administration_grade = #{administrationGrade,jdbcType=INTEGER},
+      administration_state = #{administrationState,jdbcType=INTEGER},
+      administration_createtime = #{administrationCreatetime,jdbcType=TIMESTAMP},
+      administration_createter = #{administrationCreateter,jdbcType=CHAR}
+    where administration_id = #{administrationId,jdbcType=CHAR}
+  </update>
+  <!-- 查询所有管理 -->
+  <select id="selectAdminListInfo" resultMap="BaseResultMap">
+  SELECT * FROM administration WHERE administration_grade != 0
+  ORDER BY administration_grade ASC,administration_createtime DESC  
+  </select>
+  <!-- 根据管理员账号，昵称，真实姓名，部门，性别查找管理员  -->
+ <select id="selectKeyWordFromAdmin" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from 
+  administration
+  WHERE 
+  <if test="_parameter != null">
+  administration_name like '%${_parameter}%'
+  </if>
+  OR
+  <if test="_parameter != null">
+  administration_nick like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  administration_true_name like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  administration_sex like '%${_parameter}%'
+  </if>
+  ORDER BY administration_grade ASC,administration_createtime DESC  
+ </select>
+ <!-- 根据管理员账号查询信息 -->
+ <select id="selectAdminInfoBy" resultMap="BaseResultMap" parameterType="java.lang.String">
+ SELECT * FROM administration WHERE administration_name = #{administrationName,jdbcType=VARCHAR}
+ </select>
+</mapper>

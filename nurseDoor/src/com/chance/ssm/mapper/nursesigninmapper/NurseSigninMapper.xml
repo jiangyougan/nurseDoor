@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursesigninmapper.NurseSigninMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NurseSignin" >
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="signin_integral" property="signinIntegral" jdbcType="INTEGER" />
+    <result column="signin_time" property="signinTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_id, signin_integral, signin_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NurseSigninExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse_signin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NurseSigninExample" >
+    delete from nurse_signin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NurseSignin" >
+    insert into nurse_signin (nurse_id, signin_integral, signin_time
+      )
+    values (#{nurseId,jdbcType=CHAR}, #{signinIntegral,jdbcType=INTEGER}, #{signinTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NurseSignin" >
+    insert into nurse_signin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        nurse_id,
+      </if>
+      <if test="signinIntegral != null" >
+        signin_integral,
+      </if>
+      <if test="signinTime != null" >
+        signin_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        #{nurseId,jdbcType=CHAR},
+      </if>
+      <if test="signinIntegral != null" >
+        #{signinIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="signinTime != null" >
+        #{signinTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NurseSigninExample" resultType="java.lang.Integer" >
+    select count(*) from nurse_signin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse_signin
+    <set >
+      <if test="record.nurseId != null" >
+        nurse_id = #{record.nurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.signinIntegral != null" >
+        signin_integral = #{record.signinIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="record.signinTime != null" >
+        signin_time = #{record.signinTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse_signin
+    set nurse_id = #{record.nurseId,jdbcType=CHAR},
+      signin_integral = #{record.signinIntegral,jdbcType=INTEGER},
+      signin_time = #{record.signinTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <!-- 护士登入判断当天有无签到 -->
+  <select id="selectNurseSignin" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse_signin WHERE nurse_id =#{nurseId, jdbcType=CHAR} AND DATE_FORMAT(signin_time,"%Y-%m-%d") = DATE_FORMAT(NOW(),"%Y-%m-%d");
+  </select>
+  
+  <!-- 护士去签到 -->
+  <insert id="nurseToSignin" parameterType="java.lang.String">
+  	INSERT INTO nurse_signin VALUES(#{nurseId, jdbcType=CHAR}, (SELECT nurse_signin_integral FROM signin_set), NOW());
+  </insert>
+  
+  <!-- 护士签到统计 当日 -->
+  <select id="selectNurseSigninCountOnDay" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse_signin WHERE DATE_FORMAT(signin_time,"%Y-%m-%d") = DATE_FORMAT(NOW(),"%Y-%m-%d");
+  </select>
+  
+  <!-- 护士签到统计 当周 -->
+  <select id="selectNurseSigninCountOnWeek" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse_signin WHERE DATE_FORMAT(signin_time,"%X-%V") = DATE_FORMAT(NOW(),"%X-%V");
+  </select>
+  
+  <!-- 护士签到统计 当月 -->
+  <select id="selectNurseSigninCountOnMonth" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse_signin WHERE DATE_FORMAT(signin_time,"%Y-%m") = DATE_FORMAT(NOW(),"%Y-%m");
+  </select>
+  
+</mapper>

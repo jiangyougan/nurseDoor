@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.orderreceivermapper.OrderReceiverMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.OrderReceiver" >
+    <result column="order_receive_id" property="orderReceiveId" jdbcType="CHAR" />
+    <result column="order_nurseid" property="orderNurseid" jdbcType="CHAR" />
+    <result column="order_ordersendid" property="orderOrdersendid" jdbcType="CHAR" />
+    <result column="order_receivestate" property="orderReceivestate" jdbcType="CHAR" />
+    <result column="order_createtime" property="orderCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+    <resultMap id="BaseResultMap2" type="com.chance.ssm.po.vo.OrderReceiverAndOrderVO" >
+    <result column="order_receive_id" property="orderReceiveId" jdbcType="CHAR" />
+    <result column="order_nurseid" property="orderNurseid" jdbcType="CHAR" />
+    <result column="order_ordersendid" property="orderOrdersendid" jdbcType="CHAR" />
+    <result column="order_receivestate" property="orderReceivestate" jdbcType="CHAR" />
+    <result column="order_createtime" property="orderCreatetime" jdbcType="TIMESTAMP" />
+     <result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="order_send_card" property="orderSendCard" jdbcType="CHAR" />
+    <result column="order_send_sex" property="orderSendSex" jdbcType="CHAR" />
+    <result column="order_send_age" property="orderSendAge" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_userpic" property="orderSendUserpic" jdbcType="VARCHAR" />
+    <result column="order_send_note" property="orderSendNote" jdbcType="VARCHAR" />
+    <result column="order_send_coupon" property="orderSendCoupon" jdbcType="CHAR" />
+    <result column="order_send_trafficmoney" property="orderSendTrafficmoney" jdbcType="DECIMAL" />
+    <result column="order_send_savemoney" property="orderSendSavemoney" jdbcType="DECIMAL" />
+    <result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+    <result column="order_send_ispayment" property="orderSendIspayment" jdbcType="CHAR" />
+    <result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+    <result column="order_send_issafe" property="orderSendIssafe" jdbcType="CHAR" />
+    <result column="order_send_type" property="orderSendType" jdbcType="CHAR" />
+    <result column="order_send_state" property="orderSendState" jdbcType="CHAR" />
+    <result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_send_get_order_time" property="orderSendGetOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_createtime" property="orderSendCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_receive_id, order_nurseid, order_ordersendid, order_receivestate, order_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.OrderReceiverExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_receiver
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.OrderReceiverExample" >
+    delete from order_receiver
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.OrderReceiver" >
+    insert into order_receiver (order_receive_id, order_nurseid, order_ordersendid, 
+      order_receivestate, order_createtime)
+    values (#{orderReceiveId,jdbcType=CHAR}, #{orderNurseid,jdbcType=CHAR}, #{orderOrdersendid,jdbcType=CHAR}, 
+      #{orderReceivestate,jdbcType=CHAR}, #{orderCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelectiveForOrderReceiver" parameterType="com.chance.ssm.po.OrderReceiver" >
+    insert into order_receiver
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderReceiveId != null" >
+        order_receive_id,
+      </if>
+      <if test="orderNurseid != null" >
+        order_nurseid,
+      </if>
+      <if test="orderOrdersendid != null" >
+        order_ordersendid,
+      </if>
+      <if test="orderReceivestate != null" >
+        order_receivestate,
+      </if>
+      <if test="orderCreatetime != null" >
+        order_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderReceiveId != null" >
+        #{orderReceiveId,jdbcType=CHAR},
+      </if>
+      <if test="orderNurseid != null" >
+        #{orderNurseid,jdbcType=CHAR},
+      </if>
+      <if test="orderOrdersendid != null" >
+        #{orderOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="orderReceivestate != null" >
+        #{orderReceivestate,jdbcType=CHAR},
+      </if>
+      <if test="orderCreatetime != null" >
+        #{orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.OrderReceiverExample" resultType="java.lang.Integer" >
+    select count(*) from order_receiver
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_receiver
+    <set >
+      <if test="record.orderReceiveId != null" >
+        order_receive_id = #{record.orderReceiveId,jdbcType=CHAR},
+      </if>
+      <if test="record.orderNurseid != null" >
+        order_nurseid = #{record.orderNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.orderOrdersendid != null" >
+        order_ordersendid = #{record.orderOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="record.orderReceivestate != null" >
+        order_receivestate = #{record.orderReceivestate,jdbcType=CHAR},
+      </if>
+      <if test="record.orderCreatetime != null" >
+        order_createtime = #{record.orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateOrderReceiverState" parameterType="com.chance.ssm.po.OrderReceiver" >
+    update order_receiver
+    <set >
+      <if test="orderReceiveId != null" >
+        order_receive_id = #{orderReceiveId,jdbcType=CHAR},
+      </if>
+      <if test="orderNurseid != null" >
+        order_nurseid = #{orderNurseid,jdbcType=CHAR},
+      </if>
+      <if test="orderOrdersendid != null" >
+        order_ordersendid = #{orderOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="orderReceivestate != null" >
+        order_receivestate = #{orderReceivestate,jdbcType=CHAR},
+      </if>
+      <if test="orderCreatetime != null" >
+        order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+     WHERE 
+     order_nurseid =#{orderNurseid,jdbcType=CHAR}
+	 AND 
+	 order_ordersendid=#{orderOrdersendid,jdbcType=CHAR}
+  </update>
+  
+  
+  <update id="updateByExample" parameterType="map" >
+    update order_receiver
+    set order_receive_id = #{record.orderReceiveId,jdbcType=CHAR},
+      order_nurseid = #{record.orderNurseid,jdbcType=CHAR},
+      order_ordersendid = #{record.orderOrdersendid,jdbcType=CHAR},
+      order_receivestate = #{record.orderReceivestate,jdbcType=CHAR},
+      order_createtime = #{record.orderCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <!--我接取的订单(进行，已完成..)  -->
+  <select id="SelectOrderStateAccess" resultMap="BaseResultMap2" parameterType="java.lang.String">
+  SELECT * 
+  FROM order_receiver,order_send  
+  WHERE order_ordersendid = order_send_id 
+  AND 
+  order_nurseid=#{orderNurseid,jdbcType=CHAR}
+  </select>
+  <!-- 查询不同接单状态的订单 -->
+  <select id="selectByExampleBystate" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.OrderReceiverExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    order_receiver.*, order_send.*
+    from order_receiver,order_send  
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    AND order_ordersendid = order_send_id 
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  
+  </select>
+  
+   <!-- 查询不同接单状态的订单 2-->
+  <select id="selectByExampleBystate2" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.OrderSendExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    order_receiver.*, order_send.*
+    from order_receiver,order_send  
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    AND order_ordersendid = order_send_id 
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  
+  </select>
+  <!-- 护士端根据订单id获取订单详情 -->
+  <select id="selectStateNurseOrderInfoByid" resultMap="BaseResultMap2" parameterType="java.lang.String">
+  SELECT * 
+  FROM 
+  order_receiver,order_send 
+  WHERE order_send_id = order_ordersendid 
+  AND order_ordersendid=#{orderOrdersendid,jdbcType=CHAR}
+  </select>
+  
+  <!-- 查询订单年份范围 -->
+  <select id="selectOrderTimeRange" resultType="String" >
+  	SELECT DATE_FORMAT(order_createtime,"%Y") AS order_time FROM order_receiver GROUP BY DATE_FORMAT(order_createtime,"%Y");
+  </select>
+  <!-- 判断护士完成的是不是首单 -->
+  <select id="selectOrderIsNotFirstOrder" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM order_receiver WHERE order_nurseid=#{orderNurseid,jdbcType=CHAR} AND order_receivestate = 4 LIMIT 0,1
+  </select>
+  <!--查询护士正在进行中的订单数量  -->
+  <select id="selectOrderSendIngNumber" resultType="java.lang.Integer" parameterType="java.lang.String">
+  SELECT COUNT(*) FROM order_receiver WHERE 
+  (order_receivestate = 0 OR order_receivestate = 1 OR order_receivestate = 2 OR order_receivestate = 3) 
+  AND  
+  order_nurseid = #{orderNurseid,jdbcType=CHAR}
+  </select>
+  <!-- 查询护士订单完成数 -->
+  <select id="selectNurseOrderNumber" resultType="java.lang.Integer">
+  SELECT COUNT(*) FROM order_receiver WHERE order_nurseid = #{0}
+  </select>
+  
+</mapper>

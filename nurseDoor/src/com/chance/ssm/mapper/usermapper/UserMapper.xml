@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.usermapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.User" >
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_header" property="userHeader" jdbcType="CHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="CHAR" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="user_invitationcode" property="userInvitationcode" jdbcType="CHAR" />
+    <result column="user_sex" property="userSex" jdbcType="CHAR" />
+    <result column="user_age" property="userAge" jdbcType="CHAR" />
+    <result column="user_email" property="userEmail" jdbcType="CHAR" />
+    <result column="user_cardpic" property="userCardpic" jdbcType="VARCHAR" />
+    <result column="user_truename" property="userTruename" jdbcType="VARCHAR" />
+    <result column="user_card" property="userCard" jdbcType="CHAR" />
+    <result column="user_province" property="userProvince" jdbcType="CHAR" />
+    <result column="user_city" property="userCity" jdbcType="VARCHAR" />
+    <result column="user_district" property="userDistrict" jdbcType="VARCHAR" />
+    <result column="user_note" property="userNote" jdbcType="VARCHAR" />
+    <result column="user_position_x" property="userPositionX" jdbcType="DOUBLE" />
+    <result column="user_position_y" property="userPositionY" jdbcType="DOUBLE" />
+    <result column="user_idenstate" property="userIdenstate" jdbcType="CHAR" />
+    <result column="user_balance" property="userBalance" jdbcType="DECIMAL" />
+    <result column="user_usestate" property="userUsestate" jdbcType="CHAR" />
+     <result column="user_communicate" property="userCommunicate" jdbcType="INTEGER" />
+    <result column="user_mark" property="userMark" jdbcType="DECIMAL" />
+    <result column="user_createtime" property="userCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="com.chance.ssm.po.vo.SelectUserThreeInfoVo" >
+    <result column="user_city" property="userCity" jdbcType="VARCHAR" />
+    <result column="user_district" property="userDistrict" jdbcType="VARCHAR" />
+    <result column="user_balance" property="userBalance" jdbcType="DECIMAL" />
+  </resultMap>
+<sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, user_header, user_nick, user_name, user_pwd, user_phone, user_address, user_invitationcode, 
+    user_sex, user_age, user_email, user_cardpic, user_truename, user_card, user_province, 
+    user_city, user_district, user_note, user_position_x, user_position_y, user_idenstate, 
+    user_balance, user_usestate, user_communicate, user_mark, user_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where user_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.User" >
+    insert into user (user_id, user_header, user_nick, 
+      user_name, user_pwd, user_phone, 
+      user_address, user_invitationcode, user_sex, 
+      user_age, user_email, user_cardpic, 
+      user_truename, user_card, user_province, 
+      user_city, user_district, user_note, 
+      user_position_x, user_position_y, user_idenstate, 
+      user_balance, user_usestate, user_communicate, 
+      user_mark, user_createtime)
+    values (#{userId,jdbcType=CHAR}, #{userHeader,jdbcType=CHAR}, #{userNick,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=CHAR}, #{userPwd,jdbcType=VARCHAR}, #{userPhone,jdbcType=CHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{userInvitationcode,jdbcType=CHAR}, #{userSex,jdbcType=CHAR}, 
+      #{userAge,jdbcType=CHAR}, #{userEmail,jdbcType=CHAR}, #{userCardpic,jdbcType=VARCHAR}, 
+      #{userTruename,jdbcType=VARCHAR}, #{userCard,jdbcType=CHAR}, #{userProvince,jdbcType=CHAR}, 
+      #{userCity,jdbcType=VARCHAR}, #{userDistrict,jdbcType=VARCHAR}, #{userNote,jdbcType=VARCHAR}, 
+      #{userPositionX,jdbcType=DOUBLE}, #{userPositionY,jdbcType=DOUBLE}, #{userIdenstate,jdbcType=CHAR}, 
+      #{userBalance,jdbcType=DECIMAL}, #{userUsestate,jdbcType=CHAR}, #{userCommunicate,jdbcType=INTEGER}, 
+      #{userMark,jdbcType=DECIMAL}, #{userCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userHeader != null" >
+        user_header,
+      </if>
+      <if test="userNick != null" >
+        user_nick,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userAddress != null" >
+        user_address,
+      </if>
+      <if test="userInvitationcode != null" >
+        user_invitationcode,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userAge != null" >
+        user_age,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userCardpic != null" >
+        user_cardpic,
+      </if>
+      <if test="userTruename != null" >
+        user_truename,
+      </if>
+      <if test="userCard != null" >
+        user_card,
+      </if>
+      <if test="userProvince != null" >
+        user_province,
+      </if>
+      <if test="userCity != null" >
+        user_city,
+      </if>
+      <if test="userDistrict != null" >
+        user_district,
+      </if>
+      <if test="userNote != null" >
+        user_note,
+      </if>
+      <if test="userPositionX != null" >
+        user_position_x,
+      </if>
+      <if test="userPositionY != null" >
+        user_position_y,
+      </if>
+      <if test="userIdenstate != null" >
+        user_idenstate,
+      </if>
+      <if test="userBalance != null" >
+        user_balance,
+      </if>
+      <if test="userUsestate != null" >
+        user_usestate,
+      </if>
+      <if test="userCommunicate != null" >
+        user_communicate,
+      </if>
+      <if test="userMark != null" >
+        user_mark,
+      </if>
+      <if test="userCreatetime != null" >
+        user_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userHeader != null" >
+        #{userHeader,jdbcType=CHAR},
+      </if>
+      <if test="userNick != null" >
+        #{userNick,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userInvitationcode != null" >
+        #{userInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userAge != null" >
+        #{userAge,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userCardpic != null" >
+        #{userCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="userTruename != null" >
+        #{userTruename,jdbcType=VARCHAR},
+      </if>
+      <if test="userCard != null" >
+        #{userCard,jdbcType=CHAR},
+      </if>
+      <if test="userProvince != null" >
+        #{userProvince,jdbcType=CHAR},
+      </if>
+      <if test="userCity != null" >
+        #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userDistrict != null" >
+        #{userDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="userNote != null" >
+        #{userNote,jdbcType=VARCHAR},
+      </if>
+      <if test="userPositionX != null" >
+        #{userPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="userPositionY != null" >
+        #{userPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="userIdenstate != null" >
+        #{userIdenstate,jdbcType=CHAR},
+      </if>
+      <if test="userBalance != null" >
+        #{userBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="userUsestate != null" >
+        #{userUsestate,jdbcType=CHAR},
+      </if>
+      <if test="userCommunicate != null" >
+        #{userCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="userMark != null" >
+        #{userMark,jdbcType=DECIMAL},
+      </if>
+      <if test="userCreatetime != null" >
+        #{userCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.userHeader != null" >
+        user_header = #{record.userHeader,jdbcType=CHAR},
+      </if>
+      <if test="record.userNick != null" >
+        user_nick = #{record.userNick,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=CHAR},
+      </if>
+      <if test="record.userPwd != null" >
+        user_pwd = #{record.userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPhone != null" >
+        user_phone = #{record.userPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.userAddress != null" >
+        user_address = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userInvitationcode != null" >
+        user_invitationcode = #{record.userInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="record.userSex != null" >
+        user_sex = #{record.userSex,jdbcType=CHAR},
+      </if>
+      <if test="record.userAge != null" >
+        user_age = #{record.userAge,jdbcType=CHAR},
+      </if>
+      <if test="record.userEmail != null" >
+        user_email = #{record.userEmail,jdbcType=CHAR},
+      </if>
+      <if test="record.userCardpic != null" >
+        user_cardpic = #{record.userCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTruename != null" >
+        user_truename = #{record.userTruename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userCard != null" >
+        user_card = #{record.userCard,jdbcType=CHAR},
+      </if>
+      <if test="record.userProvince != null" >
+        user_province = #{record.userProvince,jdbcType=CHAR},
+      </if>
+      <if test="record.userCity != null" >
+        user_city = #{record.userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userDistrict != null" >
+        user_district = #{record.userDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userNote != null" >
+        user_note = #{record.userNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPositionX != null" >
+        user_position_x = #{record.userPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="record.userPositionY != null" >
+        user_position_y = #{record.userPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="record.userIdenstate != null" >
+        user_idenstate = #{record.userIdenstate,jdbcType=CHAR},
+      </if>
+      <if test="record.userBalance != null" >
+        user_balance = #{record.userBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userUsestate != null" >
+        user_usestate = #{record.userUsestate,jdbcType=CHAR},
+      </if>
+      <if test="record.userCommunicate != null" >
+        user_communicate = #{record.userCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="record.userMark != null" >
+        user_mark = #{record.userMark,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userCreatetime != null" >
+        user_createtime = #{record.userCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set user_id = #{record.userId,jdbcType=CHAR},
+      user_header = #{record.userHeader,jdbcType=CHAR},
+      user_nick = #{record.userNick,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=CHAR},
+      user_pwd = #{record.userPwd,jdbcType=VARCHAR},
+      user_phone = #{record.userPhone,jdbcType=CHAR},
+      user_address = #{record.userAddress,jdbcType=VARCHAR},
+      user_invitationcode = #{record.userInvitationcode,jdbcType=CHAR},
+      user_sex = #{record.userSex,jdbcType=CHAR},
+      user_age = #{record.userAge,jdbcType=CHAR},
+      user_email = #{record.userEmail,jdbcType=CHAR},
+      user_cardpic = #{record.userCardpic,jdbcType=VARCHAR},
+      user_truename = #{record.userTruename,jdbcType=VARCHAR},
+      user_card = #{record.userCard,jdbcType=CHAR},
+      user_province = #{record.userProvince,jdbcType=CHAR},
+      user_city = #{record.userCity,jdbcType=VARCHAR},
+      user_district = #{record.userDistrict,jdbcType=VARCHAR},
+      user_note = #{record.userNote,jdbcType=VARCHAR},
+      user_position_x = #{record.userPositionX,jdbcType=DOUBLE},
+      user_position_y = #{record.userPositionY,jdbcType=DOUBLE},
+      user_idenstate = #{record.userIdenstate,jdbcType=CHAR},
+      user_balance = #{record.userBalance,jdbcType=DECIMAL},
+      user_usestate = #{record.userUsestate,jdbcType=CHAR},
+      user_communicate = #{record.userCommunicate,jdbcType=INTEGER},
+      user_mark = #{record.userMark,jdbcType=DECIMAL},
+      user_createtime = #{record.userCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.User" >
+    update user
+    <set >
+      <if test="userHeader != null" >
+        user_header = #{userHeader,jdbcType=CHAR},
+      </if>
+      <if test="userNick != null" >
+        user_nick = #{userNick,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userInvitationcode != null" >
+        user_invitationcode = #{userInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userAge != null" >
+        user_age = #{userAge,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userCardpic != null" >
+        user_cardpic = #{userCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="userTruename != null" >
+        user_truename = #{userTruename,jdbcType=VARCHAR},
+      </if>
+      <if test="userCard != null" >
+        user_card = #{userCard,jdbcType=CHAR},
+      </if>
+      <if test="userProvince != null" >
+        user_province = #{userProvince,jdbcType=CHAR},
+      </if>
+      <if test="userCity != null" >
+        user_city = #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userDistrict != null" >
+        user_district = #{userDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="userNote != null" >
+        user_note = #{userNote,jdbcType=VARCHAR},
+      </if>
+      <if test="userPositionX != null" >
+        user_position_x = #{userPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="userPositionY != null" >
+        user_position_y = #{userPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="userIdenstate != null" >
+        user_idenstate = #{userIdenstate,jdbcType=CHAR},
+      </if>
+      <if test="userBalance != null" >
+        user_balance = #{userBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="userUsestate != null" >
+        user_usestate = #{userUsestate,jdbcType=CHAR},
+      </if>
+      <if test="userCommunicate != null" >
+        user_communicate = #{userCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="userMark != null" >
+        user_mark = #{userMark,jdbcType=DECIMAL},
+      </if>
+      <if test="userCreatetime != null" >
+        user_createtime = #{userCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.User" >
+    update user
+    set user_header = #{userHeader,jdbcType=CHAR},
+      user_nick = #{userNick,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=CHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=CHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_invitationcode = #{userInvitationcode,jdbcType=CHAR},
+      user_sex = #{userSex,jdbcType=CHAR},
+      user_age = #{userAge,jdbcType=CHAR},
+      user_email = #{userEmail,jdbcType=CHAR},
+      user_cardpic = #{userCardpic,jdbcType=VARCHAR},
+      user_truename = #{userTruename,jdbcType=VARCHAR},
+      user_card = #{userCard,jdbcType=CHAR},
+      user_province = #{userProvince,jdbcType=CHAR},
+      user_city = #{userCity,jdbcType=VARCHAR},
+      user_district = #{userDistrict,jdbcType=VARCHAR},
+      user_note = #{userNote,jdbcType=VARCHAR},
+      user_position_x = #{userPositionX,jdbcType=DOUBLE},
+      user_position_y = #{userPositionY,jdbcType=DOUBLE},
+      user_idenstate = #{userIdenstate,jdbcType=CHAR},
+      user_balance = #{userBalance,jdbcType=DECIMAL},
+      user_usestate = #{userUsestate,jdbcType=CHAR},
+      user_communicate = #{userCommunicate,jdbcType=INTEGER},
+      user_mark = #{userMark,jdbcType=DECIMAL},
+      user_createtime = #{userCreatetime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+   <!-- 通过账号查询用户存不存在 -->
+  <select id="selectForUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT * FROM user WHERE user_name=#{userName,jdbcType=CHAR}
+  </select>
+  
+  <select id="selectForUserByID" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT * FROM user WHERE user_id=#{userId,jdbcType=CHAR}
+  </select>
+  
+  <!-- 查询用户数 -->
+  <select id="selectUserCount" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM USER;
+  </select>
+  
+  <!-- 新增用户统计	当日 -->
+  <select id="selectUserCountOnDay" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM USER WHERE DATE_FORMAT(user_createtime,"%Y-%m-%d") = DATE_FORMAT(NOW(),"%Y-%m-%d");
+  </select>
+  
+  <!-- 新增用户统计	当周 -->
+  <select id="selectUserCountOnWeek" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM USER WHERE DATE_FORMAT(user_createtime,"%X-%V") = DATE_FORMAT(NOW(),"%X-%V");
+  </select>
+  
+  <!-- 新增用户统计	当月 -->
+  <select id="selectUserCountOnMonth" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM USER WHERE DATE_FORMAT(user_createtime,"%Y-%m") = DATE_FORMAT(NOW(),"%Y-%m");
+  </select>
+  
+  <!-- 通过邀请码查看用户 -->
+  <select id="selectUserForInvitationcode" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT user_id FROM  USER WHERE user_invitationcode=#{userInvitationcode,jdbcType=CHAR};
+  </select>
+  <!-- 查询我邀请的人 -->
+  <select id="selectMyInvitationUserInfo" resultMap="BaseResultMap">
+  SELECT user.* FROM
+  invitation  LEFT JOIN USER ON invitation_beuser_id=user_id 
+  AND invitation_user_id=#{0}
+  WHERE invitation_beuser_id=user_id 
+  GROUP BY invitation_beuser_id
+  </select>
+  <select id="selectAllUserInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * FROM USER
+   ORDER BY user_communicate ASC, user_createtime DESC 
+   LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+  <!-- 根据用户账号，昵称，真实姓名，手机号，邀请码,支付宝账号查找用户  -->
+ <select id="selectKeyWordFromUser" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from 
+  user
+  WHERE 
+  <if test="_parameter != null">
+  user_nick like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  user_name like '%${_parameter}%'
+  </if> 
+    OR
+  <if test="_parameter != null">
+  user_phone like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  user_invitationcode like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  user_truename like '%${_parameter}%'
+  </if>
+  OR
+  <if test="_parameter != null">
+  user_city like '%${_parameter}%'
+  </if>
+ </select>
+ <!-- 查询用户余额及支付宝账号和密码 -->
+ <select id="selectUserThreeInfo" resultMap="BaseResultMap1" parameterType="java.lang.String">
+ SELECT user_city,user_district,user_balance FROM USER WHERE user_id = #{userId,jdbcType=CHAR}
+ </select>
+ 
+  <!-- 后台图表统计 -->
+ <!-- 当月注册人数 -->
+  <select id="selectStatisticsUserSuccessMonth" resultMap="BaseResultMap">
+  		SELECT * FROM USER   WHERE DATE_FORMAT(user_createtime,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') 
+  </select>
+  <!-- 当年注册人数 -->
+  <select id="selectStatisticsUserSuccessYear" resultMap="BaseResultMap" >
+  		SELECT * FROM USER   WHERE DATE_FORMAT(user_createtime,'%Y')=DATE_FORMAT(NOW(),'%Y') 
+  </select>
+</mapper>

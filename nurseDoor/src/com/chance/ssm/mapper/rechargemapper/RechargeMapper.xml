@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.rechargemapper.RechargeMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Recharge" >
+    <id column="recharge_id" property="rechargeId" jdbcType="CHAR" />
+    <result column="recharge_user" property="rechargeUser" jdbcType="CHAR" />
+    <result column="recharge_money" property="rechargeMoney" jdbcType="DECIMAL" />
+    <result column="recharge_state" property="rechargeState" jdbcType="INTEGER" />
+    <result column="recharge_over" property="rechargeOver" jdbcType="VARCHAR" />
+    <result column="recharge_time" property="rechargeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    recharge_id, recharge_user, recharge_money, recharge_state, recharge_over, recharge_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.RechargeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from recharge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from recharge
+    where recharge_id = #{rechargeId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from recharge
+    where recharge_id = #{rechargeId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.RechargeExample" >
+    delete from recharge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Recharge" >
+    insert into recharge (recharge_id, recharge_user, recharge_money, 
+      recharge_state, recharge_over, recharge_time
+      )
+    values (#{rechargeId,jdbcType=CHAR}, #{rechargeUser,jdbcType=CHAR}, #{rechargeMoney,jdbcType=DECIMAL}, 
+      #{rechargeState,jdbcType=INTEGER}, #{rechargeOver,jdbcType=VARCHAR}, #{rechargeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Recharge" >
+    insert into recharge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rechargeId != null" >
+        recharge_id,
+      </if>
+      <if test="rechargeUser != null" >
+        recharge_user,
+      </if>
+      <if test="rechargeMoney != null" >
+        recharge_money,
+      </if>
+      <if test="rechargeState != null" >
+        recharge_state,
+      </if>
+      <if test="rechargeOver != null" >
+        recharge_over,
+      </if>
+      <if test="rechargeTime != null" >
+        recharge_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rechargeId != null" >
+        #{rechargeId,jdbcType=CHAR},
+      </if>
+      <if test="rechargeUser != null" >
+        #{rechargeUser,jdbcType=CHAR},
+      </if>
+      <if test="rechargeMoney != null" >
+        #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeState != null" >
+        #{rechargeState,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeOver != null" >
+        #{rechargeOver,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeTime != null" >
+        #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.RechargeExample" resultType="java.lang.Integer" >
+    select count(*) from recharge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update recharge
+    <set >
+      <if test="record.rechargeId != null" >
+        recharge_id = #{record.rechargeId,jdbcType=CHAR},
+      </if>
+      <if test="record.rechargeUser != null" >
+        recharge_user = #{record.rechargeUser,jdbcType=CHAR},
+      </if>
+      <if test="record.rechargeMoney != null" >
+        recharge_money = #{record.rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rechargeState != null" >
+        recharge_state = #{record.rechargeState,jdbcType=INTEGER},
+      </if>
+      <if test="record.rechargeOver != null" >
+        recharge_over = #{record.rechargeOver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rechargeTime != null" >
+        recharge_time = #{record.rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update recharge
+    set recharge_id = #{record.rechargeId,jdbcType=CHAR},
+      recharge_user = #{record.rechargeUser,jdbcType=CHAR},
+      recharge_money = #{record.rechargeMoney,jdbcType=DECIMAL},
+      recharge_state = #{record.rechargeState,jdbcType=INTEGER},
+      recharge_over = #{record.rechargeOver,jdbcType=VARCHAR},
+      recharge_time = #{record.rechargeTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Recharge" >
+    update recharge
+    <set >
+      <if test="rechargeUser != null" >
+        recharge_user = #{rechargeUser,jdbcType=CHAR},
+      </if>
+      <if test="rechargeMoney != null" >
+        recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeState != null" >
+        recharge_state = #{rechargeState,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeOver != null" >
+        recharge_over = #{rechargeOver,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeTime != null" >
+        recharge_time = #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recharge_id = #{rechargeId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Recharge" >
+    update recharge
+    set recharge_user = #{rechargeUser,jdbcType=CHAR},
+      recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      recharge_state = #{rechargeState,jdbcType=INTEGER},
+      recharge_over = #{rechargeOver,jdbcType=VARCHAR},
+      recharge_time = #{rechargeTime,jdbcType=TIMESTAMP}
+    where recharge_id = #{rechargeId,jdbcType=CHAR}
+  </update>
+</mapper>

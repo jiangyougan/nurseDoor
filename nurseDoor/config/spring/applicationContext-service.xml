@@ -1,0 +1,65 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<bean id="administrationService" class="com.chance.ssm.service.impl.AdministrationServiceImpl"></bean>
+	<bean id="nurseService" class="com.chance.ssm.service.impl.NurseServiceImpl"></bean>
+	<bean id="userService" class="com.chance.ssm.service.impl.UserServiceImpl"></bean>
+	<bean id="orderSendService" class="com.chance.ssm.service.impl.OrderSendServiceImpl"></bean>
+	<bean id="orderReceiverService" class="com.chance.ssm.service.impl.OrderReceiverServiceImpl"></bean>
+	<bean id="evaluateService" class="com.chance.ssm.service.impl.EvaluateServiceImpl"></bean>
+	<bean id="followService" class="com.chance.ssm.service.impl.FollowServiceImpl"></bean>
+	<bean id="manageNursingContentService" class="com.chance.ssm.service.impl.ManageNursingContentServiceImpl"></bean>
+	<bean id="nurseNofreeService" class="com.chance.ssm.service.impl.NurseNofreeServiceImpl"></bean>
+	<bean id="hospitalService" class="com.chance.ssm.service.impl.HospitalServiceImpl"></bean>
+	<bean id="majorService" class="com.chance.ssm.service.impl.MajorServiceImpl"></bean>
+	<bean id="packageService" class="com.chance.ssm.service.impl.PackageServiceImpl"></bean>
+	<bean id="protectedPersonService" class="com.chance.ssm.service.impl.ProtectedPersonServiceImpl"></bean>
+	<bean id="saveService" class="com.chance.ssm.service.impl.SaveServiceImpl"></bean>
+	<bean id="protectedAddressService" class="com.chance.ssm.service.impl.ProtectedAddressServiceImpl"></bean>
+	<bean id="manageNursingProjectService" class="com.chance.ssm.service.impl.ManageNursingProjectServiceImpl"></bean>
+	<bean id="noteService" class="com.chance.ssm.service.impl.NoteServiceImpl"></bean>
+	<bean id="goodsService" class="com.chance.ssm.service.impl.GoodsServiceImpl"></bean>
+	<bean id="nursingProjectService" class="com.chance.ssm.service.impl.NursingProjectServiceImpl"></bean>
+   <!--  <bean id="countMapperService" class="com.chance.ssm.service.impl.CountServiceImpl"></bean> -->
+    <bean id="statisticsService" class="com.chance.ssm.service.impl.StatisticsServiceImpl"></bean>
+    <bean id="orderSendSpecialService" class="com.chance.ssm.service.impl.OrderSendSpecialServiceImpl"></bean>
+	<bean id="manageNursingTestallService" class="com.chance.ssm.service.impl.ManageNursingTestallServiceImpl"></bean>
+    <bean id="nursingReportService" class="com.chance.ssm.service.impl.NursingReportServiceImpl"></bean>
+    <bean id="manageNursingTestingService" class="com.chance.ssm.service.impl.ManageNursingTestingServiceImpl"></bean>
+    <bean id="nursingTestingContentService" class="com.chance.ssm.service.impl.NursingTestingContentServiceImpl"></bean>
+	<bean id="simpleMajorService" class="com.chance.ssm.service.impl.SimpleMajorServiceImpl"></bean>
+	<bean id="nurseEvaluateService" class="com.chance.ssm.service.impl.NurseEvaluateServiceImpl"></bean>
+
+	<bean id="rechargeService" class="com.chance.ssm.service.impl.RechargeServiceImpl"></bean>
+	<bean id="capitalNursePoolService" class="com.chance.ssm.service.impl.CapitalNursePoolServiceImpl"></bean>
+	<bean id="capitalUserPoolService" class="com.chance.ssm.service.impl.CapitalUserPoolServiceImpl"></bean>
+	<bean id="collectsService" class="com.chance.ssm.service.impl.CollectsServiceImpl"></bean>
+	<bean id="invitationService" class="com.chance.ssm.service.impl.InvitationServiceImpl"></bean>
+	<bean id="khdManageService" class="com.chance.ssm.service.impl.KhdManageServiceImpl"></bean>
+	<bean id="complaintService" class="com.chance.ssm.service.impl.ComplaintServiceImpl"></bean>
+	<bean id="couponService" class="com.chance.ssm.service.impl.CouponServiceImpl"></bean>
+	<bean id="redPacketsService" class="com.chance.ssm.service.impl.RedPacketsServiceImpl"></bean>
+	<bean id="drawMoneyService" class="com.chance.ssm.service.impl.DrawMoneyServiceImpl"></bean>
+	<bean id="interestRateService" class="com.chance.ssm.service.impl.InterestRateServiceImpl"></bean>
+	<bean id="nursePaymentSettingsService" class="com.chance.ssm.service.impl.NursePaymentSettingsServiceImpl"></bean>
+	<bean id="standInnerLetterService" class="com.chance.ssm.service.impl.StandInnerLetterServiceImpl"></bean>
+	<bean id="orderCancelOrderService" class="com.chance.ssm.service.impl.OrderCancelOrderServiceImpl"></bean>
+	<bean id="postService" class="com.chance.ssm.service.impl.PostServiceImpl"></bean>
+	<bean id="postGiveFabulousService" class="com.chance.ssm.service.impl.PostGiveFabulousServiceImpl"></bean>
+	<bean id="postReplyServiceImpl" class="com.chance.ssm.service.impl.PostReplyServiceImpl"></bean>
+	<bean id="capitalPlatformServiceImpl" class="com.chance.ssm.service.impl.CapitalPlatformServiceImpl"></bean>
+	<bean id="customerServicePhoneServiceImpl" class="com.chance.ssm.service.impl.CustomerServicePhoneServiceImpl"></bean>
+	<bean id="cimingControlServiceImpl" class="com.chance.ssm.service.impl.TimingControlServiceImpl"></bean>
+</beans>

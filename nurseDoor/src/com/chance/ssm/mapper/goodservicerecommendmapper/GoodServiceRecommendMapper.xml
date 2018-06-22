@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.goodservicerecommendmapper.GoodServiceRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.GoodServiceRecommend" >
+    <id column="good_service_recommend_id" property="goodServiceRecommendId" jdbcType="CHAR" />
+    <result column="good_service_recommend_content_id" property="goodServiceRecommendContentId" jdbcType="CHAR" />
+    <result column="good_service_recommend_content_pic" property="goodServiceRecommendContentPic" jdbcType="VARCHAR" />
+    <result column="good_service_recommend_note" property="goodServiceRecommendNote" jdbcType="VARCHAR" />
+    <result column="good_service_recommend_speak" property="goodServiceRecommendSpeak" jdbcType="VARCHAR" />
+    <result column="good_service_recommend_createter" property="goodServiceRecommendCreateter" jdbcType="CHAR" />
+    <result column="good_service_recommend_createtime" property="goodServiceRecommendCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    good_service_recommend_id, good_service_recommend_content_id, good_service_recommend_content_pic, 
+    good_service_recommend_note, good_service_recommend_speak, good_service_recommend_createter, 
+    good_service_recommend_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.GoodServiceRecommendExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from good_service_recommend
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from good_service_recommend
+    where good_service_recommend_id = #{goodServiceRecommendId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKeyGoodService" parameterType="java.lang.String" >
+    delete from good_service_recommend
+    where good_service_recommend_id = #{goodServiceRecommendId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.GoodServiceRecommendExample" >
+    delete from good_service_recommend
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.GoodServiceRecommend" >
+    insert into good_service_recommend (good_service_recommend_id, good_service_recommend_content_id, 
+      good_service_recommend_content_pic, good_service_recommend_note, 
+      good_service_recommend_speak, good_service_recommend_createter, 
+      good_service_recommend_createtime)
+    values (#{goodServiceRecommendId,jdbcType=CHAR}, #{goodServiceRecommendContentId,jdbcType=CHAR}, 
+      #{goodServiceRecommendContentPic,jdbcType=VARCHAR}, #{goodServiceRecommendNote,jdbcType=VARCHAR}, 
+      #{goodServiceRecommendSpeak,jdbcType=VARCHAR}, #{goodServiceRecommendCreateter,jdbcType=CHAR}, 
+      #{goodServiceRecommendCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelectiveGoodServiceRecommend" parameterType="com.chance.ssm.po.GoodServiceRecommend" >
+    insert into good_service_recommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodServiceRecommendId != null" >
+        good_service_recommend_id,
+      </if>
+      <if test="goodServiceRecommendContentId != null" >
+        good_service_recommend_content_id,
+      </if>
+      <if test="goodServiceRecommendContentPic != null" >
+        good_service_recommend_content_pic,
+      </if>
+      <if test="goodServiceRecommendNote != null" >
+        good_service_recommend_note,
+      </if>
+      <if test="goodServiceRecommendSpeak != null" >
+        good_service_recommend_speak,
+      </if>
+      <if test="goodServiceRecommendCreateter != null" >
+        good_service_recommend_createter,
+      </if>
+      <if test="goodServiceRecommendCreatetime != null" >
+        good_service_recommend_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodServiceRecommendId != null" >
+        #{goodServiceRecommendId,jdbcType=CHAR},
+      </if>
+      <if test="goodServiceRecommendContentId != null" >
+        #{goodServiceRecommendContentId,jdbcType=CHAR},
+      </if>
+      <if test="goodServiceRecommendContentPic != null" >
+        #{goodServiceRecommendContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendNote != null" >
+        #{goodServiceRecommendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendSpeak != null" >
+        #{goodServiceRecommendSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendCreateter != null" >
+        #{goodServiceRecommendCreateter,jdbcType=CHAR},
+      </if>
+      <if test="goodServiceRecommendCreatetime != null" >
+        #{goodServiceRecommendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.GoodServiceRecommendExample" resultType="java.lang.Integer" >
+    select count(*) from good_service_recommend
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update good_service_recommend
+    <set >
+      <if test="record.goodServiceRecommendId != null" >
+        good_service_recommend_id = #{record.goodServiceRecommendId,jdbcType=CHAR},
+      </if>
+      <if test="record.goodServiceRecommendContentId != null" >
+        good_service_recommend_content_id = #{record.goodServiceRecommendContentId,jdbcType=CHAR},
+      </if>
+      <if test="record.goodServiceRecommendContentPic != null" >
+        good_service_recommend_content_pic = #{record.goodServiceRecommendContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodServiceRecommendNote != null" >
+        good_service_recommend_note = #{record.goodServiceRecommendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodServiceRecommendSpeak != null" >
+        good_service_recommend_speak = #{record.goodServiceRecommendSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodServiceRecommendCreateter != null" >
+        good_service_recommend_createter = #{record.goodServiceRecommendCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.goodServiceRecommendCreatetime != null" >
+        good_service_recommend_createtime = #{record.goodServiceRecommendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update good_service_recommend
+    set good_service_recommend_id = #{record.goodServiceRecommendId,jdbcType=CHAR},
+      good_service_recommend_content_id = #{record.goodServiceRecommendContentId,jdbcType=CHAR},
+      good_service_recommend_content_pic = #{record.goodServiceRecommendContentPic,jdbcType=VARCHAR},
+      good_service_recommend_note = #{record.goodServiceRecommendNote,jdbcType=VARCHAR},
+      good_service_recommend_speak = #{record.goodServiceRecommendSpeak,jdbcType=VARCHAR},
+      good_service_recommend_createter = #{record.goodServiceRecommendCreateter,jdbcType=CHAR},
+      good_service_recommend_createtime = #{record.goodServiceRecommendCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelectiveGoodService" parameterType="com.chance.ssm.po.GoodServiceRecommend" >
+    update good_service_recommend
+    <set >
+      <if test="goodServiceRecommendContentId != null" >
+        good_service_recommend_content_id = #{goodServiceRecommendContentId,jdbcType=CHAR},
+      </if>
+      <if test="goodServiceRecommendContentPic != null" >
+        good_service_recommend_content_pic = #{goodServiceRecommendContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendNote != null" >
+        good_service_recommend_note = #{goodServiceRecommendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendSpeak != null" >
+        good_service_recommend_speak = #{goodServiceRecommendSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="goodServiceRecommendCreateter != null" >
+        good_service_recommend_createter = #{goodServiceRecommendCreateter,jdbcType=CHAR},
+      </if>
+      <if test="goodServiceRecommendCreatetime != null" >
+        good_service_recommend_createtime = #{goodServiceRecommendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where good_service_recommend_id = #{goodServiceRecommendId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.GoodServiceRecommend" >
+    update good_service_recommend
+    set good_service_recommend_content_id = #{goodServiceRecommendContentId,jdbcType=CHAR},
+      good_service_recommend_content_pic = #{goodServiceRecommendContentPic,jdbcType=VARCHAR},
+      good_service_recommend_note = #{goodServiceRecommendNote,jdbcType=VARCHAR},
+      good_service_recommend_speak = #{goodServiceRecommendSpeak,jdbcType=VARCHAR},
+      good_service_recommend_createter = #{goodServiceRecommendCreateter,jdbcType=CHAR},
+      good_service_recommend_createtime = #{goodServiceRecommendCreatetime,jdbcType=TIMESTAMP}
+    where good_service_recommend_id = #{goodServiceRecommendId,jdbcType=CHAR}
+  </update>
+</mapper>

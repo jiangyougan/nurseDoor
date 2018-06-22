@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.interestratemapper.InterestRateMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.InterestRate" >
+    <result column="interest_rate_id" property="interestRateId" jdbcType="CHAR" />
+    <result column="interest_rate_size" property="interestRateSize" jdbcType="DECIMAL" />
+    <result column="interest_rate_note" property="interestRateNote" jdbcType="VARCHAR" />
+    <result column="interest_rate_speak" property="interestRateSpeak" jdbcType="VARCHAR" />
+    <result column="interest_rate_creater" property="interestRateCreater" jdbcType="CHAR" />
+    <result column="interest_rate_createtime" property="interestRateCreatetime" jdbcType="TIMESTAMP" />
+    <result column="interest_rate_updatetime" property="interestRateUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    interest_rate_id, interest_rate_size, interest_rate_note, interest_rate_speak, interest_rate_creater, 
+    interest_rate_createtime, interest_rate_updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.InterestRateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from interest_rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.InterestRateExample" >
+    delete from interest_rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.InterestRate" >
+    insert into interest_rate (interest_rate_id, interest_rate_size, interest_rate_note, 
+      interest_rate_speak, interest_rate_creater, interest_rate_createtime, 
+      interest_rate_updatetime)
+    values (#{interestRateId,jdbcType=CHAR}, #{interestRateSize,jdbcType=DECIMAL}, #{interestRateNote,jdbcType=VARCHAR}, 
+      #{interestRateSpeak,jdbcType=VARCHAR}, #{interestRateCreater,jdbcType=CHAR}, #{interestRateCreatetime,jdbcType=TIMESTAMP}, 
+      #{interestRateUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.InterestRate" >
+    insert into interest_rate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="interestRateId != null" >
+        interest_rate_id,
+      </if>
+      <if test="interestRateSize != null" >
+        interest_rate_size,
+      </if>
+      <if test="interestRateNote != null" >
+        interest_rate_note,
+      </if>
+      <if test="interestRateSpeak != null" >
+        interest_rate_speak,
+      </if>
+      <if test="interestRateCreater != null" >
+        interest_rate_creater,
+      </if>
+      <if test="interestRateCreatetime != null" >
+        interest_rate_createtime,
+      </if>
+      <if test="interestRateUpdatetime != null" >
+        interest_rate_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="interestRateId != null" >
+        #{interestRateId,jdbcType=CHAR},
+      </if>
+      <if test="interestRateSize != null" >
+        #{interestRateSize,jdbcType=DECIMAL},
+      </if>
+      <if test="interestRateNote != null" >
+        #{interestRateNote,jdbcType=VARCHAR},
+      </if>
+      <if test="interestRateSpeak != null" >
+        #{interestRateSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="interestRateCreater != null" >
+        #{interestRateCreater,jdbcType=CHAR},
+      </if>
+      <if test="interestRateCreatetime != null" >
+        #{interestRateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interestRateUpdatetime != null" >
+        #{interestRateUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.InterestRateExample" resultType="java.lang.Integer" >
+    select count(*) from interest_rate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update interest_rate
+    <set >
+      <if test="record.interestRateId != null" >
+        interest_rate_id = #{record.interestRateId,jdbcType=CHAR},
+      </if>
+      <if test="record.interestRateSize != null" >
+        interest_rate_size = #{record.interestRateSize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.interestRateNote != null" >
+        interest_rate_note = #{record.interestRateNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interestRateSpeak != null" >
+        interest_rate_speak = #{record.interestRateSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interestRateCreater != null" >
+        interest_rate_creater = #{record.interestRateCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.interestRateCreatetime != null" >
+        interest_rate_createtime = #{record.interestRateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.interestRateUpdatetime != null" >
+        interest_rate_updatetime = #{record.interestRateUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update interest_rate
+    set interest_rate_id = #{record.interestRateId,jdbcType=CHAR},
+      interest_rate_size = #{record.interestRateSize,jdbcType=DECIMAL},
+      interest_rate_note = #{record.interestRateNote,jdbcType=VARCHAR},
+      interest_rate_speak = #{record.interestRateSpeak,jdbcType=VARCHAR},
+      interest_rate_creater = #{record.interestRateCreater,jdbcType=CHAR},
+      interest_rate_createtime = #{record.interestRateCreatetime,jdbcType=TIMESTAMP},
+      interest_rate_updatetime = #{record.interestRateUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

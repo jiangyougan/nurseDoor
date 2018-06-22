@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.capitaluserpoolmapper.CapitalUserPoolMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CapitalUserPool" >
+    <id column="capital_user_pool_id" property="capitalUserPoolId" jdbcType="CHAR" />
+    <result column="capital_user_pool_peopleid" property="capitalUserPoolPeopleid" jdbcType="CHAR" />
+    <result column="capital_user_pool_ordersendid" property="capitalUserPoolOrdersendid" jdbcType="CHAR" />
+    <result column="capital_user_pool_people_identity" property="capitalUserPoolPeopleIdentity" jdbcType="INTEGER" />
+    <result column="capital_user_pool_money" property="capitalUserPoolMoney" jdbcType="DECIMAL" />
+    <result column="capital_user_pool_speak" property="capitalUserPoolSpeak" jdbcType="VARCHAR" />
+    <result column="capital_user_pool_createtime" property="capitalUserPoolCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    capital_user_pool_id, capital_user_pool_peopleid, capital_user_pool_ordersendid, 
+    capital_user_pool_people_identity, capital_user_pool_money, capital_user_pool_speak, 
+    capital_user_pool_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CapitalUserPoolExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from capital_user_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from capital_user_pool
+    where capital_user_pool_id = #{capitalUserPoolId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from capital_user_pool
+    where capital_user_pool_id = #{capitalUserPoolId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CapitalUserPoolExample" >
+    delete from capital_user_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CapitalUserPool" >
+    insert into capital_user_pool (capital_user_pool_id, capital_user_pool_peopleid, 
+      capital_user_pool_ordersendid, capital_user_pool_people_identity, 
+      capital_user_pool_money, capital_user_pool_speak, 
+      capital_user_pool_createtime)
+    values (#{capitalUserPoolId,jdbcType=CHAR}, #{capitalUserPoolPeopleid,jdbcType=CHAR}, 
+      #{capitalUserPoolOrdersendid,jdbcType=CHAR}, #{capitalUserPoolPeopleIdentity,jdbcType=INTEGER}, 
+      #{capitalUserPoolMoney,jdbcType=DECIMAL}, #{capitalUserPoolSpeak,jdbcType=VARCHAR}, 
+      #{capitalUserPoolCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.CapitalUserPool" >
+    insert into capital_user_pool
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="capitalUserPoolId != null" >
+        capital_user_pool_id,
+      </if>
+      <if test="capitalUserPoolPeopleid != null" >
+        capital_user_pool_peopleid,
+      </if>
+      <if test="capitalUserPoolOrdersendid != null" >
+        capital_user_pool_ordersendid,
+      </if>
+      <if test="capitalUserPoolPeopleIdentity != null" >
+        capital_user_pool_people_identity,
+      </if>
+      <if test="capitalUserPoolMoney != null" >
+        capital_user_pool_money,
+      </if>
+      <if test="capitalUserPoolSpeak != null" >
+        capital_user_pool_speak,
+      </if>
+      <if test="capitalUserPoolCreatetime != null" >
+        capital_user_pool_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="capitalUserPoolId != null" >
+        #{capitalUserPoolId,jdbcType=CHAR},
+      </if>
+      <if test="capitalUserPoolPeopleid != null" >
+        #{capitalUserPoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="capitalUserPoolOrdersendid != null" >
+        #{capitalUserPoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="capitalUserPoolPeopleIdentity != null" >
+        #{capitalUserPoolPeopleIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="capitalUserPoolMoney != null" >
+        #{capitalUserPoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalUserPoolSpeak != null" >
+        #{capitalUserPoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalUserPoolCreatetime != null" >
+        #{capitalUserPoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CapitalUserPoolExample" resultType="java.lang.Integer" >
+    select count(*) from capital_user_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update capital_user_pool
+    <set >
+      <if test="record.capitalUserPoolId != null" >
+        capital_user_pool_id = #{record.capitalUserPoolId,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalUserPoolPeopleid != null" >
+        capital_user_pool_peopleid = #{record.capitalUserPoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalUserPoolOrdersendid != null" >
+        capital_user_pool_ordersendid = #{record.capitalUserPoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalUserPoolPeopleIdentity != null" >
+        capital_user_pool_people_identity = #{record.capitalUserPoolPeopleIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.capitalUserPoolMoney != null" >
+        capital_user_pool_money = #{record.capitalUserPoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.capitalUserPoolSpeak != null" >
+        capital_user_pool_speak = #{record.capitalUserPoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalUserPoolCreatetime != null" >
+        capital_user_pool_createtime = #{record.capitalUserPoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update capital_user_pool
+    set capital_user_pool_id = #{record.capitalUserPoolId,jdbcType=CHAR},
+      capital_user_pool_peopleid = #{record.capitalUserPoolPeopleid,jdbcType=CHAR},
+      capital_user_pool_ordersendid = #{record.capitalUserPoolOrdersendid,jdbcType=CHAR},
+      capital_user_pool_people_identity = #{record.capitalUserPoolPeopleIdentity,jdbcType=INTEGER},
+      capital_user_pool_money = #{record.capitalUserPoolMoney,jdbcType=DECIMAL},
+      capital_user_pool_speak = #{record.capitalUserPoolSpeak,jdbcType=VARCHAR},
+      capital_user_pool_createtime = #{record.capitalUserPoolCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.CapitalUserPool" >
+    update capital_user_pool
+    <set >
+      <if test="capitalUserPoolPeopleid != null" >
+        capital_user_pool_peopleid = #{capitalUserPoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="capitalUserPoolOrdersendid != null" >
+        capital_user_pool_ordersendid = #{capitalUserPoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="capitalUserPoolPeopleIdentity != null" >
+        capital_user_pool_people_identity = #{capitalUserPoolPeopleIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="capitalUserPoolMoney != null" >
+        capital_user_pool_money = #{capitalUserPoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalUserPoolSpeak != null" >
+        capital_user_pool_speak = #{capitalUserPoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalUserPoolCreatetime != null" >
+        capital_user_pool_createtime = #{capitalUserPoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where capital_user_pool_id = #{capitalUserPoolId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CapitalUserPool" >
+    update capital_user_pool
+    set capital_user_pool_peopleid = #{capitalUserPoolPeopleid,jdbcType=CHAR},
+      capital_user_pool_ordersendid = #{capitalUserPoolOrdersendid,jdbcType=CHAR},
+      capital_user_pool_people_identity = #{capitalUserPoolPeopleIdentity,jdbcType=INTEGER},
+      capital_user_pool_money = #{capitalUserPoolMoney,jdbcType=DECIMAL},
+      capital_user_pool_speak = #{capitalUserPoolSpeak,jdbcType=VARCHAR},
+      capital_user_pool_createtime = #{capitalUserPoolCreatetime,jdbcType=TIMESTAMP}
+    where capital_user_pool_id = #{capitalUserPoolId,jdbcType=CHAR}
+  </update>
+  
+  <!-- 查询用户明细 -->
+  <select id="selectCapitalUserPoolInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM capital_user_pool WHERE capital_user_pool_peopleid =#{capitalUserPoolPeopleid,jdbcType=CHAR} ORDER BY capital_user_pool_createtime DESC 
+  </select>
+  
+  <!--	查询护士支出  -->
+  <select id="selectUserAllExpenditure" resultType="java.math.BigDecimal">
+  SELECT SUM(capital_user_pool_money) FROM capital_user_pool WHERE capital_user_pool_peopleid = #{0} AND capital_user_pool_people_identity = 0
+  </select>
+  
+</mapper>

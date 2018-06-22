@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nurseevaluatemapper.NurseEvaluateMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NurseEvaluate" >
+    <id column="nurse_evaluate_id" property="nurseEvaluateId" jdbcType="CHAR" />
+    <result column="evaluate_nurse_id" property="evaluateNurseId" jdbcType="CHAR" />
+    <result column="evalute_user_id" property="evaluteUserId" jdbcType="CHAR" />
+    <result column="evalute_send_id" property="evaluteSendId" jdbcType="CHAR" />
+    <result column="evalute_info" property="evaluteInfo" jdbcType="VARCHAR" />
+    <result column="evalute_mark" property="evaluteMark" jdbcType="INTEGER" />
+    <result column="evalute_crtetime" property="evaluteCrtetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_evaluate_id, evaluate_nurse_id, evalute_user_id, evalute_send_id, evalute_info, 
+    evalute_mark, evalute_crtetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NurseEvaluateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse_evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurse_evaluate
+    where nurse_evaluate_id = #{nurseEvaluateId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from nurse_evaluate
+    where nurse_evaluate_id = #{nurseEvaluateId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NurseEvaluateExample" >
+    delete from nurse_evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NurseEvaluate" >
+    insert into nurse_evaluate (nurse_evaluate_id, evaluate_nurse_id, evalute_user_id, 
+      evalute_send_id, evalute_info, evalute_mark, 
+      evalute_crtetime)
+    values (#{nurseEvaluateId,jdbcType=CHAR}, #{evaluateNurseId,jdbcType=CHAR}, #{evaluteUserId,jdbcType=CHAR}, 
+      #{evaluteSendId,jdbcType=CHAR}, #{evaluteInfo,jdbcType=VARCHAR}, #{evaluteMark,jdbcType=INTEGER}, 
+      #{evaluteCrtetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NurseEvaluate" >
+    insert into nurse_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nurseEvaluateId != null" >
+        nurse_evaluate_id,
+      </if>
+      <if test="evaluateNurseId != null" >
+        evaluate_nurse_id,
+      </if>
+      <if test="evaluteUserId != null" >
+        evalute_user_id,
+      </if>
+      <if test="evaluteSendId != null" >
+        evalute_send_id,
+      </if>
+      <if test="evaluteInfo != null" >
+        evalute_info,
+      </if>
+      <if test="evaluteMark != null" >
+        evalute_mark,
+      </if>
+      <if test="evaluteCrtetime != null" >
+        evalute_crtetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nurseEvaluateId != null" >
+        #{nurseEvaluateId,jdbcType=CHAR},
+      </if>
+      <if test="evaluateNurseId != null" >
+        #{evaluateNurseId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteUserId != null" >
+        #{evaluteUserId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteSendId != null" >
+        #{evaluteSendId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteInfo != null" >
+        #{evaluteInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluteMark != null" >
+        #{evaluteMark,jdbcType=INTEGER},
+      </if>
+      <if test="evaluteCrtetime != null" >
+        #{evaluteCrtetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NurseEvaluateExample" resultType="java.lang.Integer" >
+    select count(*) from nurse_evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse_evaluate
+    <set >
+      <if test="record.nurseEvaluateId != null" >
+        nurse_evaluate_id = #{record.nurseEvaluateId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateNurseId != null" >
+        evaluate_nurse_id = #{record.evaluateNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluteUserId != null" >
+        evalute_user_id = #{record.evaluteUserId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluteSendId != null" >
+        evalute_send_id = #{record.evaluteSendId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluteInfo != null" >
+        evalute_info = #{record.evaluteInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluteMark != null" >
+        evalute_mark = #{record.evaluteMark,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluteCrtetime != null" >
+        evalute_crtetime = #{record.evaluteCrtetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse_evaluate
+    set nurse_evaluate_id = #{record.nurseEvaluateId,jdbcType=CHAR},
+      evaluate_nurse_id = #{record.evaluateNurseId,jdbcType=CHAR},
+      evalute_user_id = #{record.evaluteUserId,jdbcType=CHAR},
+      evalute_send_id = #{record.evaluteSendId,jdbcType=CHAR},
+      evalute_info = #{record.evaluteInfo,jdbcType=VARCHAR},
+      evalute_mark = #{record.evaluteMark,jdbcType=INTEGER},
+      evalute_crtetime = #{record.evaluteCrtetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.NurseEvaluate" >
+    update nurse_evaluate
+    <set >
+      <if test="evaluateNurseId != null" >
+        evaluate_nurse_id = #{evaluateNurseId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteUserId != null" >
+        evalute_user_id = #{evaluteUserId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteSendId != null" >
+        evalute_send_id = #{evaluteSendId,jdbcType=CHAR},
+      </if>
+      <if test="evaluteInfo != null" >
+        evalute_info = #{evaluteInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluteMark != null" >
+        evalute_mark = #{evaluteMark,jdbcType=INTEGER},
+      </if>
+      <if test="evaluteCrtetime != null" >
+        evalute_crtetime = #{evaluteCrtetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where nurse_evaluate_id = #{nurseEvaluateId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.NurseEvaluate" >
+    update nurse_evaluate
+    set evaluate_nurse_id = #{evaluateNurseId,jdbcType=CHAR},
+      evalute_user_id = #{evaluteUserId,jdbcType=CHAR},
+      evalute_send_id = #{evaluteSendId,jdbcType=CHAR},
+      evalute_info = #{evaluteInfo,jdbcType=VARCHAR},
+      evalute_mark = #{evaluteMark,jdbcType=INTEGER},
+      evalute_crtetime = #{evaluteCrtetime,jdbcType=TIMESTAMP}
+    where nurse_evaluate_id = #{nurseEvaluateId,jdbcType=CHAR}
+  </update>
+  <!-- 根据订单查看有没有评价 -->
+  <select id="selectNurseToUserEvaluate" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM nurse_evaluate WHERE evalute_send_id=#{evaluteSendId,jdbcType=CHAR}
+  </select>
+  <select id="selectEvaluateInfoByOrderid" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from nurse_evaluate where evalute_send_id = #{evaluteSendId,jdbcType=CHAR}  ORDER BY evalute_crtetime DESC LIMIT 0,1
+  </select>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.standinnerlettermapper.StandInnerLetterMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.StandInnerLetter" >
+    <result column="stand_inner_letter_id" property="standInnerLetterId" jdbcType="CHAR" />
+    <result column="stand_inner_letter_user_id" property="standInnerLetterUserId" jdbcType="CHAR" />
+    <result column="stand_inner_letter_user_identity" property="standInnerLetterUserIdentity" jdbcType="INTEGER" />
+    <result column="stand_inner_letter_user_type" property="standInnerLetterUserType" jdbcType="INTEGER" />
+    <result column="stand_inner_letter_title" property="standInnerLetterTitle" jdbcType="VARCHAR" />
+    <result column="stand_inner_letter_note" property="standInnerLetterNote" jdbcType="VARCHAR" />
+    <result column="stand_inner_letter_content" property="standInnerLetterContent" jdbcType="VARCHAR" />
+    <result column="stand_inner_letter_createtime" property="standInnerLetterCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    stand_inner_letter_id, stand_inner_letter_user_id, stand_inner_letter_user_identity, 
+    stand_inner_letter_user_type, stand_inner_letter_title, stand_inner_letter_note, 
+    stand_inner_letter_content, stand_inner_letter_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.StandInnerLetterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from stand_inner_letter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.StandInnerLetterExample" >
+    delete from stand_inner_letter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.StandInnerLetter" >
+    insert into stand_inner_letter (stand_inner_letter_id, stand_inner_letter_user_id, 
+      stand_inner_letter_user_identity, stand_inner_letter_user_type, 
+      stand_inner_letter_title, stand_inner_letter_note, 
+      stand_inner_letter_content, stand_inner_letter_createtime
+      )
+    values (#{standInnerLetterId,jdbcType=CHAR}, #{standInnerLetterUserId,jdbcType=CHAR}, 
+      #{standInnerLetterUserIdentity,jdbcType=INTEGER}, #{standInnerLetterUserType,jdbcType=INTEGER}, 
+      #{standInnerLetterTitle,jdbcType=VARCHAR}, #{standInnerLetterNote,jdbcType=VARCHAR}, 
+      #{standInnerLetterContent,jdbcType=VARCHAR}, #{standInnerLetterCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.StandInnerLetter" >
+    insert into stand_inner_letter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="standInnerLetterId != null" >
+        stand_inner_letter_id,
+      </if>
+      <if test="standInnerLetterUserId != null" >
+        stand_inner_letter_user_id,
+      </if>
+      <if test="standInnerLetterUserIdentity != null" >
+        stand_inner_letter_user_identity,
+      </if>
+      <if test="standInnerLetterUserType != null" >
+        stand_inner_letter_user_type,
+      </if>
+      <if test="standInnerLetterTitle != null" >
+        stand_inner_letter_title,
+      </if>
+      <if test="standInnerLetterNote != null" >
+        stand_inner_letter_note,
+      </if>
+      <if test="standInnerLetterContent != null" >
+        stand_inner_letter_content,
+      </if>
+      <if test="standInnerLetterCreatetime != null" >
+        stand_inner_letter_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="standInnerLetterId != null" >
+        #{standInnerLetterId,jdbcType=CHAR},
+      </if>
+      <if test="standInnerLetterUserId != null" >
+        #{standInnerLetterUserId,jdbcType=CHAR},
+      </if>
+      <if test="standInnerLetterUserIdentity != null" >
+        #{standInnerLetterUserIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="standInnerLetterUserType != null" >
+        #{standInnerLetterUserType,jdbcType=INTEGER},
+      </if>
+      <if test="standInnerLetterTitle != null" >
+        #{standInnerLetterTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="standInnerLetterNote != null" >
+        #{standInnerLetterNote,jdbcType=VARCHAR},
+      </if>
+      <if test="standInnerLetterContent != null" >
+        #{standInnerLetterContent,jdbcType=VARCHAR},
+      </if>
+      <if test="standInnerLetterCreatetime != null" >
+        #{standInnerLetterCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.StandInnerLetterExample" resultType="java.lang.Integer" >
+    select count(*) from stand_inner_letter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update stand_inner_letter
+    <set >
+      <if test="record.standInnerLetterId != null" >
+        stand_inner_letter_id = #{record.standInnerLetterId,jdbcType=CHAR},
+      </if>
+      <if test="record.standInnerLetterUserId != null" >
+        stand_inner_letter_user_id = #{record.standInnerLetterUserId,jdbcType=CHAR},
+      </if>
+      <if test="record.standInnerLetterUserIdentity != null" >
+        stand_inner_letter_user_identity = #{record.standInnerLetterUserIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.standInnerLetterUserType != null" >
+        stand_inner_letter_user_type = #{record.standInnerLetterUserType,jdbcType=INTEGER},
+      </if>
+      <if test="record.standInnerLetterTitle != null" >
+        stand_inner_letter_title = #{record.standInnerLetterTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standInnerLetterNote != null" >
+        stand_inner_letter_note = #{record.standInnerLetterNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standInnerLetterContent != null" >
+        stand_inner_letter_content = #{record.standInnerLetterContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standInnerLetterCreatetime != null" >
+        stand_inner_letter_createtime = #{record.standInnerLetterCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update stand_inner_letter
+    set stand_inner_letter_id = #{record.standInnerLetterId,jdbcType=CHAR},
+      stand_inner_letter_user_id = #{record.standInnerLetterUserId,jdbcType=CHAR},
+      stand_inner_letter_user_identity = #{record.standInnerLetterUserIdentity,jdbcType=INTEGER},
+      stand_inner_letter_user_type = #{record.standInnerLetterUserType,jdbcType=INTEGER},
+      stand_inner_letter_title = #{record.standInnerLetterTitle,jdbcType=VARCHAR},
+      stand_inner_letter_note = #{record.standInnerLetterNote,jdbcType=VARCHAR},
+      stand_inner_letter_content = #{record.standInnerLetterContent,jdbcType=VARCHAR},
+      stand_inner_letter_createtime = #{record.standInnerLetterCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <!-- 查询护士的站内信 -->
+  <select id="selectStandInnerLetterNurseId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM stand_inner_letter WHERE stand_inner_letter_user_id = #{standInnerLetterUserId,jdbcType=CHAR} AND stand_inner_letter_user_identity=1
+  </select>
+   <!-- 查询用户的站内信 -->
+  <select id="selectStandInnerLetterUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM stand_inner_letter WHERE stand_inner_letter_user_id = #{standInnerLetterUserId,jdbcType=CHAR} AND stand_inner_letter_user_identity=0
+  </select>
+  <!--根据用户或护士ID,站内信类型查询  -->
+  <select id="selectStandInnerLetteInfo" resultMap="BaseResultMap">
+  SELECT * FROM stand_inner_letter WHERE stand_inner_letter_user_id = #{0} AND stand_inner_letter_user_identity = #{1} AND 
+  stand_inner_letter_user_type = #{2} ORDER BY stand_inner_letter_createtime DESC 
+  </select>
+    <!--根据用户或护士ID,站内信全部查询  -->
+  <select id="selectStandInnerLetteInfoAll" resultMap="BaseResultMap">
+  SELECT * FROM stand_inner_letter WHERE stand_inner_letter_user_id = #{0} AND stand_inner_letter_user_identity = #{1} ORDER BY stand_inner_letter_createtime DESC 
+  </select>
+   <!-- 根据用户或护士ID删除全部站内信 -->
+  <delete id="deleteByPrimaryKeyByUserIdOrNurseId" >
+    delete from stand_inner_letter
+    WHERE stand_inner_letter_user_id = #{0} AND stand_inner_letter_user_identity = #{1} 
+  </delete>
+    <!-- 根据用户或护士ID和类型删除站内信 -->
+  <delete id="deleteByPrimaryKeyByUserIdOrNurseIdAndType"  >
+    delete from stand_inner_letter
+    WHERE stand_inner_letter_user_id = #{0} AND stand_inner_letter_user_identity = #{1} and  stand_inner_letter_user_type = #{2}
+  </delete>
+</mapper>

@@ -1,0 +1,118 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 配置数据源 ，dbcp -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="30000" /> 
+		<property name="testOnBorrow" value="true" /> 
+		<property name="testWhileIdle" value="true" /> 
+		<property name="validationQuery" value="select 1" /> 
+	</bean>
+
+
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据库连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 加载mybatis的全局配置文件 -->
+		<property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" />
+	</bean>
+
+
+	<!-- mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+		<property name="basePackage" value="
+		com.chance.ssm.mapper.adminfunctionmapper,
+		com.chance.ssm.mapper.administrationmapper,
+		com.chance.ssm.mapper.adminmodularmapper,
+		com.chance.ssm.mapper.byaddressmapper,
+		com.chance.ssm.mapper.evaluatemapper,
+		com.chance.ssm.mapper.managenursingcontentmapper,
+		com.chance.ssm.mapper.managenursingprojectmapper,
+		com.chance.ssm.mapper.managenursingtestingmapper,
+		com.chance.ssm.mapper.nursemapper,
+		com.chance.ssm.mapper.nursenofreemapper,
+		com.chance.ssm.mapper.nursingprojectmapper,
+		com.chance.ssm.mapper.nursingreportmapper,
+		com.chance.ssm.mapper.nursingtestingcontentmapper,
+		com.chance.ssm.mapper.orderreceivermapper,
+		com.chance.ssm.mapper.ordersendmapper,
+		com.chance.ssm.mapper.ordersendspecialmapper,
+		com.chance.ssm.mapper.savemapper,
+		com.chance.ssm.mapper.trafficmapper,
+		com.chance.ssm.mapper.usermapper,
+		com.chance.ssm.mapper.followmapper,
+		com.chance.ssm.mapper.hospitalmapper,
+		com.chance.ssm.mapper.majormapper,
+		com.chance.ssm.mapper.packagemapper,
+		com.chance.ssm.mapper.protectedpersonmapper,
+		com.chance.ssm.mapper.protectedaddressmapper,
+		com.chance.ssm.mapper.notemapper,
+		com.chance.ssm.mapper.goodsmapper,
+		com.chance.ssm.mapper.statisticsmapper,
+		com.chance.ssm.mapper.managenursingtestallmapper,
+		com.chance.ssm.mapper.simplemajormapper,
+		com.chance.ssm.mapper.caselablemapper,
+		com.chance.ssm.mapper.nurseevaluatemapper,
+		com.chance.ssm.mapper.caselablemapper,
+		com.chance.ssm.mapper.rechargemapper,
+		com.chance.ssm.mapper.capitalnursepoolmapper,
+		com.chance.ssm.mapper.capitaluserpoolmapper,
+		com.chance.ssm.mapper.collectsmapper,
+		com.chance.ssm.mapper.nursesigninmapper,
+		com.chance.ssm.mapper.usersigninmapper,
+		com.chance.ssm.mapper.signinsetmapper,
+		com.chance.ssm.mapper.invitationmapper,
+		com.chance.ssm.mapper.nursefinishordersigninmapper,
+		com.chance.ssm.mapper.rollpicmapper,
+		com.chance.ssm.mapper.goodservicerecommendmapper,
+		com.chance.ssm.mapper.complaintmapper,
+		com.chance.ssm.mapper.couponmapper,
+		com.chance.ssm.mapper.couponusermapper,
+		com.chance.ssm.mapper.redpacketsmapper,
+		com.chance.ssm.mapper.redpacketsusermapper,
+		com.chance.ssm.mapper.drawmoneymapper,
+		com.chance.ssm.mapper.interestratemapper,
+		com.chance.ssm.mapper.nursepaymentsettingsmapper,
+		com.chance.ssm.mapper.standinnerlettermapper,
+		com.chance.ssm.mapper.nursenofreeshiftmapper,
+		com.chance.ssm.mapper.ordercancelordermapper,
+		com.chance.ssm.mapper.switchmapper,
+		com.chance.ssm.mapper.postonelevelmapper,
+		com.chance.ssm.mapper.postthreeleveldetailsmapper,
+		com.chance.ssm.mapper.posttwolevelmapper,
+		com.chance.ssm.mapper.postnursefocusmapper,
+		com.chance.ssm.mapper.postrollpicmapper,
+		com.chance.ssm.mapper.postgivefabulousmapper,
+		com.chance.ssm.mapper.postreplymapper,
+		com.chance.ssm.mapper.capitalplatformmapper,
+		com.chance.ssm.mapper.customerservicephonemapper,
+		com.chance.ssm.mapper.timingcontrolmapper
+		"></property>
+		
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+</beans>

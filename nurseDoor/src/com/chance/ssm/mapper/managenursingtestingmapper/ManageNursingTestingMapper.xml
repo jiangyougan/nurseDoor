@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.managenursingtestingmapper.ManageNursingTestingMapper" >
+<resultMap id="BaseResultMap" type="com.chance.ssm.po.ManageNursingTesting" >
+    <id column="manage_nursing_testing_id" property="manageNursingTestingId" jdbcType="CHAR" />
+    <result column="manage_nursing_testing_macontent" property="manageNursingTestingMacontent" jdbcType="CHAR" />
+    <result column="manage_nursing_testing_name" property="manageNursingTestingName" jdbcType="VARCHAR" />
+    <result column="manage_nursing_testing_createtime" property="manageNursingTestingCreatetime" jdbcType="CHAR" />
+    <result column="manage_nursing_testing_createter" property="manageNursingTestingCreateter" jdbcType="TIMESTAMP" />
+    <result column="manage_nursing_testing_updatetime" property="manageNursingTestingUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap type="com.chance.ssm.po.vo.ManageNursingTestingVO" id="BaseResultMap2" extends="BaseResultMap">
+  	<result column="manage_nursing_testall_name" property="testallName" jdbcType="VARCHAR" />
+    <result column="manage_nursing_testall_unit" property="testallUnit" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    manage_nursing_testing_id, manage_nursing_testing_macontent, manage_nursing_testing_name, 
+    manage_nursing_testing_createtime, manage_nursing_testing_createter, manage_nursing_testing_updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ManageNursingTestingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manage_nursing_testing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from manage_nursing_testing
+    where manage_nursing_testing_id = #{manageNursingTestingId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from manage_nursing_testing
+    where manage_nursing_testing_id = #{manageNursingTestingId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ManageNursingTestingExample" >
+    delete from manage_nursing_testing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.ManageNursingTesting" >
+    insert into manage_nursing_testing (manage_nursing_testing_id, manage_nursing_testing_macontent, 
+      manage_nursing_testing_name, manage_nursing_testing_createtime, 
+      manage_nursing_testing_createter, manage_nursing_testing_updatetime
+      )
+    values (#{manageNursingTestingId,jdbcType=CHAR}, #{manageNursingTestingMacontent,jdbcType=CHAR}, 
+      #{manageNursingTestingName,jdbcType=VARCHAR}, #{manageNursingTestingCreatetime,jdbcType=CHAR}, 
+      #{manageNursingTestingCreateter,jdbcType=TIMESTAMP}, #{manageNursingTestingUpdatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.ManageNursingTesting" >
+    insert into manage_nursing_testing
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="manageNursingTestingId != null" >
+        manage_nursing_testing_id,
+      </if>
+      <if test="manageNursingTestingMacontent != null" >
+        manage_nursing_testing_macontent,
+      </if>
+      <if test="manageNursingTestingName != null" >
+        manage_nursing_testing_name,
+      </if>
+      <if test="manageNursingTestingCreatetime != null" >
+        manage_nursing_testing_createtime,
+      </if>
+      <if test="manageNursingTestingCreateter != null" >
+        manage_nursing_testing_createter,
+      </if>
+      <if test="manageNursingTestingUpdatetime != null" >
+        manage_nursing_testing_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="manageNursingTestingId != null" >
+        #{manageNursingTestingId,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingTestingMacontent != null" >
+        #{manageNursingTestingMacontent,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingTestingName != null" >
+        #{manageNursingTestingName,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingTestingCreatetime != null" >
+        #{manageNursingTestingCreatetime,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingTestingCreateter != null" >
+        #{manageNursingTestingCreateter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingTestingUpdatetime != null" >
+        #{manageNursingTestingUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ManageNursingTestingExample" resultType="java.lang.Integer" >
+    select count(*) from manage_nursing_testing
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update manage_nursing_testing
+    <set >
+      <if test="record.manageNursingTestingId != null" >
+        manage_nursing_testing_id = #{record.manageNursingTestingId,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingTestingMacontent != null" >
+        manage_nursing_testing_macontent = #{record.manageNursingTestingMacontent,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingTestingName != null" >
+        manage_nursing_testing_name = #{record.manageNursingTestingName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingTestingCreatetime != null" >
+        manage_nursing_testing_createtime = #{record.manageNursingTestingCreatetime,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingTestingCreateter != null" >
+        manage_nursing_testing_createter = #{record.manageNursingTestingCreateter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.manageNursingTestingUpdatetime != null" >
+        manage_nursing_testing_updatetime = #{record.manageNursingTestingUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update manage_nursing_testing
+    set manage_nursing_testing_id = #{record.manageNursingTestingId,jdbcType=CHAR},
+      manage_nursing_testing_macontent = #{record.manageNursingTestingMacontent,jdbcType=CHAR},
+      manage_nursing_testing_name = #{record.manageNursingTestingName,jdbcType=VARCHAR},
+      manage_nursing_testing_createtime = #{record.manageNursingTestingCreatetime,jdbcType=CHAR},
+      manage_nursing_testing_createter = #{record.manageNursingTestingCreateter,jdbcType=TIMESTAMP},
+      manage_nursing_testing_updatetime = #{record.manageNursingTestingUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.ManageNursingTesting" >
+    update manage_nursing_testing
+    <set >
+      <if test="manageNursingTestingMacontent != null" >
+        manage_nursing_testing_macontent = #{manageNursingTestingMacontent,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingTestingName != null" >
+        manage_nursing_testing_name = #{manageNursingTestingName,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingTestingCreatetime != null" >
+        manage_nursing_testing_createtime = #{manageNursingTestingCreatetime,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingTestingCreateter != null" >
+        manage_nursing_testing_createter = #{manageNursingTestingCreateter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingTestingUpdatetime != null" >
+        manage_nursing_testing_updatetime = #{manageNursingTestingUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where manage_nursing_testing_id = #{manageNursingTestingId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.ManageNursingTesting" >
+    update manage_nursing_testing
+    set manage_nursing_testing_macontent = #{manageNursingTestingMacontent,jdbcType=CHAR},
+      manage_nursing_testing_name = #{manageNursingTestingName,jdbcType=VARCHAR},
+      manage_nursing_testing_createtime = #{manageNursingTestingCreatetime,jdbcType=CHAR},
+      manage_nursing_testing_createter = #{manageNursingTestingCreateter,jdbcType=TIMESTAMP},
+      manage_nursing_testing_updatetime = #{manageNursingTestingUpdatetime,jdbcType=TIMESTAMP}
+    where manage_nursing_testing_id = #{manageNursingTestingId,jdbcType=CHAR}
+  </update>
+  
+  
+  <!-- 和testall表关联查询 -->
+   <select id="selectByExampleAndTestAll" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.ManageNursingTestingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,manage_nursing_testall_name,manage_nursing_testall_unit
+    from manage_nursing_testing LEFT JOIN manage_nursing_testall ON manage_nursing_testing.manage_nursing_testing_name=manage_nursing_testall.manage_nursing_testall 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+</mapper>

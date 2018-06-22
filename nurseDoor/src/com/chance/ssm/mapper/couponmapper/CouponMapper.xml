@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.couponmapper.CouponMapper" >
+   <resultMap id="BaseResultMap" type="com.chance.ssm.po.Coupon" >
+    <id column="coupon_id" property="couponId" jdbcType="CHAR" />
+    <result column="coupon_money" property="couponMoney" jdbcType="DECIMAL" />
+    <result column="coupon_pic" property="couponPic" jdbcType="VARCHAR" />
+    <result column="coupon_full_give" property="couponFullGive" jdbcType="DECIMAL" />
+    <result column="coupon_expiration_time" property="couponExpirationTime" jdbcType="INTEGER" />
+    <result column="coupon_note" property="couponNote" jdbcType="VARCHAR" />
+    <result column="coupon_speak" property="couponSpeak" jdbcType="VARCHAR" />
+    <result column="coupon_type" property="couponType" jdbcType="INTEGER" />
+    <result column="coupon_creater" property="couponCreater" jdbcType="CHAR" />
+    <result column="coupon_createtime" property="couponCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coupon_id, coupon_money, coupon_pic, coupon_full_give, coupon_expiration_time, coupon_note, 
+    coupon_speak, coupon_type, coupon_creater, coupon_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CouponExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from coupon
+    where coupon_id = #{couponId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from coupon
+    where coupon_id = #{couponId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CouponExample" >
+    delete from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Coupon" >
+    insert into coupon (coupon_id, coupon_money, coupon_pic, 
+      coupon_full_give, coupon_expiration_time, coupon_note, 
+      coupon_speak, coupon_type, coupon_creater, 
+      coupon_createtime)
+    values (#{couponId,jdbcType=CHAR}, #{couponMoney,jdbcType=DECIMAL}, #{couponPic,jdbcType=VARCHAR}, 
+      #{couponFullGive,jdbcType=DECIMAL}, #{couponExpirationTime,jdbcType=INTEGER}, #{couponNote,jdbcType=VARCHAR}, 
+      #{couponSpeak,jdbcType=VARCHAR}, #{couponType,jdbcType=INTEGER}, #{couponCreater,jdbcType=CHAR}, 
+      #{couponCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Coupon" >
+    insert into coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="couponMoney != null" >
+        coupon_money,
+      </if>
+      <if test="couponPic != null" >
+        coupon_pic,
+      </if>
+      <if test="couponFullGive != null" >
+        coupon_full_give,
+      </if>
+      <if test="couponExpirationTime != null" >
+        coupon_expiration_time,
+      </if>
+      <if test="couponNote != null" >
+        coupon_note,
+      </if>
+      <if test="couponSpeak != null" >
+        coupon_speak,
+      </if>
+      <if test="couponType != null" >
+        coupon_type,
+      </if>
+      <if test="couponCreater != null" >
+        coupon_creater,
+      </if>
+      <if test="couponCreatetime != null" >
+        coupon_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="couponId != null" >
+        #{couponId,jdbcType=CHAR},
+      </if>
+      <if test="couponMoney != null" >
+        #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPic != null" >
+        #{couponPic,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFullGive != null" >
+        #{couponFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="couponExpirationTime != null" >
+        #{couponExpirationTime,jdbcType=INTEGER},
+      </if>
+      <if test="couponNote != null" >
+        #{couponNote,jdbcType=VARCHAR},
+      </if>
+      <if test="couponSpeak != null" >
+        #{couponSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreater != null" >
+        #{couponCreater,jdbcType=CHAR},
+      </if>
+      <if test="couponCreatetime != null" >
+        #{couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CouponExample" resultType="java.lang.Integer" >
+    select count(*) from coupon
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update coupon
+    <set >
+      <if test="record.couponId != null" >
+        coupon_id = #{record.couponId,jdbcType=CHAR},
+      </if>
+      <if test="record.couponMoney != null" >
+        coupon_money = #{record.couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponPic != null" >
+        coupon_pic = #{record.couponPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponFullGive != null" >
+        coupon_full_give = #{record.couponFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponExpirationTime != null" >
+        coupon_expiration_time = #{record.couponExpirationTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponNote != null" >
+        coupon_note = #{record.couponNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponSpeak != null" >
+        coupon_speak = #{record.couponSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponType != null" >
+        coupon_type = #{record.couponType,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponCreater != null" >
+        coupon_creater = #{record.couponCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.couponCreatetime != null" >
+        coupon_createtime = #{record.couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update coupon
+    set coupon_id = #{record.couponId,jdbcType=CHAR},
+      coupon_money = #{record.couponMoney,jdbcType=DECIMAL},
+      coupon_pic = #{record.couponPic,jdbcType=VARCHAR},
+      coupon_full_give = #{record.couponFullGive,jdbcType=DECIMAL},
+      coupon_expiration_time = #{record.couponExpirationTime,jdbcType=INTEGER},
+      coupon_note = #{record.couponNote,jdbcType=VARCHAR},
+      coupon_speak = #{record.couponSpeak,jdbcType=VARCHAR},
+      coupon_type = #{record.couponType,jdbcType=INTEGER},
+      coupon_creater = #{record.couponCreater,jdbcType=CHAR},
+      coupon_createtime = #{record.couponCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Coupon" >
+    update coupon
+    <set >
+      <if test="couponMoney != null" >
+        coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponPic != null" >
+        coupon_pic = #{couponPic,jdbcType=VARCHAR},
+      </if>
+      <if test="couponFullGive != null" >
+        coupon_full_give = #{couponFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="couponExpirationTime != null" >
+        coupon_expiration_time = #{couponExpirationTime,jdbcType=INTEGER},
+      </if>
+      <if test="couponNote != null" >
+        coupon_note = #{couponNote,jdbcType=VARCHAR},
+      </if>
+      <if test="couponSpeak != null" >
+        coupon_speak = #{couponSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null" >
+        coupon_type = #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="couponCreater != null" >
+        coupon_creater = #{couponCreater,jdbcType=CHAR},
+      </if>
+      <if test="couponCreatetime != null" >
+        coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Coupon" >
+    update coupon
+    set coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      coupon_pic = #{couponPic,jdbcType=VARCHAR},
+      coupon_full_give = #{couponFullGive,jdbcType=DECIMAL},
+      coupon_expiration_time = #{couponExpirationTime,jdbcType=INTEGER},
+      coupon_note = #{couponNote,jdbcType=VARCHAR},
+      coupon_speak = #{couponSpeak,jdbcType=VARCHAR},
+      coupon_type = #{couponType,jdbcType=INTEGER},
+      coupon_creater = #{couponCreater,jdbcType=CHAR},
+      coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP}
+    where coupon_id = #{couponId,jdbcType=CHAR}
+  </update>
+  <!-- 根据类别判断有没有添加过注册送的优惠券或推荐送的优惠券 -->
+  <select id="selectCountTypeByType" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  SELECT * FROM coupon WHERE coupon_type=#{couponType,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 查询普通优惠券 -->
+  <select id="selectPutongCouponInfo" resultMap="BaseResultMap">
+  SELECT * FROM coupon WHERE coupon_type = 0
+  </select>
+</mapper>

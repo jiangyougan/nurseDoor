@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.collectsmapper.CollectsMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Collects" >
+    <id column="collection_id" property="collectionId" jdbcType="CHAR" />
+    <result column="collection_userid" property="collectionUserid" jdbcType="CHAR" />
+    <result column="collection_contentid" property="collectionContentid" jdbcType="CHAR" />
+    <result column="collection_creatime" property="collectionCreatime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.CollectsVO" id="BaseResultMap2" extends="BaseResultMap">
+  	 <result column="manage_nursing_content_name" property="contentName" jdbcType="VARCHAR" />
+     <result column="manage_nursing_content_content" property="content" jdbcType="VARCHAR" />
+     <result column="content_imgurl" property="imgUrl" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    collection_id, collection_userid, collection_contentid, collection_creatime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CollectsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from collects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from collects
+    where collection_id = #{collectionId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collects
+    where collection_id = #{collectionId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CollectsExample" >
+    delete from collects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Collects" >
+    insert into collects (collection_id, collection_userid, collection_contentid, 
+      collection_creatime)
+    values (#{collectionId,jdbcType=CHAR}, #{collectionUserid,jdbcType=CHAR}, #{collectionContentid,jdbcType=CHAR}, 
+      #{collectionCreatime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Collects" >
+    insert into collects
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collectionId != null" >
+        collection_id,
+      </if>
+      <if test="collectionUserid != null" >
+        collection_userid,
+      </if>
+      <if test="collectionContentid != null" >
+        collection_contentid,
+      </if>
+      <if test="collectionCreatime != null" >
+        collection_creatime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collectionId != null" >
+        #{collectionId,jdbcType=CHAR},
+      </if>
+      <if test="collectionUserid != null" >
+        #{collectionUserid,jdbcType=CHAR},
+      </if>
+      <if test="collectionContentid != null" >
+        #{collectionContentid,jdbcType=CHAR},
+      </if>
+      <if test="collectionCreatime != null" >
+        #{collectionCreatime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CollectsExample" resultType="java.lang.Integer" >
+    select count(*) from collects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update collects
+    <set >
+      <if test="record.collectionId != null" >
+        collection_id = #{record.collectionId,jdbcType=CHAR},
+      </if>
+      <if test="record.collectionUserid != null" >
+        collection_userid = #{record.collectionUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.collectionContentid != null" >
+        collection_contentid = #{record.collectionContentid,jdbcType=CHAR},
+      </if>
+      <if test="record.collectionCreatime != null" >
+        collection_creatime = #{record.collectionCreatime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update collects
+    set collection_id = #{record.collectionId,jdbcType=CHAR},
+      collection_userid = #{record.collectionUserid,jdbcType=CHAR},
+      collection_contentid = #{record.collectionContentid,jdbcType=CHAR},
+      collection_creatime = #{record.collectionCreatime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Collects" >
+    update collects
+    <set >
+      <if test="collectionUserid != null" >
+        collection_userid = #{collectionUserid,jdbcType=CHAR},
+      </if>
+      <if test="collectionContentid != null" >
+        collection_contentid = #{collectionContentid,jdbcType=CHAR},
+      </if>
+      <if test="collectionCreatime != null" >
+        collection_creatime = #{collectionCreatime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where collection_id = #{collectionId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Collects" >
+    update collects
+    set collection_userid = #{collectionUserid,jdbcType=CHAR},
+      collection_contentid = #{collectionContentid,jdbcType=CHAR},
+      collection_creatime = #{collectionCreatime,jdbcType=TIMESTAMP}
+    where collection_id = #{collectionId,jdbcType=CHAR}
+  </update>
+  
+  <!-- 根据传入的条件查询数据，并返回VO扩展类 -->
+   <select id="selectByExampleRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.CollectsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,content_imgurl ,manage_nursing_content_name, manage_nursing_content_content
+    from collects LEFT JOIN manage_nursing_content ON collection_contentid = manage_nursing_content_id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.redpacketsusermapper.RedPacketsUserMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.RedPacketsUser" >
+    <id column="red_packets_nurse_id" property="redPacketsNurseId" jdbcType="CHAR" />
+    <result column="red_packets_nurse_pic" property="redPacketsNursePic" jdbcType="VARCHAR" />
+    <result column="red_packets_nurse_money" property="redPacketsNurseMoney" jdbcType="DECIMAL" />
+    <result column="red_packets_nurse_nurse_id" property="redPacketsNurseNurseId" jdbcType="CHAR" />
+    <result column="red_packets_nurse_note" property="redPacketsNurseNote" jdbcType="VARCHAR" />
+    <result column="red_packets_nurse_speak" property="redPacketsNurseSpeak" jdbcType="VARCHAR" />
+    <result column="red_packets_nurse_creater" property="redPacketsNurseCreater" jdbcType="CHAR" />
+    <result column="red_packets_nurse_createtime" property="redPacketsNurseCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    red_packets_nurse_id, red_packets_nurse_pic, red_packets_nurse_money, red_packets_nurse_nurse_id, 
+    red_packets_nurse_note, red_packets_nurse_speak, red_packets_nurse_creater, red_packets_nurse_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.RedPacketsUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from red_packets_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from red_packets_user
+    where red_packets_nurse_id = #{redPacketsNurseId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from red_packets_user
+    where red_packets_nurse_id = #{redPacketsNurseId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.RedPacketsUserExample" >
+    delete from red_packets_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.RedPacketsUser" >
+    insert into red_packets_user (red_packets_nurse_id, red_packets_nurse_pic, 
+      red_packets_nurse_money, red_packets_nurse_nurse_id, 
+      red_packets_nurse_note, red_packets_nurse_speak, 
+      red_packets_nurse_creater, red_packets_nurse_createtime
+      )
+    values (#{redPacketsNurseId,jdbcType=CHAR}, #{redPacketsNursePic,jdbcType=VARCHAR}, 
+      #{redPacketsNurseMoney,jdbcType=DECIMAL}, #{redPacketsNurseNurseId,jdbcType=CHAR}, 
+      #{redPacketsNurseNote,jdbcType=VARCHAR}, #{redPacketsNurseSpeak,jdbcType=VARCHAR}, 
+      #{redPacketsNurseCreater,jdbcType=CHAR}, #{redPacketsNurseCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelectiveNurseRedPackets" parameterType="com.chance.ssm.po.RedPacketsUser" >
+    insert into red_packets_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="redPacketsNurseId != null" >
+        red_packets_nurse_id,
+      </if>
+      <if test="redPacketsNursePic != null" >
+        red_packets_nurse_pic,
+      </if>
+      <if test="redPacketsNurseMoney != null" >
+        red_packets_nurse_money,
+      </if>
+      <if test="redPacketsNurseNurseId != null" >
+        red_packets_nurse_nurse_id,
+      </if>
+      <if test="redPacketsNurseNote != null" >
+        red_packets_nurse_note,
+      </if>
+      <if test="redPacketsNurseSpeak != null" >
+        red_packets_nurse_speak,
+      </if>
+      <if test="redPacketsNurseCreater != null" >
+        red_packets_nurse_creater,
+      </if>
+      <if test="redPacketsNurseCreatetime != null" >
+        red_packets_nurse_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="redPacketsNurseId != null" >
+        #{redPacketsNurseId,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsNursePic != null" >
+        #{redPacketsNursePic,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseMoney != null" >
+        #{redPacketsNurseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="redPacketsNurseNurseId != null" >
+        #{redPacketsNurseNurseId,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsNurseNote != null" >
+        #{redPacketsNurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseSpeak != null" >
+        #{redPacketsNurseSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseCreater != null" >
+        #{redPacketsNurseCreater,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsNurseCreatetime != null" >
+        #{redPacketsNurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.RedPacketsUserExample" resultType="java.lang.Integer" >
+    select count(*) from red_packets_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update red_packets_user
+    <set >
+      <if test="record.redPacketsNurseId != null" >
+        red_packets_nurse_id = #{record.redPacketsNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.redPacketsNursePic != null" >
+        red_packets_nurse_pic = #{record.redPacketsNursePic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsNurseMoney != null" >
+        red_packets_nurse_money = #{record.redPacketsNurseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.redPacketsNurseNurseId != null" >
+        red_packets_nurse_nurse_id = #{record.redPacketsNurseNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.redPacketsNurseNote != null" >
+        red_packets_nurse_note = #{record.redPacketsNurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsNurseSpeak != null" >
+        red_packets_nurse_speak = #{record.redPacketsNurseSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsNurseCreater != null" >
+        red_packets_nurse_creater = #{record.redPacketsNurseCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.redPacketsNurseCreatetime != null" >
+        red_packets_nurse_createtime = #{record.redPacketsNurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update red_packets_user
+    set red_packets_nurse_id = #{record.redPacketsNurseId,jdbcType=CHAR},
+      red_packets_nurse_pic = #{record.redPacketsNursePic,jdbcType=VARCHAR},
+      red_packets_nurse_money = #{record.redPacketsNurseMoney,jdbcType=DECIMAL},
+      red_packets_nurse_nurse_id = #{record.redPacketsNurseNurseId,jdbcType=CHAR},
+      red_packets_nurse_note = #{record.redPacketsNurseNote,jdbcType=VARCHAR},
+      red_packets_nurse_speak = #{record.redPacketsNurseSpeak,jdbcType=VARCHAR},
+      red_packets_nurse_creater = #{record.redPacketsNurseCreater,jdbcType=CHAR},
+      red_packets_nurse_createtime = #{record.redPacketsNurseCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.RedPacketsUser" >
+    update red_packets_user
+    <set >
+      <if test="redPacketsNursePic != null" >
+        red_packets_nurse_pic = #{redPacketsNursePic,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseMoney != null" >
+        red_packets_nurse_money = #{redPacketsNurseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="redPacketsNurseNurseId != null" >
+        red_packets_nurse_nurse_id = #{redPacketsNurseNurseId,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsNurseNote != null" >
+        red_packets_nurse_note = #{redPacketsNurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseSpeak != null" >
+        red_packets_nurse_speak = #{redPacketsNurseSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsNurseCreater != null" >
+        red_packets_nurse_creater = #{redPacketsNurseCreater,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsNurseCreatetime != null" >
+        red_packets_nurse_createtime = #{redPacketsNurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where red_packets_nurse_id = #{redPacketsNurseId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.RedPacketsUser" >
+    update red_packets_user
+    set red_packets_nurse_pic = #{redPacketsNursePic,jdbcType=VARCHAR},
+      red_packets_nurse_money = #{redPacketsNurseMoney,jdbcType=DECIMAL},
+      red_packets_nurse_nurse_id = #{redPacketsNurseNurseId,jdbcType=CHAR},
+      red_packets_nurse_note = #{redPacketsNurseNote,jdbcType=VARCHAR},
+      red_packets_nurse_speak = #{redPacketsNurseSpeak,jdbcType=VARCHAR},
+      red_packets_nurse_creater = #{redPacketsNurseCreater,jdbcType=CHAR},
+      red_packets_nurse_createtime = #{redPacketsNurseCreatetime,jdbcType=TIMESTAMP}
+    where red_packets_nurse_id = #{redPacketsNurseId,jdbcType=CHAR}
+  </update>
+  <!-- 根据护士ID查询红包 -->
+  <select id="selectRedPacketsNurseAllInfo" resultMap="BaseResultMap">
+  SELECT * FROM red_packets_user WHERE red_packets_nurse_nurse_id = #{0} ORDER BY red_packets_nurse_createtime DESC 
+  </select>
+</mapper>

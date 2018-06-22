@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.managenursingprojectmapper.ManageNursingProjectMapper">
+    <resultMap id="BaseResultMap" type="com.chance.ssm.po.ManageNursingProject">
+        <id column="manage_nursing_project_id" property="manageNursingProjectId" jdbcType="CHAR"/>
+        <result column="manage_nursing_project_pic" property="manageNursingProjectPic" jdbcType="VARCHAR"/>
+        <result column="manage_nursing_project_name_id" property="manageNursingProjectNameId" jdbcType="VARCHAR"/>
+        <result column="manage_nursing_project_major" property="manageNursingProjectMajor" jdbcType="CHAR"/>
+        <result column="project_imgurl" property="projectImgurl" jdbcType="VARCHAR"/>
+        <result column="manage_nursing_project_createter" property="manageNursingProjectCreateter" jdbcType="CHAR"/>
+        <result column="manage_nursing_project_createtime" property="manageNursingProjectCreatetime"
+                jdbcType="TIMESTAMP"/>
+        <result column="manage_nursing_project_updatetime" property="manageNursingProjectUpdatetime"
+                jdbcType="TIMESTAMP"/>
+        <result column="project_order" property="projectOrder" jdbcType="INTEGER" />
+    </resultMap>
+ <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    manage_nursing_project_id, manage_nursing_project_pic, manage_nursing_project_name_id, 
+    manage_nursing_project_major, project_imgurl, manage_nursing_project_createter, manage_nursing_project_createtime, 
+    manage_nursing_project_updatetime, project_order
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ManageNursingProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manage_nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from manage_nursing_project
+    where manage_nursing_project_id = #{manageNursingProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from manage_nursing_project
+    where manage_nursing_project_id = #{manageNursingProjectId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ManageNursingProjectExample" >
+    delete from manage_nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.ManageNursingProject" >
+    insert into manage_nursing_project (manage_nursing_project_id, manage_nursing_project_pic, 
+      manage_nursing_project_name_id, manage_nursing_project_major, 
+      project_imgurl, manage_nursing_project_createter, 
+      manage_nursing_project_createtime, manage_nursing_project_updatetime, 
+      project_order)
+    values (#{manageNursingProjectId,jdbcType=CHAR}, #{manageNursingProjectPic,jdbcType=VARCHAR}, 
+      #{manageNursingProjectNameId,jdbcType=VARCHAR}, #{manageNursingProjectMajor,jdbcType=CHAR}, 
+      #{projectImgurl,jdbcType=VARCHAR}, #{manageNursingProjectCreateter,jdbcType=CHAR}, 
+      #{manageNursingProjectCreatetime,jdbcType=TIMESTAMP}, #{manageNursingProjectUpdatetime,jdbcType=TIMESTAMP}, 
+      #{projectOrder,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.ManageNursingProject" >
+    insert into manage_nursing_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="manageNursingProjectId != null" >
+        manage_nursing_project_id,
+      </if>
+      <if test="manageNursingProjectPic != null" >
+        manage_nursing_project_pic,
+      </if>
+      <if test="manageNursingProjectNameId != null" >
+        manage_nursing_project_name_id,
+      </if>
+      <if test="manageNursingProjectMajor != null" >
+        manage_nursing_project_major,
+      </if>
+      <if test="projectImgurl != null" >
+        project_imgurl,
+      </if>
+      <if test="manageNursingProjectCreateter != null" >
+        manage_nursing_project_createter,
+      </if>
+      <if test="manageNursingProjectCreatetime != null" >
+        manage_nursing_project_createtime,
+      </if>
+      <if test="manageNursingProjectUpdatetime != null" >
+        manage_nursing_project_updatetime,
+      </if>
+      <if test="projectOrder != null" >
+        project_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="manageNursingProjectId != null" >
+        #{manageNursingProjectId,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingProjectPic != null" >
+        #{manageNursingProjectPic,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectNameId != null" >
+        #{manageNursingProjectNameId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectMajor != null" >
+        #{manageNursingProjectMajor,jdbcType=CHAR},
+      </if>
+      <if test="projectImgurl != null" >
+        #{projectImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectCreateter != null" >
+        #{manageNursingProjectCreateter,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingProjectCreatetime != null" >
+        #{manageNursingProjectCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingProjectUpdatetime != null" >
+        #{manageNursingProjectUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectOrder != null" >
+        #{projectOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ManageNursingProjectExample" resultType="java.lang.Integer" >
+    select count(*) from manage_nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update manage_nursing_project
+    <set >
+      <if test="record.manageNursingProjectId != null" >
+        manage_nursing_project_id = #{record.manageNursingProjectId,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingProjectPic != null" >
+        manage_nursing_project_pic = #{record.manageNursingProjectPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingProjectNameId != null" >
+        manage_nursing_project_name_id = #{record.manageNursingProjectNameId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingProjectMajor != null" >
+        manage_nursing_project_major = #{record.manageNursingProjectMajor,jdbcType=CHAR},
+      </if>
+      <if test="record.projectImgurl != null" >
+        project_imgurl = #{record.projectImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingProjectCreateter != null" >
+        manage_nursing_project_createter = #{record.manageNursingProjectCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingProjectCreatetime != null" >
+        manage_nursing_project_createtime = #{record.manageNursingProjectCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.manageNursingProjectUpdatetime != null" >
+        manage_nursing_project_updatetime = #{record.manageNursingProjectUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectOrder != null" >
+        project_order = #{record.projectOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update manage_nursing_project
+    set manage_nursing_project_id = #{record.manageNursingProjectId,jdbcType=CHAR},
+      manage_nursing_project_pic = #{record.manageNursingProjectPic,jdbcType=VARCHAR},
+      manage_nursing_project_name_id = #{record.manageNursingProjectNameId,jdbcType=VARCHAR},
+      manage_nursing_project_major = #{record.manageNursingProjectMajor,jdbcType=CHAR},
+      project_imgurl = #{record.projectImgurl,jdbcType=VARCHAR},
+      manage_nursing_project_createter = #{record.manageNursingProjectCreateter,jdbcType=CHAR},
+      manage_nursing_project_createtime = #{record.manageNursingProjectCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_project_updatetime = #{record.manageNursingProjectUpdatetime,jdbcType=TIMESTAMP},
+      project_order = #{record.projectOrder,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.ManageNursingProject" >
+    update manage_nursing_project
+    <set >
+      <if test="manageNursingProjectPic != null" >
+        manage_nursing_project_pic = #{manageNursingProjectPic,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectNameId != null" >
+        manage_nursing_project_name_id = #{manageNursingProjectNameId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectMajor != null" >
+        manage_nursing_project_major = #{manageNursingProjectMajor,jdbcType=CHAR},
+      </if>
+      <if test="projectImgurl != null" >
+        project_imgurl = #{projectImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingProjectCreateter != null" >
+        manage_nursing_project_createter = #{manageNursingProjectCreateter,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingProjectCreatetime != null" >
+        manage_nursing_project_createtime = #{manageNursingProjectCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingProjectUpdatetime != null" >
+        manage_nursing_project_updatetime = #{manageNursingProjectUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectOrder != null" >
+        project_order = #{projectOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where manage_nursing_project_id = #{manageNursingProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.ManageNursingProject" >
+    update manage_nursing_project
+    set manage_nursing_project_pic = #{manageNursingProjectPic,jdbcType=VARCHAR},
+      manage_nursing_project_name_id = #{manageNursingProjectNameId,jdbcType=VARCHAR},
+      manage_nursing_project_major = #{manageNursingProjectMajor,jdbcType=CHAR},
+      project_imgurl = #{projectImgurl,jdbcType=VARCHAR},
+      manage_nursing_project_createter = #{manageNursingProjectCreateter,jdbcType=CHAR},
+      manage_nursing_project_createtime = #{manageNursingProjectCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_project_updatetime = #{manageNursingProjectUpdatetime,jdbcType=TIMESTAMP},
+      project_order = #{projectOrder,jdbcType=INTEGER}
+    where manage_nursing_project_id = #{manageNursingProjectId,jdbcType=CHAR}
+  </update>
+    <!-- 查询所有服务 -->
+    <select id="SelectManageNursingProjectInfo" resultMap="BaseResultMap">
+  SELECT * FROM manage_nursing_project
+  </select>
+
+</mapper>

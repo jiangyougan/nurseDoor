@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.customerservicephonemapper.CustomerServicePhoneMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CustomerServicePhone" >
+    <id column="customer_service_phone_id" property="customerServicePhoneId" jdbcType="CHAR" />
+    <result column="customer_service_phone" property="customerServicePhone" jdbcType="CHAR" />
+    <result column="customer_service_phone_default" property="customerServicePhoneDefault" jdbcType="INTEGER" />
+    <result column="customer_service_phone_isuse" property="customerServicePhoneIsuse" jdbcType="INTEGER" />
+    <result column="customer_service_phone_note" property="customerServicePhoneNote" jdbcType="VARCHAR" />
+    <result column="customer_service_phone_sepak" property="customerServicePhoneSepak" jdbcType="VARCHAR" />
+    <result column="customer_service_phone_voer" property="customerServicePhoneVoer" jdbcType="VARCHAR" />
+    <result column="customer_service_phone_createtime" property="customerServicePhoneCreatetime" jdbcType="TIMESTAMP" />
+    <result column="customer_service_phone_updatetime" property="customerServicePhoneUpdatetime" jdbcType="TIMESTAMP" />
+    <result column="customer_service_phone_createter" property="customerServicePhoneCreateter" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    customer_service_phone_id, customer_service_phone, customer_service_phone_default, 
+    customer_service_phone_isuse, customer_service_phone_note, customer_service_phone_sepak, 
+    customer_service_phone_voer, customer_service_phone_createtime, customer_service_phone_updatetime, 
+    customer_service_phone_createter
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CustomerServicePhoneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_service_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_service_phone
+    where customer_service_phone_id = #{customerServicePhoneId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from customer_service_phone
+    where customer_service_phone_id = #{customerServicePhoneId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CustomerServicePhoneExample" >
+    delete from customer_service_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CustomerServicePhone" >
+    insert into customer_service_phone (customer_service_phone_id, customer_service_phone, 
+      customer_service_phone_default, customer_service_phone_isuse, 
+      customer_service_phone_note, customer_service_phone_sepak, 
+      customer_service_phone_voer, customer_service_phone_createtime, 
+      customer_service_phone_updatetime, customer_service_phone_createter
+      )
+    values (#{customerServicePhoneId,jdbcType=CHAR}, #{customerServicePhone,jdbcType=CHAR}, 
+      #{customerServicePhoneDefault,jdbcType=INTEGER}, #{customerServicePhoneIsuse,jdbcType=INTEGER}, 
+      #{customerServicePhoneNote,jdbcType=VARCHAR}, #{customerServicePhoneSepak,jdbcType=VARCHAR}, 
+      #{customerServicePhoneVoer,jdbcType=VARCHAR}, #{customerServicePhoneCreatetime,jdbcType=TIMESTAMP}, 
+      #{customerServicePhoneUpdatetime,jdbcType=TIMESTAMP}, #{customerServicePhoneCreateter,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.CustomerServicePhone" >
+    insert into customer_service_phone
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerServicePhoneId != null" >
+        customer_service_phone_id,
+      </if>
+      <if test="customerServicePhone != null" >
+        customer_service_phone,
+      </if>
+      <if test="customerServicePhoneDefault != null" >
+        customer_service_phone_default,
+      </if>
+      <if test="customerServicePhoneIsuse != null" >
+        customer_service_phone_isuse,
+      </if>
+      <if test="customerServicePhoneNote != null" >
+        customer_service_phone_note,
+      </if>
+      <if test="customerServicePhoneSepak != null" >
+        customer_service_phone_sepak,
+      </if>
+      <if test="customerServicePhoneVoer != null" >
+        customer_service_phone_voer,
+      </if>
+      <if test="customerServicePhoneCreatetime != null" >
+        customer_service_phone_createtime,
+      </if>
+      <if test="customerServicePhoneUpdatetime != null" >
+        customer_service_phone_updatetime,
+      </if>
+      <if test="customerServicePhoneCreateter != null" >
+        customer_service_phone_createter,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerServicePhoneId != null" >
+        #{customerServicePhoneId,jdbcType=CHAR},
+      </if>
+      <if test="customerServicePhone != null" >
+        #{customerServicePhone,jdbcType=CHAR},
+      </if>
+      <if test="customerServicePhoneDefault != null" >
+        #{customerServicePhoneDefault,jdbcType=INTEGER},
+      </if>
+      <if test="customerServicePhoneIsuse != null" >
+        #{customerServicePhoneIsuse,jdbcType=INTEGER},
+      </if>
+      <if test="customerServicePhoneNote != null" >
+        #{customerServicePhoneNote,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneSepak != null" >
+        #{customerServicePhoneSepak,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneVoer != null" >
+        #{customerServicePhoneVoer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneCreatetime != null" >
+        #{customerServicePhoneCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerServicePhoneUpdatetime != null" >
+        #{customerServicePhoneUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerServicePhoneCreateter != null" >
+        #{customerServicePhoneCreateter,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CustomerServicePhoneExample" resultType="java.lang.Integer" >
+    select count(*) from customer_service_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_service_phone
+    <set >
+      <if test="record.customerServicePhoneId != null" >
+        customer_service_phone_id = #{record.customerServicePhoneId,jdbcType=CHAR},
+      </if>
+      <if test="record.customerServicePhone != null" >
+        customer_service_phone = #{record.customerServicePhone,jdbcType=CHAR},
+      </if>
+      <if test="record.customerServicePhoneDefault != null" >
+        customer_service_phone_default = #{record.customerServicePhoneDefault,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerServicePhoneIsuse != null" >
+        customer_service_phone_isuse = #{record.customerServicePhoneIsuse,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerServicePhoneNote != null" >
+        customer_service_phone_note = #{record.customerServicePhoneNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerServicePhoneSepak != null" >
+        customer_service_phone_sepak = #{record.customerServicePhoneSepak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerServicePhoneVoer != null" >
+        customer_service_phone_voer = #{record.customerServicePhoneVoer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerServicePhoneCreatetime != null" >
+        customer_service_phone_createtime = #{record.customerServicePhoneCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.customerServicePhoneUpdatetime != null" >
+        customer_service_phone_updatetime = #{record.customerServicePhoneUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.customerServicePhoneCreateter != null" >
+        customer_service_phone_createter = #{record.customerServicePhoneCreateter,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_service_phone
+    set customer_service_phone_id = #{record.customerServicePhoneId,jdbcType=CHAR},
+      customer_service_phone = #{record.customerServicePhone,jdbcType=CHAR},
+      customer_service_phone_default = #{record.customerServicePhoneDefault,jdbcType=INTEGER},
+      customer_service_phone_isuse = #{record.customerServicePhoneIsuse,jdbcType=INTEGER},
+      customer_service_phone_note = #{record.customerServicePhoneNote,jdbcType=VARCHAR},
+      customer_service_phone_sepak = #{record.customerServicePhoneSepak,jdbcType=VARCHAR},
+      customer_service_phone_voer = #{record.customerServicePhoneVoer,jdbcType=VARCHAR},
+      customer_service_phone_createtime = #{record.customerServicePhoneCreatetime,jdbcType=TIMESTAMP},
+      customer_service_phone_updatetime = #{record.customerServicePhoneUpdatetime,jdbcType=TIMESTAMP},
+      customer_service_phone_createter = #{record.customerServicePhoneCreateter,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.CustomerServicePhone" >
+    update customer_service_phone
+    <set >
+      <if test="customerServicePhone != null" >
+        customer_service_phone = #{customerServicePhone,jdbcType=CHAR},
+      </if>
+      <if test="customerServicePhoneDefault != null" >
+        customer_service_phone_default = #{customerServicePhoneDefault,jdbcType=INTEGER},
+      </if>
+      <if test="customerServicePhoneIsuse != null" >
+        customer_service_phone_isuse = #{customerServicePhoneIsuse,jdbcType=INTEGER},
+      </if>
+      <if test="customerServicePhoneNote != null" >
+        customer_service_phone_note = #{customerServicePhoneNote,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneSepak != null" >
+        customer_service_phone_sepak = #{customerServicePhoneSepak,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneVoer != null" >
+        customer_service_phone_voer = #{customerServicePhoneVoer,jdbcType=VARCHAR},
+      </if>
+      <if test="customerServicePhoneCreatetime != null" >
+        customer_service_phone_createtime = #{customerServicePhoneCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerServicePhoneUpdatetime != null" >
+        customer_service_phone_updatetime = #{customerServicePhoneUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerServicePhoneCreateter != null" >
+        customer_service_phone_createter = #{customerServicePhoneCreateter,jdbcType=CHAR},
+      </if>
+    </set>
+    where customer_service_phone_id = #{customerServicePhoneId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CustomerServicePhone" >
+    update customer_service_phone
+    set customer_service_phone = #{customerServicePhone,jdbcType=CHAR},
+      customer_service_phone_default = #{customerServicePhoneDefault,jdbcType=INTEGER},
+      customer_service_phone_isuse = #{customerServicePhoneIsuse,jdbcType=INTEGER},
+      customer_service_phone_note = #{customerServicePhoneNote,jdbcType=VARCHAR},
+      customer_service_phone_sepak = #{customerServicePhoneSepak,jdbcType=VARCHAR},
+      customer_service_phone_voer = #{customerServicePhoneVoer,jdbcType=VARCHAR},
+      customer_service_phone_createtime = #{customerServicePhoneCreatetime,jdbcType=TIMESTAMP},
+      customer_service_phone_updatetime = #{customerServicePhoneUpdatetime,jdbcType=TIMESTAMP},
+      customer_service_phone_createter = #{customerServicePhoneCreateter,jdbcType=CHAR}
+    where customer_service_phone_id = #{customerServicePhoneId,jdbcType=CHAR}
+  </update>
+  <update id="updateServicePhoneDefault">
+   update customer_service_phone
+    <set >
+        customer_service_phone_default = 0
+    </set>
+  </update>
+</mapper>

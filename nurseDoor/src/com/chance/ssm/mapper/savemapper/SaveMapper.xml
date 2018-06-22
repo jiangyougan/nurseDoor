@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.savemapper.SaveMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Save" >
+    <id column="save_id" property="saveId" jdbcType="CHAR" />
+    <result column="save_cost" property="saveCost" jdbcType="DECIMAL" />
+    <result column="save_createter" property="saveCreateter" jdbcType="CHAR" />
+    <result column="save_createtime" property="saveCreatetime" jdbcType="TIMESTAMP" />
+    <result column="save_updatetime" property="saveUpdatetime" jdbcType="TIMESTAMP" />
+    <result column="save_name" property="saveName" jdbcType="VARCHAR" />
+    <result column="save_logo" property="saveLogo" jdbcType="VARCHAR" />
+    <result column="save_url" property="saveUrl" jdbcType="VARCHAR" />
+    <result column="save_info" property="saveInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    save_id, save_cost, save_createter, save_createtime, save_updatetime, save_name, 
+    save_logo, save_url, save_info
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.SaveExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from save
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from save
+    where save_id = #{saveId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from save
+    where save_id = #{saveId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.SaveExample" >
+    delete from save
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Save" >
+    insert into save (save_id, save_cost, save_createter, 
+      save_createtime, save_updatetime, save_name, 
+      save_logo, save_url, save_info
+      )
+    values (#{saveId,jdbcType=CHAR}, #{saveCost,jdbcType=DECIMAL}, #{saveCreateter,jdbcType=CHAR}, 
+      #{saveCreatetime,jdbcType=TIMESTAMP}, #{saveUpdatetime,jdbcType=TIMESTAMP}, #{saveName,jdbcType=VARCHAR}, 
+      #{saveLogo,jdbcType=VARCHAR}, #{saveUrl,jdbcType=VARCHAR}, #{saveInfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSaveSelective" parameterType="com.chance.ssm.po.Save" >
+    insert into save
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="saveId != null" >
+        save_id,
+      </if>
+      <if test="saveCost != null" >
+        save_cost,
+      </if>
+      <if test="saveCreateter != null" >
+        save_createter,
+      </if>
+      <if test="saveCreatetime != null" >
+        save_createtime,
+      </if>
+      <if test="saveUpdatetime != null" >
+        save_updatetime,
+      </if>
+      <if test="saveName != null" >
+        save_name,
+      </if>
+      <if test="saveLogo != null" >
+        save_logo,
+      </if>
+      <if test="saveUrl != null" >
+        save_url,
+      </if>
+      <if test="saveInfo != null" >
+        save_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="saveId != null" >
+        #{saveId,jdbcType=CHAR},
+      </if>
+      <if test="saveCost != null" >
+        #{saveCost,jdbcType=DECIMAL},
+      </if>
+      <if test="saveCreateter != null" >
+        #{saveCreateter,jdbcType=CHAR},
+      </if>
+      <if test="saveCreatetime != null" >
+        #{saveCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saveUpdatetime != null" >
+        #{saveUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saveName != null" >
+        #{saveName,jdbcType=VARCHAR},
+      </if>
+      <if test="saveLogo != null" >
+        #{saveLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="saveUrl != null" >
+        #{saveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="saveInfo != null" >
+        #{saveInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.SaveExample" resultType="java.lang.Integer" >
+    select count(*) from save
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateSaveByExampleSelective" parameterType="map" >
+    update save
+    <set >
+      <if test="record.saveId != null" >
+        save_id = #{record.saveId,jdbcType=CHAR},
+      </if>
+      <if test="record.saveCost != null" >
+        save_cost = #{record.saveCost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saveCreateter != null" >
+        save_createter = #{record.saveCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.saveCreatetime != null" >
+        save_createtime = #{record.saveCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.saveUpdatetime != null" >
+        save_updatetime = #{record.saveUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.saveName != null" >
+        save_name = #{record.saveName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saveLogo != null" >
+        save_logo = #{record.saveLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saveUrl != null" >
+        save_url = #{record.saveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saveInfo != null" >
+        save_info = #{record.saveInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update save
+    set save_id = #{record.saveId,jdbcType=CHAR},
+      save_cost = #{record.saveCost,jdbcType=DECIMAL},
+      save_createter = #{record.saveCreateter,jdbcType=CHAR},
+      save_createtime = #{record.saveCreatetime,jdbcType=TIMESTAMP},
+      save_updatetime = #{record.saveUpdatetime,jdbcType=TIMESTAMP},
+      save_name = #{record.saveName,jdbcType=VARCHAR},
+      save_logo = #{record.saveLogo,jdbcType=VARCHAR},
+      save_url = #{record.saveUrl,jdbcType=VARCHAR},
+      save_info = #{record.saveInfo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Save" >
+    update save
+    <set >
+      <if test="saveCost != null" >
+        save_cost = #{saveCost,jdbcType=DECIMAL},
+      </if>
+      <if test="saveCreateter != null" >
+        save_createter = #{saveCreateter,jdbcType=CHAR},
+      </if>
+      <if test="saveCreatetime != null" >
+        save_createtime = #{saveCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saveUpdatetime != null" >
+        save_updatetime = #{saveUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saveName != null" >
+        save_name = #{saveName,jdbcType=VARCHAR},
+      </if>
+      <if test="saveLogo != null" >
+        save_logo = #{saveLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="saveUrl != null" >
+        save_url = #{saveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="saveInfo != null" >
+        save_info = #{saveInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where save_id = #{saveId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Save" >
+    update save
+    set save_cost = #{saveCost,jdbcType=DECIMAL},
+      save_createter = #{saveCreateter,jdbcType=CHAR},
+      save_createtime = #{saveCreatetime,jdbcType=TIMESTAMP},
+      save_updatetime = #{saveUpdatetime,jdbcType=TIMESTAMP},
+      save_name = #{saveName,jdbcType=VARCHAR},
+      save_logo = #{saveLogo,jdbcType=VARCHAR},
+      save_url = #{saveUrl,jdbcType=VARCHAR},
+      save_info = #{saveInfo,jdbcType=VARCHAR}
+    where save_id = #{saveId,jdbcType=CHAR}
+  </update>
+  
+  
+  <select id="selectSaveInfo" resultMap="BaseResultMap" >
+  select * from save
+  </select>
+</mapper>

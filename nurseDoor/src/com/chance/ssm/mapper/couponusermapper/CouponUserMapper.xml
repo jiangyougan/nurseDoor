@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.couponusermapper.CouponUserMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CouponUser" >
+    <id column="coupon_user_id" property="couponUserId" jdbcType="CHAR" />
+    <result column="coupon_user_user_id" property="couponUserUserId" jdbcType="CHAR" />
+    <result column="coupon_user_money" property="couponUserMoney" jdbcType="DECIMAL" />
+    <result column="coupon_user_pic" property="couponUserPic" jdbcType="VARCHAR" />
+    <result column="coupon_user_full_give" property="couponUserFullGive" jdbcType="DECIMAL" />
+    <result column="coupon_user_expiration_time" property="couponUserExpirationTime" jdbcType="TIMESTAMP" />
+    <result column="coupon_user_istouse" property="couponUserIstouse" jdbcType="INTEGER" />
+    <result column="coupon_user_note" property="couponUserNote" jdbcType="VARCHAR" />
+    <result column="coupon_user_sperak" property="couponUserSperak" jdbcType="VARCHAR" />
+    <result column="coupon_user_createter" property="couponUserCreateter" jdbcType="CHAR" />
+    <result column="coupon_user_createtime" property="couponUserCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    coupon_user_id, coupon_user_user_id, coupon_user_money, coupon_user_pic, coupon_user_full_give, 
+    coupon_user_expiration_time, coupon_user_istouse, coupon_user_note, coupon_user_sperak, 
+    coupon_user_createter, coupon_user_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CouponUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from coupon_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKeyByCouponUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from coupon_user
+    where coupon_user_id = #{couponUserId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from coupon_user
+    where coupon_user_id = #{couponUserId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CouponUserExample" >
+    delete from coupon_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CouponUser" >
+    insert into coupon_user (coupon_user_id, coupon_user_user_id, coupon_user_money, 
+      coupon_user_pic, coupon_user_full_give, coupon_user_expiration_time, 
+      coupon_user_istouse, coupon_user_note, coupon_user_sperak, 
+      coupon_user_createter, coupon_user_createtime
+      )
+    values (#{couponUserId,jdbcType=CHAR}, #{couponUserUserId,jdbcType=CHAR}, #{couponUserMoney,jdbcType=DECIMAL}, 
+      #{couponUserPic,jdbcType=VARCHAR}, #{couponUserFullGive,jdbcType=DECIMAL}, #{couponUserExpirationTime,jdbcType=TIMESTAMP}, 
+      #{couponUserIstouse,jdbcType=INTEGER}, #{couponUserNote,jdbcType=VARCHAR}, #{couponUserSperak,jdbcType=VARCHAR}, 
+      #{couponUserCreateter,jdbcType=CHAR}, #{couponUserCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelectiveCouponUser" parameterType="com.chance.ssm.po.CouponUser" >
+    insert into coupon_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="couponUserId != null" >
+        coupon_user_id,
+      </if>
+      <if test="couponUserUserId != null" >
+        coupon_user_user_id,
+      </if>
+      <if test="couponUserMoney != null" >
+        coupon_user_money,
+      </if>
+      <if test="couponUserPic != null" >
+        coupon_user_pic,
+      </if>
+      <if test="couponUserFullGive != null" >
+        coupon_user_full_give,
+      </if>
+      <if test="couponUserExpirationTime != null" >
+        coupon_user_expiration_time,
+      </if>
+      <if test="couponUserIstouse != null" >
+        coupon_user_istouse,
+      </if>
+      <if test="couponUserNote != null" >
+        coupon_user_note,
+      </if>
+      <if test="couponUserSperak != null" >
+        coupon_user_sperak,
+      </if>
+      <if test="couponUserCreateter != null" >
+        coupon_user_createter,
+      </if>
+      <if test="couponUserCreatetime != null" >
+        coupon_user_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="couponUserId != null" >
+        #{couponUserId,jdbcType=CHAR},
+      </if>
+      <if test="couponUserUserId != null" >
+        #{couponUserUserId,jdbcType=CHAR},
+      </if>
+      <if test="couponUserMoney != null" >
+        #{couponUserMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponUserPic != null" >
+        #{couponUserPic,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserFullGive != null" >
+        #{couponUserFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="couponUserExpirationTime != null" >
+        #{couponUserExpirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUserIstouse != null" >
+        #{couponUserIstouse,jdbcType=INTEGER},
+      </if>
+      <if test="couponUserNote != null" >
+        #{couponUserNote,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserSperak != null" >
+        #{couponUserSperak,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserCreateter != null" >
+        #{couponUserCreateter,jdbcType=CHAR},
+      </if>
+      <if test="couponUserCreatetime != null" >
+        #{couponUserCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CouponUserExample" resultType="java.lang.Integer" >
+    select count(*) from coupon_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update coupon_user
+    <set >
+      <if test="record.couponUserId != null" >
+        coupon_user_id = #{record.couponUserId,jdbcType=CHAR},
+      </if>
+      <if test="record.couponUserUserId != null" >
+        coupon_user_user_id = #{record.couponUserUserId,jdbcType=CHAR},
+      </if>
+      <if test="record.couponUserMoney != null" >
+        coupon_user_money = #{record.couponUserMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponUserPic != null" >
+        coupon_user_pic = #{record.couponUserPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponUserFullGive != null" >
+        coupon_user_full_give = #{record.couponUserFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponUserExpirationTime != null" >
+        coupon_user_expiration_time = #{record.couponUserExpirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.couponUserIstouse != null" >
+        coupon_user_istouse = #{record.couponUserIstouse,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponUserNote != null" >
+        coupon_user_note = #{record.couponUserNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponUserSperak != null" >
+        coupon_user_sperak = #{record.couponUserSperak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponUserCreateter != null" >
+        coupon_user_createter = #{record.couponUserCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.couponUserCreatetime != null" >
+        coupon_user_createtime = #{record.couponUserCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update coupon_user
+    set coupon_user_id = #{record.couponUserId,jdbcType=CHAR},
+      coupon_user_user_id = #{record.couponUserUserId,jdbcType=CHAR},
+      coupon_user_money = #{record.couponUserMoney,jdbcType=DECIMAL},
+      coupon_user_pic = #{record.couponUserPic,jdbcType=VARCHAR},
+      coupon_user_full_give = #{record.couponUserFullGive,jdbcType=DECIMAL},
+      coupon_user_expiration_time = #{record.couponUserExpirationTime,jdbcType=TIMESTAMP},
+      coupon_user_istouse = #{record.couponUserIstouse,jdbcType=INTEGER},
+      coupon_user_note = #{record.couponUserNote,jdbcType=VARCHAR},
+      coupon_user_sperak = #{record.couponUserSperak,jdbcType=VARCHAR},
+      coupon_user_createter = #{record.couponUserCreateter,jdbcType=CHAR},
+      coupon_user_createtime = #{record.couponUserCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateUCouponUserByPrimaryKeySelective" parameterType="com.chance.ssm.po.CouponUser" >
+    update coupon_user
+    <set >
+      <if test="couponUserUserId != null" >
+        coupon_user_user_id = #{couponUserUserId,jdbcType=CHAR},
+      </if>
+      <if test="couponUserMoney != null" >
+        coupon_user_money = #{couponUserMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponUserPic != null" >
+        coupon_user_pic = #{couponUserPic,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserFullGive != null" >
+        coupon_user_full_give = #{couponUserFullGive,jdbcType=DECIMAL},
+      </if>
+      <if test="couponUserExpirationTime != null" >
+        coupon_user_expiration_time = #{couponUserExpirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUserIstouse != null" >
+        coupon_user_istouse = #{couponUserIstouse,jdbcType=INTEGER},
+      </if>
+      <if test="couponUserNote != null" >
+        coupon_user_note = #{couponUserNote,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserSperak != null" >
+        coupon_user_sperak = #{couponUserSperak,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUserCreateter != null" >
+        coupon_user_createter = #{couponUserCreateter,jdbcType=CHAR},
+      </if>
+      <if test="couponUserCreatetime != null" >
+        coupon_user_createtime = #{couponUserCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where coupon_user_id = #{couponUserId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CouponUser" >
+    update coupon_user
+    set coupon_user_user_id = #{couponUserUserId,jdbcType=CHAR},
+      coupon_user_money = #{couponUserMoney,jdbcType=DECIMAL},
+      coupon_user_pic = #{couponUserPic,jdbcType=VARCHAR},
+      coupon_user_full_give = #{couponUserFullGive,jdbcType=DECIMAL},
+      coupon_user_expiration_time = #{couponUserExpirationTime,jdbcType=TIMESTAMP},
+      coupon_user_istouse = #{couponUserIstouse,jdbcType=INTEGER},
+      coupon_user_note = #{couponUserNote,jdbcType=VARCHAR},
+      coupon_user_sperak = #{couponUserSperak,jdbcType=VARCHAR},
+      coupon_user_createter = #{couponUserCreateter,jdbcType=CHAR},
+      coupon_user_createtime = #{couponUserCreatetime,jdbcType=TIMESTAMP}
+    where coupon_user_id = #{couponUserId,jdbcType=CHAR}
+  </update>
+  <!-- 查看用户所有未过期的优惠券 -->
+  <select id="selectAllUserCouponInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT * FROM coupon_user WHERE coupon_user_user_id=#{couponUserUserId,jdbcType=CHAR} 
+  	AND
+	coupon_user_istouse=1 AND (coupon_user_expiration_time>NOW() OR coupon_user_expiration_time IS NULL)
+	ORDER BY coupon_user_expiration_time DESC
+  </select>
+</mapper>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.capitalnursepoolmapper.CapitalNursePoolMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CapitalNursePool" >
+    <id column="capital_nurse_pool_id" property="capitalNursePoolId" jdbcType="CHAR" />
+    <result column="capital_nurse_pool_peopleid" property="capitalNursePoolPeopleid" jdbcType="CHAR" />
+    <result column="capital_nurse_pool_ordersendid" property="capitalNursePoolOrdersendid" jdbcType="CHAR" />
+    <result column="capital_nurse_pool_peopleid_identity" property="capitalNursePoolPeopleidIdentity" jdbcType="INTEGER" />
+    <result column="capital_nurse_pool_money" property="capitalNursePoolMoney" jdbcType="DECIMAL" />
+    <result column="capital_nurse_pool_type" property="capitalNursePoolType" jdbcType="INTEGER" />
+    <result column="capital_nurse_pool_speak" property="capitalNursePoolSpeak" jdbcType="VARCHAR" />
+    <result column="capital_nurse_pool_createtime" property="capitalNursePoolCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    capital_nurse_pool_id, capital_nurse_pool_peopleid, capital_nurse_pool_ordersendid, 
+    capital_nurse_pool_peopleid_identity, capital_nurse_pool_money, capital_nurse_pool_type, 
+    capital_nurse_pool_speak, capital_nurse_pool_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CapitalNursePoolExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from capital_nurse_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from capital_nurse_pool
+    where capital_nurse_pool_id = #{capitalNursePoolId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from capital_nurse_pool
+    where capital_nurse_pool_id = #{capitalNursePoolId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CapitalNursePoolExample" >
+    delete from capital_nurse_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CapitalNursePool" >
+    insert into capital_nurse_pool (capital_nurse_pool_id, capital_nurse_pool_peopleid, 
+      capital_nurse_pool_ordersendid, capital_nurse_pool_peopleid_identity, 
+      capital_nurse_pool_money, capital_nurse_pool_type, 
+      capital_nurse_pool_speak, capital_nurse_pool_createtime
+      )
+    values (#{capitalNursePoolId,jdbcType=CHAR}, #{capitalNursePoolPeopleid,jdbcType=CHAR}, 
+      #{capitalNursePoolOrdersendid,jdbcType=CHAR}, #{capitalNursePoolPeopleidIdentity,jdbcType=INTEGER}, 
+      #{capitalNursePoolMoney,jdbcType=DECIMAL}, #{capitalNursePoolType,jdbcType=INTEGER}, 
+      #{capitalNursePoolSpeak,jdbcType=VARCHAR}, #{capitalNursePoolCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.CapitalNursePool" >
+    insert into capital_nurse_pool
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="capitalNursePoolId != null" >
+        capital_nurse_pool_id,
+      </if>
+      <if test="capitalNursePoolPeopleid != null" >
+        capital_nurse_pool_peopleid,
+      </if>
+      <if test="capitalNursePoolOrdersendid != null" >
+        capital_nurse_pool_ordersendid,
+      </if>
+      <if test="capitalNursePoolPeopleidIdentity != null" >
+        capital_nurse_pool_peopleid_identity,
+      </if>
+      <if test="capitalNursePoolMoney != null" >
+        capital_nurse_pool_money,
+      </if>
+      <if test="capitalNursePoolType != null" >
+        capital_nurse_pool_type,
+      </if>
+      <if test="capitalNursePoolSpeak != null" >
+        capital_nurse_pool_speak,
+      </if>
+      <if test="capitalNursePoolCreatetime != null" >
+        capital_nurse_pool_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="capitalNursePoolId != null" >
+        #{capitalNursePoolId,jdbcType=CHAR},
+      </if>
+      <if test="capitalNursePoolPeopleid != null" >
+        #{capitalNursePoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="capitalNursePoolOrdersendid != null" >
+        #{capitalNursePoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="capitalNursePoolPeopleidIdentity != null" >
+        #{capitalNursePoolPeopleidIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="capitalNursePoolMoney != null" >
+        #{capitalNursePoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalNursePoolType != null" >
+        #{capitalNursePoolType,jdbcType=INTEGER},
+      </if>
+      <if test="capitalNursePoolSpeak != null" >
+        #{capitalNursePoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalNursePoolCreatetime != null" >
+        #{capitalNursePoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CapitalNursePoolExample" resultType="java.lang.Integer" >
+    select count(*) from capital_nurse_pool
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update capital_nurse_pool
+    <set >
+      <if test="record.capitalNursePoolId != null" >
+        capital_nurse_pool_id = #{record.capitalNursePoolId,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalNursePoolPeopleid != null" >
+        capital_nurse_pool_peopleid = #{record.capitalNursePoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalNursePoolOrdersendid != null" >
+        capital_nurse_pool_ordersendid = #{record.capitalNursePoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalNursePoolPeopleidIdentity != null" >
+        capital_nurse_pool_peopleid_identity = #{record.capitalNursePoolPeopleidIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.capitalNursePoolMoney != null" >
+        capital_nurse_pool_money = #{record.capitalNursePoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.capitalNursePoolType != null" >
+        capital_nurse_pool_type = #{record.capitalNursePoolType,jdbcType=INTEGER},
+      </if>
+      <if test="record.capitalNursePoolSpeak != null" >
+        capital_nurse_pool_speak = #{record.capitalNursePoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalNursePoolCreatetime != null" >
+        capital_nurse_pool_createtime = #{record.capitalNursePoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update capital_nurse_pool
+    set capital_nurse_pool_id = #{record.capitalNursePoolId,jdbcType=CHAR},
+      capital_nurse_pool_peopleid = #{record.capitalNursePoolPeopleid,jdbcType=CHAR},
+      capital_nurse_pool_ordersendid = #{record.capitalNursePoolOrdersendid,jdbcType=CHAR},
+      capital_nurse_pool_peopleid_identity = #{record.capitalNursePoolPeopleidIdentity,jdbcType=INTEGER},
+      capital_nurse_pool_money = #{record.capitalNursePoolMoney,jdbcType=DECIMAL},
+      capital_nurse_pool_type = #{record.capitalNursePoolType,jdbcType=INTEGER},
+      capital_nurse_pool_speak = #{record.capitalNursePoolSpeak,jdbcType=VARCHAR},
+      capital_nurse_pool_createtime = #{record.capitalNursePoolCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.CapitalNursePool" >
+    update capital_nurse_pool
+    <set >
+      <if test="capitalNursePoolPeopleid != null" >
+        capital_nurse_pool_peopleid = #{capitalNursePoolPeopleid,jdbcType=CHAR},
+      </if>
+      <if test="capitalNursePoolOrdersendid != null" >
+        capital_nurse_pool_ordersendid = #{capitalNursePoolOrdersendid,jdbcType=CHAR},
+      </if>
+      <if test="capitalNursePoolPeopleidIdentity != null" >
+        capital_nurse_pool_peopleid_identity = #{capitalNursePoolPeopleidIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="capitalNursePoolMoney != null" >
+        capital_nurse_pool_money = #{capitalNursePoolMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalNursePoolType != null" >
+        capital_nurse_pool_type = #{capitalNursePoolType,jdbcType=INTEGER},
+      </if>
+      <if test="capitalNursePoolSpeak != null" >
+        capital_nurse_pool_speak = #{capitalNursePoolSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalNursePoolCreatetime != null" >
+        capital_nurse_pool_createtime = #{capitalNursePoolCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where capital_nurse_pool_id = #{capitalNursePoolId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CapitalNursePool" >
+    update capital_nurse_pool
+    set capital_nurse_pool_peopleid = #{capitalNursePoolPeopleid,jdbcType=CHAR},
+      capital_nurse_pool_ordersendid = #{capitalNursePoolOrdersendid,jdbcType=CHAR},
+      capital_nurse_pool_peopleid_identity = #{capitalNursePoolPeopleidIdentity,jdbcType=INTEGER},
+      capital_nurse_pool_money = #{capitalNursePoolMoney,jdbcType=DECIMAL},
+      capital_nurse_pool_type = #{capitalNursePoolType,jdbcType=INTEGER},
+      capital_nurse_pool_speak = #{capitalNursePoolSpeak,jdbcType=VARCHAR},
+      capital_nurse_pool_createtime = #{capitalNursePoolCreatetime,jdbcType=TIMESTAMP}
+    where capital_nurse_pool_id = #{capitalNursePoolId,jdbcType=CHAR}
+  </update>
+  <!-- 护士资金池 -->
+  <select id="selectCapitalInfoByNurseId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM capital_nurse_pool WHERE capital_nurse_pool_peopleid =#{capitalNursePoolPeopleid,jdbcType=CHAR} ORDER BY capital_nurse_pool_createtime DESC
+  </select>
+  
+  <!-- 图表统计 -->
+  <!-- 查看当月每天交易额 -->
+  <select id="selectStatisticsMonth" resultMap="BaseResultMap">
+  SELECT capital_nurse_pool_id,capital_nurse_pool_createtime FROM capital_nurse_pool WHERE capital_nurse_pool_type = 7 AND DATE_FORMAT(capital_nurse_pool_createtime,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m')
+  </select>
+  
+  <!-- 查询护士的订单收入 -->
+  <select id="selectNurseAllcapitalNursePoolMoney" resultType="java.math.BigDecimal" parameterType="java.lang.String">
+  SELECT SUM(capital_nurse_pool_money) FROM capital_nurse_pool WHERE capital_nurse_pool_peopleid = #{0} AND capital_nurse_pool_type = 7
+  </select>
+</mapper>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursingreportmapper.NursingReportMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NursingReport" >
+    <result column="nursing_reportid" property="nursingReportid" jdbcType="CHAR" />
+    <result column="nursing_report_orderid" property="nursingReportOrderid" jdbcType="CHAR" />
+    <result column="nursing_report_nurseid" property="nursingReportNurseid" jdbcType="CHAR" />
+    <result column="nursing_report_contentid" property="nursingReportContentid" jdbcType="CHAR" />
+    <result column="nursing_report_note" property="nursingReportNote" jdbcType="VARCHAR" />
+    <result column="nursing_report_servicepic" property="nursingReportServicepic" jdbcType="VARCHAR" />
+    <result column="nursing_report_addrecords" property="nursingReportAddrecords" jdbcType="VARCHAR" />
+    <result column="nursing_report_lable" property="nursingReportLable" jdbcType="CHAR" />
+    <result column="nursing_reportpic" property="nursingReportpic" jdbcType="VARCHAR" />
+    <result column="nursing_report_createtime" property="nursingReportCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <resultMap type="com.chance.ssm.po.vo.ReportVO" id="BaseResultMap2">
+    <result column="nursing_reportid" property="nursingReportid" jdbcType="CHAR" />
+    <result column="nursing_report_orderid" property="nursingReportOrderid" jdbcType="CHAR" />
+    <result column="nursing_report_nurseid" property="nursingReportNurseid" jdbcType="CHAR" />
+    <result column="nursing_report_createtime" property="nursingReportCreatetime" jdbcType="TIMESTAMP" />
+    <result column="protected_person_id" property="protectedPersonId" jdbcType="CHAR" />
+    <result column="protected_person_name" property="protectedPersonName" jdbcType="VARCHAR" />
+    <result column="protected_person_sex" property="protectedPersonSex" jdbcType="CHAR" />
+    <result column="protected_person_card" property="protectedPersonCard" jdbcType="CHAR" />
+    <result column="protected_person_age" property="protectedPersonAge" jdbcType="CHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_office" property="nurseOffice" jdbcType="VARCHAR" />
+    <result column="nurse_truename" property="nurseTruename" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="counts" property="counts" jdbcType="INTEGER" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap3" type="com.chance.ssm.po.vo.NursingUserAndNurseVO" >
+   	<result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_header" property="userHeader" jdbcType="CHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+     <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="nursing_reportid" property="nursingReportid" jdbcType="CHAR" />
+    <result column="nursing_report_orderid" property="nursingReportOrderid" jdbcType="CHAR" />
+    <result column="nursing_report_nurseid" property="nursingReportNurseid" jdbcType="CHAR" />
+    <result column="nursing_report_contentid" property="nursingReportContentid" jdbcType="CHAR" />
+    <result column="nursing_report_note" property="nursingReportNote" jdbcType="VARCHAR" />
+    <result column="nursing_report_servicepic" property="nursingReportServicepic" jdbcType="VARCHAR" />
+    <result column="nursing_report_addrecords" property="nursingReportAddrecords" jdbcType="VARCHAR" />
+    <result column="nursing_report_lable" property="nursingReportLable" jdbcType="CHAR" />
+    <result column="nursing_reportpic" property="nursingReportpic" jdbcType="VARCHAR" />
+    <result column="nursing_report_createtime" property="nursingReportCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nursing_reportid, nursing_report_orderid, nursing_report_nurseid, nursing_report_contentid, 
+    nursing_report_note, nursing_report_servicepic, nursing_report_addrecords, nursing_report_lable, 
+    nursing_reportpic, nursing_report_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NursingReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nursing_report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NursingReportExample" >
+    delete from nursing_report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NursingReport" >
+    insert into nursing_report (nursing_reportid, nursing_report_orderid, 
+      nursing_report_nurseid, nursing_report_contentid, 
+      nursing_report_note, nursing_report_servicepic, 
+      nursing_report_addrecords, nursing_report_lable, 
+      nursing_reportpic, nursing_report_createtime
+      )
+    values (#{nursingReportid,jdbcType=CHAR}, #{nursingReportOrderid,jdbcType=CHAR}, 
+      #{nursingReportNurseid,jdbcType=CHAR}, #{nursingReportContentid,jdbcType=CHAR}, 
+      #{nursingReportNote,jdbcType=VARCHAR}, #{nursingReportServicepic,jdbcType=VARCHAR}, 
+      #{nursingReportAddrecords,jdbcType=VARCHAR}, #{nursingReportLable,jdbcType=CHAR}, 
+      #{nursingReportpic,jdbcType=VARCHAR}, #{nursingReportCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NursingReport" >
+    insert into nursing_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nursingReportid != null" >
+        nursing_reportid,
+      </if>
+      <if test="nursingReportOrderid != null" >
+        nursing_report_orderid,
+      </if>
+      <if test="nursingReportNurseid != null" >
+        nursing_report_nurseid,
+      </if>
+      <if test="nursingReportContentid != null" >
+        nursing_report_contentid,
+      </if>
+      <if test="nursingReportNote != null" >
+        nursing_report_note,
+      </if>
+      <if test="nursingReportServicepic != null" >
+        nursing_report_servicepic,
+      </if>
+      <if test="nursingReportAddrecords != null" >
+        nursing_report_addrecords,
+      </if>
+      <if test="nursingReportLable != null" >
+        nursing_report_lable,
+      </if>
+      <if test="nursingReportpic != null" >
+        nursing_reportpic,
+      </if>
+      <if test="nursingReportCreatetime != null" >
+        nursing_report_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nursingReportid != null" >
+        #{nursingReportid,jdbcType=CHAR},
+      </if>
+      <if test="nursingReportOrderid != null" >
+        #{nursingReportOrderid,jdbcType=CHAR},
+      </if>
+      <if test="nursingReportNurseid != null" >
+        #{nursingReportNurseid,jdbcType=CHAR},
+      </if>
+      <if test="nursingReportContentid != null" >
+        #{nursingReportContentid,jdbcType=CHAR},
+      </if>
+      <if test="nursingReportNote != null" >
+        #{nursingReportNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingReportServicepic != null" >
+        #{nursingReportServicepic,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingReportAddrecords != null" >
+        #{nursingReportAddrecords,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingReportLable != null" >
+        #{nursingReportLable,jdbcType=CHAR},
+      </if>
+      <if test="nursingReportpic != null" >
+        #{nursingReportpic,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingReportCreatetime != null" >
+        #{nursingReportCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NursingReportExample" resultType="java.lang.Integer" >
+    select count(*) from nursing_report
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nursing_report
+    <set >
+      <if test="record.nursingReportid != null" >
+        nursing_reportid = #{record.nursingReportid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingReportOrderid != null" >
+        nursing_report_orderid = #{record.nursingReportOrderid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingReportNurseid != null" >
+        nursing_report_nurseid = #{record.nursingReportNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingReportContentid != null" >
+        nursing_report_contentid = #{record.nursingReportContentid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingReportNote != null" >
+        nursing_report_note = #{record.nursingReportNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingReportServicepic != null" >
+        nursing_report_servicepic = #{record.nursingReportServicepic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingReportAddrecords != null" >
+        nursing_report_addrecords = #{record.nursingReportAddrecords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingReportLable != null" >
+        nursing_report_lable = #{record.nursingReportLable,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingReportpic != null" >
+        nursing_reportpic = #{record.nursingReportpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingReportCreatetime != null" >
+        nursing_report_createtime = #{record.nursingReportCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nursing_report
+    set nursing reportid = #{record.nursingReportid,jdbcType=CHAR},
+      nursing_report_orderid = #{record.nursingReportOrderid,jdbcType=CHAR},
+      nursing_report_nurseid = #{record.nursingReportNurseid,jdbcType=CHAR},
+      nursing_report_contentid = #{record.nursingReportContentid,jdbcType=CHAR},
+      nursing_report_note = #{record.nursingReportNote,jdbcType=VARCHAR},
+      nursing_report_servicepic = #{record.nursingReportServicepic,jdbcType=VARCHAR},
+      nursing_report_addrecords = #{record.nursingReportAddrecords,jdbcType=VARCHAR},
+      nursing_report_lable = #{record.nursingReportLable,jdbcType=CHAR},
+      nursing_reportpic = #{record.nursingReportpic,jdbcType=VARCHAR},
+      nursing_report_createtime = #{record.nursingReportCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据用户id查询护理报告通过身份证号分组(查询结果为空的原因  订单不存在，护士不存在，受护人不存在，护理报告不存在) -->
+  <select id="selectReportByUserId" resultMap="BaseResultMap2" parameterType="java.lang.String">
+    SELECT nursing_reportid,nursing_report_orderid,MAX(nursing_report_createtime) AS nursing_report_createtime,nursing_report_nurseid,protected_person_id,protected_person_name,protected_person_sex,
+	protected_person_card,protected_person_age,nurse_id,nurse_nick,nurse_office,nurse_truename,order_send_addree,order_send_servicecontent,COUNT(*) AS counts
+	FROM nurse,nursing_report,order_send,order_receiver,protected_person
+	WHERE nursing_report_orderid = order_send_id
+	AND order_send_id= order_ordersendid
+	AND nursing_report_nurseid = nurse_id
+	AND order_send_username = protected_person_id
+	AND order_send_userid = #{orderSendUserid,jdbcType=CHAR}
+	GROUP BY protected_person_card
+  </select>
+  
+  <!--根据用户id和受护人身份证号码查询护理报告详细信息(查询结果为空的原因  订单不存在，护士不存在，受护人不存在，护理报告不存在)-->
+  <select id="selectReportByUserIdAndPersonCard" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.vo.ReportVO">
+    SELECT nursing_reportid,nursing_report_orderid,nursing_report_createtime,nursing_report_nurseid,protected_person_id,protected_person_name,protected_person_sex,
+	protected_person_card,protected_person_age,nurse_id,nurse_nick,nurse_office,nurse_truename,order_send_addree,order_send_servicecontent
+	FROM nurse,nursing_report,order_send,order_receiver,protected_person
+	WHERE nursing_report_orderid = order_send_id
+	AND order_send_id= order_ordersendid
+	AND nursing_report_nurseid = nurse_id
+	AND order_send_username = protected_person_id
+	AND order_send_userid = #{orderSendUserid,jdbcType=CHAR}
+	AND protected_person_card = #{protectedPersonCard,jdbcType=CHAR}
+	ORDER BY nursing_report_createtime DESC
+  </select>
+  <!-- 根据订单id得到护理报告表信息 -->
+  <select id="selectReportByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT nursing_reportid,nursing_report_servicepic,nursing_report_addrecords,nursing_report_lable,nursing_report_createtime
+	FROM nursing_report WHERE nursing_report_orderid=#{nursingReportOrderid,jdbcType=CHAR}
+  </select>
+   <!--护士查看自己填写的护理报告 根据用户id和受护人身份证号码查询护理报告详细信息(查询结果为空的原因  订单不存在，护士不存在，受护人不存在，护理报告不存在)-->
+  <select id="selectReportByUserIdAndPersonCardByNurseId" resultMap="BaseResultMap2" parameterType="java.lang.String">
+    SELECT nursing_reportid,nursing_report_orderid,nursing_report_createtime,nursing_report_nurseid,protected_person_id,protected_person_name,protected_person_sex,
+	protected_person_card,protected_person_age,nurse_id,nurse_nick,nurse_office,nurse_truename,order_send_addree,order_send_servicecontent,nursing_report_createtime
+	FROM nurse,nursing_report,order_send,order_receiver,protected_person
+	WHERE nursing_report_orderid = order_send_id
+	AND order_send_id= order_ordersendid
+	AND nursing_report_nurseid = nurse_id
+	AND order_send_username = protected_person_id
+	AND nursing_report_nurseid = #{0}
+	GROUP BY nursing_reportid
+	ORDER BY nursing_report_createtime DESC 
+  </select>
+  <!-- 查询所有护理报告(包括模糊查询) -->
+  <select id="selectAllNursingReportAndkeyWord" resultMap="BaseResultMap3" parameterType="com.chance.ssm.po.vo.NursingReportKeyWordVO">
+  SELECT nursing_report.*,user_id,user_header,user_nick,user_name,nurse_id,nurse_header,nurse_nick,nurse_name,order_send_id,order_send_numbers,order_send_username
+  FROM nursing_report,USER,nurse ,order_send
+  WHERE nursing_report_orderid  = order_send_id
+  AND order_send_userid = user_id
+  AND nursing_report_nurseid = nurse_id
+  AND
+  <![CDATA[(DATE_FORMAT(nursing_report_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(nursing_report_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+  <if test="parameter != null" >
+  AND
+  user_nick like '%${parameter}%'
+  </if>
+  <if test="parameter != null" >
+  OR
+  user_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  nurse_nick like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  nurse_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  order_send_numbers like '%${parameter}%'
+  </if>
+  ORDER BY nursing_report_createtime DESC 
+  LIMIT
+  #{start},
+  #{rows}
+  </select>
+  <!--查询所有护理报告(包括模糊查询) -->
+  <select id="selectAllNursingReportAndkeyWordCount" resultType="java.lang.Integer" parameterType="com.chance.ssm.po.vo.NursingReportKeyWordVO">
+  SELECT COUNT(*)
+  FROM nursing_report,USER,nurse ,order_send
+  WHERE nursing_report_orderid  = order_send_id
+  AND order_send_userid = user_id
+  AND nursing_report_nurseid = nurse_id
+  AND
+  <![CDATA[(DATE_FORMAT(nursing_report_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(nursing_report_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+  <if test="parameter != null" >
+  AND
+  user_nick like '%${parameter}%'
+  </if>
+  <if test="parameter != null" >
+  OR
+  user_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  nurse_nick like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  nurse_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null" >
+  OR
+  order_send_numbers like '%${parameter}%'
+  </if>
+  ORDER BY nursing_report_createtime DESC 
+  </select>
+</mapper>

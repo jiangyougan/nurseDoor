@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.ordercancelordermapper.OrderCancelOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.OrderCancelOrder" >
+    <id column="order_cancel_order_send_id" property="orderCancelOrderSendId" jdbcType="CHAR" />
+    <result column="order_cancal_order_state" property="orderCancalOrderState" jdbcType="INTEGER" />
+    <result column="order_cancal_nurse_agree" property="orderCancalNurseAgree" jdbcType="INTEGER" />
+    <result column="order_cancal_nurse_cancel_time" property="orderCancalNurseCancelTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_nurse_agree_time" property="orderCancalNurseAgreeTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_user_agree" property="orderCancalUserAgree" jdbcType="INTEGER" />
+    <result column="order_cancal_user_cancel_time" property="orderCancalUserCancelTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_user_agree_time" property="orderCancalUserAgreeTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_handle_people" property="orderCancalHandlePeople" jdbcType="CHAR" />
+    <result column="order_cancal_whether_refund" property="orderCancalWhetherRefund" jdbcType="INTEGER" />
+    <result column="order_cancal_refund_money" property="orderCancalRefundMoney" jdbcType="DECIMAL" />
+    <result column="order_cancal_handle_result" property="orderCancalHandleResult" jdbcType="VARCHAR" />
+    <result column="order_cancel_order_note" property="orderCancelOrderNote" jdbcType="VARCHAR" />
+    <result column="order_cancel_order_speak" property="orderCancelOrderSpeak" jdbcType="VARCHAR" />
+    <result column="order_cancal_handle_result_time" property="orderCancalHandleResultTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.chance.ssm.po.vo.OrderSendCancalVo" >
+  	<result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+  	<result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+  	<result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+  	<result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+  	<result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_cancel_order_send_id" property="orderCancelOrderSendId" jdbcType="CHAR" />
+    <result column="order_cancal_order_state" property="orderCancalOrderState" jdbcType="INTEGER" />
+    <result column="order_cancal_nurse_agree" property="orderCancalNurseAgree" jdbcType="INTEGER" />
+    <result column="order_cancal_nurse_cancel_time" property="orderCancalNurseCancelTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_nurse_agree_time" property="orderCancalNurseAgreeTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_user_agree" property="orderCancalUserAgree" jdbcType="INTEGER" />
+    <result column="order_cancal_user_cancel_time" property="orderCancalUserCancelTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_user_agree_time" property="orderCancalUserAgreeTime" jdbcType="TIMESTAMP" />
+    <result column="order_cancal_handle_people" property="orderCancalHandlePeople" jdbcType="CHAR" />
+    <result column="order_cancal_whether_refund" property="orderCancalWhetherRefund" jdbcType="INTEGER" />
+    <result column="order_cancal_refund_money" property="orderCancalRefundMoney" jdbcType="DECIMAL" />
+    <result column="order_cancal_handle_result" property="orderCancalHandleResult" jdbcType="VARCHAR" />
+    <result column="order_cancel_order_note" property="orderCancelOrderNote" jdbcType="VARCHAR" />
+    <result column="order_cancel_order_speak" property="orderCancelOrderSpeak" jdbcType="VARCHAR" />
+    <result column="order_cancal_handle_result_time" property="orderCancalHandleResultTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_cancel_order_send_id, order_cancal_order_state, order_cancal_nurse_agree, order_cancal_nurse_cancel_time, 
+    order_cancal_nurse_agree_time, order_cancal_user_agree, order_cancal_user_cancel_time, 
+    order_cancal_user_agree_time, order_cancal_handle_people, order_cancal_whether_refund, 
+    order_cancal_refund_money, order_cancal_handle_result, order_cancel_order_note, order_cancel_order_speak, 
+    order_cancal_handle_result_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.OrderCancelOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_cancel_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_cancel_order
+    where order_cancel_order_send_id = #{orderCancelOrderSendId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from order_cancel_order
+    where order_cancel_order_send_id = #{orderCancelOrderSendId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.OrderCancelOrderExample" >
+    delete from order_cancel_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.OrderCancelOrder" >
+    insert into order_cancel_order (order_cancel_order_send_id, order_cancal_order_state, 
+      order_cancal_nurse_agree, order_cancal_nurse_cancel_time, 
+      order_cancal_nurse_agree_time, order_cancal_user_agree, 
+      order_cancal_user_cancel_time, order_cancal_user_agree_time, 
+      order_cancal_handle_people, order_cancal_whether_refund, 
+      order_cancal_refund_money, order_cancal_handle_result, 
+      order_cancel_order_note, order_cancel_order_speak, 
+      order_cancal_handle_result_time)
+    values (#{orderCancelOrderSendId,jdbcType=CHAR}, #{orderCancalOrderState,jdbcType=INTEGER}, 
+      #{orderCancalNurseAgree,jdbcType=INTEGER}, #{orderCancalNurseCancelTime,jdbcType=TIMESTAMP}, 
+      #{orderCancalNurseAgreeTime,jdbcType=TIMESTAMP}, #{orderCancalUserAgree,jdbcType=INTEGER}, 
+      #{orderCancalUserCancelTime,jdbcType=TIMESTAMP}, #{orderCancalUserAgreeTime,jdbcType=TIMESTAMP}, 
+      #{orderCancalHandlePeople,jdbcType=CHAR}, #{orderCancalWhetherRefund,jdbcType=INTEGER}, 
+      #{orderCancalRefundMoney,jdbcType=DECIMAL}, #{orderCancalHandleResult,jdbcType=VARCHAR}, 
+      #{orderCancelOrderNote,jdbcType=VARCHAR}, #{orderCancelOrderSpeak,jdbcType=VARCHAR}, 
+      #{orderCancalHandleResultTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.OrderCancelOrder" >
+    insert into order_cancel_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderCancelOrderSendId != null" >
+        order_cancel_order_send_id,
+      </if>
+      <if test="orderCancalOrderState != null" >
+        order_cancal_order_state,
+      </if>
+      <if test="orderCancalNurseAgree != null" >
+        order_cancal_nurse_agree,
+      </if>
+      <if test="orderCancalNurseCancelTime != null" >
+        order_cancal_nurse_cancel_time,
+      </if>
+      <if test="orderCancalNurseAgreeTime != null" >
+        order_cancal_nurse_agree_time,
+      </if>
+      <if test="orderCancalUserAgree != null" >
+        order_cancal_user_agree,
+      </if>
+      <if test="orderCancalUserCancelTime != null" >
+        order_cancal_user_cancel_time,
+      </if>
+      <if test="orderCancalUserAgreeTime != null" >
+        order_cancal_user_agree_time,
+      </if>
+      <if test="orderCancalHandlePeople != null" >
+        order_cancal_handle_people,
+      </if>
+      <if test="orderCancalWhetherRefund != null" >
+        order_cancal_whether_refund,
+      </if>
+      <if test="orderCancalRefundMoney != null" >
+        order_cancal_refund_money,
+      </if>
+      <if test="orderCancalHandleResult != null" >
+        order_cancal_handle_result,
+      </if>
+      <if test="orderCancelOrderNote != null" >
+        order_cancel_order_note,
+      </if>
+      <if test="orderCancelOrderSpeak != null" >
+        order_cancel_order_speak,
+      </if>
+      <if test="orderCancalHandleResultTime != null" >
+        order_cancal_handle_result_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderCancelOrderSendId != null" >
+        #{orderCancelOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="orderCancalOrderState != null" >
+        #{orderCancalOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalNurseAgree != null" >
+        #{orderCancalNurseAgree,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalNurseCancelTime != null" >
+        #{orderCancalNurseCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalNurseAgreeTime != null" >
+        #{orderCancalNurseAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalUserAgree != null" >
+        #{orderCancalUserAgree,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalUserCancelTime != null" >
+        #{orderCancalUserCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalUserAgreeTime != null" >
+        #{orderCancalUserAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalHandlePeople != null" >
+        #{orderCancalHandlePeople,jdbcType=CHAR},
+      </if>
+      <if test="orderCancalWhetherRefund != null" >
+        #{orderCancalWhetherRefund,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalRefundMoney != null" >
+        #{orderCancalRefundMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderCancalHandleResult != null" >
+        #{orderCancalHandleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancelOrderNote != null" >
+        #{orderCancelOrderNote,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancelOrderSpeak != null" >
+        #{orderCancelOrderSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancalHandleResultTime != null" >
+        #{orderCancalHandleResultTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.OrderCancelOrderExample" resultType="java.lang.Integer" >
+    select count(*) from order_cancel_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update order_cancel_order
+    <set >
+      <if test="record.orderCancelOrderSendId != null" >
+        order_cancel_order_send_id = #{record.orderCancelOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="record.orderCancalOrderState != null" >
+        order_cancal_order_state = #{record.orderCancalOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderCancalNurseAgree != null" >
+        order_cancal_nurse_agree = #{record.orderCancalNurseAgree,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderCancalNurseCancelTime != null" >
+        order_cancal_nurse_cancel_time = #{record.orderCancalNurseCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderCancalNurseAgreeTime != null" >
+        order_cancal_nurse_agree_time = #{record.orderCancalNurseAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderCancalUserAgree != null" >
+        order_cancal_user_agree = #{record.orderCancalUserAgree,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderCancalUserCancelTime != null" >
+        order_cancal_user_cancel_time = #{record.orderCancalUserCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderCancalUserAgreeTime != null" >
+        order_cancal_user_agree_time = #{record.orderCancalUserAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderCancalHandlePeople != null" >
+        order_cancal_handle_people = #{record.orderCancalHandlePeople,jdbcType=CHAR},
+      </if>
+      <if test="record.orderCancalWhetherRefund != null" >
+        order_cancal_whether_refund = #{record.orderCancalWhetherRefund,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderCancalRefundMoney != null" >
+        order_cancal_refund_money = #{record.orderCancalRefundMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderCancalHandleResult != null" >
+        order_cancal_handle_result = #{record.orderCancalHandleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCancelOrderNote != null" >
+        order_cancel_order_note = #{record.orderCancelOrderNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCancelOrderSpeak != null" >
+        order_cancel_order_speak = #{record.orderCancelOrderSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCancalHandleResultTime != null" >
+        order_cancal_handle_result_time = #{record.orderCancalHandleResultTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update order_cancel_order
+    set order_cancel_order_send_id = #{record.orderCancelOrderSendId,jdbcType=CHAR},
+      order_cancal_order_state = #{record.orderCancalOrderState,jdbcType=INTEGER},
+      order_cancal_nurse_agree = #{record.orderCancalNurseAgree,jdbcType=INTEGER},
+      order_cancal_nurse_cancel_time = #{record.orderCancalNurseCancelTime,jdbcType=TIMESTAMP},
+      order_cancal_nurse_agree_time = #{record.orderCancalNurseAgreeTime,jdbcType=TIMESTAMP},
+      order_cancal_user_agree = #{record.orderCancalUserAgree,jdbcType=INTEGER},
+      order_cancal_user_cancel_time = #{record.orderCancalUserCancelTime,jdbcType=TIMESTAMP},
+      order_cancal_user_agree_time = #{record.orderCancalUserAgreeTime,jdbcType=TIMESTAMP},
+      order_cancal_handle_people = #{record.orderCancalHandlePeople,jdbcType=CHAR},
+      order_cancal_whether_refund = #{record.orderCancalWhetherRefund,jdbcType=INTEGER},
+      order_cancal_refund_money = #{record.orderCancalRefundMoney,jdbcType=DECIMAL},
+      order_cancal_handle_result = #{record.orderCancalHandleResult,jdbcType=VARCHAR},
+      order_cancel_order_note = #{record.orderCancelOrderNote,jdbcType=VARCHAR},
+      order_cancel_order_speak = #{record.orderCancelOrderSpeak,jdbcType=VARCHAR},
+      order_cancal_handle_result_time = #{record.orderCancalHandleResultTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.OrderCancelOrder" >
+    update order_cancel_order
+    <set >
+      <if test="orderCancalOrderState != null" >
+        order_cancal_order_state = #{orderCancalOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalNurseAgree != null" >
+        order_cancal_nurse_agree = #{orderCancalNurseAgree,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalNurseCancelTime != null" >
+        order_cancal_nurse_cancel_time = #{orderCancalNurseCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalNurseAgreeTime != null" >
+        order_cancal_nurse_agree_time = #{orderCancalNurseAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalUserAgree != null" >
+        order_cancal_user_agree = #{orderCancalUserAgree,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalUserCancelTime != null" >
+        order_cancal_user_cancel_time = #{orderCancalUserCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalUserAgreeTime != null" >
+        order_cancal_user_agree_time = #{orderCancalUserAgreeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCancalHandlePeople != null" >
+        order_cancal_handle_people = #{orderCancalHandlePeople,jdbcType=CHAR},
+      </if>
+      <if test="orderCancalWhetherRefund != null" >
+        order_cancal_whether_refund = #{orderCancalWhetherRefund,jdbcType=INTEGER},
+      </if>
+      <if test="orderCancalRefundMoney != null" >
+        order_cancal_refund_money = #{orderCancalRefundMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderCancalHandleResult != null" >
+        order_cancal_handle_result = #{orderCancalHandleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancelOrderNote != null" >
+        order_cancel_order_note = #{orderCancelOrderNote,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancelOrderSpeak != null" >
+        order_cancel_order_speak = #{orderCancelOrderSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCancalHandleResultTime != null" >
+        order_cancal_handle_result_time = #{orderCancalHandleResultTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_cancel_order_send_id = #{orderCancelOrderSendId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.OrderCancelOrder" >
+    update order_cancel_order
+    set order_cancal_order_state = #{orderCancalOrderState,jdbcType=INTEGER},
+      order_cancal_nurse_agree = #{orderCancalNurseAgree,jdbcType=INTEGER},
+      order_cancal_nurse_cancel_time = #{orderCancalNurseCancelTime,jdbcType=TIMESTAMP},
+      order_cancal_nurse_agree_time = #{orderCancalNurseAgreeTime,jdbcType=TIMESTAMP},
+      order_cancal_user_agree = #{orderCancalUserAgree,jdbcType=INTEGER},
+      order_cancal_user_cancel_time = #{orderCancalUserCancelTime,jdbcType=TIMESTAMP},
+      order_cancal_user_agree_time = #{orderCancalUserAgreeTime,jdbcType=TIMESTAMP},
+      order_cancal_handle_people = #{orderCancalHandlePeople,jdbcType=CHAR},
+      order_cancal_whether_refund = #{orderCancalWhetherRefund,jdbcType=INTEGER},
+      order_cancal_refund_money = #{orderCancalRefundMoney,jdbcType=DECIMAL},
+      order_cancal_handle_result = #{orderCancalHandleResult,jdbcType=VARCHAR},
+      order_cancel_order_note = #{orderCancelOrderNote,jdbcType=VARCHAR},
+      order_cancel_order_speak = #{orderCancelOrderSpeak,jdbcType=VARCHAR},
+      order_cancal_handle_result_time = #{orderCancalHandleResultTime,jdbcType=TIMESTAMP}
+    where order_cancel_order_send_id = #{orderCancelOrderSendId,jdbcType=CHAR}
+  </update>
+   <!-- 根据取消的订单ID查询取消前的状态 -->
+  <select id="selectCancalBeforeState" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT * FROM order_send LEFT JOIN order_cancel_order ON order_send_id = order_cancel_order_send_id  WHERE 
+	order_send_id =#{0}
+  </select>
+  
+  <!-- 查询取消订单的信息 -->
+  <select id="selectOrderAndCancaByOrderId" resultMap="BaseResultMap2" parameterType="java.lang.String">
+  SELECT 
+  order_send_id,
+  order_send_userid,
+  order_send_costmoney,
+  order_send_totalmoney,
+  order_send_begintime,
+  order_send_stoptime,
+  order_cancel_order.* 
+  FROM 
+  order_send 
+  LEFT JOIN 
+  order_cancel_order 
+  ON 
+  order_send_id = order_cancel_order_send_id  
+  WHERE 
+  order_send_id =#{0}
+  </select>
+  
+</mapper>

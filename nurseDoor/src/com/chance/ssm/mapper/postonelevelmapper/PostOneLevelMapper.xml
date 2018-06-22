@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postonelevelmapper.PostOneLevelMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostOneLevel" >
+    <id column="post_one_level_id" property="postOneLevelId" jdbcType="CHAR" />
+    <result column="post_one_level_name" property="postOneLevelName" jdbcType="CHAR" />
+    <result column="post_one_level_note" property="postOneLevelNote" jdbcType="VARCHAR" />
+    <result column="post_one_level_speak" property="postOneLevelSpeak" jdbcType="VARCHAR" />
+    <result column="post_one_level_rank" property="postOneLevelRank" jdbcType="INTEGER" />
+    <result column="post_one_level_createter" property="postOneLevelCreateter" jdbcType="CHAR" />
+    <result column="post_one_level_createtetime" property="postOneLevelCreatetetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_one_level_id, post_one_level_name, post_one_level_note, post_one_level_speak, 
+    post_one_level_rank, post_one_level_createter, post_one_level_createtetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostOneLevelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_one_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_one_level
+    where post_one_level_id = #{postOneLevelId,jdbcType=CHAR}
+  </select>
+  <delete id="deletePostOneLevelByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_one_level
+    where post_one_level_id = #{postOneLevelId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostOneLevelExample" >
+    delete from post_one_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostOneLevel" >
+    insert into post_one_level (post_one_level_id, post_one_level_name, post_one_level_note, 
+      post_one_level_speak, post_one_level_rank, post_one_level_createter, 
+      post_one_level_createtetime)
+    values (#{postOneLevelId,jdbcType=CHAR}, #{postOneLevelName,jdbcType=CHAR}, #{postOneLevelNote,jdbcType=VARCHAR}, 
+      #{postOneLevelSpeak,jdbcType=VARCHAR}, #{postOneLevelRank,jdbcType=INTEGER}, #{postOneLevelCreateter,jdbcType=CHAR}, 
+      #{postOneLevelCreatetetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.PostOneLevel" >
+    insert into post_one_level
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postOneLevelId != null" >
+        post_one_level_id,
+      </if>
+      <if test="postOneLevelName != null" >
+        post_one_level_name,
+      </if>
+      <if test="postOneLevelNote != null" >
+        post_one_level_note,
+      </if>
+      <if test="postOneLevelSpeak != null" >
+        post_one_level_speak,
+      </if>
+      <if test="postOneLevelRank != null" >
+        post_one_level_rank,
+      </if>
+      <if test="postOneLevelCreateter != null" >
+        post_one_level_createter,
+      </if>
+      <if test="postOneLevelCreatetetime != null" >
+        post_one_level_createtetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postOneLevelId != null" >
+        #{postOneLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelName != null" >
+        #{postOneLevelName,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelNote != null" >
+        #{postOneLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postOneLevelSpeak != null" >
+        #{postOneLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postOneLevelRank != null" >
+        #{postOneLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="postOneLevelCreateter != null" >
+        #{postOneLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelCreatetetime != null" >
+        #{postOneLevelCreatetetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostOneLevelExample" resultType="java.lang.Integer" >
+    select count(*) from post_one_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_one_level
+    <set >
+      <if test="record.postOneLevelId != null" >
+        post_one_level_id = #{record.postOneLevelId,jdbcType=CHAR},
+      </if>
+      <if test="record.postOneLevelName != null" >
+        post_one_level_name = #{record.postOneLevelName,jdbcType=CHAR},
+      </if>
+      <if test="record.postOneLevelNote != null" >
+        post_one_level_note = #{record.postOneLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postOneLevelSpeak != null" >
+        post_one_level_speak = #{record.postOneLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postOneLevelRank != null" >
+        post_one_level_rank = #{record.postOneLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.postOneLevelCreateter != null" >
+        post_one_level_createter = #{record.postOneLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.postOneLevelCreatetetime != null" >
+        post_one_level_createtetime = #{record.postOneLevelCreatetetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_one_level
+    set post_one_level_id = #{record.postOneLevelId,jdbcType=CHAR},
+      post_one_level_name = #{record.postOneLevelName,jdbcType=CHAR},
+      post_one_level_note = #{record.postOneLevelNote,jdbcType=VARCHAR},
+      post_one_level_speak = #{record.postOneLevelSpeak,jdbcType=VARCHAR},
+      post_one_level_rank = #{record.postOneLevelRank,jdbcType=INTEGER},
+      post_one_level_createter = #{record.postOneLevelCreateter,jdbcType=CHAR},
+      post_one_level_createtetime = #{record.postOneLevelCreatetetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostOneLevel" >
+    update post_one_level
+    <set >
+      <if test="postOneLevelName != null" >
+        post_one_level_name = #{postOneLevelName,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelNote != null" >
+        post_one_level_note = #{postOneLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postOneLevelSpeak != null" >
+        post_one_level_speak = #{postOneLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postOneLevelRank != null" >
+        post_one_level_rank = #{postOneLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="postOneLevelCreateter != null" >
+        post_one_level_createter = #{postOneLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelCreatetetime != null" >
+        post_one_level_createtetime = #{postOneLevelCreatetetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_one_level_id = #{postOneLevelId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostOneLevel" >
+    update post_one_level
+    set post_one_level_name = #{postOneLevelName,jdbcType=CHAR},
+      post_one_level_note = #{postOneLevelNote,jdbcType=VARCHAR},
+      post_one_level_speak = #{postOneLevelSpeak,jdbcType=VARCHAR},
+      post_one_level_rank = #{postOneLevelRank,jdbcType=INTEGER},
+      post_one_level_createter = #{postOneLevelCreateter,jdbcType=CHAR},
+      post_one_level_createtetime = #{postOneLevelCreatetetime,jdbcType=TIMESTAMP}
+    where post_one_level_id = #{postOneLevelId,jdbcType=CHAR}
+  </update>
+</mapper>

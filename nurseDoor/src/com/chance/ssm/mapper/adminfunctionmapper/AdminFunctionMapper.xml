@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.adminfunctionmapper.AdminFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.AdminFunction" >
+    <id column="admin_function_id" property="adminFunctionId" jdbcType="CHAR" />
+    <result column="admin_function_modular_id" property="adminFunctionModularId" jdbcType="CHAR" />
+    <result column="admin_function_add" property="adminFunctionAdd" jdbcType="INTEGER" />
+    <result column="admin_function_del" property="adminFunctionDel" jdbcType="INTEGER" />
+    <result column="admin_function_upd" property="adminFunctionUpd" jdbcType="INTEGER" />
+    <result column="admin_function_sel" property="adminFunctionSel" jdbcType="INTEGER" />
+    <result column="admin_function_createter" property="adminFunctionCreateter" jdbcType="CHAR" />
+    <result column="admin_function_createtime" property="adminFunctionCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    admin_function_id, admin_function_modular_id, admin_function_add, admin_function_del, 
+    admin_function_upd, admin_function_sel, admin_function_createter, admin_function_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.AdminFunctionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin_function
+    where admin_function_id = #{adminFunctionId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from admin_function
+    where admin_function_id = #{adminFunctionId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.AdminFunctionExample" >
+    delete from admin_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.AdminFunction" >
+    insert into admin_function (admin_function_id, admin_function_modular_id, 
+      admin_function_add, admin_function_del, admin_function_upd, 
+      admin_function_sel, admin_function_createter, 
+      admin_function_createtime)
+    values (#{adminFunctionId,jdbcType=CHAR}, #{adminFunctionModularId,jdbcType=CHAR}, 
+      #{adminFunctionAdd,jdbcType=INTEGER}, #{adminFunctionDel,jdbcType=INTEGER}, #{adminFunctionUpd,jdbcType=INTEGER}, 
+      #{adminFunctionSel,jdbcType=INTEGER}, #{adminFunctionCreateter,jdbcType=CHAR}, 
+      #{adminFunctionCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.AdminFunction" >
+    insert into admin_function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminFunctionId != null" >
+        admin_function_id,
+      </if>
+      <if test="adminFunctionModularId != null" >
+        admin_function_modular_id,
+      </if>
+      <if test="adminFunctionAdd != null" >
+        admin_function_add,
+      </if>
+      <if test="adminFunctionDel != null" >
+        admin_function_del,
+      </if>
+      <if test="adminFunctionUpd != null" >
+        admin_function_upd,
+      </if>
+      <if test="adminFunctionSel != null" >
+        admin_function_sel,
+      </if>
+      <if test="adminFunctionCreateter != null" >
+        admin_function_createter,
+      </if>
+      <if test="adminFunctionCreatetime != null" >
+        admin_function_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminFunctionId != null" >
+        #{adminFunctionId,jdbcType=CHAR},
+      </if>
+      <if test="adminFunctionModularId != null" >
+        #{adminFunctionModularId,jdbcType=CHAR},
+      </if>
+      <if test="adminFunctionAdd != null" >
+        #{adminFunctionAdd,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionDel != null" >
+        #{adminFunctionDel,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionUpd != null" >
+        #{adminFunctionUpd,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionSel != null" >
+        #{adminFunctionSel,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionCreateter != null" >
+        #{adminFunctionCreateter,jdbcType=CHAR},
+      </if>
+      <if test="adminFunctionCreatetime != null" >
+        #{adminFunctionCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.AdminFunctionExample" resultType="java.lang.Integer" >
+    select count(*) from admin_function
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update admin_function
+    <set >
+      <if test="record.adminFunctionId != null" >
+        admin_function_id = #{record.adminFunctionId,jdbcType=CHAR},
+      </if>
+      <if test="record.adminFunctionModularId != null" >
+        admin_function_modular_id = #{record.adminFunctionModularId,jdbcType=CHAR},
+      </if>
+      <if test="record.adminFunctionAdd != null" >
+        admin_function_add = #{record.adminFunctionAdd,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminFunctionDel != null" >
+        admin_function_del = #{record.adminFunctionDel,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminFunctionUpd != null" >
+        admin_function_upd = #{record.adminFunctionUpd,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminFunctionSel != null" >
+        admin_function_sel = #{record.adminFunctionSel,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminFunctionCreateter != null" >
+        admin_function_createter = #{record.adminFunctionCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.adminFunctionCreatetime != null" >
+        admin_function_createtime = #{record.adminFunctionCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update admin_function
+    set admin_function_id = #{record.adminFunctionId,jdbcType=CHAR},
+      admin_function_modular_id = #{record.adminFunctionModularId,jdbcType=CHAR},
+      admin_function_add = #{record.adminFunctionAdd,jdbcType=INTEGER},
+      admin_function_del = #{record.adminFunctionDel,jdbcType=INTEGER},
+      admin_function_upd = #{record.adminFunctionUpd,jdbcType=INTEGER},
+      admin_function_sel = #{record.adminFunctionSel,jdbcType=INTEGER},
+      admin_function_createter = #{record.adminFunctionCreateter,jdbcType=CHAR},
+      admin_function_createtime = #{record.adminFunctionCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.AdminFunction" >
+    update admin_function
+    <set >
+      <if test="adminFunctionModularId != null" >
+        admin_function_modular_id = #{adminFunctionModularId,jdbcType=CHAR},
+      </if>
+      <if test="adminFunctionAdd != null" >
+        admin_function_add = #{adminFunctionAdd,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionDel != null" >
+        admin_function_del = #{adminFunctionDel,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionUpd != null" >
+        admin_function_upd = #{adminFunctionUpd,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionSel != null" >
+        admin_function_sel = #{adminFunctionSel,jdbcType=INTEGER},
+      </if>
+      <if test="adminFunctionCreateter != null" >
+        admin_function_createter = #{adminFunctionCreateter,jdbcType=CHAR},
+      </if>
+      <if test="adminFunctionCreatetime != null" >
+        admin_function_createtime = #{adminFunctionCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where admin_function_id = #{adminFunctionId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.AdminFunction" >
+    update admin_function
+    set admin_function_modular_id = #{adminFunctionModularId,jdbcType=CHAR},
+      admin_function_add = #{adminFunctionAdd,jdbcType=INTEGER},
+      admin_function_del = #{adminFunctionDel,jdbcType=INTEGER},
+      admin_function_upd = #{adminFunctionUpd,jdbcType=INTEGER},
+      admin_function_sel = #{adminFunctionSel,jdbcType=INTEGER},
+      admin_function_createter = #{adminFunctionCreateter,jdbcType=CHAR},
+      admin_function_createtime = #{adminFunctionCreatetime,jdbcType=TIMESTAMP}
+    where admin_function_id = #{adminFunctionId,jdbcType=CHAR}
+  </update>
+</mapper>

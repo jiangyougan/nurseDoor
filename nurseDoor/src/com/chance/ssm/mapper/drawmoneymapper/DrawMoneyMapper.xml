@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.drawmoneymapper.DrawMoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.DrawMoney" >
+    <result column="draw_money_id" property="drawMoneyId" jdbcType="CHAR" />
+    <result column="draw_money_size" property="drawMoneySize" jdbcType="DECIMAL" />
+    <result column="draw_money_users_id" property="drawMoneyUsersId" jdbcType="CHAR" />
+    <result column="draw_money_users_identity" property="drawMoneyUsersIdentity" jdbcType="INTEGER" />
+    <result column="draw_money_handleter" property="drawMoneyHandleter" jdbcType="CHAR" />
+    <result column="draw_money_note" property="drawMoneyNote" jdbcType="VARCHAR" />
+    <result column="draw_money_speak" property="drawMoneySpeak" jdbcType="VARCHAR" />
+    <result column="draw_money_over" property="drawMoneyOver" jdbcType="VARCHAR" />
+    <result column="draw_money_state" property="drawMoneyState" jdbcType="INTEGER" />
+    <result column="draw_money_createtime" property="drawMoneyCreatetime" jdbcType="TIMESTAMP" />
+    <result column="draw_money_handletime" property="drawMoneyHandletime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap1" type="com.chance.ssm.po.DrawMoney" >
+   <result column="userName" property="userName" jdbcType="CHAR" />
+   <result column="userNick" property="userNick" jdbcType="CHAR" />
+   <result column="userHeader" property="userHeader" jdbcType="CHAR" />
+   <result column="aliPayAccount" property="aliPayAccount" jdbcType="CHAR" />
+    <result column="draw_money_id" property="drawMoneyId" jdbcType="CHAR" />
+    <result column="draw_money_size" property="drawMoneySize" jdbcType="DECIMAL" />
+    <result column="draw_money_users_id" property="drawMoneyUsersId" jdbcType="CHAR" />
+    <result column="draw_money_users_identity" property="drawMoneyUsersIdentity" jdbcType="INTEGER" />
+    <result column="draw_money_handleter" property="drawMoneyHandleter" jdbcType="CHAR" />
+    <result column="draw_money_note" property="drawMoneyNote" jdbcType="VARCHAR" />
+    <result column="draw_money_speak" property="drawMoneySpeak" jdbcType="VARCHAR" />
+    <result column="draw_money_over" property="drawMoneyOver" jdbcType="VARCHAR" />
+    <result column="draw_money_state" property="drawMoneyState" jdbcType="INTEGER" />
+    <result column="draw_money_createtime" property="drawMoneyCreatetime" jdbcType="TIMESTAMP" />
+    <result column="draw_money_handletime" property="drawMoneyHandletime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    draw_money_id, draw_money_size, draw_money_users_id, draw_money_users_identity, draw_money_handleter, 
+    draw_money_note, draw_money_speak, draw_money_over, draw_money_state, draw_money_createtime, 
+    draw_money_handletime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.DrawMoneyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from draw_money
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.DrawMoneyExample" >
+    delete from draw_money
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.DrawMoney" >
+    insert into draw_money (draw_money_id, draw_money_size, draw_money_users_id, 
+      draw_money_users_identity, draw_money_handleter, 
+      draw_money_note, draw_money_speak, draw_money_over, 
+      draw_money_state, draw_money_createtime, 
+      draw_money_handletime)
+    values (#{drawMoneyId,jdbcType=CHAR}, #{drawMoneySize,jdbcType=DECIMAL}, #{drawMoneyUsersId,jdbcType=CHAR}, 
+      #{drawMoneyUsersIdentity,jdbcType=INTEGER}, #{drawMoneyHandleter,jdbcType=CHAR}, 
+      #{drawMoneyNote,jdbcType=VARCHAR}, #{drawMoneySpeak,jdbcType=VARCHAR}, #{drawMoneyOver,jdbcType=VARCHAR}, 
+      #{drawMoneyState,jdbcType=INTEGER}, #{drawMoneyCreatetime,jdbcType=TIMESTAMP}, 
+      #{drawMoneyHandletime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.DrawMoney" >
+    insert into draw_money
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="drawMoneyId != null" >
+        draw_money_id,
+      </if>
+      <if test="drawMoneySize != null" >
+        draw_money_size,
+      </if>
+      <if test="drawMoneyUsersId != null" >
+        draw_money_users_id,
+      </if>
+      <if test="drawMoneyUsersIdentity != null" >
+        draw_money_users_identity,
+      </if>
+      <if test="drawMoneyHandleter != null" >
+        draw_money_handleter,
+      </if>
+      <if test="drawMoneyNote != null" >
+        draw_money_note,
+      </if>
+      <if test="drawMoneySpeak != null" >
+        draw_money_speak,
+      </if>
+      <if test="drawMoneyOver != null" >
+        draw_money_over,
+      </if>
+      <if test="drawMoneyState != null" >
+        draw_money_state,
+      </if>
+      <if test="drawMoneyCreatetime != null" >
+        draw_money_createtime,
+      </if>
+      <if test="drawMoneyHandletime != null" >
+        draw_money_handletime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="drawMoneyId != null" >
+        #{drawMoneyId,jdbcType=CHAR},
+      </if>
+      <if test="drawMoneySize != null" >
+        #{drawMoneySize,jdbcType=DECIMAL},
+      </if>
+      <if test="drawMoneyUsersId != null" >
+        #{drawMoneyUsersId,jdbcType=CHAR},
+      </if>
+      <if test="drawMoneyUsersIdentity != null" >
+        #{drawMoneyUsersIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="drawMoneyHandleter != null" >
+        #{drawMoneyHandleter,jdbcType=CHAR},
+      </if>
+      <if test="drawMoneyNote != null" >
+        #{drawMoneyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="drawMoneySpeak != null" >
+        #{drawMoneySpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="drawMoneyOver != null" >
+        #{drawMoneyOver,jdbcType=VARCHAR},
+      </if>
+      <if test="drawMoneyState != null" >
+        #{drawMoneyState,jdbcType=INTEGER},
+      </if>
+      <if test="drawMoneyCreatetime != null" >
+        #{drawMoneyCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="drawMoneyHandletime != null" >
+        #{drawMoneyHandletime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.DrawMoneyExample" resultType="java.lang.Integer" >
+    select count(*) from draw_money
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update draw_money
+    <set >
+      <if test="record.drawMoneyId != null" >
+        draw_money_id = #{record.drawMoneyId,jdbcType=CHAR},
+      </if>
+      <if test="record.drawMoneySize != null" >
+        draw_money_size = #{record.drawMoneySize,jdbcType=DECIMAL},
+      </if>
+      <if test="record.drawMoneyUsersId != null" >
+        draw_money_users_id = #{record.drawMoneyUsersId,jdbcType=CHAR},
+      </if>
+      <if test="record.drawMoneyUsersIdentity != null" >
+        draw_money_users_identity = #{record.drawMoneyUsersIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.drawMoneyHandleter != null" >
+        draw_money_handleter = #{record.drawMoneyHandleter,jdbcType=CHAR},
+      </if>
+      <if test="record.drawMoneyNote != null" >
+        draw_money_note = #{record.drawMoneyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawMoneySpeak != null" >
+        draw_money_speak = #{record.drawMoneySpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawMoneyOver != null" >
+        draw_money_over = #{record.drawMoneyOver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawMoneyState != null" >
+        draw_money_state = #{record.drawMoneyState,jdbcType=INTEGER},
+      </if>
+      <if test="record.drawMoneyCreatetime != null" >
+        draw_money_createtime = #{record.drawMoneyCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.drawMoneyHandletime != null" >
+        draw_money_handletime = #{record.drawMoneyHandletime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update draw_money
+    set draw_money_id = #{record.drawMoneyId,jdbcType=CHAR},
+      draw_money_size = #{record.drawMoneySize,jdbcType=DECIMAL},
+      draw_money_users_id = #{record.drawMoneyUsersId,jdbcType=CHAR},
+      draw_money_users_identity = #{record.drawMoneyUsersIdentity,jdbcType=INTEGER},
+      draw_money_handleter = #{record.drawMoneyHandleter,jdbcType=CHAR},
+      draw_money_note = #{record.drawMoneyNote,jdbcType=VARCHAR},
+      draw_money_speak = #{record.drawMoneySpeak,jdbcType=VARCHAR},
+      draw_money_over = #{record.drawMoneyOver,jdbcType=VARCHAR},
+      draw_money_state = #{record.drawMoneyState,jdbcType=INTEGER},
+      draw_money_createtime = #{record.drawMoneyCreatetime,jdbcType=TIMESTAMP},
+      draw_money_handletime = #{record.drawMoneyHandletime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <!-- 查询用户正在申请提现的数据 -->
+  <select id="selectUserDrawMoneyNow" resultMap="BaseResultMap1" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+   SELECT draw_money.*,
+   user_name AS userName,
+   user_nick AS userNick,
+   user_header AS userHeader,
+   user_city AS aliPayAccount 
+   FROM draw_money,
+   USER 
+   WHERE 
+   draw_money_users_identity = 0 
+   AND 
+   draw_money_users_id = user_id
+   AND draw_money_state = 0 
+   AND
+   <![CDATA[(DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+     ORDER BY 
+   draw_money_createtime ASC 
+     LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+    <!-- 查询用户正在申请提现的数据的数量 -->
+  <select id="selectUserDrawMoneyNowCount" resultType="java.lang.Integer">
+   SELECT COUNT(*)
+   FROM draw_money,
+   USER 
+   WHERE 
+   draw_money_users_identity = 0 
+   AND 
+   draw_money_users_id = user_id
+   AND draw_money_state = 0 
+  </select>
+  
+  <!-- 查询用户提现过的数据 -->
+  <select id="selectUserDrawMoneyNed" resultMap="BaseResultMap1"  parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+   SELECT draw_money.*,
+   user_name AS userName,
+   user_nick AS userNick,
+   user_header AS userHeader,
+   user_city AS aliPayAccount 
+   FROM draw_money,
+   USER 
+   WHERE 
+   draw_money_users_identity = 0 
+   AND 
+   draw_money_users_id = user_id
+   AND draw_money_state != 0 
+   AND
+   <![CDATA[(DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+     ORDER BY 
+   draw_money_handletime DESC 
+     LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+   <!-- 查询用户提现过的数据的数量 -->
+   <select id="selectUserDrawMoneyNedCount" resultType="java.lang.Integer">
+    SELECT COUNT(*)
+   FROM draw_money,
+   USER 
+   WHERE 
+   draw_money_users_identity = 0 
+   AND 
+   draw_money_users_id = user_id
+   AND draw_money_state != 0 
+   </select>
+  <!-- 查询护士正在申请提现的数据 -->
+  <select id="selectNurseDrawMoneyNow" resultMap="BaseResultMap1" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+   SELECT draw_money.*,
+   nurse_name AS userName,
+   nurse_nick AS userNick,
+   nurse_header AS userHeader,
+   nurse_payment_settings_account AS aliPayAccount 
+   FROM draw_money,
+   nurse   
+   LEFT JOIN  
+   nurse_payment_settings 
+   ON 
+   nurse_id = nurse_payment_settings_nurse_id
+   WHERE 
+   draw_money_users_identity = 1 
+   AND 
+   draw_money_users_id = nurse_id
+   AND 
+   draw_money_state = 0
+   AND
+    <![CDATA[(DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+      ORDER BY 
+   draw_money_createtime ASC 
+     LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+  <!-- 查询护士正在申请提现的数据的数量 -->
+  <select id="selectNurseDrawMoneyNowCount" resultType="java.lang.Integer" >
+  SELECT COUNT(*)
+   FROM draw_money,
+   nurse   
+   LEFT JOIN  
+   nurse_payment_settings 
+   ON 
+   nurse_id = nurse_payment_settings_nurse_id
+   WHERE 
+   draw_money_users_identity = 1 
+   AND 
+   draw_money_users_id = nurse_id
+   AND 
+   draw_money_state = 0
+  </select>
+  <!-- 查询护士提现过的数据 -->
+  <select id="selectNurseDrawMoneyNed" resultMap="BaseResultMap1" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+  SELECT draw_money.*,
+   nurse_name AS userName,
+   nurse_nick AS userNick,
+   nurse_header AS userHeader,
+   nurse_payment_settings_account AS aliPayAccount 
+   FROM draw_money,
+   nurse   
+   LEFT JOIN  
+   nurse_payment_settings 
+   ON 
+   nurse_id = nurse_payment_settings_nurse_id
+   WHERE 
+   draw_money_users_identity = 1 
+   AND 
+   draw_money_users_id = nurse_id
+   AND 
+   draw_money_state != 0
+   AND
+    <![CDATA[(DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(draw_money_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+     ORDER BY 
+   draw_money_handletime DESC 
+     LIMIT
+	 #{start},
+	 #{rows} 
+   </select>
+   <!-- 查询护士提现过的数据的数量 -->
+   <select id="selectNurseDrawMoneyNedCount" resultType="java.lang.Integer">
+   SELECT COUNT(*)
+   FROM draw_money,
+   nurse   
+   LEFT JOIN  
+   nurse_payment_settings 
+   ON 
+   nurse_id = nurse_payment_settings_nurse_id
+   WHERE 
+   draw_money_users_identity = 1 
+   AND 
+   draw_money_users_id = nurse_id
+   AND 
+   draw_money_state != 0
+   </select>
+</mapper>

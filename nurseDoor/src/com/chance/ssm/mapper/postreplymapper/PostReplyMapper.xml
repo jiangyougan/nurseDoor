@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postreplymapper.PostReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostReply" >
+    <id column="post_reply_id" property="postReplyId" jdbcType="CHAR" />
+    <result column="post_reply_reply_to_people" property="postReplyReplyToPeople" jdbcType="CHAR" />
+    <result column="post_reply_be_reply_to_people" property="postReplyBeReplyToPeople" jdbcType="CHAR" />
+    <result column="post_reply_post_three_id" property="postReplyPostThreeId" jdbcType="CHAR" />
+    <result column="post_reply_content" property="postReplyContent" jdbcType="VARCHAR" />
+    <result column="post_reply_note" property="postReplyNote" jdbcType="VARCHAR" />
+    <result column="post_reply_speak" property="postReplySpeak" jdbcType="VARCHAR" />
+    <result column="post_reply_createtime" property="postReplyCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_reply_id, post_reply_reply_to_people, post_reply_be_reply_to_people, post_reply_post_three_id, 
+    post_reply_content, post_reply_note, post_reply_speak, post_reply_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostReplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_reply
+    where post_reply_id = #{postReplyId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_reply
+    where post_reply_id = #{postReplyId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostReplyExample" >
+    delete from post_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostReply" >
+    insert into post_reply (post_reply_id, post_reply_reply_to_people, post_reply_be_reply_to_people, 
+      post_reply_post_three_id, post_reply_content, post_reply_note, 
+      post_reply_speak, post_reply_createtime)
+    values (#{postReplyId,jdbcType=CHAR}, #{postReplyReplyToPeople,jdbcType=CHAR}, #{postReplyBeReplyToPeople,jdbcType=CHAR}, 
+      #{postReplyPostThreeId,jdbcType=CHAR}, #{postReplyContent,jdbcType=VARCHAR}, #{postReplyNote,jdbcType=VARCHAR}, 
+      #{postReplySpeak,jdbcType=VARCHAR}, #{postReplyCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.PostReply" >
+    insert into post_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postReplyId != null" >
+        post_reply_id,
+      </if>
+      <if test="postReplyReplyToPeople != null" >
+        post_reply_reply_to_people,
+      </if>
+      <if test="postReplyBeReplyToPeople != null" >
+        post_reply_be_reply_to_people,
+      </if>
+      <if test="postReplyPostThreeId != null" >
+        post_reply_post_three_id,
+      </if>
+      <if test="postReplyContent != null" >
+        post_reply_content,
+      </if>
+      <if test="postReplyNote != null" >
+        post_reply_note,
+      </if>
+      <if test="postReplySpeak != null" >
+        post_reply_speak,
+      </if>
+      <if test="postReplyCreatetime != null" >
+        post_reply_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postReplyId != null" >
+        #{postReplyId,jdbcType=CHAR},
+      </if>
+      <if test="postReplyReplyToPeople != null" >
+        #{postReplyReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="postReplyBeReplyToPeople != null" >
+        #{postReplyBeReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="postReplyPostThreeId != null" >
+        #{postReplyPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="postReplyContent != null" >
+        #{postReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplyNote != null" >
+        #{postReplyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplySpeak != null" >
+        #{postReplySpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplyCreatetime != null" >
+        #{postReplyCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostReplyExample" resultType="java.lang.Integer" >
+    select count(*) from post_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_reply
+    <set >
+      <if test="record.postReplyId != null" >
+        post_reply_id = #{record.postReplyId,jdbcType=CHAR},
+      </if>
+      <if test="record.postReplyReplyToPeople != null" >
+        post_reply_reply_to_people = #{record.postReplyReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="record.postReplyBeReplyToPeople != null" >
+        post_reply_be_reply_to_people = #{record.postReplyBeReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="record.postReplyPostThreeId != null" >
+        post_reply_post_three_id = #{record.postReplyPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="record.postReplyContent != null" >
+        post_reply_content = #{record.postReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postReplyNote != null" >
+        post_reply_note = #{record.postReplyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postReplySpeak != null" >
+        post_reply_speak = #{record.postReplySpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postReplyCreatetime != null" >
+        post_reply_createtime = #{record.postReplyCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_reply
+    set post_reply_id = #{record.postReplyId,jdbcType=CHAR},
+      post_reply_reply_to_people = #{record.postReplyReplyToPeople,jdbcType=CHAR},
+      post_reply_be_reply_to_people = #{record.postReplyBeReplyToPeople,jdbcType=CHAR},
+      post_reply_post_three_id = #{record.postReplyPostThreeId,jdbcType=CHAR},
+      post_reply_content = #{record.postReplyContent,jdbcType=VARCHAR},
+      post_reply_note = #{record.postReplyNote,jdbcType=VARCHAR},
+      post_reply_speak = #{record.postReplySpeak,jdbcType=VARCHAR},
+      post_reply_createtime = #{record.postReplyCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostReply" >
+    update post_reply
+    <set >
+      <if test="postReplyReplyToPeople != null" >
+        post_reply_reply_to_people = #{postReplyReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="postReplyBeReplyToPeople != null" >
+        post_reply_be_reply_to_people = #{postReplyBeReplyToPeople,jdbcType=CHAR},
+      </if>
+      <if test="postReplyPostThreeId != null" >
+        post_reply_post_three_id = #{postReplyPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="postReplyContent != null" >
+        post_reply_content = #{postReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplyNote != null" >
+        post_reply_note = #{postReplyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplySpeak != null" >
+        post_reply_speak = #{postReplySpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postReplyCreatetime != null" >
+        post_reply_createtime = #{postReplyCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_reply_id = #{postReplyId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostReply" >
+    update post_reply
+    set post_reply_reply_to_people = #{postReplyReplyToPeople,jdbcType=CHAR},
+      post_reply_be_reply_to_people = #{postReplyBeReplyToPeople,jdbcType=CHAR},
+      post_reply_post_three_id = #{postReplyPostThreeId,jdbcType=CHAR},
+      post_reply_content = #{postReplyContent,jdbcType=VARCHAR},
+      post_reply_note = #{postReplyNote,jdbcType=VARCHAR},
+      post_reply_speak = #{postReplySpeak,jdbcType=VARCHAR},
+      post_reply_createtime = #{postReplyCreatetime,jdbcType=TIMESTAMP}
+    where post_reply_id = #{postReplyId,jdbcType=CHAR}
+  </update>
+  <!-- 根据三级帖子id查询所有回复 -->
+  <select id="selectPostReplyByThreePsotId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT post_reply.*
+  FROM 
+  post_reply,
+  nurse  
+  WHERE 
+  post_reply_post_three_id = #{postReplyPostThreeId,jdbcType=CHAR}
+  AND 
+  (post_reply_reply_to_people = nurse_id 
+  OR post_reply_be_reply_to_people = nurse_id)
+  ORDER BY post_reply_note DESC, 
+  post_reply_createtime ASC 
+  </select>
+  
+  <!-- 查看我是不是第一次回复该帖子 -->
+  <select id="selectPostReplyForNurse" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT * FROM post_reply  WHERE post_reply_reply_to_people = #{postReplyReplyToPeople,jdbcType=CHAR}
+ 	AND  post_reply_post_three_id= #{postReplyPostThreeId,jdbcType=CHAR}
+  	ORDER BY post_reply_createtime ASC LIMIT 0 ,1
+  </select>
+  
+  <!-- 获取最大帖子标识 -->
+  <select id="selectMaxPostNote" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM post_reply WHERE post_reply_post_three_id = #{postReplyPostThreeId,jdbcType=CHAR} ORDER BY post_reply_note DESC LIMIT 0,1
+  </select>
+</mapper>

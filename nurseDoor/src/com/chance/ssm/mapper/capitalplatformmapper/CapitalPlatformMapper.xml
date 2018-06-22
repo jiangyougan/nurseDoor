@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.capitalplatformmapper.CapitalPlatformMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CapitalPlatform" >
+    <id column="capital_platform_id" property="capitalPlatformId" jdbcType="INTEGER" />
+    <result column="capital_platform_money" property="capitalPlatformMoney" jdbcType="DECIMAL" />
+    <result column="capital_platform_order_send_id" property="capitalPlatformOrderSendId" jdbcType="CHAR" />
+    <result column="capital_platform_note" property="capitalPlatformNote" jdbcType="VARCHAR" />
+    <result column="capital_platform_speak" property="capitalPlatformSpeak" jdbcType="VARCHAR" />
+    <result column="capital_platform_over" property="capitalPlatformOver" jdbcType="VARCHAR" />
+    <result column="capital_platform_createtime" property="capitalPlatformCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    capital_platform_id, capital_platform_money, capital_platform_order_send_id, capital_platform_note, 
+    capital_platform_speak, capital_platform_over, capital_platform_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CapitalPlatformExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from capital_platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from capital_platform
+    where capital_platform_id = #{capitalPlatformId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from capital_platform
+    where capital_platform_id = #{capitalPlatformId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CapitalPlatformExample" >
+    delete from capital_platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CapitalPlatform" >
+    insert into capital_platform (capital_platform_id, capital_platform_money, 
+      capital_platform_order_send_id, capital_platform_note, 
+      capital_platform_speak, capital_platform_over, 
+      capital_platform_createtime)
+    values (#{capitalPlatformId,jdbcType=INTEGER}, #{capitalPlatformMoney,jdbcType=DECIMAL}, 
+      #{capitalPlatformOrderSendId,jdbcType=CHAR}, #{capitalPlatformNote,jdbcType=VARCHAR}, 
+      #{capitalPlatformSpeak,jdbcType=VARCHAR}, #{capitalPlatformOver,jdbcType=VARCHAR}, 
+      #{capitalPlatformCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.CapitalPlatform" >
+    insert into capital_platform
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="capitalPlatformId != null" >
+        capital_platform_id,
+      </if>
+      <if test="capitalPlatformMoney != null" >
+        capital_platform_money,
+      </if>
+      <if test="capitalPlatformOrderSendId != null" >
+        capital_platform_order_send_id,
+      </if>
+      <if test="capitalPlatformNote != null" >
+        capital_platform_note,
+      </if>
+      <if test="capitalPlatformSpeak != null" >
+        capital_platform_speak,
+      </if>
+      <if test="capitalPlatformOver != null" >
+        capital_platform_over,
+      </if>
+      <if test="capitalPlatformCreatetime != null" >
+        capital_platform_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="capitalPlatformId != null" >
+        #{capitalPlatformId,jdbcType=INTEGER},
+      </if>
+      <if test="capitalPlatformMoney != null" >
+        #{capitalPlatformMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalPlatformOrderSendId != null" >
+        #{capitalPlatformOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="capitalPlatformNote != null" >
+        #{capitalPlatformNote,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformSpeak != null" >
+        #{capitalPlatformSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformOver != null" >
+        #{capitalPlatformOver,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformCreatetime != null" >
+        #{capitalPlatformCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CapitalPlatformExample" resultType="java.lang.Integer" >
+    select count(*) from capital_platform
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update capital_platform
+    <set >
+      <if test="record.capitalPlatformId != null" >
+        capital_platform_id = #{record.capitalPlatformId,jdbcType=INTEGER},
+      </if>
+      <if test="record.capitalPlatformMoney != null" >
+        capital_platform_money = #{record.capitalPlatformMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.capitalPlatformOrderSendId != null" >
+        capital_platform_order_send_id = #{record.capitalPlatformOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="record.capitalPlatformNote != null" >
+        capital_platform_note = #{record.capitalPlatformNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalPlatformSpeak != null" >
+        capital_platform_speak = #{record.capitalPlatformSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalPlatformOver != null" >
+        capital_platform_over = #{record.capitalPlatformOver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.capitalPlatformCreatetime != null" >
+        capital_platform_createtime = #{record.capitalPlatformCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update capital_platform
+    set capital_platform_id = #{record.capitalPlatformId,jdbcType=INTEGER},
+      capital_platform_money = #{record.capitalPlatformMoney,jdbcType=DECIMAL},
+      capital_platform_order_send_id = #{record.capitalPlatformOrderSendId,jdbcType=CHAR},
+      capital_platform_note = #{record.capitalPlatformNote,jdbcType=VARCHAR},
+      capital_platform_speak = #{record.capitalPlatformSpeak,jdbcType=VARCHAR},
+      capital_platform_over = #{record.capitalPlatformOver,jdbcType=VARCHAR},
+      capital_platform_createtime = #{record.capitalPlatformCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.CapitalPlatform" >
+    update capital_platform
+    <set >
+      <if test="capitalPlatformMoney != null" >
+        capital_platform_money = #{capitalPlatformMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="capitalPlatformOrderSendId != null" >
+        capital_platform_order_send_id = #{capitalPlatformOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="capitalPlatformNote != null" >
+        capital_platform_note = #{capitalPlatformNote,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformSpeak != null" >
+        capital_platform_speak = #{capitalPlatformSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformOver != null" >
+        capital_platform_over = #{capitalPlatformOver,jdbcType=VARCHAR},
+      </if>
+      <if test="capitalPlatformCreatetime != null" >
+        capital_platform_createtime = #{capitalPlatformCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where capital_platform_id = #{capitalPlatformId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CapitalPlatform" >
+    update capital_platform
+    set capital_platform_money = #{capitalPlatformMoney,jdbcType=DECIMAL},
+      capital_platform_order_send_id = #{capitalPlatformOrderSendId,jdbcType=CHAR},
+      capital_platform_note = #{capitalPlatformNote,jdbcType=VARCHAR},
+      capital_platform_speak = #{capitalPlatformSpeak,jdbcType=VARCHAR},
+      capital_platform_over = #{capitalPlatformOver,jdbcType=VARCHAR},
+      capital_platform_createtime = #{capitalPlatformCreatetime,jdbcType=TIMESTAMP}
+    where capital_platform_id = #{capitalPlatformId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 本日资金池 -->
+	<select id="SelCapitalSumMoney" resultType="java.math.BigDecimal" >
+	 SELECT
+	 SUM(capital_platform_money) 
+	 FROM
+	 capital_platform
+	 WHERE
+	 DATE_FORMAT(capital_platform_createtime,'%y%m%d') = DATE_FORMAT(NOW(),'%y%m%d')
+	</select>
+	<!-- 本月资金池 -->
+	<select id="SelCapitalSumMoneyMonth" resultType="java.math.BigDecimal">
+	SELECT
+	 SUM(capital_platform_money) 
+	 FROM
+	 capital_platform
+	 WHERE
+	 DATE_FORMAT(capital_platform_createtime,'%y%m') = DATE_FORMAT(NOW(),'%y%m')
+	</select>
+	<!-- 本年资金池 -->
+	<select id="SelCapitalSumMoneyYear" resultType="java.math.BigDecimal">
+	 SELECT
+	 SUM(capital_platform_money) 
+	 FROM
+	 capital_platform
+	 WHERE
+	 DATE_FORMAT(capital_platform_createtime,'%y') = DATE_FORMAT(NOW(),'%y')
+	</select>
+</mapper>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postthreeleveldetailsmapper.PostThreeLevelDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostThreeLevelDetails" >
+    <id column="post_three_level_details_id" property="postThreeLevelDetailsId" jdbcType="CHAR" />
+    <result column="post_two_level_id" property="postTwoLevelId" jdbcType="CHAR" />
+    <result column="post_three_level_details_title" property="postThreeLevelDetailsTitle" jdbcType="VARCHAR" />
+    <result column="post_three_level_details_thing_number" property="postThreeLevelDetailsThingNumber" jdbcType="INTEGER" />
+    <result column="post_three_level_details_comment_number" property="postThreeLevelDetailsCommentNumber" jdbcType="INTEGER" />
+    <result column="post_three_level_details_rank" property="postThreeLevelDetailsRank" jdbcType="INTEGER" />
+    <result column="post_three_level_details_add" property="postThreeLevelDetailsAdd" jdbcType="INTEGER" />
+    <result column="post_three_level_details_note" property="postThreeLevelDetailsNote" jdbcType="VARCHAR" />
+    <result column="post_three_level_details_speak" property="postThreeLevelDetailsSpeak" jdbcType="VARCHAR" />
+    <result column="post_three_level_details_link" property="postThreeLevelDetailsLink" jdbcType="VARCHAR" />
+    <result column="post_three_level_details_createter" property="postThreeLevelDetailsCreateter" jdbcType="CHAR" />
+    <result column="post_three_level_details_createtime" property="postThreeLevelDetailsCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.chance.ssm.po.PostThreeLevelDetails" extends="BaseResultMap" >
+    <result column="post_three_level_details_content" property="postThreeLevelDetailsContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_three_level_details_id, post_two_level_id, post_three_level_details_title, post_three_level_details_thing_number, 
+    post_three_level_details_comment_number, post_three_level_details_rank, post_three_level_details_add, 
+    post_three_level_details_note, post_three_level_details_speak, post_three_level_details_link, 
+    post_three_level_details_createter, post_three_level_details_createtime
+  </sql>
+  <sql id="Blob_Column_List" >
+    post_three_level_details_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.chance.ssm.po.PostThreeLevelDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post_three_level_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostThreeLevelDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_three_level_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectpostthreeleveldetailsByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post_three_level_details
+    where post_three_level_details_id = #{postThreeLevelDetailsId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_three_level_details
+    where post_three_level_details_id = #{postThreeLevelDetailsId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostThreeLevelDetailsExample" >
+    delete from post_three_level_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostThreeLevelDetails" >
+    insert into post_three_level_details (post_three_level_details_id, post_two_level_id, 
+      post_three_level_details_title, post_three_level_details_thing_number, 
+      post_three_level_details_comment_number, post_three_level_details_rank, 
+      post_three_level_details_add, post_three_level_details_note, 
+      post_three_level_details_speak, post_three_level_details_link, 
+      post_three_level_details_createter, post_three_level_details_createtime, 
+      post_three_level_details_content)
+    values (#{postThreeLevelDetailsId,jdbcType=CHAR}, #{postTwoLevelId,jdbcType=CHAR}, 
+      #{postThreeLevelDetailsTitle,jdbcType=VARCHAR}, #{postThreeLevelDetailsThingNumber,jdbcType=INTEGER}, 
+      #{postThreeLevelDetailsCommentNumber,jdbcType=INTEGER}, #{postThreeLevelDetailsRank,jdbcType=INTEGER}, 
+      #{postThreeLevelDetailsAdd,jdbcType=INTEGER}, #{postThreeLevelDetailsNote,jdbcType=VARCHAR}, 
+      #{postThreeLevelDetailsSpeak,jdbcType=VARCHAR}, #{postThreeLevelDetailsLink,jdbcType=VARCHAR}, 
+      #{postThreeLevelDetailsCreateter,jdbcType=CHAR}, #{postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP}, 
+      #{postThreeLevelDetailsContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertPostThreeLevelDetailsSelective" parameterType="com.chance.ssm.po.PostThreeLevelDetails" >
+    insert into post_three_level_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postThreeLevelDetailsId != null" >
+        post_three_level_details_id,
+      </if>
+      <if test="postTwoLevelId != null" >
+        post_two_level_id,
+      </if>
+      <if test="postThreeLevelDetailsTitle != null" >
+        post_three_level_details_title,
+      </if>
+      <if test="postThreeLevelDetailsThingNumber != null" >
+        post_three_level_details_thing_number,
+      </if>
+      <if test="postThreeLevelDetailsCommentNumber != null" >
+        post_three_level_details_comment_number,
+      </if>
+      <if test="postThreeLevelDetailsRank != null" >
+        post_three_level_details_rank,
+      </if>
+      <if test="postThreeLevelDetailsAdd != null" >
+        post_three_level_details_add,
+      </if>
+      <if test="postThreeLevelDetailsNote != null" >
+        post_three_level_details_note,
+      </if>
+      <if test="postThreeLevelDetailsSpeak != null" >
+        post_three_level_details_speak,
+      </if>
+      <if test="postThreeLevelDetailsLink != null" >
+        post_three_level_details_link,
+      </if>
+      <if test="postThreeLevelDetailsCreateter != null" >
+        post_three_level_details_createter,
+      </if>
+      <if test="postThreeLevelDetailsCreatetime != null" >
+        post_three_level_details_createtime,
+      </if>
+      <if test="postThreeLevelDetailsContent != null" >
+        post_three_level_details_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postThreeLevelDetailsId != null" >
+        #{postThreeLevelDetailsId,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelId != null" >
+        #{postTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postThreeLevelDetailsTitle != null" >
+        #{postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsThingNumber != null" >
+        #{postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsCommentNumber != null" >
+        #{postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsRank != null" >
+        #{postThreeLevelDetailsRank,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsAdd != null" >
+        #{postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsNote != null" >
+        #{postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsSpeak != null" >
+        #{postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsLink != null" >
+        #{postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsCreateter != null" >
+        #{postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postThreeLevelDetailsCreatetime != null" >
+        #{postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postThreeLevelDetailsContent != null" >
+        #{postThreeLevelDetailsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostThreeLevelDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from post_three_level_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_three_level_details
+    <set >
+      <if test="record.postThreeLevelDetailsId != null" >
+        post_three_level_details_id = #{record.postThreeLevelDetailsId,jdbcType=CHAR},
+      </if>
+      <if test="record.postTwoLevelId != null" >
+        post_two_level_id = #{record.postTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsTitle != null" >
+        post_three_level_details_title = #{record.postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsThingNumber != null" >
+        post_three_level_details_thing_number = #{record.postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.postThreeLevelDetailsCommentNumber != null" >
+        post_three_level_details_comment_number = #{record.postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.postThreeLevelDetailsRank != null" >
+        post_three_level_details_rank = #{record.postThreeLevelDetailsRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.postThreeLevelDetailsAdd != null" >
+        post_three_level_details_add = #{record.postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      </if>
+      <if test="record.postThreeLevelDetailsNote != null" >
+        post_three_level_details_note = #{record.postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsSpeak != null" >
+        post_three_level_details_speak = #{record.postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsLink != null" >
+        post_three_level_details_link = #{record.postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsCreateter != null" >
+        post_three_level_details_createter = #{record.postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.postThreeLevelDetailsCreatetime != null" >
+        post_three_level_details_createtime = #{record.postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.postThreeLevelDetailsContent != null" >
+        post_three_level_details_content = #{record.postThreeLevelDetailsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update post_three_level_details
+    set post_three_level_details_id = #{record.postThreeLevelDetailsId,jdbcType=CHAR},
+      post_two_level_id = #{record.postTwoLevelId,jdbcType=CHAR},
+      post_three_level_details_title = #{record.postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      post_three_level_details_thing_number = #{record.postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      post_three_level_details_comment_number = #{record.postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      post_three_level_details_rank = #{record.postThreeLevelDetailsRank,jdbcType=INTEGER},
+      post_three_level_details_add = #{record.postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      post_three_level_details_note = #{record.postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      post_three_level_details_speak = #{record.postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      post_three_level_details_link = #{record.postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      post_three_level_details_createter = #{record.postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      post_three_level_details_createtime = #{record.postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP},
+      post_three_level_details_content = #{record.postThreeLevelDetailsContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_three_level_details
+    set post_three_level_details_id = #{record.postThreeLevelDetailsId,jdbcType=CHAR},
+      post_two_level_id = #{record.postTwoLevelId,jdbcType=CHAR},
+      post_three_level_details_title = #{record.postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      post_three_level_details_thing_number = #{record.postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      post_three_level_details_comment_number = #{record.postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      post_three_level_details_rank = #{record.postThreeLevelDetailsRank,jdbcType=INTEGER},
+      post_three_level_details_add = #{record.postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      post_three_level_details_note = #{record.postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      post_three_level_details_speak = #{record.postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      post_three_level_details_link = #{record.postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      post_three_level_details_createter = #{record.postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      post_three_level_details_createtime = #{record.postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostThreeLevelDetails" >
+    update post_three_level_details
+    <set >
+      <if test="postTwoLevelId != null" >
+        post_two_level_id = #{postTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postThreeLevelDetailsTitle != null" >
+        post_three_level_details_title = #{postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsThingNumber != null" >
+        post_three_level_details_thing_number = #{postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsCommentNumber != null" >
+        post_three_level_details_comment_number = #{postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsRank != null" >
+        post_three_level_details_rank = #{postThreeLevelDetailsRank,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsAdd != null" >
+        post_three_level_details_add = #{postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      </if>
+      <if test="postThreeLevelDetailsNote != null" >
+        post_three_level_details_note = #{postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsSpeak != null" >
+        post_three_level_details_speak = #{postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsLink != null" >
+        post_three_level_details_link = #{postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      </if>
+      <if test="postThreeLevelDetailsCreateter != null" >
+        post_three_level_details_createter = #{postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postThreeLevelDetailsCreatetime != null" >
+        post_three_level_details_createtime = #{postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postThreeLevelDetailsContent != null" >
+        post_three_level_details_content = #{postThreeLevelDetailsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where post_three_level_details_id = #{postThreeLevelDetailsId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.chance.ssm.po.PostThreeLevelDetails" >
+    update post_three_level_details
+    set post_two_level_id = #{postTwoLevelId,jdbcType=CHAR},
+      post_three_level_details_title = #{postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      post_three_level_details_thing_number = #{postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      post_three_level_details_comment_number = #{postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      post_three_level_details_rank = #{postThreeLevelDetailsRank,jdbcType=INTEGER},
+      post_three_level_details_add = #{postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      post_three_level_details_note = #{postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      post_three_level_details_speak = #{postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      post_three_level_details_link = #{postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      post_three_level_details_createter = #{postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      post_three_level_details_createtime = #{postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP},
+      post_three_level_details_content = #{postThreeLevelDetailsContent,jdbcType=LONGVARCHAR}
+    where post_three_level_details_id = #{postThreeLevelDetailsId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostThreeLevelDetails" >
+    update post_three_level_details
+    set post_two_level_id = #{postTwoLevelId,jdbcType=CHAR},
+      post_three_level_details_title = #{postThreeLevelDetailsTitle,jdbcType=VARCHAR},
+      post_three_level_details_thing_number = #{postThreeLevelDetailsThingNumber,jdbcType=INTEGER},
+      post_three_level_details_comment_number = #{postThreeLevelDetailsCommentNumber,jdbcType=INTEGER},
+      post_three_level_details_rank = #{postThreeLevelDetailsRank,jdbcType=INTEGER},
+      post_three_level_details_add = #{postThreeLevelDetailsAdd,jdbcType=INTEGER},
+      post_three_level_details_note = #{postThreeLevelDetailsNote,jdbcType=VARCHAR},
+      post_three_level_details_speak = #{postThreeLevelDetailsSpeak,jdbcType=VARCHAR},
+      post_three_level_details_link = #{postThreeLevelDetailsLink,jdbcType=VARCHAR},
+      post_three_level_details_createter = #{postThreeLevelDetailsCreateter,jdbcType=CHAR},
+      post_three_level_details_createtime = #{postThreeLevelDetailsCreatetime,jdbcType=TIMESTAMP}
+    where post_three_level_details_id = #{postThreeLevelDetailsId,jdbcType=CHAR}
+  </update>
+  <!-- 查询精品帖子 -->
+  <select id="selectPostThreeLevelDetailsInfo" resultMap="BaseResultMap">
+    SELECT * FROM post_three_level_details WHERE post_three_level_details_add =1
+  </select>
+  
+  
+  <!-- 根据二级学术圈Idc查询帖子详情 -->
+  <select id="selectPostThreeLevelDetailsInfoByPostTwoId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM post_three_level_details WHERE post_two_level_id=#{postTwoLevelId,jdbcType=CHAR} AND post_three_level_details_add = 0
+  </select>
+  
+  <!-- 后台管理 -->
+  <!-- 查询所有帖子 -->
+  <select id="selectPostThreeLevelDetailsAllInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	SELECT * FROM post_three_level_details 
+  	LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+  <!-- 查询所有帖子数量 -->
+  <select id="selectPostThreeLevelDetailsAllInfoCount" resultType="java.lang.Integer">
+  	  SELECT COUNT(*) FROM post_three_level_details 
+  </select>
+  
+   <!-- 查询精品帖子 -->
+  <select id="selectPostThreeLevelDetailsManageInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT * FROM post_three_level_details WHERE post_three_level_details_add =1
+    LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+  
+   <!-- 查询精品帖子数量 -->
+  <!-- <select id="selectPostThreeLevelDetailsManageInfoCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM post_three_level_details WHERE post_three_level_details_add =1
+  </select> -->
+  
+  <!-- 根据二级学术圈Id查询帖子详情 -->
+  <select id="selectPostThreeLevelDetailsInfoManageByPostTwoId" resultMap="BaseResultMap" >
+  SELECT * FROM post_three_level_details WHERE post_two_level_id=#{0} AND post_three_level_details_add = 0
+   LIMIT
+	 #{1},
+	 #{2} 
+  </select>
+  
+  <select id="selectKeyWordFromPostThree" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from 
+  post_three_level_details
+  WHERE 
+  <if test="_parameter != null">
+  post_three_level_details_title like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  post_three_level_details_content like '%${_parameter}%'
+  </if> 
+    OR
+  <if test="_parameter != null">
+  post_three_level_details_speak like '%${_parameter}%'
+  </if>
+ </select>
+</mapper>

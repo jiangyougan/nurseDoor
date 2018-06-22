@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.posttwolevelmapper.PostTwoLevelMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostTwoLevel" >
+    <id column="post_two_level_id" property="postTwoLevelId" jdbcType="CHAR" />
+    <result column="post_one_level_id" property="postOneLevelId" jdbcType="CHAR" />
+    <result column="post_two_level_name" property="postTwoLevelName" jdbcType="CHAR" />
+    <result column="post_two_level_note" property="postTwoLevelNote" jdbcType="VARCHAR" />
+    <result column="post_two_level_speak" property="postTwoLevelSpeak" jdbcType="VARCHAR" />
+    <result column="post_two_level_rank" property="postTwoLevelRank" jdbcType="INTEGER" />
+    <result column="post_two_level_createter" property="postTwoLevelCreateter" jdbcType="CHAR" />
+    <result column="post_two_level_createtime" property="postTwoLevelCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_two_level_id, post_one_level_id, post_two_level_name, post_two_level_note, post_two_level_speak, 
+    post_two_level_rank, post_two_level_createter, post_two_level_createtime
+  </sql>
+  <select id="selectPostTwoLevelByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostTwoLevelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_two_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_two_level
+    where post_two_level_id = #{postTwoLevelId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_two_level
+    where post_two_level_id = #{postTwoLevelId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostTwoLevelExample" >
+    delete from post_two_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostTwoLevel" >
+    insert into post_two_level (post_two_level_id, post_one_level_id, post_two_level_name, 
+      post_two_level_note, post_two_level_speak, post_two_level_rank, 
+      post_two_level_createter, post_two_level_createtime
+      )
+    values (#{postTwoLevelId,jdbcType=CHAR}, #{postOneLevelId,jdbcType=CHAR}, #{postTwoLevelName,jdbcType=CHAR}, 
+      #{postTwoLevelNote,jdbcType=VARCHAR}, #{postTwoLevelSpeak,jdbcType=VARCHAR}, #{postTwoLevelRank,jdbcType=INTEGER}, 
+      #{postTwoLevelCreateter,jdbcType=CHAR}, #{postTwoLevelCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertPostTwoLevelSelective" parameterType="com.chance.ssm.po.PostTwoLevel" >
+    insert into post_two_level
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postTwoLevelId != null" >
+        post_two_level_id,
+      </if>
+      <if test="postOneLevelId != null" >
+        post_one_level_id,
+      </if>
+      <if test="postTwoLevelName != null" >
+        post_two_level_name,
+      </if>
+      <if test="postTwoLevelNote != null" >
+        post_two_level_note,
+      </if>
+      <if test="postTwoLevelSpeak != null" >
+        post_two_level_speak,
+      </if>
+      <if test="postTwoLevelRank != null" >
+        post_two_level_rank,
+      </if>
+      <if test="postTwoLevelCreateter != null" >
+        post_two_level_createter,
+      </if>
+      <if test="postTwoLevelCreatetime != null" >
+        post_two_level_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postTwoLevelId != null" >
+        #{postTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postOneLevelId != null" >
+        #{postOneLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelName != null" >
+        #{postTwoLevelName,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelNote != null" >
+        #{postTwoLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postTwoLevelSpeak != null" >
+        #{postTwoLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postTwoLevelRank != null" >
+        #{postTwoLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="postTwoLevelCreateter != null" >
+        #{postTwoLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelCreatetime != null" >
+        #{postTwoLevelCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostTwoLevelExample" resultType="java.lang.Integer" >
+    select count(*) from post_two_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_two_level
+    <set >
+      <if test="record.postTwoLevelId != null" >
+        post_two_level_id = #{record.postTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="record.postOneLevelId != null" >
+        post_one_level_id = #{record.postOneLevelId,jdbcType=CHAR},
+      </if>
+      <if test="record.postTwoLevelName != null" >
+        post_two_level_name = #{record.postTwoLevelName,jdbcType=CHAR},
+      </if>
+      <if test="record.postTwoLevelNote != null" >
+        post_two_level_note = #{record.postTwoLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postTwoLevelSpeak != null" >
+        post_two_level_speak = #{record.postTwoLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postTwoLevelRank != null" >
+        post_two_level_rank = #{record.postTwoLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.postTwoLevelCreateter != null" >
+        post_two_level_createter = #{record.postTwoLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.postTwoLevelCreatetime != null" >
+        post_two_level_createtime = #{record.postTwoLevelCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_two_level
+    set post_two_level_id = #{record.postTwoLevelId,jdbcType=CHAR},
+      post_one_level_id = #{record.postOneLevelId,jdbcType=CHAR},
+      post_two_level_name = #{record.postTwoLevelName,jdbcType=CHAR},
+      post_two_level_note = #{record.postTwoLevelNote,jdbcType=VARCHAR},
+      post_two_level_speak = #{record.postTwoLevelSpeak,jdbcType=VARCHAR},
+      post_two_level_rank = #{record.postTwoLevelRank,jdbcType=INTEGER},
+      post_two_level_createter = #{record.postTwoLevelCreateter,jdbcType=CHAR},
+      post_two_level_createtime = #{record.postTwoLevelCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostTwoLevel" >
+    update post_two_level
+    <set >
+      <if test="postOneLevelId != null" >
+        post_one_level_id = #{postOneLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelName != null" >
+        post_two_level_name = #{postTwoLevelName,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelNote != null" >
+        post_two_level_note = #{postTwoLevelNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postTwoLevelSpeak != null" >
+        post_two_level_speak = #{postTwoLevelSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postTwoLevelRank != null" >
+        post_two_level_rank = #{postTwoLevelRank,jdbcType=INTEGER},
+      </if>
+      <if test="postTwoLevelCreateter != null" >
+        post_two_level_createter = #{postTwoLevelCreateter,jdbcType=CHAR},
+      </if>
+      <if test="postTwoLevelCreatetime != null" >
+        post_two_level_createtime = #{postTwoLevelCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_two_level_id = #{postTwoLevelId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostTwoLevel" >
+    update post_two_level
+    set post_one_level_id = #{postOneLevelId,jdbcType=CHAR},
+      post_two_level_name = #{postTwoLevelName,jdbcType=CHAR},
+      post_two_level_note = #{postTwoLevelNote,jdbcType=VARCHAR},
+      post_two_level_speak = #{postTwoLevelSpeak,jdbcType=VARCHAR},
+      post_two_level_rank = #{postTwoLevelRank,jdbcType=INTEGER},
+      post_two_level_createter = #{postTwoLevelCreateter,jdbcType=CHAR},
+      post_two_level_createtime = #{postTwoLevelCreatetime,jdbcType=TIMESTAMP}
+    where post_two_level_id = #{postTwoLevelId,jdbcType=CHAR}
+  </update>
+  <!--根据一级学术圈ID查询二级所有学术圈数据  -->
+  <select id="selectPostTwoLevelInfoByPostOneId" resultMap="BaseResultMap" parameterType="java.lang.String">
+     SELECT * FROM post_two_level WHERE post_one_level_id=#{postOneLevelId,jdbcType=CHAR}
+  </select>
+  
+  <!-- 查询护士关注的二级学术圈 -->
+  <select id="selectPostNursefFocus" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT post_two_level_id,post_two_level_name FROM post_nursef_focus,post_two_level 
+	WHERE post_nursef_post_two_level_id = post_two_level_id AND  post_nursef_focus_nurse_id = #{0}
+  </select>
+  
+  <!-- 根据二级学术圈id查询二级学术圈内容 -->
+  <select id="selectInfoByPostTwoId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM post_two_level WHERE post_two_level_id=#{postTwoLevelId,jdbcType=CHAR}
+  </select>
+  <!-- 根据一级学术圈ID删除下属的二级 -->
+  <delete id="deletePostTwoLevelByOneIdByPrimaryKey" parameterType="java.lang.String" >
+     DELETE FROM post_two_level
+    WHERE post_one_level_id  = #{postOneLevelId,jdbcType=CHAR}
+  </delete>
+</mapper>

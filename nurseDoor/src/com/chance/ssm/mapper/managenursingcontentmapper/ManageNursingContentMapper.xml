@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.managenursingcontentmapper.ManageNursingContentMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.ManageNursingContent" >
+    <id column="manage_nursing_content_id" property="manageNursingContentId" jdbcType="CHAR" />
+    <result column="manage_nursing_content_maproject" property="manageNursingContentMaproject" jdbcType="CHAR" />
+    <result column="manage_nursing_content_major" property="manageNursingContentMajor" jdbcType="CHAR" />
+    <result column="manage_nursing_content_name" property="manageNursingContentName" jdbcType="VARCHAR" />
+    <result column="manage_nursing_content_content" property="manageNursingContentContent" jdbcType="VARCHAR" />
+    <result column="manage_nursing_content_cost" property="manageNursingContentCost" jdbcType="DECIMAL" />
+    <result column="manage_nursing_content_supplies" property="manageNursingContentSupplies" jdbcType="DECIMAL" />
+    <result column="content_imgurl" property="contentImgurl" jdbcType="VARCHAR" />
+    <result column="content_required" property="contentRequired" jdbcType="INTEGER" />
+    <result column="content_note" property="contentNote" jdbcType="CHAR" />
+    <result column="manage_nursing_content_createter" property="manageNursingContentCreateter" jdbcType="CHAR" />
+    <result column="manage_nursing_content_createtime" property="manageNursingContentCreatetime" jdbcType="TIMESTAMP" />
+    <result column="manage_nursing_content_updatetime" property="manageNursingContentUpdatetime" jdbcType="TIMESTAMP" />
+    <result column="content_order" property="contentOrder" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.chance.ssm.po.ManageNursingContentWithBLOBs" extends="BaseResultMap" >
+    <result column="manage_nursing_content_forpeople" property="manageNursingContentForpeople" jdbcType="LONGVARCHAR" />
+    <result column="manage_nursing_content_look" property="manageNursingContentLook" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.ManageNursingContentVO" id="BaseResultMap2" extends="ResultMapWithBLOBs">
+  	 <!-- <result column="manage_nursing_content_maproject" property="manageNursingContentMaproject" jdbcType="CHAR" />
+    <result column="manage_nursing_content_major" property="manageNursingContentMajor" jdbcType="CHAR" />
+    <result column="manage_nursing_content_name" property="manageNursingContentName" jdbcType="VARCHAR" />
+    <result column="manage_nursing_content_content" property="manageNursingContentContent" jdbcType="VARCHAR" />
+    <result column="manage_nursing_content_cost" property="manageNursingContentCost" jdbcType="DECIMAL" />
+    <result column="manage_nursing_content_supplies" property="manageNursingContentSupplies" jdbcType="DECIMAL" />
+    <result column="content_imgurl" property="contentImgurl" jdbcType="VARCHAR" />
+    <result column="content_required" property="contentRequired" jdbcType="INTEGER" />
+    <result column="manage_nursing_content_createter" property="manageNursingContentCreateter" jdbcType="CHAR" />
+    <result column="manage_nursing_content_createtime" property="manageNursingContentCreatetime" jdbcType="TIMESTAMP" />
+    <result column="manage_nursing_content_updatetime" property="manageNursingContentUpdatetime" jdbcType="TIMESTAMP" /> -->
+    
+    <result column="manage_nursing_project_name_id" property="projectNname" jdbcType="VARCHAR"/>
+    <result column="manage_nursing_project_id" property="projectId" jdbcType="CHAR"/>
+    <result column="nursing_nurseid" property="nursingNurseid" jdbcType="VARCHAR"/>
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    manage_nursing_content_id, manage_nursing_content_maproject, manage_nursing_content_major, 
+    manage_nursing_content_name, manage_nursing_content_content, manage_nursing_content_cost, 
+    manage_nursing_content_supplies,content_imgurl, content_required, content_note, manage_nursing_content_createter, 
+    manage_nursing_content_createtime, manage_nursing_content_updatetime, content_order
+  </sql>
+  <sql id="Blob_Column_List" >
+    manage_nursing_content_forpeople, manage_nursing_content_look, content_imgurl
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.chance.ssm.po.ManageNursingContentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from manage_nursing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ManageNursingContentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manage_nursing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+<!--   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from manage_nursing_content
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </select> -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from manage_nursing_content
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ManageNursingContentExample" >
+    delete from manage_nursing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.ManageNursingContentWithBLOBs" >
+    insert into manage_nursing_content (manage_nursing_content_id, manage_nursing_content_maproject, 
+      manage_nursing_content_major, manage_nursing_content_name, 
+      manage_nursing_content_content, manage_nursing_content_cost, 
+      manage_nursing_content_supplies, content_imgurl,  content_required, 
+      content_note, manage_nursing_content_createter, manage_nursing_content_createtime, 
+      manage_nursing_content_updatetime, content_order, 
+      manage_nursing_content_forpeople, manage_nursing_content_look, 
+      content_imgurl)
+    values (#{manageNursingContentId,jdbcType=CHAR}, #{manageNursingContentMaproject,jdbcType=CHAR}, 
+      #{manageNursingContentMajor,jdbcType=CHAR}, #{manageNursingContentName,jdbcType=VARCHAR}, 
+      #{manageNursingContentContent,jdbcType=VARCHAR}, #{manageNursingContentCost,jdbcType=DECIMAL}, 
+      #{manageNursingContentSupplies,jdbcType=DECIMAL}, #{contentImgurl,jdbcType=VARCHAR},  #{contentRequired,jdbcType=INTEGER}, 
+      #{contentNote,jdbcType=CHAR}, #{manageNursingContentCreateter,jdbcType=CHAR}, #{manageNursingContentCreatetime,jdbcType=TIMESTAMP}, 
+      #{manageNursingContentUpdatetime,jdbcType=TIMESTAMP}, #{contentOrder,jdbcType=INTEGER}, 
+      #{manageNursingContentForpeople,jdbcType=LONGVARCHAR}, #{manageNursingContentLook,jdbcType=LONGVARCHAR}, 
+      #{contentImgurl,jdbcType=LONGVARCHAR})
+  </insert>
+   <insert id="insertSelective" parameterType="com.chance.ssm.po.ManageNursingContentWithBLOBs" >
+    insert into manage_nursing_content
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="manageNursingContentId != null" >
+        manage_nursing_content_id,
+      </if>
+      <if test="manageNursingContentMaproject != null" >
+        manage_nursing_content_maproject,
+      </if>
+      <if test="manageNursingContentMajor != null" >
+        manage_nursing_content_major,
+      </if>
+      <if test="manageNursingContentName != null" >
+        manage_nursing_content_name,
+      </if>
+      <if test="manageNursingContentContent != null" >
+        manage_nursing_content_content,
+      </if>
+      <if test="manageNursingContentCost != null" >
+        manage_nursing_content_cost,
+      </if>
+      <if test="manageNursingContentSupplies != null" >
+        manage_nursing_content_supplies,
+      </if>
+      <if test="contentImgurl != null" >
+        content_imgurl,
+      </if>
+      <if test="contentRequired != null" >
+        content_required,
+      </if>
+      <if test="contentNote != null" >
+        content_note,
+      </if>
+      <if test="manageNursingContentCreateter != null" >
+        manage_nursing_content_createter,
+      </if>
+      <if test="manageNursingContentCreatetime != null" >
+        manage_nursing_content_createtime,
+      </if>
+      <if test="manageNursingContentUpdatetime != null" >
+        manage_nursing_content_updatetime,
+      </if>
+      <if test="contentOrder != null" >
+        content_order,
+      </if>
+      <if test="manageNursingContentForpeople != null" >
+        manage_nursing_content_forpeople,
+      </if>
+      <if test="manageNursingContentLook != null" >
+        manage_nursing_content_look,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="manageNursingContentId != null" >
+        #{manageNursingContentId,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentMaproject != null" >
+        #{manageNursingContentMaproject,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentMajor != null" >
+        #{manageNursingContentMajor,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentName != null" >
+        #{manageNursingContentName,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingContentContent != null" >
+        #{manageNursingContentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingContentCost != null" >
+        #{manageNursingContentCost,jdbcType=DECIMAL},
+      </if>
+      <if test="manageNursingContentSupplies != null" >
+        #{manageNursingContentSupplies,jdbcType=DECIMAL},
+      </if>
+      <if test="contentImgurl != null" >
+        #{contentImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="contentRequired != null" >
+        #{contentRequired,jdbcType=INTEGER},
+      </if>
+      <if test="contentNote != null" >
+        #{contentNote,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentCreateter != null" >
+        #{manageNursingContentCreateter,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentCreatetime != null" >
+        #{manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingContentUpdatetime != null" >
+        #{manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contentOrder != null" >
+        #{contentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="manageNursingContentForpeople != null" >
+        #{manageNursingContentForpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="manageNursingContentLook != null" >
+        #{manageNursingContentLook,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ManageNursingContentExample" resultType="java.lang.Integer" >
+    select count(*) from manage_nursing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update manage_nursing_content
+    <set >
+      <if test="record.manageNursingContentId != null" >
+        manage_nursing_content_id = #{record.manageNursingContentId,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingContentMaproject != null" >
+        manage_nursing_content_maproject = #{record.manageNursingContentMaproject,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingContentMajor != null" >
+        manage_nursing_content_major = #{record.manageNursingContentMajor,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingContentName != null" >
+        manage_nursing_content_name = #{record.manageNursingContentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingContentContent != null" >
+        manage_nursing_content_content = #{record.manageNursingContentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manageNursingContentCost != null" >
+        manage_nursing_content_cost = #{record.manageNursingContentCost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.manageNursingContentSupplies != null" >
+        manage_nursing_content_supplies = #{record.manageNursingContentSupplies,jdbcType=DECIMAL},
+      </if>
+      <if test="record.contentImgurl != null" >
+        content_imgurl = #{record.contentImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentRequired != null" >
+        content_required = #{record.contentRequired,jdbcType=INTEGER},
+      </if>
+      <if test="record.contentNote != null" >
+        content_note = #{record.contentNote,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingContentCreateter != null" >
+        manage_nursing_content_createter = #{record.manageNursingContentCreateter,jdbcType=CHAR},
+      </if>
+      <if test="record.manageNursingContentCreatetime != null" >
+        manage_nursing_content_createtime = #{record.manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.manageNursingContentUpdatetime != null" >
+        manage_nursing_content_updatetime = #{record.manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contentOrder != null" >
+        content_order = #{record.contentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.manageNursingContentForpeople != null" >
+        manage_nursing_content_forpeople = #{record.manageNursingContentForpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.manageNursingContentLook != null" >
+        manage_nursing_content_look = #{record.manageNursingContentLook,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+   <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update manage_nursing_content
+    set manage_nursing_content_id = #{record.manageNursingContentId,jdbcType=CHAR},
+      manage_nursing_content_maproject = #{record.manageNursingContentMaproject,jdbcType=CHAR},
+      manage_nursing_content_major = #{record.manageNursingContentMajor,jdbcType=CHAR},
+      manage_nursing_content_name = #{record.manageNursingContentName,jdbcType=VARCHAR},
+      manage_nursing_content_content = #{record.manageNursingContentContent,jdbcType=VARCHAR},
+      manage_nursing_content_cost = #{record.manageNursingContentCost,jdbcType=DECIMAL},
+      manage_nursing_content_supplies = #{record.manageNursingContentSupplies,jdbcType=DECIMAL},
+      content_imgurl = #{record.contentImgurl,jdbcType=VARCHAR},
+      content_required = #{record.contentRequired,jdbcType=INTEGER},
+      content_note = #{record.contentNote,jdbcType=CHAR},
+      manage_nursing_content_createter = #{record.manageNursingContentCreateter,jdbcType=CHAR},
+      manage_nursing_content_createtime = #{record.manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_content_updatetime = #{record.manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      content_order = #{record.contentOrder,jdbcType=INTEGER},
+      manage_nursing_content_forpeople = #{record.manageNursingContentForpeople,jdbcType=LONGVARCHAR},
+      manage_nursing_content_look = #{record.manageNursingContentLook,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update manage_nursing_content
+    set manage_nursing_content_id = #{record.manageNursingContentId,jdbcType=CHAR},
+      manage_nursing_content_maproject = #{record.manageNursingContentMaproject,jdbcType=CHAR},
+      manage_nursing_content_major = #{record.manageNursingContentMajor,jdbcType=CHAR},
+      manage_nursing_content_name = #{record.manageNursingContentName,jdbcType=VARCHAR},
+      manage_nursing_content_content = #{record.manageNursingContentContent,jdbcType=VARCHAR},
+      manage_nursing_content_cost = #{record.manageNursingContentCost,jdbcType=DECIMAL},
+      manage_nursing_content_supplies = #{record.manageNursingContentSupplies,jdbcType=DECIMAL},
+      content_imgurl = #{record.contentImgurl,jdbcType=VARCHAR},
+      content_required = #{record.contentRequired,jdbcType=INTEGER},
+      content_note = #{record.contentNote,jdbcType=CHAR},
+      manage_nursing_content_createter = #{record.manageNursingContentCreateter,jdbcType=CHAR},
+      manage_nursing_content_createtime = #{record.manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_content_updatetime = #{record.manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      content_order = #{record.contentOrder,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+ <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.ManageNursingContentWithBLOBs" >
+    update manage_nursing_content
+    <set >
+      <if test="manageNursingContentMaproject != null" >
+        manage_nursing_content_maproject = #{manageNursingContentMaproject,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentMajor != null" >
+        manage_nursing_content_major = #{manageNursingContentMajor,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentName != null" >
+        manage_nursing_content_name = #{manageNursingContentName,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingContentContent != null" >
+        manage_nursing_content_content = #{manageNursingContentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="manageNursingContentCost != null" >
+        manage_nursing_content_cost = #{manageNursingContentCost,jdbcType=DECIMAL},
+      </if>
+      <if test="manageNursingContentSupplies != null" >
+        manage_nursing_content_supplies = #{manageNursingContentSupplies,jdbcType=DECIMAL},
+      </if>
+      <if test="contentImgurl != null" >
+        content_imgurl = #{contentImgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="contentRequired != null" >
+        content_required = #{contentRequired,jdbcType=INTEGER},
+      </if>
+      <if test="contentNote != null" >
+        content_note = #{contentNote,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentCreateter != null" >
+        manage_nursing_content_createter = #{manageNursingContentCreateter,jdbcType=CHAR},
+      </if>
+      <if test="manageNursingContentCreatetime != null" >
+        manage_nursing_content_createtime = #{manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manageNursingContentUpdatetime != null" >
+        manage_nursing_content_updatetime = #{manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contentOrder != null" >
+        content_order = #{contentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="manageNursingContentForpeople != null" >
+        manage_nursing_content_forpeople = #{manageNursingContentForpeople,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="manageNursingContentLook != null" >
+        manage_nursing_content_look = #{manageNursingContentLook,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.chance.ssm.po.ManageNursingContentWithBLOBs" >
+    update manage_nursing_content
+    set manage_nursing_content_maproject = #{manageNursingContentMaproject,jdbcType=CHAR},
+      manage_nursing_content_major = #{manageNursingContentMajor,jdbcType=CHAR},
+      manage_nursing_content_name = #{manageNursingContentName,jdbcType=VARCHAR},
+      manage_nursing_content_content = #{manageNursingContentContent,jdbcType=VARCHAR},
+      manage_nursing_content_cost = #{manageNursingContentCost,jdbcType=DECIMAL},
+      manage_nursing_content_supplies = #{manageNursingContentSupplies,jdbcType=DECIMAL},
+      content_imgurl = #{contentImgurl,jdbcType=VARCHAR},
+      content_required = #{contentRequired,jdbcType=INTEGER},
+      content_note = #{contentNote,jdbcType=CHAR},
+      manage_nursing_content_createter = #{manageNursingContentCreateter,jdbcType=CHAR},
+      manage_nursing_content_createtime = #{manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_content_updatetime = #{manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      content_order = #{contentOrder,jdbcType=INTEGER},
+      manage_nursing_content_forpeople = #{manageNursingContentForpeople,jdbcType=LONGVARCHAR},
+      manage_nursing_content_look = #{manageNursingContentLook,jdbcType=LONGVARCHAR}
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.ManageNursingContent" >
+    update manage_nursing_content
+    set manage_nursing_content_maproject = #{manageNursingContentMaproject,jdbcType=CHAR},
+      manage_nursing_content_major = #{manageNursingContentMajor,jdbcType=CHAR},
+      manage_nursing_content_name = #{manageNursingContentName,jdbcType=VARCHAR},
+      manage_nursing_content_content = #{manageNursingContentContent,jdbcType=VARCHAR},
+      manage_nursing_content_cost = #{manageNursingContentCost,jdbcType=DECIMAL},
+      manage_nursing_content_supplies = #{manageNursingContentSupplies,jdbcType=DECIMAL},
+      content_imgurl = #{contentImgurl,jdbcType=VARCHAR},
+      content_required = #{contentRequired,jdbcType=INTEGER},
+      content_note = #{contentNote,jdbcType=CHAR},
+      manage_nursing_content_createter = #{manageNursingContentCreateter,jdbcType=CHAR},
+      manage_nursing_content_createtime = #{manageNursingContentCreatetime,jdbcType=TIMESTAMP},
+      manage_nursing_content_updatetime = #{manageNursingContentUpdatetime,jdbcType=TIMESTAMP},
+      content_order = #{contentOrder,jdbcType=INTEGER}
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </update>
+  
+  
+  <!-- 根据ID查询数据 -->
+   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from manage_nursing_content
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </select>
+  
+    <!-- 根据ID查询数据 返回VO扩展类-->
+   <select id="selectByPrimaryKeyRuVO" resultMap="BaseResultMap2" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from manage_nursing_content
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </select>
+  
+  <!--通过服务id查询包含多少小项  -->
+   <select id="SelectByManageNursingContentMaproject" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * 
+  FROM 
+  manage_nursing_content
+  WHERE 
+  manage_nursing_content_maproject=#{manageNursingContentMaproject,jdbcType=CHAR}
+  </select>
+  
+  <select id="selectByExampleAndProject" resultMap="BaseResultMap2" parameterType="java.lang.String" >
+    select
+    
+    <include refid="Base_Column_List" />
+    from nursing_project LEFT JOIN manage_nursing_content  ON nursing_project.nursing_project_macontent=manage_nursing_content.manage_nursing_content_id 
+    where nursing_nurseid=#{nursingNurseid}
+  </select>
+  
+  <!-- 通过传入的条件查询数据返回VO扩展类 -->
+ <select id="selectByExampleRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.ManageNursingContentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manage_nursing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <!-- 通过和project表关联查询并返回VO扩展类  -->
+    <select id="selectByExampleAndProjectRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.NursingProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,nursing_nurseid from manage_nursing_content LEFT JOIN  nursing_project  ON manage_nursing_content.manage_nursing_content_id=nursing_project.nursing_project_macontent 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 通过服务项id查询信息 -->
+  <select id="selectmanageNursingContentById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM manage_nursing_content WHERE manage_nursing_content_id=#{manageNursingContentId,jdbcType=CHAR}
+  </select>
+
+   <select id="selectByPrimaryKeyBLOB" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from manage_nursing_content
+    where manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+  </select> 
+  
+ <!-- 根据二级服务ID查询服务内容 -->
+	<select id="selectManageNursingContentNewF" resultMap="BaseResultMap2" parameterType="java.lang.String">
+	SELECT * FROM manage_nursing_content WHERE manage_nursing_content_id = #{manageNursingContentId,jdbcType=CHAR}
+	</select>
+	
+	
+	<!--通过产品ID查询二级服务信息  -->
+	<select id="selectManageNursingContenInfoByGoodsId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	SELECT manage_nursing_content.* 
+	FROM goods 
+	LEFT JOIN  
+	manage_nursing_content 
+	ON 
+	goods_content 
+	= 
+	manage_nursing_content_id 
+	WHERE 
+	goods_id  = #{0} GROUP BY manage_nursing_content_id
+	</select>
+</mapper>

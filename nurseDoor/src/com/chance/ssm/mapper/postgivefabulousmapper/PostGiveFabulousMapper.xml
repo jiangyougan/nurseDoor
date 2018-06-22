@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postgivefabulousmapper.PostGiveFabulousMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostGiveFabulous" >
+    <id column="post_give_fabulous_id" property="postGiveFabulousId" jdbcType="INTEGER" />
+    <result column="post_give_fabulous_nurse_id" property="postGiveFabulousNurseId" jdbcType="CHAR" />
+    <result column="post_give_fabulous_post_three_id" property="postGiveFabulousPostThreeId" jdbcType="CHAR" />
+    <result column="post_give_fabulous_createtime" property="postGiveFabulousCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_give_fabulous_id, post_give_fabulous_nurse_id, post_give_fabulous_post_three_id, 
+    post_give_fabulous_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostGiveFabulousExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_give_fabulous
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_give_fabulous
+    where post_give_fabulous_id = #{postGiveFabulousId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from post_give_fabulous
+    where post_give_fabulous_id = #{postGiveFabulousId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostGiveFabulousExample" >
+    delete from post_give_fabulous
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostGiveFabulous" >
+    insert into post_give_fabulous (post_give_fabulous_id, post_give_fabulous_nurse_id, 
+      post_give_fabulous_post_three_id, post_give_fabulous_createtime
+      )
+    values (#{postGiveFabulousId,jdbcType=INTEGER}, #{postGiveFabulousNurseId,jdbcType=CHAR}, 
+      #{postGiveFabulousPostThreeId,jdbcType=CHAR}, #{postGiveFabulousCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.PostGiveFabulous" >
+    insert into post_give_fabulous
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postGiveFabulousId != null" >
+        post_give_fabulous_id,
+      </if>
+      <if test="postGiveFabulousNurseId != null" >
+        post_give_fabulous_nurse_id,
+      </if>
+      <if test="postGiveFabulousPostThreeId != null" >
+        post_give_fabulous_post_three_id,
+      </if>
+      <if test="postGiveFabulousCreatetime != null" >
+        post_give_fabulous_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postGiveFabulousId != null" >
+        #{postGiveFabulousId,jdbcType=INTEGER},
+      </if>
+      <if test="postGiveFabulousNurseId != null" >
+        #{postGiveFabulousNurseId,jdbcType=CHAR},
+      </if>
+      <if test="postGiveFabulousPostThreeId != null" >
+        #{postGiveFabulousPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="postGiveFabulousCreatetime != null" >
+        #{postGiveFabulousCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostGiveFabulousExample" resultType="java.lang.Integer" >
+    select count(*) from post_give_fabulous
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_give_fabulous
+    <set >
+      <if test="record.postGiveFabulousId != null" >
+        post_give_fabulous_id = #{record.postGiveFabulousId,jdbcType=INTEGER},
+      </if>
+      <if test="record.postGiveFabulousNurseId != null" >
+        post_give_fabulous_nurse_id = #{record.postGiveFabulousNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.postGiveFabulousPostThreeId != null" >
+        post_give_fabulous_post_three_id = #{record.postGiveFabulousPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="record.postGiveFabulousCreatetime != null" >
+        post_give_fabulous_createtime = #{record.postGiveFabulousCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_give_fabulous
+    set post_give_fabulous_id = #{record.postGiveFabulousId,jdbcType=INTEGER},
+      post_give_fabulous_nurse_id = #{record.postGiveFabulousNurseId,jdbcType=CHAR},
+      post_give_fabulous_post_three_id = #{record.postGiveFabulousPostThreeId,jdbcType=CHAR},
+      post_give_fabulous_createtime = #{record.postGiveFabulousCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostGiveFabulous" >
+    update post_give_fabulous
+    <set >
+      <if test="postGiveFabulousNurseId != null" >
+        post_give_fabulous_nurse_id = #{postGiveFabulousNurseId,jdbcType=CHAR},
+      </if>
+      <if test="postGiveFabulousPostThreeId != null" >
+        post_give_fabulous_post_three_id = #{postGiveFabulousPostThreeId,jdbcType=CHAR},
+      </if>
+      <if test="postGiveFabulousCreatetime != null" >
+        post_give_fabulous_createtime = #{postGiveFabulousCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_give_fabulous_id = #{postGiveFabulousId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostGiveFabulous" >
+    update post_give_fabulous
+    set post_give_fabulous_nurse_id = #{postGiveFabulousNurseId,jdbcType=CHAR},
+      post_give_fabulous_post_three_id = #{postGiveFabulousPostThreeId,jdbcType=CHAR},
+      post_give_fabulous_createtime = #{postGiveFabulousCreatetime,jdbcType=TIMESTAMP}
+    where post_give_fabulous_id = #{postGiveFabulousId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查询当天点赞的数据 -->
+  <select id="selectpostgivefabulousToday" resultType="java.lang.Integer" parameterType="java.lang.String">
+  　  SELECT COUNT(post_give_fabulous_post_three_id) FROM post_give_fabulous WHERE post_give_fabulous_nurse_id = #{0}
+   AND post_give_fabulous_post_three_id = #{1}
+    AND 
+   TO_DAYS(post_give_fabulous_createtime) = TO_DAYS(NOW())
+  </select>
+  
+   <!-- 判断我有没有对该帖子点过赞 -->
+  <select id="selectpostgivefabulousForMeto" resultMap="BaseResultMap" parameterType="java.lang.String">
+  　 SELECT 
+	post_give_fabulous.* 
+   FROM 
+   post_give_fabulous 
+   WHERE 
+   post_give_fabulous_nurse_id = 
+   #{postGiveFabulousNurseId,jdbcType=CHAR}
+   AND 
+   post_give_fabulous_post_three_id = 
+   #{postGiveFabulousPostThreeId,jdbcType=CHAR}
+  </select>
+</mapper>

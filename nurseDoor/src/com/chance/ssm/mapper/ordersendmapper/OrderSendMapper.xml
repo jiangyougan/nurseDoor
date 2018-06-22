@@ -1,0 +1,1316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.ordersendmapper.OrderSendMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.OrderSend" >
+    <id column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="order_send_card" property="orderSendCard" jdbcType="CHAR" />
+    <result column="order_send_sex" property="orderSendSex" jdbcType="CHAR" />
+    <result column="order_send_age" property="orderSendAge" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_userpic" property="orderSendUserpic" jdbcType="VARCHAR" />
+    <result column="order_send_note" property="orderSendNote" jdbcType="VARCHAR" />
+    <result column="order_send_coupon" property="orderSendCoupon" jdbcType="CHAR" />
+    <result column="order_send_trafficmoney" property="orderSendTrafficmoney" jdbcType="DECIMAL" />
+    <result column="order_send_savemoney" property="orderSendSavemoney" jdbcType="DECIMAL" />
+    <result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+    <result column="order_send_ispayment" property="orderSendIspayment" jdbcType="CHAR" />
+    <result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+    <result column="order_send_issafe" property="orderSendIssafe" jdbcType="CHAR" />
+    <result column="order_send_type" property="orderSendType" jdbcType="CHAR" />
+    <result column="order_send_state" property="orderSendState" jdbcType="CHAR" />
+    <result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_send_get_order_time" property="orderSendGetOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_createtime" property="orderSendCreatetime" jdbcType="TIMESTAMP" />
+    <result column="order_send_compiaint_state" property="orderSendCompiaintState" jdbcType="INTEGER" />
+    <result column="order_send_overone" property="orderSendOverone" jdbcType="VARCHAR" />
+    <result column="order_send_overtwo" property="orderSendOvertwo" jdbcType="VARCHAR" />
+    <result column="order_send_overthree" property="orderSendOverthree" jdbcType="VARCHAR" />
+    <result column="order_send_overfour" property="orderSendOverfour" jdbcType="VARCHAR" />
+    <result column="order_send_overfive" property="orderSendOverfive" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.chance.ssm.po.OrderSendSpecial" >
+  <result column="order_send_special_id" property="orderSendSpecialId" jdbcType="CHAR" />
+    <result column="order_send_special_ordersendid" property="orderSendSpecialOrdersendid" jdbcType="CHAR" />
+    <result column="order_send_special_nurseid" property="orderSendSpecialNurseid" jdbcType="CHAR" />
+    <result column="order_send_special_createtime" property="orderSendSpecialCreatetime" jdbcType="TIMESTAMP" />
+    <result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="order_send_card" property="orderSendCard" jdbcType="CHAR" />
+    <result column="order_send_sex" property="orderSendSex" jdbcType="CHAR" />
+    <result column="order_send_age" property="orderSendAge" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_userpic" property="orderSendUserpic" jdbcType="VARCHAR" />
+    <result column="order_send_note" property="orderSendNote" jdbcType="VARCHAR" />
+    <result column="order_send_coupon" property="orderSendCoupon" jdbcType="CHAR" />
+    <result column="order_send_trafficmoney" property="orderSendTrafficmoney" jdbcType="DECIMAL" />
+    <result column="order_send_savemoney" property="orderSendSavemoney" jdbcType="DECIMAL" />
+    <result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+    <result column="order_send_ispayment" property="orderSendIspayment" jdbcType="CHAR" />
+    <result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+    <result column="order_send_issafe" property="orderSendIssafe" jdbcType="CHAR" />
+    <result column="order_send_type" property="orderSendType" jdbcType="CHAR" />
+    <result column="order_send_state" property="orderSendState" jdbcType="CHAR" />
+    <result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_send_get_order_time" property="orderSendGetOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_createtime" property="orderSendCreatetime" jdbcType="TIMESTAMP" />
+    <result column="order_send_compiaint_state" property="orderSendCompiaintState" jdbcType="INTEGER" />
+    <result column="order_send_overone" property="orderSendOverone" jdbcType="VARCHAR" />
+    <result column="order_send_overtwo" property="orderSendOvertwo" jdbcType="VARCHAR" />
+    <result column="order_send_overthree" property="orderSendOverthree" jdbcType="VARCHAR" />
+    <result column="order_send_overfour" property="orderSendOverfour" jdbcType="VARCHAR" />
+    <result column="order_send_overfive" property="orderSendOverfive" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <resultMap id="BaseResultMap4" type="com.chance.ssm.po.OrderInfoByNurse" >
+    <result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="order_send_card" property="orderSendCard" jdbcType="CHAR" />
+    <result column="order_send_sex" property="orderSendSex" jdbcType="CHAR" />
+    <result column="order_send_age" property="orderSendAge" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_userpic" property="orderSendUserpic" jdbcType="VARCHAR" />
+    <result column="order_send_note" property="orderSendNote" jdbcType="VARCHAR" />
+    <result column="order_send_coupon" property="orderSendCoupon" jdbcType="CHAR" />
+    <result column="order_send_trafficmoney" property="orderSendTrafficmoney" jdbcType="DECIMAL" />
+    <result column="order_send_savemoney" property="orderSendSavemoney" jdbcType="DECIMAL" />
+    <result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+    <result column="order_send_ispayment" property="orderSendIspayment" jdbcType="CHAR" />
+    <result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+    <result column="order_send_issafe" property="orderSendIssafe" jdbcType="CHAR" />
+    <result column="order_send_type" property="orderSendType" jdbcType="CHAR" />
+    <result column="order_send_state" property="orderSendState" jdbcType="CHAR" />
+    <result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_send_get_order_time" property="orderSendGetOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_createtime" property="orderSendCreatetime" jdbcType="TIMESTAMP" />
+    <result column="order_send_compiaint_state" property="orderSendCompiaintState" jdbcType="INTEGER" />
+    <result column="order_send_overone" property="orderSendOverone" jdbcType="VARCHAR" />
+    <result column="order_send_overtwo" property="orderSendOvertwo" jdbcType="VARCHAR" />
+    <result column="order_send_overthree" property="orderSendOverthree" jdbcType="VARCHAR" />
+    <result column="order_send_overfour" property="orderSendOverfour" jdbcType="VARCHAR" />
+    <result column="order_send_overfive" property="orderSendOverfive" jdbcType="VARCHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_sex" property="nurseSex" jdbcType="CHAR" />
+    <result column="nurse_age" property="nurseAge" jdbcType="CHAR" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap6" type="com.chance.ssm.po.vo.UserAndOrderSend" >
+    <result column="order_send_id" property="orderSendId" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="order_send_userid" property="orderSendUserid" jdbcType="CHAR" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_username" property="orderSendUsername" jdbcType="VARCHAR" />
+    <result column="order_send_card" property="orderSendCard" jdbcType="CHAR" />
+    <result column="order_send_sex" property="orderSendSex" jdbcType="CHAR" />
+    <result column="order_send_age" property="orderSendAge" jdbcType="CHAR" />
+    <result column="order_send_addree" property="orderSendAddree" jdbcType="VARCHAR" />
+    <result column="order_send_userpic" property="orderSendUserpic" jdbcType="VARCHAR" />
+    <result column="order_send_note" property="orderSendNote" jdbcType="VARCHAR" />
+    <result column="order_send_coupon" property="orderSendCoupon" jdbcType="CHAR" />
+    <result column="order_send_trafficmoney" property="orderSendTrafficmoney" jdbcType="DECIMAL" />
+    <result column="order_send_savemoney" property="orderSendSavemoney" jdbcType="DECIMAL" />
+    <result column="order_send_costmoney" property="orderSendCostmoney" jdbcType="DECIMAL" />
+    <result column="order_send_ispayment" property="orderSendIspayment" jdbcType="CHAR" />
+    <result column="order_send_totalmoney" property="orderSendTotalmoney" jdbcType="CHAR" />
+    <result column="order_send_issafe" property="orderSendIssafe" jdbcType="CHAR" />
+    <result column="order_send_type" property="orderSendType" jdbcType="CHAR" />
+    <result column="order_send_state" property="orderSendState" jdbcType="CHAR" />
+    <result column="order_send_begintime" property="orderSendBegintime" jdbcType="TIMESTAMP" />
+    <result column="order_send_stoptime" property="orderSendStoptime" jdbcType="INTEGER" />
+    <result column="order_send_get_order_time" property="orderSendGetOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+    <result column="order_send_createtime" property="orderSendCreatetime" jdbcType="TIMESTAMP" />
+    <result column="order_send_compiaint_state" property="orderSendCompiaintState" jdbcType="INTEGER" />
+    <result column="order_send_overone" property="orderSendOverone" jdbcType="VARCHAR" />
+    <result column="order_send_overtwo" property="orderSendOvertwo" jdbcType="VARCHAR" />
+    <result column="order_send_overthree" property="orderSendOverthree" jdbcType="VARCHAR" />
+    <result column="order_send_overfour" property="orderSendOverfour" jdbcType="VARCHAR" />
+    <result column="order_send_overfive" property="orderSendOverfive" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.OrderSendVO" id="BaseResultMap5">
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+  	<result column="number" property="nurseNumber" jdbcType="INTEGER"/>
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.OrderStatisVO" id="BaseResultMap7">
+    <result column="order_time" property="orderTime" jdbcType="VARCHAR" />
+  	<result column="price" 	property="orderPrice" jdbcType="DECIMAL"/>
+  	<result column="amount" property="amount" jdbcType="INTEGER"/>
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+ <sql id="Base_Column_List" >
+    order_send_id, order_send_numbers, order_send_userid, order_send_servicecontent, 
+    order_send_username, order_send_card, order_send_sex, order_send_age, order_send_addree, 
+    order_send_userpic, order_send_note, order_send_coupon, order_send_trafficmoney, 
+    order_send_savemoney, order_send_costmoney, order_send_ispayment, order_send_totalmoney, 
+    order_send_issafe, order_send_type, order_send_state, order_send_begintime, order_send_stoptime, 
+    order_send_get_order_time, order_send_finish_order_time, order_send_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.OrderSendExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.OrderSendExample" >
+    delete from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.OrderSend" >
+    insert into order_send (order_send_id, order_send_numbers, order_send_userid, 
+      order_send_servicecontent, order_send_username, 
+      order_send_card, order_send_sex, order_send_age, 
+      order_send_addree, order_send_userpic, order_send_note, 
+      order_send_coupon, order_send_trafficmoney, order_send_savemoney, 
+      order_send_costmoney, order_send_ispayment, order_send_totalmoney, 
+      order_send_issafe, order_send_type, order_send_state, 
+      order_send_begintime, order_send_stoptime, 
+      order_send_get_order_time, order_send_finish_order_time, 
+      order_send_createtime)
+    values (#{orderSendId,jdbcType=CHAR}, #{orderSendNumbers,jdbcType=CHAR}, #{orderSendUserid,jdbcType=CHAR}, 
+      #{orderSendServicecontent,jdbcType=VARCHAR}, #{orderSendUsername,jdbcType=VARCHAR}, 
+      #{orderSendCard,jdbcType=CHAR}, #{orderSendSex,jdbcType=CHAR}, #{orderSendAge,jdbcType=CHAR}, 
+      #{orderSendAddree,jdbcType=VARCHAR}, #{orderSendUserpic,jdbcType=VARCHAR}, #{orderSendNote,jdbcType=VARCHAR}, 
+      #{orderSendCoupon,jdbcType=CHAR}, #{orderSendTrafficmoney,jdbcType=DECIMAL}, #{orderSendSavemoney,jdbcType=DECIMAL}, 
+      #{orderSendCostmoney,jdbcType=DECIMAL}, #{orderSendIspayment,jdbcType=CHAR}, #{orderSendTotalmoney,jdbcType=CHAR}, 
+      #{orderSendIssafe,jdbcType=CHAR}, #{orderSendType,jdbcType=CHAR}, #{orderSendState,jdbcType=CHAR}, 
+      #{orderSendBegintime,jdbcType=TIMESTAMP}, #{orderSendStoptime,jdbcType=INTEGER}, 
+      #{orderSendGetOrderTime,jdbcType=TIMESTAMP}, #{orderSendFinishOrderTime,jdbcType=TIMESTAMP}, 
+      #{orderSendCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+   <insert id="insertSelective" parameterType="com.chance.ssm.po.OrderSend" >
+    insert into order_send
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderSendId != null" >
+        order_send_id,
+      </if>
+      <if test="orderSendNumbers != null" >
+        order_send_numbers,
+      </if>
+      <if test="orderSendUserid != null" >
+        order_send_userid,
+      </if>
+      <if test="orderSendServicecontent != null" >
+        order_send_servicecontent,
+      </if>
+      <if test="orderSendUsername != null" >
+        order_send_username,
+      </if>
+      <if test="orderSendCard != null" >
+        order_send_card,
+      </if>
+      <if test="orderSendSex != null" >
+        order_send_sex,
+      </if>
+      <if test="orderSendAge != null" >
+        order_send_age,
+      </if>
+      <if test="orderSendAddree != null" >
+        order_send_addree,
+      </if>
+      <if test="orderSendUserpic != null" >
+        order_send_userpic,
+      </if>
+      <if test="orderSendNote != null" >
+        order_send_note,
+      </if>
+      <if test="orderSendCoupon != null" >
+        order_send_coupon,
+      </if>
+      <if test="orderSendTrafficmoney != null" >
+        order_send_trafficmoney,
+      </if>
+      <if test="orderSendSavemoney != null" >
+        order_send_savemoney,
+      </if>
+      <if test="orderSendCostmoney != null" >
+        order_send_costmoney,
+      </if>
+      <if test="orderSendIspayment != null" >
+        order_send_ispayment,
+      </if>
+      <if test="orderSendTotalmoney != null" >
+        order_send_totalmoney,
+      </if>
+      <if test="orderSendIssafe != null" >
+        order_send_issafe,
+      </if>
+      <if test="orderSendType != null" >
+        order_send_type,
+      </if>
+      <if test="orderSendState != null" >
+        order_send_state,
+      </if>
+      <if test="orderSendBegintime != null" >
+        order_send_begintime,
+      </if>
+      <if test="orderSendStoptime != null" >
+        order_send_stoptime,
+      </if>
+      <if test="orderSendGetOrderTime != null" >
+        order_send_get_order_time,
+      </if>
+      <if test="orderSendFinishOrderTime != null" >
+        order_send_finish_order_time,
+      </if>
+      <if test="orderSendCreatetime != null" >
+        order_send_createtime,
+      </if>
+      <if test="orderSendCompiaintState != null" >
+        order_send_compiaint_state,
+      </if>
+      <if test="orderSendOverone != null" >
+        order_send_overone,
+      </if>
+      <if test="orderSendOvertwo != null" >
+        order_send_overtwo,
+      </if>
+      <if test="orderSendOverthree != null" >
+        order_send_overthree,
+      </if>
+      <if test="orderSendOverfour != null" >
+        order_send_overfour,
+      </if>
+      <if test="orderSendOverfive != null" >
+        order_send_overfive,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderSendId != null" >
+        #{orderSendId,jdbcType=CHAR},
+      </if>
+      <if test="orderSendNumbers != null" >
+        #{orderSendNumbers,jdbcType=CHAR},
+      </if>
+      <if test="orderSendUserid != null" >
+        #{orderSendUserid,jdbcType=CHAR},
+      </if>
+      <if test="orderSendServicecontent != null" >
+        #{orderSendServicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendUsername != null" >
+        #{orderSendUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendCard != null" >
+        #{orderSendCard,jdbcType=CHAR},
+      </if>
+      <if test="orderSendSex != null" >
+        #{orderSendSex,jdbcType=CHAR},
+      </if>
+      <if test="orderSendAge != null" >
+        #{orderSendAge,jdbcType=CHAR},
+      </if>
+      <if test="orderSendAddree != null" >
+        #{orderSendAddree,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendUserpic != null" >
+        #{orderSendUserpic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendNote != null" >
+        #{orderSendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendCoupon != null" >
+        #{orderSendCoupon,jdbcType=CHAR},
+      </if>
+      <if test="orderSendTrafficmoney != null" >
+        #{orderSendTrafficmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderSendSavemoney != null" >
+        #{orderSendSavemoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderSendCostmoney != null" >
+        #{orderSendCostmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderSendIspayment != null" >
+        #{orderSendIspayment,jdbcType=CHAR},
+      </if>
+      <if test="orderSendTotalmoney != null" >
+        #{orderSendTotalmoney,jdbcType=CHAR},
+      </if>
+      <if test="orderSendIssafe != null" >
+        #{orderSendIssafe,jdbcType=CHAR},
+      </if>
+      <if test="orderSendType != null" >
+        #{orderSendType,jdbcType=CHAR},
+      </if>
+      <if test="orderSendState != null" >
+        #{orderSendState,jdbcType=CHAR},
+      </if>
+      <if test="orderSendBegintime != null" >
+        #{orderSendBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendStoptime != null" >
+        #{orderSendStoptime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendGetOrderTime != null" >
+        #{orderSendGetOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendFinishOrderTime != null" >
+        #{orderSendFinishOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendCreatetime != null" >
+        #{orderSendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendCompiaintState != null" >
+        #{orderSendCompiaintState,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendOverone != null" >
+        #{orderSendOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOvertwo != null" >
+        #{orderSendOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverthree != null" >
+        #{orderSendOverthree,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverfour != null" >
+        #{orderSendOverfour,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverfive != null" >
+        #{orderSendOverfive,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.OrderSendExample" resultType="java.lang.Integer" >
+    select count(*) from order_send
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+ <update id="updateByExampleSelective" parameterType="map" >
+    update order_send
+    <set >
+      <if test="record.orderSendId != null" >
+        order_send_id = #{record.orderSendId,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendNumbers != null" >
+        order_send_numbers = #{record.orderSendNumbers,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendUserid != null" >
+        order_send_userid = #{record.orderSendUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendServicecontent != null" >
+        order_send_servicecontent = #{record.orderSendServicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSendUsername != null" >
+        order_send_username = #{record.orderSendUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSendCard != null" >
+        order_send_card = #{record.orderSendCard,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendSex != null" >
+        order_send_sex = #{record.orderSendSex,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendAge != null" >
+        order_send_age = #{record.orderSendAge,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendAddree != null" >
+        order_send_addree = #{record.orderSendAddree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSendUserpic != null" >
+        order_send_userpic = #{record.orderSendUserpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSendNote != null" >
+        order_send_note = #{record.orderSendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSendCoupon != null" >
+        order_send_coupon = #{record.orderSendCoupon,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendTrafficmoney != null" >
+        order_send_trafficmoney = #{record.orderSendTrafficmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderSendSavemoney != null" >
+        order_send_savemoney = #{record.orderSendSavemoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderSendCostmoney != null" >
+        order_send_costmoney = #{record.orderSendCostmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderSendIspayment != null" >
+        order_send_ispayment = #{record.orderSendIspayment,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendTotalmoney != null" >
+        order_send_totalmoney = #{record.orderSendTotalmoney,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendIssafe != null" >
+        order_send_issafe = #{record.orderSendIssafe,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendType != null" >
+        order_send_type = #{record.orderSendType,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendState != null" >
+        order_send_state = #{record.orderSendState,jdbcType=CHAR},
+      </if>
+      <if test="record.orderSendBegintime != null" >
+        order_send_begintime = #{record.orderSendBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderSendStoptime != null" >
+        order_send_stoptime = #{record.orderSendStoptime,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderSendGetOrderTime != null" >
+        order_send_get_order_time = #{record.orderSendGetOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderSendFinishOrderTime != null" >
+        order_send_finish_order_time = #{record.orderSendFinishOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderSendCreatetime != null" >
+        order_send_createtime = #{record.orderSendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+    <update id="updateByOrderSendId" parameterType="com.chance.ssm.po.OrderSend" >
+    update order_send
+    <set >
+      <if test="orderSendId != null" >
+        order_send_id = #{orderSendId,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendNumbers != null" >
+        order_send_numbers = #{ orderSendNumbers,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendUserid != null" >
+        order_send_userid = #{ orderSendUserid,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendServicecontent != null" >
+        order_send_servicecontent = #{ orderSendServicecontent,jdbcType=VARCHAR},
+      </if>
+      <if test=" orderSendUsername != null" >
+        order_send_username = #{ orderSendUsername,jdbcType=VARCHAR},
+      </if>
+      <if test=" orderSendCard != null" >
+        order_send_card = #{ orderSendCard,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendSex != null" >
+        order_send_sex = #{ orderSendSex,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendAge != null" >
+        order_send_age = #{ orderSendAge,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendAddree != null" >
+        order_send_addree = #{ orderSendAddree,jdbcType=VARCHAR},
+      </if>
+      <if test=" orderSendUserpic != null" >
+        order_send_userpic = #{ orderSendUserpic,jdbcType=VARCHAR},
+      </if>
+      <if test=" orderSendNote != null" >
+        order_send_note = #{ orderSendNote,jdbcType=VARCHAR},
+      </if>
+      <if test=" orderSendCoupon != null" >
+        order_send_coupon = #{ orderSendCoupon,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendTrafficmoney != null" >
+        order_send_trafficmoney = #{ orderSendTrafficmoney,jdbcType=DECIMAL},
+      </if>
+      <if test=" orderSendSavemoney != null" >
+        order_send_savemoney = #{ orderSendSavemoney,jdbcType=DECIMAL},
+      </if>
+      <if test=" orderSendCostmoney != null" >
+        order_send_costmoney = #{ orderSendCostmoney,jdbcType=DECIMAL},
+      </if>
+      <if test=" orderSendIspayment != null" >
+        order_send_ispayment = #{ orderSendIspayment,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendTotalmoney != null" >
+        order_send_totalmoney = #{ orderSendTotalmoney,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendIssafe != null" >
+        order_send_issafe = #{ orderSendIssafe,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendType != null" >
+        order_send_type = #{ orderSendType,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendState != null" >
+        order_send_state = #{ orderSendState,jdbcType=CHAR},
+      </if>
+      <if test=" orderSendBegintime != null" >
+        order_send_begintime = #{ orderSendBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test=" orderSendStoptime != null " >
+        order_send_stoptime = #{ orderSendStoptime,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendGetOrderTime != null" >
+        order_send_get_order_time = #{orderSendGetOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendFinishOrderTime != null" >
+        order_send_finish_order_time = #{orderSendFinishOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendCreatetime != null" >
+        order_send_createtime = #{ orderSendCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSendCompiaintState != null" >
+        order_send_compiaint_state = #{ orderSendCompiaintState,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendOverone != null" >
+        order_send_overone = #{ orderSendOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOvertwo != null" >
+        order_send_overtwo = #{ orderSendOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverthree != null" >
+        order_send_overthree = #{ orderSendOverthree,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverfour != null" >
+        order_send_overfour = #{ orderSendOverfour,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendOverfive != null" >
+        order_send_overfive = #{ orderSendOverfive,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE order_send_id=#{orderSendId,jdbcType=CHAR}
+  </update>
+  
+  <update id="updateByExample" parameterType="map" >
+    update order_send
+    set order_send_id = #{record.orderSendId,jdbcType=CHAR},
+      order_send_numbers = #{record.orderSendNumbers,jdbcType=CHAR},
+      order_send_userid = #{record.orderSendUserid,jdbcType=CHAR},
+      order_send_servicecontent = #{record.orderSendServicecontent,jdbcType=VARCHAR},
+      order_send_username = #{record.orderSendUsername,jdbcType=VARCHAR},
+      order_send_card = #{record.orderSendCard,jdbcType=CHAR},
+      order_send_sex = #{record.orderSendSex,jdbcType=CHAR},
+      order_send_age = #{record.orderSendAge,jdbcType=CHAR},
+      order_send_addree = #{record.orderSendAddree,jdbcType=VARCHAR},
+      order_send_userpic = #{record.orderSendUserpic,jdbcType=VARCHAR},
+      order_send_note = #{record.orderSendNote,jdbcType=VARCHAR},
+      order_send_coupon = #{record.orderSendCoupon,jdbcType=CHAR},
+      order_send_trafficmoney = #{record.orderSendTrafficmoney,jdbcType=DECIMAL},
+      order_send_savemoney = #{record.orderSendSavemoney,jdbcType=DECIMAL},
+      order_send_costmoney = #{record.orderSendCostmoney,jdbcType=DECIMAL},
+      order_send_ispayment = #{record.orderSendIspayment,jdbcType=CHAR},
+      order_send_totalmoney = #{record.orderSendTotalmoney,jdbcType=CHAR},
+      order_send_issafe = #{record.orderSendIssafe,jdbcType=CHAR},
+      order_send_type = #{record.orderSendType,jdbcType=CHAR},
+      order_send_state = #{record.orderSendState,jdbcType=CHAR},
+      order_send_begintime = #{record.orderSendBegintime,jdbcType=TIMESTAMP},
+      order_send_stoptime = #{record.orderSendStoptime,jdbcType=INTEGER},
+      order_send_get_order_time = #{record.orderSendGetOrderTime,jdbcType=TIMESTAMP},
+      order_send_finish_order_time = #{record.orderSendFinishOrderTime,jdbcType=TIMESTAMP},
+      order_send_createtime = #{record.orderSendCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <!--可以接取的全发订单 正在发布中 开始时间大于当前时间 已支付 并且时间在我的空闲时间中（排班表） -->
+  <select id="selectCanAccess" resultMap="BaseResultMap">
+  SELECT * FROM order_send 
+  WHERE order_send_state='0' 
+  AND order_send_begintime>NOW() 
+  AND order_send_ispayment='1'
+  AND order_send_type='0'
+  AND order_send_begintime &lt;#{0}
+  OR order_send_begintime>#{1}
+ <!--  AND order_send_stoptime>#{1} -->
+  <!-- AND order_send_begintime>#{orderSendBegintime,jdbcType=TIMESTAMP}
+  AND order_send_stoptime>#{orderSendStoptime,jdbcType=TIMESTAMP} -->
+  </select>
+  <!--可以所有可以接取的全发订单  -->
+  <select id="selectCanAccessAllOrder" resultMap="BaseResultMap">
+  SELECT * FROM order_send 
+  WHERE order_send_state='0' 
+  AND order_send_begintime>NOW() 
+  AND order_send_ispayment='1'
+  AND order_send_type='0'
+  </select>
+  <!-- 我的专属订单 正在发布中 开始时间大于当前时间 已支付订单类型为指定-->
+  <select id="selectSpecialOrderInfo" resultMap="BaseResultMap" >
+  <!-- SELECT * FROM order_send_special,order_send 
+  WHERE order_send_special_nurseid=#{orderSendSpecialNurseid,jdbcType=CHAR}
+  AND order_send_special_ordersendid=order_send_id
+  AND order_send_ispayment='1'
+  AND order_send_state='0'
+  AND order_send_begintime>NOW()
+  AND  order_send_type='1' -->
+ <!--  SELECT * FROM order_send_special,order_send 
+  WHERE order_send_special_nurseid=#{0}
+  AND order_send_special_ordersendid=order_send_id
+  AND order_send_ispayment='1'
+  AND order_send_state='0'
+  AND order_send_begintime>NOW()
+  AND  order_send_type='1'
+  order by order_send_type desc ,order_send_createtime desc -->
+  <!-- SELECT * FROM order_send_special,order_send LEFT JOIN order_cancel_order ON order_send_id = order_cancel_order_send_id
+  WHERE order_send_special_nurseid=#{0}
+  AND order_cancel_order_speak &lt; 3
+  AND order_cancel_order_note = 1
+  AND  TIMESTAMPDIFF(MINUTE ,order_cancal_nurse_cancel_time,NOW()) >30
+  AND order_send_special_ordersendid=order_send_id
+  AND order_send_ispayment='1'
+  AND order_send_state='0'
+  AND order_send_begintime>NOW()
+  AND  order_send_type='1'
+  ORDER BY order_send_type DESC ,order_send_createtime DESC -->
+  SELECT * FROM order_send,order_send_special LEFT JOIN order_cancel_order ON order_send_special_id = order_cancel_order_send_id
+  WHERE 
+  ((order_cancel_order_send_id IS NULL) 
+  OR (order_cancel_order_speak &lt; 2
+  AND order_cancel_order_note = 1
+  AND  TIMESTAMPDIFF(MINUTE ,order_cancal_nurse_cancel_time,NOW()) >30))
+  AND
+  order_send_special_nurseid=#{0}
+  AND order_send_special_ordersendid=order_send_id
+  AND order_send_ispayment='1'
+  AND order_send_state='0'
+  AND order_send_begintime>NOW()
+  AND  order_send_type='1'
+  GROUP  BY order_send_special_id
+  ORDER BY order_send_type DESC ,order_send_createtime DESC 
+  </select>
+  
+  <!--通过订单id查询订单信息  -->
+  <select id="selectOrderSendInfoById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM order_send WHERE order_send_id =#{orderSendId,jdbcType=CHAR}
+  </select>
+  
+  
+    <!--拓展类通过订单id查询订单信息  -->
+  <select id="selectOrderSendInfoByIdVo" resultMap="BaseResultMap4" parameterType="java.lang.String">
+  SELECT * FROM order_send WHERE order_send_id =#{orderSendId,jdbcType=CHAR}
+  </select>
+  
+  <!--通过用户id查询订单信息  -->
+  <select id="selectOrderSendInfoByUserId" resultMap="BaseResultMap4" parameterType="java.lang.String">
+ SELECT * FROM order_send WHERE order_send_userid =#{orderSendUserid,jdbcType=CHAR} ORDER BY order_send_createtime DESC 
+  </select>
+  
+  <!-- 统计护士每个服务项服务的次数 -->
+  <select id="countNurseProjectNumber" resultMap="BaseResultMap5" parameterType="java.lang.String">
+  	SELECT order_send_servicecontent, COUNT(1) AS number FROM order_send LEFT JOIN order_receiver  ON order_send_id=order_ordersendid
+ WHERE order_send_state='3' and order_nurseid=#{orderNurseid}
+  GROUP BY order_send_servicecontent  
+  	
+  	  
+  </select>
+  
+  <!-- ***************后台接口********************** -->
+  <!-- 查询所有订单（包括发单人信息） -->
+  <select id="selectAllorderInfo" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  SELECT * FROM order_send,USER 
+   WHERE order_send_userid=user_id 
+   GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+  #{start},
+  #{rows}
+  </select>
+  <!--查询所有订单数量-->
+  <select id="selectCountAllOrderInfo" resultType="java.lang.Integer"  >
+   SELECT COUNT(*) FROM order_send
+  </select>
+  <!-- 正在发布的订单（包含发布人的信息） -->
+  <select id="selectAllOrderNow" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  <!-- SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND order_send_state=0
+  AND order_send_begintime>=NOW()
+  ORDER BY order_send_createtime ASC 
+  LIMIT
+	#{start},
+	#{rows} -->
+  <!-- SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND (order_send_state=0 OR (order_send_type =1 AND order_send_state=4))
+  AND order_send_begintime>=NOW()
+  ORDER BY order_send_createtime ASC  -->
+  <!--包括正接单中被直接取消的专属单  -->
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM USER,order_send LEFT JOIN order_cancel_order ON order_send_id = order_cancel_order_send_id
+  WHERE 
+  order_cancal_order_state IS NULL
+  AND
+  order_send_userid=user_id 
+  AND (order_send_state=0 OR (order_send_type =1 AND order_send_state=4))
+  <!-- AND order_send_begintime>=NOW() -->
+  ORDER BY order_send_state DESC,order_send_type DESC,  order_send_createtime ASC 
+   LIMIT
+	#{start},
+	#{rows} 
+  </select>
+   <!--正在发布的订单数量-->
+  <select id="selectCountAllOrderInfoNow" resultType="java.lang.Integer"  >
+   SELECT 
+  COUNT(*)
+  FROM USER,order_send LEFT JOIN order_cancel_order ON order_send_id = order_cancel_order_send_id
+  WHERE 
+  order_cancal_order_state IS NULL
+  AND
+  order_send_userid=user_id 
+  AND (order_send_state=0 OR (order_send_type =1 AND order_send_state=4))
+  <!-- AND order_send_begintime>=NOW() -->
+  </select>
+  <!-- 待预约的订单（包含发布人的信息） -->
+  <select id="selectAllOrderWait" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND order_send_state IS NULL
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+   <!--待预约的订单数量-->
+  <select id="selectCountAllOrderInfoWait" resultType="java.lang.Integer"  >
+   SELECT COUNT(*) FROM order_send WHERE order_send_state IS NULL
+  </select>
+  <!-- 进行中的订单（包含发布人的信息） -->
+  <select id="selectAllOrderHaving" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND order_send_state=1 OR order_send_state=2
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+   <!--进行中的订单数量-->
+  <select id="selectCountAllOrderInfoHaving" resultType="java.lang.Integer"  >
+   SELECT COUNT(*) FROM order_send  WHERE order_send_state=1 OR order_send_state=2
+  </select>
+   <!-- 已完成的订单（包含发布人的信息） -->
+  <select id="selectAllOrderSuccessed" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND order_send_state=3
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+   <!--已完成的订单数量-->
+  <select id="selectCountAllOrderInfoSuccessed" resultType="java.lang.Integer"  >
+   SELECT COUNT(*) FROM order_send WHERE order_send_state=3
+  </select>
+  <!-- 被取消的订单（包含发布人的信息,未退款,并且用户同意的） -->
+  <select id="selectAllOrderError" resultMap="BaseResultMap6" parameterType="java.util.Map">
+<!--   SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  user_id,user_nick,user_name
+  FROM order_send,USER 
+  WHERE order_send_userid=user_id 
+  AND order_send_state=4
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC  -->
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM order_send,USER ,order_cancel_order
+  WHERE order_send_userid=user_id 
+  AND order_send_state=4
+  AND order_send_id = order_cancel_order_send_id
+  AND order_send_stoptime IS NOT NULL
+  AND order_cancal_whether_refund=1
+  AND order_cancal_user_agree = 0
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+   <!-- 被取消的订单（包含发布人的信息,未退款,用户不同意的） -->
+  <select id="selectAllOrderErrorUserNotAgree" resultMap="BaseResultMap6" parameterType="java.util.Map">
+    SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name,order_cancal_user_agree
+  FROM order_send,USER ,order_cancel_order
+  WHERE order_send_userid=user_id 
+  AND order_send_state=4
+  AND order_send_id = order_cancel_order_send_id
+  AND order_send_stoptime IS NOT NULL
+  AND order_cancal_whether_refund=1
+  AND (order_cancal_user_agree = 1 OR order_cancal_user_agree IS NULL)
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+  
+   <!--被取消的订单数量-->
+  <select id="selectCountAllOrderInfoError" resultType="java.lang.Integer"  >
+      <!-- SELECT 
+	  COUNT(*)
+	  FROM order_send,USER ,order_cancel_order
+	  WHERE order_send_userid=user_id 
+	  AND order_send_state=4
+	  AND order_send_id = order_cancel_order_send_id
+	  AND order_cancal_whether_refund=1 -->
+  SELECT 
+  COUNT(*)
+  FROM order_send,USER ,order_cancel_order
+ 	  WHERE order_send_userid=user_id 
+     AND order_send_state=4
+     AND order_send_id = order_cancel_order_send_id
+     AND order_send_stoptime IS NOT NULL
+     AND order_cancal_whether_refund=1
+     GROUP BY order_send_id
+     ORDER BY order_send_createtime DESC 
+  </select>
+  
+  <!-- 被取消的订单（已退款） -->
+  <select id="selectAllOrderErrorUserHasRefund" resultMap="BaseResultMap6" parameterType="java.util.Map">
+    SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  order_send_compiaint_state,order_send_overone,order_send_overtwo,order_send_overthree,order_send_overfour,order_send_overfive,
+  user_id,user_nick,user_name
+  FROM order_send,USER ,order_cancel_order
+  WHERE order_send_userid=user_id 
+  AND order_send_state=4
+  AND order_send_id = order_cancel_order_send_id
+  AND order_send_stoptime IS NOT NULL
+  AND order_cancal_whether_refund=0
+  AND order_cancal_user_agree = 0
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+  <!-- 被取消的订单（已退款）订单数量 -->
+  <select id="selectAllOrderErrorUserHasRefundCount" resultType="java.lang.Integer">
+      SELECT 
+  COUNT(*)
+  FROM order_send,USER ,order_cancel_order
+  WHERE order_send_userid=user_id 
+  AND order_send_state=4
+  AND order_send_id = order_cancel_order_send_id
+  AND order_send_stoptime IS NOT NULL
+  AND order_cancal_whether_refund=0
+  AND order_cancal_user_agree = 1
+  </select>
+  
+   <!-- 得到所有未评价但是已完成的订单的用户和护士信息 -->
+	<select id="selectOrderSendInfoButNotEvaluate" resultMap="BaseResultMap6" parameterType="java.util.Map">
+	SELECT order_send_state,order_send.*,user_id,user_nick,user_name,nurse_id,nurse_nick,nurse_name FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id WHERE evaluate_id IS NULL
+	AND order_send_state=3 GROUP BY order_send_id
+	LIMIT
+	 #{start},
+	 #{rows}
+	</select>
+	
+	<!-- 得到7天前未评价的订单 -->
+	<select id="selectOrderSendInfoButNotEvaluateSevenDay" resultMap="BaseResultMap6">
+	SELECT order_send_state,order_send.*,user_id,user_nick,user_name,nurse_id,nurse_nick,nurse_name FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id
+	WHERE evaluate_id IS NULL
+	AND order_send_state=3 
+	AND
+	TIMESTAMPDIFF(DAY ,order_send_finish_order_time,NOW()) >=7
+	GROUP BY order_send_id
+	</select>
+	
+	
+   <!-- 得到所有未评价但是已完成的订单的数量 -->
+   <select id="selectCountOrderSendInfoButNotEvaluate" resultType="java.lang.Integer"  >
+   	SELECT COUNT(DISTINCT order_send_id) FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id WHERE evaluate_id IS NULL
+	AND order_send_state=3 
+   </select>
+   
+   <!-- 查询订单已完成已评价但是未返利的订单并且该护士是被邀请的 -->
+   <select id="selectOrderSentNotRebate" resultMap="BaseResultMap6" parameterType="java.util.Map">
+ 	SELECT order_send.*,user_id,user_nick,user_name,nurse_id,nurse_nick,nurse_name FROM invitation, nurse, USER,order_receiver, order_send WHERE  
+	order_send_id NOT IN  (SELECT capital_nurse_pool_ordersendid FROM capital_nurse_pool WHERE capital_nurse_pool_type=4)
+	AND order_send_state=3
+	AND order_send_id IN (SELECT evaluate_order_send_id FROM evaluate  )
+	AND order_ordersendid = order_send_id
+	AND order_nurseid = nurse_id
+	AND order_nurseid = invitation_beuser_id
+	GROUP BY order_send_id
+	LIMIT
+	 #{start},
+	 #{rows}
+   </select>
+   <!-- 查询订单已完成已评价但是未返利的订单数量 -->
+   <select id="selectCountOrderSentNotRebate" resultType="java.lang.Integer" >
+    SELECT COUNT(DISTINCT order_send_id) FROM invitation, nurse, USER,order_receiver, order_send WHERE  
+	order_send_id NOT IN  (SELECT capital_nurse_pool_ordersendid FROM capital_nurse_pool WHERE capital_nurse_pool_type=4)
+	AND order_send_state=3
+	AND order_send_id IN (SELECT evaluate_order_send_id FROM evaluate  )
+	AND order_ordersendid = order_send_id
+	AND order_nurseid = nurse_id
+	AND order_nurseid = invitation_beuser_id
+   </select>
+  
+  <!-- 查询订单已完成已评价的订单但是未奖励开单的订单 -->
+  <select id="selectOrderSendNotRewardbilling" resultMap="BaseResultMap6" parameterType="java.util.Map">
+	SELECT order_send.*,user_id,user_nick,user_name,nurse_id,nurse_nick,nurse_name FROM  nurse, USER,order_receiver, order_send WHERE  
+	order_send_id NOT IN  (SELECT capital_nurse_pool_ordersendid FROM capital_nurse_pool WHERE capital_nurse_pool_type=3)
+	AND order_send_state=3
+	AND order_send_id IN (SELECT evaluate_order_send_id FROM evaluate  )
+	AND order_ordersendid = order_send_id
+	AND order_nurseid = nurse_id
+	GROUP BY order_send_id
+	LIMIT
+	 #{start},
+	 #{rows}
+  </select>
+  <!-- 查询订单已完成已评价的订单但是未奖励开单的订单数量 -->
+  <select id="selectCountOrderSendNotRewardbilling" resultType="java.lang.Integer">
+  	SELECT COUNT(DISTINCT order_send_id) FROM  nurse, USER,order_receiver, order_send WHERE  
+	order_send_id NOT IN  (SELECT capital_nurse_pool_ordersendid FROM capital_nurse_pool WHERE capital_nurse_pool_type=3)
+	AND order_send_state=3
+	AND order_send_id IN (SELECT evaluate_order_send_id FROM evaluate  )
+	AND order_ordersendid = order_send_id
+	AND order_nurseid = nurse_id
+  </select>
+  <!-- 查询等待客服确认的订单 -->
+  <select id="selectOrderSendWaitServiceSure" resultMap="BaseResultMap6" parameterType="java.util.Map">
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  user_id,user_nick,user_name
+  FROM order_send,USER
+  WHERE order_send_userid=user_id
+  AND order_send_state=8
+  ORDER BY order_send_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+  </select>
+  <!--查询等待客服确认的订单数量  -->
+  <select id="selectCountOrderSendWaitServiceSure" resultType="java.lang.Integer">
+  SELECT 
+  COUNT(*)
+  FROM order_send,USER
+  WHERE order_send_userid=user_id
+  AND order_send_state=8
+  ORDER BY order_send_createtime ASC
+  </select>
+   <!-- 查询所有等待客服确认的订单(每次处理50条) -->
+  <select id="selectOrderSendWaitServiceSureAllInfo" resultMap="BaseResultMap6">
+  SELECT 
+  order_send_id,order_send_numbers,order_send_userid,order_send_servicecontent,
+  order_send_username,order_send_card,order_send_sex,order_send_age,order_send_addree,order_send_userpic,
+  order_send_note,order_send_coupon,order_send_trafficmoney,order_send_savemoney,order_send_costmoney,order_send_ispayment,
+  order_send_totalmoney,order_send_issafe,order_send_type,order_send_state,order_send_begintime,order_send_stoptime,order_send_createtime,
+  user_id,user_nick,user_name
+  FROM order_send,USER
+  WHERE order_send_userid=user_id
+  AND order_send_state=8
+  ORDER BY order_send_createtime ASC
+  LIMIT
+  0,
+  50
+  </select>
+  
+  <!-- 根据时间范围，订单单号，发布人账号查找订单 com.chance.ssm.po.vo.UserAndOrderSend -->
+  <select id="selectKeyWordByOrderInfo" resultMap="BaseResultMap6" parameterType="java.lang.String">
+  SELECT * FROM 
+  order_send,USER
+  WHERE 
+ <!--  <if test=" logminTime != null" >
+  order_send_createtime &gt;  #{orderSendCreatetime,jdbcType=TIMESTAMP}
+  </if>
+   <if test=" logmaxTime != null" >
+   and
+  order_send_createtime &lt;  #{orderSendCreatetime,jdbcType=TIMESTAMP} 
+  </if> -->
+  <if test="_parameter != null">
+  order_send_numbers like '%${_parameter}%'
+  </if>
+  OR
+  <if test="_parameter != null">
+  user_name like '%${_parameter}%'
+  </if>
+  and 
+  order_send_userid=user_id 
+  group by order_send_id
+  </select>
+  
+    <!-- 根据时间范围，订单单号，发布人账号查找订单 com.chance.ssm.po.vo.UserAndOrderSend -->
+  <select id="selectKeyWordByOrderInfo2" resultMap="BaseResultMap6" parameterType="com.chance.ssm.po.vo.OrderKeyWordVO">
+  SELECT * FROM 
+  order_send,USER
+  WHERE 
+ <![CDATA[  
+  DATE_FORMAT(order_send_createtime,'%Y-%m-%d')>=#{logminTime} AND DATE_FORMAT(order_send_createtime,'%Y-%m')<=DATE_FORMAT(#{logmaxTime},'%Y-%m-%d')
+   ]]>
+  <if test="parameter != null">
+  and (
+  order_send_numbers like '%${parameter}%'
+  </if>
+  <if test="parameter != null">
+  OR
+  user_name like '%${parameter}%'
+  )
+  </if>
+  and 
+  order_send_userid=user_id 
+  group by order_send_id
+  </select>
+  
+   <!--通过订单id查询订单信息 和拓展的护士信息 -->
+  <select id="selectOrderSendInfoByIdByMap" resultMap="BaseResultMap6" parameterType="java.lang.String">
+  	SELECT * FROM order_send WHERE order_send_id =#{orderSendId,jdbcType=CHAR}
+  </select>
+  
+  <!-- 根据年份查询每月订单数量 -->
+  <select id="selectOrderCountOnMonth" parameterType="java.lang.String" resultMap="BaseResultMap7">
+  	SELECT DATE_FORMAT(order_createtime,"%m") AS order_time, COUNT(*) AS amount 
+	FROM order_receiver 
+	WHERE order_receivestate = 4 
+  	AND DATE_FORMAT(order_createtime,"%Y")= #{year,jdbcType=CHAR} 
+	GROUP BY DATE_FORMAT(order_createtime,"%Y-%m");
+  </select>
+  
+  <!-- 根据年份查询每月订单金额 -->
+  <select id="selectOrderPriceOnMonth" parameterType="java.lang.String" resultMap="BaseResultMap7">
+  	SELECT TRUNCATE(SUM(order_send_totalmoney),2) AS price, DATE_FORMAT(order_send_finish_order_time,"%m") AS order_time
+	FROM order_send 
+	WHERE order_send_finish_order_time IS NOT NULL 
+    AND DATE_FORMAT(order_send_finish_order_time,"%Y") = #{year,jdbcType=CHAR}
+	GROUP BY DATE_FORMAT(order_send_finish_order_time,"%Y-%m");
+  </select>
+  
+  <!-- 根据年份和月份查询每日订单数量 -->
+  <select id="selectOrderCountDetailByDay" parameterType="java.lang.String" resultMap="BaseResultMap7">
+  	SELECT 
+  		DATE_FORMAT(order_createtime,"%d") AS order_time, 
+  		COUNT(*) AS amount 
+	FROM order_receiver 
+	WHERE order_receivestate = 4 
+  		AND DATE_FORMAT(order_createtime,"%Y-%m")= #{year,jdbcType=CHAR}
+	GROUP BY DATE_FORMAT(order_createtime,"%Y-%m-%d");
+  </select>
+  
+  <!-- 根据年份月份查询每日订单金额 -->
+  <select id="selectOrderPriceDetailByDay"  parameterType="java.lang.String" resultMap="BaseResultMap7">
+	SELECT
+	  TRUNCATE(SUM(order_send_totalmoney),2) AS price,
+	  DATE_FORMAT(order_send_finish_order_time,"%d") AS order_time
+	FROM order_send
+	WHERE order_send_finish_order_time IS NOT NULL
+	    AND DATE_FORMAT(order_send_finish_order_time,"%Y-%m") = #{year,jdbcType=CHAR}
+	GROUP BY DATE_FORMAT(order_send_finish_order_time,"%Y-%m-%d");
+  </select>
+  <!-- 查询我的所有订单(如果被接取查询护士的信息) -->
+  <select id="seleteUserHostoryOrder" resultMap="BaseResultMap4" parameterType="java.lang.String">
+   SELECT order_send.*,nurse.* FROM order_send LEFT JOIN order_receiver ON order_send_id = order_ordersendid 
+   LEFT JOIN nurse ON order_nurseid = nurse_id
+   WHERE order_send_userid=#{orderSendUserid,jdbcType=CHAR}
+   ORDER BY order_send_createtime DESC 
+  </select>
+ 
+ <!-- 根据用户ID查询未处理的取消订单 -->
+ <select id="selectOrderInfoOfNotHandleBecancel" resultMap="BaseResultMap" parameterType="java.lang.String">
+   SELECT order_send.* FROM order_send,order_cancel_order WHERE order_send_id =order_cancel_order_send_id
+  AND order_send_stoptime = 1 AND order_cancal_user_agree IS NULL
+  AND order_send_userid = #{orderSendUserid,jdbcType=CHAR}
+ </select>
+ 
+ <!-- 后台图表统计 -->
+ <!-- 当月已完成的订单 -->
+  <select id="selectStatisticsOrderSuccessMonth" resultMap="BaseResultMap">
+  		SELECT order_send_id,order_send_finish_order_time FROM order_send   WHERE DATE_FORMAT(order_send_finish_order_time,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') 
+  </select>
+  <!-- 当年已完成的订单 -->
+  <select id="selectStatisticsOrderSuccessYear" resultMap="BaseResultMap" >
+  		SELECT order_send_id,order_send_finish_order_time FROM order_send   WHERE DATE_FORMAT(order_send_finish_order_time,'%Y')=DATE_FORMAT(NOW(),'%Y') 
+  </select>
+  <!-- 根据订单单号查询订单信息 -->
+  <select id="selectOrderInfoByOrderNumber" resultMap="BaseResultMap">
+  SELECT * FROM order_send WHERE order_send_numbers = #{0}
+  </select>
+  
+  <!-- 当月进行中的订单 -->
+  <select id="selectOrderInfoByOrderHavingMonth" resultMap="BaseResultMap">
+  SELECT order_send_id,order_send_createtime FROM order_send,USER WHERE DATE_FORMAT(order_send_createtime,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m')  AND 
+  order_send_userid=user_id 
+  AND order_send_state=1 OR order_send_state=2
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC  
+  </select>
+  
+    <!-- 当年进行中的订单 -->
+  <select id="selectOrderInfoByOrderHavingYear" resultMap="BaseResultMap">
+  SELECT order_send_id,order_send_createtime FROM order_send,USER WHERE DATE_FORMAT(order_send_createtime,'%Y')=DATE_FORMAT(NOW(),'%Y') AND 
+  order_send_userid=user_id 
+  AND order_send_state=1 OR order_send_state=2
+  GROUP BY order_send_id
+  ORDER BY order_send_createtime DESC 
+  </select>
+  
+  <!-- 当月取消的订单 -->
+  <select id="selectOrderInfoByOrderCancleMonth" resultMap="BaseResultMap">
+  SELECT order_send_id,order_send_finish_order_time FROM order_send,USER WHERE DATE_FORMAT(order_send_finish_order_time,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') 
+  AND order_send_state=4
+  GROUP BY  order_send_id
+  </select>
+  
+    <!-- 当年取消的订单 -->
+  <select id="selectOrderInfoByOrderCancleYear" resultMap="BaseResultMap">
+    SELECT order_send_id,order_send_finish_order_time FROM order_send,USER WHERE DATE_FORMAT(order_send_finish_order_time,'%Y')=DATE_FORMAT(NOW(),'%Y') 
+  	AND order_send_state=4
+  	GROUP BY  order_send_id
+  </select>
+  <!--金额(累计成交)/每日成交额 -->
+  <select id="selectOrderMoneyStatisticsMonth"  resultMap="BaseResultMap">
+    SELECT order_send_id,order_send_totalmoney,order_send_finish_order_time FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id WHERE evaluate_id IS NOT NULL
+	AND order_send_state=3 AND DATE_FORMAT(order_send_finish_order_time,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') GROUP BY order_send_id
+  </select>
+  <!-- 当日成交额 -->
+  <select id="selectOrderMoneyStatisticsToDay" resultMap="BaseResultMap">
+  	SELECT order_send_id,order_send_totalmoney,order_send_finish_order_time FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id WHERE evaluate_id IS NOT NULL
+	AND order_send_state=3 AND DATE_FORMAT(order_send_finish_order_time,'%Y-%m-%d')=DATE_FORMAT(NOW(),'%Y-%m-%d') GROUP BY order_send_id
+  </select>
+  <!-- 平均客单价 -->
+  <select id="selectOrderAverageCustomerPrice" resultType="java.lang.String">
+    SELECT FORMAT(AVG(order_send_totalmoney),2) AS avgMoney FROM nurse, USER,order_receiver, order_send LEFT JOIN evaluate ON order_send_id = evaluate_order_send_id WHERE evaluate_id IS NOT NULL
+	AND order_send_state=3 AND DATE_FORMAT(order_send_finish_order_time,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m')
+  </select>
+  <!-- 查询用户发的总订单数 -->
+  <select id="selectUserSendOrderAllCount" resultType="java.lang.Integer">
+   SELECT COUNT(*) FROM order_send WHERE order_send_userid = #{0}
+  </select>
+ 
+</mapper>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursingtestingcontentmapper.NursingTestingContentMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NursingTestingContent" >
+    <result column="nursing_testing_contentid" property="nursingTestingContentid" jdbcType="CHAR" />
+    <result column="nursing_orderid" property="nursingOrderid" jdbcType="CHAR" />
+    <result column="nursing_nurseid" property="nursingNurseid" jdbcType="CHAR" />
+    <result column="nursing_testing_id" property="nursingTestingId" jdbcType="CHAR" />
+    <result column="nursing_project_note" property="nursingProjectNote" jdbcType="VARCHAR" />
+    <result column="nursing_createtime" property="nursingCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nursing_testing_contentid, nursing_orderid, nursing_nurseid, nursing_testing_id, 
+    nursing_project_note, nursing_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NursingTestingContentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nursing_testing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NursingTestingContentExample" >
+    delete from nursing_testing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NursingTestingContent" >
+    insert into nursing_testing_content (nursing_testing_contentid, nursing_orderid, 
+      nursing_nurseid, nursing_testing_id, nursing_project_note, 
+      nursing_createtime)
+    values (#{nursingTestingContentid,jdbcType=CHAR}, #{nursingOrderid,jdbcType=CHAR}, 
+      #{nursingNurseid,jdbcType=CHAR}, #{nursingTestingId,jdbcType=CHAR}, #{nursingProjectNote,jdbcType=VARCHAR}, 
+      #{nursingCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NursingTestingContent" >
+    insert into nursing_testing_content
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nursingTestingContentid != null" >
+        nursing_testing_contentid,
+      </if>
+      <if test="nursingOrderid != null" >
+        nursing_orderid,
+      </if>
+      <if test="nursingNurseid != null" >
+        nursing_nurseid,
+      </if>
+      <if test="nursingTestingId != null" >
+        nursing_testing_id,
+      </if>
+      <if test="nursingProjectNote != null" >
+        nursing_project_note,
+      </if>
+      <if test="nursingCreatetime != null" >
+        nursing_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nursingTestingContentid != null" >
+        #{nursingTestingContentid,jdbcType=CHAR},
+      </if>
+      <if test="nursingOrderid != null" >
+        #{nursingOrderid,jdbcType=CHAR},
+      </if>
+      <if test="nursingNurseid != null" >
+        #{nursingNurseid,jdbcType=CHAR},
+      </if>
+      <if test="nursingTestingId != null" >
+        #{nursingTestingId,jdbcType=CHAR},
+      </if>
+      <if test="nursingProjectNote != null" >
+        #{nursingProjectNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingCreatetime != null" >
+        #{nursingCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NursingTestingContentExample" resultType="java.lang.Integer" >
+    select count(*) from nursing_testing_content
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nursing_testing_content
+    <set >
+      <if test="record.nursingTestingContentid != null" >
+        nursing_testing_contentid = #{record.nursingTestingContentid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingOrderid != null" >
+        nursing_orderid = #{record.nursingOrderid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingNurseid != null" >
+        nursing_nurseid = #{record.nursingNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingTestingId != null" >
+        nursing_testing_id = #{record.nursingTestingId,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingProjectNote != null" >
+        nursing_project_note = #{record.nursingProjectNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingCreatetime != null" >
+        nursing_createtime = #{record.nursingCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nursing_testing_content
+    set nursing_testing_contentid = #{record.nursingTestingContentid,jdbcType=CHAR},
+      nursing_orderid = #{record.nursingOrderid,jdbcType=CHAR},
+      nursing_nurseid = #{record.nursingNurseid,jdbcType=CHAR},
+      nursing_testing_id = #{record.nursingTestingId,jdbcType=CHAR},
+      nursing_project_note = #{record.nursingProjectNote,jdbcType=VARCHAR},
+      nursing_createtime = #{record.nursingCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+	<!-- 根据订单id查询检测项 -->
+	<select id="selectTestingContentByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	SELECT nursing_nurseid, nursing_testing_id,nursing_project_note FROM nursing_testing_content WHERE nursing_orderid = #{nursingOrderid,jdbcType=CHAR} ORDER BY -nursing_project_note DESC 
+</select>
+</mapper>

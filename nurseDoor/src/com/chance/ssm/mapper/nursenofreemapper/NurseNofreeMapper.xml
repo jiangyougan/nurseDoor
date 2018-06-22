@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursenofreemapper.NurseNofreeMapper" >
+ <resultMap id="BaseResultMap" type="com.chance.ssm.po.NurseNofree" >
+    <id column="nurse_nofree_id" property="nurseNofreeId" jdbcType="CHAR" />
+    <result column="nurse_nofree_nurseid" property="nurseNofreeNurseid" jdbcType="CHAR" />
+    <result column="nurse_nofree_shift_id" property="nurseNofreeShiftId" jdbcType="CHAR" />
+    <result column="nurse_nofree_name" property="nurseNofreeName" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_note" property="nurseNofreeNote" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_date" property="nurseNofreeDate" jdbcType="TIMESTAMP" />
+    <result column="nurse_nofree_createtime" property="nurseNofreeCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.chance.ssm.po.vo.NurseNoFreeVo" >
+   	<result column="nurse_nofree_shift_id" property="nurseNofreeShiftId" jdbcType="CHAR" />
+    <result column="nurse_nofree_shift_nurse_id" property="nurseNofreeShiftNurseId" jdbcType="CHAR" />
+    <result column="nurse_nofree_shift_name" property="nurseNofreeShiftName" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_shift_color" property="nurseNofreeShiftColor" jdbcType="CHAR" />
+    <result column="nurse_nofree_shift_begintime" property="nurseNofreeShiftBegintime" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_shift_stoptime" property="nurseNofreeShiftStoptime" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_id" property="nurseNofreeId" jdbcType="CHAR" />
+    <result column="nurse_nofree_name" property="nurseNofreeName" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_note" property="nurseNofreeNote" jdbcType="VARCHAR" />
+    <result column="nurse_nofree_date" property="nurseNofreeDate" jdbcType="TIMESTAMP" />
+    <result column="dates" property="dates" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_nofree_id, nurse_nofree_nurseid, nurse_nofree_shift_id, nurse_nofree_name, 
+    nurse_nofree_note, nurse_nofree_date, nurse_nofree_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NurseNofreeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse_nofree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurse_nofree
+    where nurse_nofree_id = #{nurseNofreeId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from nurse_nofree
+    where nurse_nofree_id = #{nurseNofreeId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NurseNofreeExample" >
+    delete from nurse_nofree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NurseNofree" >
+    insert into nurse_nofree (nurse_nofree_id, nurse_nofree_nurseid, nurse_nofree_shift_id, 
+      nurse_nofree_name, nurse_nofree_note, nurse_nofree_date, 
+      nurse_nofree_createtime)
+    values (#{nurseNofreeId,jdbcType=CHAR}, #{nurseNofreeNurseid,jdbcType=CHAR}, #{nurseNofreeShiftId,jdbcType=CHAR}, 
+      #{nurseNofreeName,jdbcType=VARCHAR}, #{nurseNofreeNote,jdbcType=VARCHAR}, #{nurseNofreeDate,jdbcType=TIMESTAMP}, 
+      #{nurseNofreeCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NurseNofree" >
+    insert into nurse_nofree
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nurseNofreeId != null" >
+        nurse_nofree_id,
+      </if>
+      <if test="nurseNofreeNurseid != null" >
+        nurse_nofree_nurseid,
+      </if>
+      <if test="nurseNofreeShiftId != null" >
+        nurse_nofree_shift_id,
+      </if>
+      <if test="nurseNofreeName != null" >
+        nurse_nofree_name,
+      </if>
+      <if test="nurseNofreeNote != null" >
+        nurse_nofree_note,
+      </if>
+      <if test="nurseNofreeDate != null" >
+        nurse_nofree_date,
+      </if>
+      <if test="nurseNofreeCreatetime != null" >
+        nurse_nofree_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nurseNofreeId != null" >
+        #{nurseNofreeId,jdbcType=CHAR},
+      </if>
+      <if test="nurseNofreeNurseid != null" >
+        #{nurseNofreeNurseid,jdbcType=CHAR},
+      </if>
+      <if test="nurseNofreeShiftId != null" >
+        #{nurseNofreeShiftId,jdbcType=CHAR},
+      </if>
+      <if test="nurseNofreeName != null" >
+        #{nurseNofreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNofreeNote != null" >
+        #{nurseNofreeNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNofreeDate != null" >
+        #{nurseNofreeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nurseNofreeCreatetime != null" >
+        #{nurseNofreeCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NurseNofreeExample" resultType="java.lang.Integer" >
+    select count(*) from nurse_nofree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse_nofree
+    <set >
+      <if test="record.nurseNofreeId != null" >
+        nurse_nofree_id = #{record.nurseNofreeId,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseNofreeNurseid != null" >
+        nurse_nofree_nurseid = #{record.nurseNofreeNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseNofreeShiftId != null" >
+        nurse_nofree_shift_id = #{record.nurseNofreeShiftId,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseNofreeName != null" >
+        nurse_nofree_name = #{record.nurseNofreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseNofreeNote != null" >
+        nurse_nofree_note = #{record.nurseNofreeNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseNofreeDate != null" >
+        nurse_nofree_date = #{record.nurseNofreeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.nurseNofreeCreatetime != null" >
+        nurse_nofree_createtime = #{record.nurseNofreeCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse_nofree
+    set nurse_nofree_id = #{record.nurseNofreeId,jdbcType=CHAR},
+      nurse_nofree_nurseid = #{record.nurseNofreeNurseid,jdbcType=CHAR},
+      nurse_nofree_shift_id = #{record.nurseNofreeShiftId,jdbcType=CHAR},
+      nurse_nofree_name = #{record.nurseNofreeName,jdbcType=VARCHAR},
+      nurse_nofree_note = #{record.nurseNofreeNote,jdbcType=VARCHAR},
+      nurse_nofree_date = #{record.nurseNofreeDate,jdbcType=TIMESTAMP},
+      nurse_nofree_createtime = #{record.nurseNofreeCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.NurseNofree" >
+    update nurse_nofree
+    <set >
+      <if test="nurseNofreeNurseid != null" >
+        nurse_nofree_nurseid = #{nurseNofreeNurseid,jdbcType=CHAR},
+      </if>
+      <if test="nurseNofreeShiftId != null" >
+        nurse_nofree_shift_id = #{nurseNofreeShiftId,jdbcType=CHAR},
+      </if>
+      <if test="nurseNofreeName != null" >
+        nurse_nofree_name = #{nurseNofreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNofreeNote != null" >
+        nurse_nofree_note = #{nurseNofreeNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNofreeDate != null" >
+        nurse_nofree_date = #{nurseNofreeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nurseNofreeCreatetime != null" >
+        nurse_nofree_createtime = #{nurseNofreeCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where nurse_nofree_id = #{nurseNofreeId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.NurseNofree" >
+    update nurse_nofree
+    set nurse_nofree_nurseid = #{nurseNofreeNurseid,jdbcType=CHAR},
+      nurse_nofree_shift_id = #{nurseNofreeShiftId,jdbcType=CHAR},
+      nurse_nofree_name = #{nurseNofreeName,jdbcType=VARCHAR},
+      nurse_nofree_note = #{nurseNofreeNote,jdbcType=VARCHAR},
+      nurse_nofree_date = #{nurseNofreeDate,jdbcType=TIMESTAMP},
+      nurse_nofree_createtime = #{nurseNofreeCreatetime,jdbcType=TIMESTAMP}
+    where nurse_nofree_id = #{nurseNofreeId,jdbcType=CHAR}
+  </update>
+   <!-- 通过护士ID查询最近的一次空闲时间 -->
+  <select id="selectByExampleOne" resultMap="BaseResultMap2" parameterType="java.lang.String" >
+    SELECT a.nurse_nofree_shift_id,a.nurse_nofree_shift_nurse_id,a.nurse_nofree_shift_name,a.nurse_nofree_shift_color,a.nurse_nofree_shift_begintime,
+	a.nurse_nofree_shift_stoptime,b.nurse_nofree_name,b.nurse_nofree_note,b.nurse_nofree_date,b.nurse_nofree_id,DATE_FORMAT(b.nurse_nofree_date, '%y-%m-%d') AS dates 
+	FROM nurse_nofree_shift a LEFT JOIN nurse_nofree b ON a.nurse_nofree_shift_id = b.nurse_nofree_shift_id
+	WHERE b.nurse_nofree_nurseid=#{nurseNofreeNurseid,jdbcType=CHAR} 
+	AND nurse_nofree_date>NOW()
+	ORDER BY 
+	nurse_nofree_date
+	ASC
+	 LIMIT 0,1
+  </select>
+  <select id="selectNurseFreeInfo" resultMap="BaseResultMap2" parameterType="java.lang.String">
+	SELECT a.nurse_nofree_shift_id,
+	a.nurse_nofree_shift_nurse_id,
+	a.nurse_nofree_shift_name,
+	a.nurse_nofree_shift_color,
+	a.nurse_nofree_shift_begintime,
+	a.nurse_nofree_shift_stoptime,
+	b.nurse_nofree_name,
+	b.nurse_nofree_note,
+	b.nurse_nofree_date,
+	b.nurse_nofree_id,
+	DATE_FORMAT(b.nurse_nofree_date, '%y-%m-%d') AS dates 
+	FROM nurse_nofree_shift a 
+	LEFT JOIN 
+	nurse_nofree b 
+	ON 
+	a.nurse_nofree_shift_id = b.nurse_nofree_shift_id
+	WHERE b.nurse_nofree_nurseid=#{nurseNofreeNurseid,jdbcType=CHAR}
+	ORDER BY 
+	nurse_nofree_date
+	DESC 
+  </select>
+  <select id="selectNurseNoFreeTimeForSomeOneDay" resultMap="BaseResultMap2" parameterType="java.lang.String">
+    SELECT a.nurse_nofree_shift_id,a.nurse_nofree_shift_nurse_id,a.nurse_nofree_shift_name,a.nurse_nofree_shift_color,a.nurse_nofree_shift_begintime,
+	a.nurse_nofree_shift_stoptime,b.nurse_nofree_name,b.nurse_nofree_note,b.nurse_nofree_date,b.nurse_nofree_id,DATE_FORMAT(b.nurse_nofree_date, '%y-%m-%d') AS dates 
+	FROM nurse_nofree_shift a LEFT JOIN nurse_nofree b ON a.nurse_nofree_shift_id = b.nurse_nofree_shift_id
+	WHERE b.nurse_nofree_nurseid=#{0} 
+	AND DATE_FORMAT(b.nurse_nofree_date, '%Y-%m-%d') = #{1}
+	ORDER BY 
+	nurse_nofree_date
+	DESC
+  </select>
+  
+  <!-- 查询护士3周的排班时间(当前周,下一周,下下一周(周一第一天,周日最后一天))(含月历吧备注) -->
+  <select id="selectNurseNotFreeTimeThirdWeed" resultMap="BaseResultMap2" parameterType="java.lang.String">
+   	SELECT a.nurse_nofree_shift_id,
+   	a.nurse_nofree_shift_nurse_id,
+   	a.nurse_nofree_shift_name,
+   	a.nurse_nofree_shift_color,
+   	a.nurse_nofree_shift_begintime,
+   	a.nurse_nofree_shift_stoptime,
+   	b.nurse_nofree_name,
+   	b.nurse_nofree_note,
+   	b.nurse_nofree_date,
+   	b.nurse_nofree_id,
+   	DATE_FORMAT(b.nurse_nofree_date, '%y-%m-%d') AS dates 
+	FROM nurse_nofree_shift a 
+	LEFT JOIN 
+	nurse_nofree b 
+	ON 
+	a.nurse_nofree_shift_nurse_id = b.nurse_nofree_nurseid
+	WHERE 
+	b.nurse_nofree_nurseid=#{nurseNofreeNurseid,jdbcType=CHAR}
+	AND 
+	nurse_nofree_date 
+	BETWEEN DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE())  DAY) 
+	AND 
+	DATE_SUB(CURDATE(),INTERVAL WEEKDAY(CURDATE()) - 20 DAY)
+	ORDER BY 
+	dates 
+	DESC 
+  </select>
+  <!-- 根据护士ID,日期,班次ID删除排班表(同一天不能有2个相同的班次) -->
+  <delete  id="deleteByNurseIdANdDateAdnShiftId" parameterType="java.lang.String">
+  DELETE 
+  FROM 
+  nurse_nofree 
+  WHERE 
+  DATE_FORMAT(nurse_nofree_date, '%Y-%m-%d') = #{0}
+  AND nurse_nofree_nurseid=#{1} AND nurse_nofree_shift_id=#{2}
+  </delete>
+  
+  <!-- 根据护士ID,日期,班次ID修改排班表(同一天不能有2个相同的班次) -->
+  <update id="updateByNurseIdANdDateAdnShiftId" parameterType="java.lang.String">
+  UPDATE nurse_nofree SET nurse_nofree_name=#{0} WHERE DATE_FORMAT(nurse_nofree_date, '%Y-%m-%d') = #{1}
+  AND nurse_nofree_nurseid=#{2} AND nurse_nofree_shift_id=#{3}
+  </update>
+  <!-- 查询同一天有没有相同的班次 -->
+  <select id="selectCommonNoFreeInfo" parameterType="java.lang.String">
+  	SELECT nurse_nofree_id 
+  	FROM  
+  	nurse_nofree 
+  	WHERE 
+  	nurse_nofree_shift_id =#{0}
+  	AND 
+  	DATE_FORMAT(nurse_nofree_date, '%Y-%m-%d') = #{1}
+  </select>
+</mapper>

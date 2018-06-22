@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postnursefocusmapper.PostNursefFocusMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostNursefFocus" >
+    <id column="post_nursef_focus_id" property="postNursefFocusId" jdbcType="CHAR" />
+    <result column="post_nursef_focus_nurse_id" property="postNursefFocusNurseId" jdbcType="CHAR" />
+    <result column="post_nursef_post_two_level_id" property="postNursefPostTwoLevelId" jdbcType="CHAR" />
+    <result column="post_nursef_focus_note" property="postNursefFocusNote" jdbcType="VARCHAR" />
+    <result column="post_nursef_focus_speak" property="postNursefFocusSpeak" jdbcType="VARCHAR" />
+    <result column="post_nursef_focus_createtime" property="postNursefFocusCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_nursef_focus_id, post_nursef_focus_nurse_id, post_nursef_post_two_level_id, 
+    post_nursef_focus_note, post_nursef_focus_speak, post_nursef_focus_createtime
+  </sql>
+  <select id="selectByPsotNurseFocusExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostNursefFocusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_nursef_focus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_nursef_focus
+    where post_nursef_focus_id = #{postNursefFocusId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_nursef_focus
+    where post_nursef_focus_id = #{postNursefFocusId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostNursefFocusExample" >
+    delete from post_nursef_focus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostNursefFocus" >
+    insert into post_nursef_focus (post_nursef_focus_id, post_nursef_focus_nurse_id, 
+      post_nursef_post_two_level_id, post_nursef_focus_note, 
+      post_nursef_focus_speak, post_nursef_focus_createtime
+      )
+    values (#{postNursefFocusId,jdbcType=CHAR}, #{postNursefFocusNurseId,jdbcType=CHAR}, 
+      #{postNursefPostTwoLevelId,jdbcType=CHAR}, #{postNursefFocusNote,jdbcType=VARCHAR}, 
+      #{postNursefFocusSpeak,jdbcType=VARCHAR}, #{postNursefFocusCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertPostnursefocusSelective" parameterType="com.chance.ssm.po.PostNursefFocus" >
+    insert into post_nursef_focus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postNursefFocusId != null" >
+        post_nursef_focus_id,
+      </if>
+      <if test="postNursefFocusNurseId != null" >
+        post_nursef_focus_nurse_id,
+      </if>
+      <if test="postNursefPostTwoLevelId != null" >
+        post_nursef_post_two_level_id,
+      </if>
+      <if test="postNursefFocusNote != null" >
+        post_nursef_focus_note,
+      </if>
+      <if test="postNursefFocusSpeak != null" >
+        post_nursef_focus_speak,
+      </if>
+      <if test="postNursefFocusCreatetime != null" >
+        post_nursef_focus_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postNursefFocusId != null" >
+        #{postNursefFocusId,jdbcType=CHAR},
+      </if>
+      <if test="postNursefFocusNurseId != null" >
+        #{postNursefFocusNurseId,jdbcType=CHAR},
+      </if>
+      <if test="postNursefPostTwoLevelId != null" >
+        #{postNursefPostTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postNursefFocusNote != null" >
+        #{postNursefFocusNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postNursefFocusSpeak != null" >
+        #{postNursefFocusSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postNursefFocusCreatetime != null" >
+        #{postNursefFocusCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostNursefFocusExample" resultType="java.lang.Integer" >
+    select count(*) from post_nursef_focus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_nursef_focus
+    <set >
+      <if test="record.postNursefFocusId != null" >
+        post_nursef_focus_id = #{record.postNursefFocusId,jdbcType=CHAR},
+      </if>
+      <if test="record.postNursefFocusNurseId != null" >
+        post_nursef_focus_nurse_id = #{record.postNursefFocusNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.postNursefPostTwoLevelId != null" >
+        post_nursef_post_two_level_id = #{record.postNursefPostTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="record.postNursefFocusNote != null" >
+        post_nursef_focus_note = #{record.postNursefFocusNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postNursefFocusSpeak != null" >
+        post_nursef_focus_speak = #{record.postNursefFocusSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postNursefFocusCreatetime != null" >
+        post_nursef_focus_createtime = #{record.postNursefFocusCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_nursef_focus
+    set post_nursef_focus_id = #{record.postNursefFocusId,jdbcType=CHAR},
+      post_nursef_focus_nurse_id = #{record.postNursefFocusNurseId,jdbcType=CHAR},
+      post_nursef_post_two_level_id = #{record.postNursefPostTwoLevelId,jdbcType=CHAR},
+      post_nursef_focus_note = #{record.postNursefFocusNote,jdbcType=VARCHAR},
+      post_nursef_focus_speak = #{record.postNursefFocusSpeak,jdbcType=VARCHAR},
+      post_nursef_focus_createtime = #{record.postNursefFocusCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostNursefFocus" >
+    update post_nursef_focus
+    <set >
+      <if test="postNursefFocusNurseId != null" >
+        post_nursef_focus_nurse_id = #{postNursefFocusNurseId,jdbcType=CHAR},
+      </if>
+      <if test="postNursefPostTwoLevelId != null" >
+        post_nursef_post_two_level_id = #{postNursefPostTwoLevelId,jdbcType=CHAR},
+      </if>
+      <if test="postNursefFocusNote != null" >
+        post_nursef_focus_note = #{postNursefFocusNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postNursefFocusSpeak != null" >
+        post_nursef_focus_speak = #{postNursefFocusSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postNursefFocusCreatetime != null" >
+        post_nursef_focus_createtime = #{postNursefFocusCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_nursef_focus_id = #{postNursefFocusId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostNursefFocus" >
+    update post_nursef_focus
+    set post_nursef_focus_nurse_id = #{postNursefFocusNurseId,jdbcType=CHAR},
+      post_nursef_post_two_level_id = #{postNursefPostTwoLevelId,jdbcType=CHAR},
+      post_nursef_focus_note = #{postNursefFocusNote,jdbcType=VARCHAR},
+      post_nursef_focus_speak = #{postNursefFocusSpeak,jdbcType=VARCHAR},
+      post_nursef_focus_createtime = #{postNursefFocusCreatetime,jdbcType=TIMESTAMP}
+    where post_nursef_focus_id = #{postNursefFocusId,jdbcType=CHAR}
+  </update>
+  <!-- 根据护士Id删除护士关注 -->
+  <delete id="deletePostNursefFocusByNurseId" parameterType="java.lang.String">
+  DELETE FROM post_nursef_focus WHERE post_nursef_focus_nurse_id=#{postNursefFocusNurseId,jdbcType=CHAR}
+  </delete>
+</mapper>

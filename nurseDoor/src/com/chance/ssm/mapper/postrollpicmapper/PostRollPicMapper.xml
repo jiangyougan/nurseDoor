@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.postrollpicmapper.PostRollPicMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.PostRollPic" >
+    <id column="post_roll_pic_id" property="postRollPicId" jdbcType="CHAR" />
+    <result column="post_roll_pic_url" property="postRollPicUrl" jdbcType="VARCHAR" />
+    <result column="post_roll_pic_address" property="postRollPicAddress" jdbcType="VARCHAR" />
+    <result column="post_roll_pic_note" property="postRollPicNote" jdbcType="VARCHAR" />
+    <result column="post_roll_pic_speak" property="postRollPicSpeak" jdbcType="VARCHAR" />
+    <result column="post_roll_pic_rank" property="postRollPicRank" jdbcType="VARCHAR" />
+    <result column="post_roll_pic_creater" property="postRollPicCreater" jdbcType="CHAR" />
+    <result column="post_roll_pic_createtime" property="postRollPicCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    post_roll_pic_id, post_roll_pic_url, post_roll_pic_address, post_roll_pic_note, post_roll_pic_speak, 
+    post_roll_pic_rank, post_roll_pic_creater, post_roll_pic_createtime
+  </sql>
+  <select id="selectpostrollpicByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.PostRollPicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from post_roll_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from post_roll_pic
+    where post_roll_pic_id = #{postRollPicId,jdbcType=CHAR}
+  </select>
+  <delete id="deletePostEollpicByPrimaryKey" parameterType="java.lang.String" >
+    delete from post_roll_pic
+    where post_roll_pic_id = #{postRollPicId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.PostRollPicExample" >
+    delete from post_roll_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.PostRollPic" >
+    insert into post_roll_pic (post_roll_pic_id, post_roll_pic_url, post_roll_pic_address, 
+      post_roll_pic_note, post_roll_pic_speak, post_roll_pic_rank, 
+      post_roll_pic_creater, post_roll_pic_createtime
+      )
+    values (#{postRollPicId,jdbcType=CHAR}, #{postRollPicUrl,jdbcType=VARCHAR}, #{postRollPicAddress,jdbcType=VARCHAR}, 
+      #{postRollPicNote,jdbcType=VARCHAR}, #{postRollPicSpeak,jdbcType=VARCHAR}, #{postRollPicRank,jdbcType=VARCHAR}, 
+      #{postRollPicCreater,jdbcType=CHAR}, #{postRollPicCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertPostRollPicSelective" parameterType="com.chance.ssm.po.PostRollPic" >
+    insert into post_roll_pic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postRollPicId != null" >
+        post_roll_pic_id,
+      </if>
+      <if test="postRollPicUrl != null" >
+        post_roll_pic_url,
+      </if>
+      <if test="postRollPicAddress != null" >
+        post_roll_pic_address,
+      </if>
+      <if test="postRollPicNote != null" >
+        post_roll_pic_note,
+      </if>
+      <if test="postRollPicSpeak != null" >
+        post_roll_pic_speak,
+      </if>
+      <if test="postRollPicRank != null" >
+        post_roll_pic_rank,
+      </if>
+      <if test="postRollPicCreater != null" >
+        post_roll_pic_creater,
+      </if>
+      <if test="postRollPicCreatetime != null" >
+        post_roll_pic_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postRollPicId != null" >
+        #{postRollPicId,jdbcType=CHAR},
+      </if>
+      <if test="postRollPicUrl != null" >
+        #{postRollPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicAddress != null" >
+        #{postRollPicAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicNote != null" >
+        #{postRollPicNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicSpeak != null" >
+        #{postRollPicSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicRank != null" >
+        #{postRollPicRank,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicCreater != null" >
+        #{postRollPicCreater,jdbcType=CHAR},
+      </if>
+      <if test="postRollPicCreatetime != null" >
+        #{postRollPicCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.PostRollPicExample" resultType="java.lang.Integer" >
+    select count(*) from post_roll_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update post_roll_pic
+    <set >
+      <if test="record.postRollPicId != null" >
+        post_roll_pic_id = #{record.postRollPicId,jdbcType=CHAR},
+      </if>
+      <if test="record.postRollPicUrl != null" >
+        post_roll_pic_url = #{record.postRollPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRollPicAddress != null" >
+        post_roll_pic_address = #{record.postRollPicAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRollPicNote != null" >
+        post_roll_pic_note = #{record.postRollPicNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRollPicSpeak != null" >
+        post_roll_pic_speak = #{record.postRollPicSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRollPicRank != null" >
+        post_roll_pic_rank = #{record.postRollPicRank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postRollPicCreater != null" >
+        post_roll_pic_creater = #{record.postRollPicCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.postRollPicCreatetime != null" >
+        post_roll_pic_createtime = #{record.postRollPicCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update post_roll_pic
+    set post_roll_pic_id = #{record.postRollPicId,jdbcType=CHAR},
+      post_roll_pic_url = #{record.postRollPicUrl,jdbcType=VARCHAR},
+      post_roll_pic_address = #{record.postRollPicAddress,jdbcType=VARCHAR},
+      post_roll_pic_note = #{record.postRollPicNote,jdbcType=VARCHAR},
+      post_roll_pic_speak = #{record.postRollPicSpeak,jdbcType=VARCHAR},
+      post_roll_pic_rank = #{record.postRollPicRank,jdbcType=VARCHAR},
+      post_roll_pic_creater = #{record.postRollPicCreater,jdbcType=CHAR},
+      post_roll_pic_createtime = #{record.postRollPicCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updatePostRollPicByPrimaryKeySelective" parameterType="com.chance.ssm.po.PostRollPic" >
+    update post_roll_pic
+    <set >
+      <if test="postRollPicUrl != null" >
+        post_roll_pic_url = #{postRollPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicAddress != null" >
+        post_roll_pic_address = #{postRollPicAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicNote != null" >
+        post_roll_pic_note = #{postRollPicNote,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicSpeak != null" >
+        post_roll_pic_speak = #{postRollPicSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicRank != null" >
+        post_roll_pic_rank = #{postRollPicRank,jdbcType=VARCHAR},
+      </if>
+      <if test="postRollPicCreater != null" >
+        post_roll_pic_creater = #{postRollPicCreater,jdbcType=CHAR},
+      </if>
+      <if test="postRollPicCreatetime != null" >
+        post_roll_pic_createtime = #{postRollPicCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where post_roll_pic_id = #{postRollPicId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.PostRollPic" >
+    update post_roll_pic
+    set post_roll_pic_url = #{postRollPicUrl,jdbcType=VARCHAR},
+      post_roll_pic_address = #{postRollPicAddress,jdbcType=VARCHAR},
+      post_roll_pic_note = #{postRollPicNote,jdbcType=VARCHAR},
+      post_roll_pic_speak = #{postRollPicSpeak,jdbcType=VARCHAR},
+      post_roll_pic_rank = #{postRollPicRank,jdbcType=VARCHAR},
+      post_roll_pic_creater = #{postRollPicCreater,jdbcType=CHAR},
+      post_roll_pic_createtime = #{postRollPicCreatetime,jdbcType=TIMESTAMP}
+    where post_roll_pic_id = #{postRollPicId,jdbcType=CHAR}
+  </update>
+</mapper>

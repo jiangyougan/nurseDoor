@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.simplemajormapper.SimpleMajorMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.SimpleMajor" >
+    <id column="simple_major_id" property="simpleMajorId" jdbcType="CHAR" />
+    <result column="simple_major_name" property="simpleMajorName" jdbcType="VARCHAR" />
+    <result column="simple_major_note" property="simpleMajorNote" jdbcType="VARCHAR" />
+    <result column="simple_major_creater" property="simpleMajorCreater" jdbcType="CHAR" />
+    <result column="simple_major_createtime" property="simpleMajorCreatetime" jdbcType="TIMESTAMP" />
+    <result column="simple_major_updatetime" property="simpleMajorUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap type="com.chance.ssm.po.vo.SimpleMajorVO" id="BaseResultMap2" extends="BaseResultMap">
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    simple_major_id, simple_major_name, simple_major_note, simple_major_creater, simple_major_createtime, 
+    simple_major_updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.SimpleMajorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from simple_major
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from simple_major
+    where simple_major_id = #{simpleMajorId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from simple_major
+    where simple_major_id = #{simpleMajorId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.SimpleMajorExample" >
+    delete from simple_major
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.SimpleMajor" >
+    insert into simple_major (simple_major_id, simple_major_name, simple_major_note, 
+      simple_major_creater, simple_major_createtime, 
+      simple_major_updatetime)
+    values (#{simpleMajorId,jdbcType=CHAR}, #{simpleMajorName,jdbcType=VARCHAR}, #{simpleMajorNote,jdbcType=VARCHAR}, 
+      #{simpleMajorCreater,jdbcType=CHAR}, #{simpleMajorCreatetime,jdbcType=TIMESTAMP}, 
+      #{simpleMajorUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.SimpleMajor" >
+    insert into simple_major
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="simpleMajorId != null" >
+        simple_major_id,
+      </if>
+      <if test="simpleMajorName != null" >
+        simple_major_name,
+      </if>
+      <if test="simpleMajorNote != null" >
+        simple_major_note,
+      </if>
+      <if test="simpleMajorCreater != null" >
+        simple_major_creater,
+      </if>
+      <if test="simpleMajorCreatetime != null" >
+        simple_major_createtime,
+      </if>
+      <if test="simpleMajorUpdatetime != null" >
+        simple_major_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="simpleMajorId != null" >
+        #{simpleMajorId,jdbcType=CHAR},
+      </if>
+      <if test="simpleMajorName != null" >
+        #{simpleMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleMajorNote != null" >
+        #{simpleMajorNote,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleMajorCreater != null" >
+        #{simpleMajorCreater,jdbcType=CHAR},
+      </if>
+      <if test="simpleMajorCreatetime != null" >
+        #{simpleMajorCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="simpleMajorUpdatetime != null" >
+        #{simpleMajorUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.SimpleMajorExample" resultType="java.lang.Integer" >
+    select count(*) from simple_major
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update simple_major
+    <set >
+      <if test="record.simpleMajorId != null" >
+        simple_major_id = #{record.simpleMajorId,jdbcType=CHAR},
+      </if>
+      <if test="record.simpleMajorName != null" >
+        simple_major_name = #{record.simpleMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simpleMajorNote != null" >
+        simple_major_note = #{record.simpleMajorNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simpleMajorCreater != null" >
+        simple_major_creater = #{record.simpleMajorCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.simpleMajorCreatetime != null" >
+        simple_major_createtime = #{record.simpleMajorCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.simpleMajorUpdatetime != null" >
+        simple_major_updatetime = #{record.simpleMajorUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update simple_major
+    set simple_major_id = #{record.simpleMajorId,jdbcType=CHAR},
+      simple_major_name = #{record.simpleMajorName,jdbcType=VARCHAR},
+      simple_major_note = #{record.simpleMajorNote,jdbcType=VARCHAR},
+      simple_major_creater = #{record.simpleMajorCreater,jdbcType=CHAR},
+      simple_major_createtime = #{record.simpleMajorCreatetime,jdbcType=TIMESTAMP},
+      simple_major_updatetime = #{record.simpleMajorUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.SimpleMajor" >
+    update simple_major
+    <set >
+      <if test="simpleMajorName != null" >
+        simple_major_name = #{simpleMajorName,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleMajorNote != null" >
+        simple_major_note = #{simpleMajorNote,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleMajorCreater != null" >
+        simple_major_creater = #{simpleMajorCreater,jdbcType=CHAR},
+      </if>
+      <if test="simpleMajorCreatetime != null" >
+        simple_major_createtime = #{simpleMajorCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="simpleMajorUpdatetime != null" >
+        simple_major_updatetime = #{simpleMajorUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where simple_major_id = #{simpleMajorId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.SimpleMajor" >
+    update simple_major
+    set simple_major_name = #{simpleMajorName,jdbcType=VARCHAR},
+      simple_major_note = #{simpleMajorNote,jdbcType=VARCHAR},
+      simple_major_creater = #{simpleMajorCreater,jdbcType=CHAR},
+      simple_major_createtime = #{simpleMajorCreatetime,jdbcType=TIMESTAMP},
+      simple_major_updatetime = #{simpleMajorUpdatetime,jdbcType=TIMESTAMP}
+    where simple_major_id = #{simpleMajorId,jdbcType=CHAR}
+  </update>
+  
+  <!--查询专业返回VO扩展类 -->
+    <select id="selectByExampleRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.SimpleMajorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from simple_major
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

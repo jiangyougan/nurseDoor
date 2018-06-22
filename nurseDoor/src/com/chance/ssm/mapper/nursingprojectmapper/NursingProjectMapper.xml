@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursingprojectmapper.NursingProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NursingProject" >
+    <result column="nursing_project_id" property="nursingProjectId" jdbcType="CHAR" />
+    <result column="nursing_nurseid" property="nursingNurseid" jdbcType="CHAR" />
+    <result column="nursing_project_macontent" property="nursingProjectMacontent" jdbcType="VARCHAR" />
+    <result column="nursing_project_note" property="nursingProjectNote" jdbcType="VARCHAR" />
+    <result column="nursing_project_createtime" property="nursingProjectCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nursing_project_id, nursing_nurseid, nursing_project_macontent, nursing_project_note, 
+    nursing_project_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NursingProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NursingProjectExample" >
+    delete from nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NursingProject" >
+    insert into nursing_project (nursing_project_id, nursing_nurseid, nursing_project_macontent, 
+      nursing_project_note, nursing_project_createtime
+      )
+    values (#{nursingProjectId,jdbcType=CHAR}, #{nursingNurseid,jdbcType=CHAR}, #{nursingProjectMacontent,jdbcType=VARCHAR}, 
+      #{nursingProjectNote,jdbcType=VARCHAR}, #{nursingProjectCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NursingProject" >
+    insert into nursing_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nursingProjectId != null" >
+        nursing_project_id,
+      </if>
+      <if test="nursingNurseid != null" >
+        nursing_nurseid,
+      </if>
+      <if test="nursingProjectMacontent != null" >
+        nursing_project_macontent,
+      </if>
+      <if test="nursingProjectNote != null" >
+        nursing_project_note,
+      </if>
+      <if test="nursingProjectCreatetime != null" >
+        nursing_project_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nursingProjectId != null" >
+        #{nursingProjectId,jdbcType=CHAR},
+      </if>
+      <if test="nursingNurseid != null" >
+        #{nursingNurseid,jdbcType=CHAR},
+      </if>
+      <if test="nursingProjectMacontent != null" >
+        #{nursingProjectMacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingProjectNote != null" >
+        #{nursingProjectNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nursingProjectCreatetime != null" >
+        #{nursingProjectCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NursingProjectExample" resultType="java.lang.Integer" >
+    select count(*) from nursing_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nursing_project
+    <set >
+      <if test="record.nursingProjectId != null" >
+        nursing_project_id = #{record.nursingProjectId,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingNurseid != null" >
+        nursing_nurseid = #{record.nursingNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.nursingProjectMacontent != null" >
+        nursing_project_macontent = #{record.nursingProjectMacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingProjectNote != null" >
+        nursing_project_note = #{record.nursingProjectNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursingProjectCreatetime != null" >
+        nursing_project_createtime = #{record.nursingProjectCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nursing_project
+    set nursing_project_id = #{record.nursingProjectId,jdbcType=CHAR},
+      nursing_nurseid = #{record.nursingNurseid,jdbcType=CHAR},
+      nursing_project_macontent = #{record.nursingProjectMacontent,jdbcType=VARCHAR},
+      nursing_project_note = #{record.nursingProjectNote,jdbcType=VARCHAR},
+      nursing_project_createtime = #{record.nursingProjectCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <!-- 根据服务ID查询匹配的护士ID -->
+  <select id="selectNurseIdByContentIdFor" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT nursing_nurseid FROM nursing_project WHERE nursing_project_macontent = #{0} GROUP BY nursing_nurseid
+  </select>
+   <!-- 根据服务ID查询匹配的护士ID -->
+  <select id="selectNurseIdByContentIdForOrderDricts" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.vo.NurseProjectVo">
+  SELECT nursing_nurseid FROM nursing_project,nurse WHERE nursing_project_macontent = #{nursingProjectMacontent,jdbcType=VARCHAR} GROUP BY nursing_nurseid
+  ORDER BY ACOS(SIN((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * SIN((nurse_position_x * 3.1415) / 180 )   
+   +COS((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * COS((nurse_position_x * 3.1415) / 180 )   
+   *COS((#{locationY,jdbcType=DOUBLE} * 3.1415) / 180 - (nurse_position_y * 3.1415) / 180 ) )   
+   * 6380 DESC
+  </select>
+</mapper>

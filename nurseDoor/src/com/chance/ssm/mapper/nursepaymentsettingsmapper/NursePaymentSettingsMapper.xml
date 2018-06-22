@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursepaymentsettingsmapper.NursePaymentSettingsMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.NursePaymentSettings" >
+    <id column="nurse_payment_settings_nurse_id" property="nursePaymentSettingsNurseId" jdbcType="CHAR" />
+    <result column="nurse_payment_settings_pwd" property="nursePaymentSettingsPwd" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_account" property="nursePaymentSettingsAccount" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_overone" property="nursePaymentSettingsOverone" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_overtwo" property="nursePaymentSettingsOvertwo" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_createtime" property="nursePaymentSettingsCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap1" type="com.chance.ssm.po.vo.NurseThreeInfoVo" >
+    <result column="nurse_payment_settings_pwd" property="nursePaymentSettingsPwd" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_account" property="nursePaymentSettingsAccount" jdbcType="VARCHAR" />
+     <result column="nurse_balance" property="nurseBalance" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_payment_settings_nurse_id, nurse_payment_settings_pwd, nurse_payment_settings_account, 
+    nurse_payment_settings_overone, nurse_payment_settings_overtwo, nurse_payment_settings_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NursePaymentSettingsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse_payment_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurse_payment_settings
+    where nurse_payment_settings_nurse_id = #{nursePaymentSettingsNurseId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from nurse_payment_settings
+    where nurse_payment_settings_nurse_id = #{nursePaymentSettingsNurseId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NursePaymentSettingsExample" >
+    delete from nurse_payment_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.NursePaymentSettings" >
+    insert into nurse_payment_settings (nurse_payment_settings_nurse_id, nurse_payment_settings_pwd, 
+      nurse_payment_settings_account, nurse_payment_settings_overone, 
+      nurse_payment_settings_overtwo, nurse_payment_settings_createtime
+      )
+    values (#{nursePaymentSettingsNurseId,jdbcType=CHAR}, #{nursePaymentSettingsPwd,jdbcType=VARCHAR}, 
+      #{nursePaymentSettingsAccount,jdbcType=VARCHAR}, #{nursePaymentSettingsOverone,jdbcType=VARCHAR}, 
+      #{nursePaymentSettingsOvertwo,jdbcType=VARCHAR}, #{nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.NursePaymentSettings" >
+    insert into nurse_payment_settings
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nursePaymentSettingsNurseId != null" >
+        nurse_payment_settings_nurse_id,
+      </if>
+      <if test="nursePaymentSettingsPwd != null" >
+        nurse_payment_settings_pwd,
+      </if>
+      <if test="nursePaymentSettingsAccount != null" >
+        nurse_payment_settings_account,
+      </if>
+      <if test="nursePaymentSettingsOverone != null" >
+        nurse_payment_settings_overone,
+      </if>
+      <if test="nursePaymentSettingsOvertwo != null" >
+        nurse_payment_settings_overtwo,
+      </if>
+      <if test="nursePaymentSettingsCreatetime != null" >
+        nurse_payment_settings_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nursePaymentSettingsNurseId != null" >
+        #{nursePaymentSettingsNurseId,jdbcType=CHAR},
+      </if>
+      <if test="nursePaymentSettingsPwd != null" >
+        #{nursePaymentSettingsPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsAccount != null" >
+        #{nursePaymentSettingsAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsOverone != null" >
+        #{nursePaymentSettingsOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsOvertwo != null" >
+        #{nursePaymentSettingsOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsCreatetime != null" >
+        #{nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NursePaymentSettingsExample" resultType="java.lang.Integer" >
+    select count(*) from nurse_payment_settings
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse_payment_settings
+    <set >
+      <if test="record.nursePaymentSettingsNurseId != null" >
+        nurse_payment_settings_nurse_id = #{record.nursePaymentSettingsNurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.nursePaymentSettingsPwd != null" >
+        nurse_payment_settings_pwd = #{record.nursePaymentSettingsPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePaymentSettingsAccount != null" >
+        nurse_payment_settings_account = #{record.nursePaymentSettingsAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePaymentSettingsOverone != null" >
+        nurse_payment_settings_overone = #{record.nursePaymentSettingsOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePaymentSettingsOvertwo != null" >
+        nurse_payment_settings_overtwo = #{record.nursePaymentSettingsOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePaymentSettingsCreatetime != null" >
+        nurse_payment_settings_createtime = #{record.nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse_payment_settings
+    set nurse_payment_settings_nurse_id = #{record.nursePaymentSettingsNurseId,jdbcType=CHAR},
+      nurse_payment_settings_pwd = #{record.nursePaymentSettingsPwd,jdbcType=VARCHAR},
+      nurse_payment_settings_account = #{record.nursePaymentSettingsAccount,jdbcType=VARCHAR},
+      nurse_payment_settings_overone = #{record.nursePaymentSettingsOverone,jdbcType=VARCHAR},
+      nurse_payment_settings_overtwo = #{record.nursePaymentSettingsOvertwo,jdbcType=VARCHAR},
+      nurse_payment_settings_createtime = #{record.nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.NursePaymentSettings" >
+    update nurse_payment_settings
+    <set >
+      <if test="nursePaymentSettingsPwd != null" >
+        nurse_payment_settings_pwd = #{nursePaymentSettingsPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsAccount != null" >
+        nurse_payment_settings_account = #{nursePaymentSettingsAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsOverone != null" >
+        nurse_payment_settings_overone = #{nursePaymentSettingsOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsOvertwo != null" >
+        nurse_payment_settings_overtwo = #{nursePaymentSettingsOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePaymentSettingsCreatetime != null" >
+        nurse_payment_settings_createtime = #{nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where nurse_payment_settings_nurse_id = #{nursePaymentSettingsNurseId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.NursePaymentSettings" >
+    update nurse_payment_settings
+    set nurse_payment_settings_pwd = #{nursePaymentSettingsPwd,jdbcType=VARCHAR},
+      nurse_payment_settings_account = #{nursePaymentSettingsAccount,jdbcType=VARCHAR},
+      nurse_payment_settings_overone = #{nursePaymentSettingsOverone,jdbcType=VARCHAR},
+      nurse_payment_settings_overtwo = #{nursePaymentSettingsOvertwo,jdbcType=VARCHAR},
+      nurse_payment_settings_createtime = #{nursePaymentSettingsCreatetime,jdbcType=TIMESTAMP}
+    where nurse_payment_settings_nurse_id = #{nursePaymentSettingsNurseId,jdbcType=CHAR}
+  </update>
+  <!-- 根据护士ID查询护士支付宝账号余额密码 -->
+  <select id="selectNurseThreeInfoByNurseId" resultMap="BaseResultMap1" parameterType="java.lang.String">
+    SELECT nurse_payment_settings_pwd,nurse_payment_settings_account,nurse_balance FROM nurse LEFT JOIN nurse_payment_settings
+  ON nurse_id  = nurse_payment_settings_nurse_id WHERE nurse_id = #{0}
+  </select>
+</mapper>

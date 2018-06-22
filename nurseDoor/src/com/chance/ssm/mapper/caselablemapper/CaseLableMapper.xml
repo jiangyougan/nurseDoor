@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.caselablemapper.CaseLableMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.CaseLable" >
+    <id column="case_lable_id" property="caseLableId" jdbcType="CHAR" />
+    <result column="case_lable_name" property="caseLableName" jdbcType="VARCHAR" />
+    <result column="case_lable_note" property="caseLableNote" jdbcType="VARCHAR" />
+    <result column="case_lable_creater" property="caseLableCreater" jdbcType="CHAR" />
+    <result column="case_lable_createtime" property="caseLableCreatetime" jdbcType="TIMESTAMP" />
+    <result column="case_lable_updatetime" property="caseLableUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    case_lable_id, case_lable_name, case_lable_note, case_lable_creater, case_lable_createtime, 
+    case_lable_updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.CaseLableExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from case_lable
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from case_lable
+    where case_lable_id = #{caseLableId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from case_lable
+    where case_lable_id = #{caseLableId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.CaseLableExample" >
+    delete from case_lable
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.CaseLable" >
+    insert into case_lable (case_lable_id, case_lable_name, case_lable_note, 
+      case_lable_creater, case_lable_createtime, case_lable_updatetime
+      )
+    values (#{caseLableId,jdbcType=CHAR}, #{caseLableName,jdbcType=VARCHAR}, #{caseLableNote,jdbcType=VARCHAR}, 
+      #{caseLableCreater,jdbcType=CHAR}, #{caseLableCreatetime,jdbcType=TIMESTAMP}, #{caseLableUpdatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.CaseLable" >
+    insert into case_lable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caseLableId != null" >
+        case_lable_id,
+      </if>
+      <if test="caseLableName != null" >
+        case_lable_name,
+      </if>
+      <if test="caseLableNote != null" >
+        case_lable_note,
+      </if>
+      <if test="caseLableCreater != null" >
+        case_lable_creater,
+      </if>
+      <if test="caseLableCreatetime != null" >
+        case_lable_createtime,
+      </if>
+      <if test="caseLableUpdatetime != null" >
+        case_lable_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caseLableId != null" >
+        #{caseLableId,jdbcType=CHAR},
+      </if>
+      <if test="caseLableName != null" >
+        #{caseLableName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseLableNote != null" >
+        #{caseLableNote,jdbcType=VARCHAR},
+      </if>
+      <if test="caseLableCreater != null" >
+        #{caseLableCreater,jdbcType=CHAR},
+      </if>
+      <if test="caseLableCreatetime != null" >
+        #{caseLableCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseLableUpdatetime != null" >
+        #{caseLableUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.CaseLableExample" resultType="java.lang.Integer" >
+    select count(*) from case_lable
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update case_lable
+    <set >
+      <if test="record.caseLableId != null" >
+        case_lable_id = #{record.caseLableId,jdbcType=CHAR},
+      </if>
+      <if test="record.caseLableName != null" >
+        case_lable_name = #{record.caseLableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseLableNote != null" >
+        case_lable_note = #{record.caseLableNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caseLableCreater != null" >
+        case_lable_creater = #{record.caseLableCreater,jdbcType=CHAR},
+      </if>
+      <if test="record.caseLableCreatetime != null" >
+        case_lable_createtime = #{record.caseLableCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.caseLableUpdatetime != null" >
+        case_lable_updatetime = #{record.caseLableUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update case_lable
+    set case_lable_id = #{record.caseLableId,jdbcType=CHAR},
+      case_lable_name = #{record.caseLableName,jdbcType=VARCHAR},
+      case_lable_note = #{record.caseLableNote,jdbcType=VARCHAR},
+      case_lable_creater = #{record.caseLableCreater,jdbcType=CHAR},
+      case_lable_createtime = #{record.caseLableCreatetime,jdbcType=TIMESTAMP},
+      case_lable_updatetime = #{record.caseLableUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.CaseLable" >
+    update case_lable
+    <set >
+      <if test="caseLableName != null" >
+        case_lable_name = #{caseLableName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseLableNote != null" >
+        case_lable_note = #{caseLableNote,jdbcType=VARCHAR},
+      </if>
+      <if test="caseLableCreater != null" >
+        case_lable_creater = #{caseLableCreater,jdbcType=CHAR},
+      </if>
+      <if test="caseLableCreatetime != null" >
+        case_lable_createtime = #{caseLableCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseLableUpdatetime != null" >
+        case_lable_updatetime = #{caseLableUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where case_lable_id = #{caseLableId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.CaseLable" >
+    update case_lable
+    set case_lable_name = #{caseLableName,jdbcType=VARCHAR},
+      case_lable_note = #{caseLableNote,jdbcType=VARCHAR},
+      case_lable_creater = #{caseLableCreater,jdbcType=CHAR},
+      case_lable_createtime = #{caseLableCreatetime,jdbcType=TIMESTAMP},
+      case_lable_updatetime = #{caseLableUpdatetime,jdbcType=TIMESTAMP}
+    where case_lable_id = #{caseLableId,jdbcType=CHAR}
+  </update>
+  <select id="selectAllLableInfo" resultMap="BaseResultMap" >
+  SELECT * FROM case_lable
+  </select>
+</mapper>

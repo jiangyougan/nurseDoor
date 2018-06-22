@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.evaluatemapper.EvaluateMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Evaluate" >
+    <id column="evaluate_id" property="evaluateId" jdbcType="CHAR" />
+    <result column="evaluate_userid" property="evaluateUserid" jdbcType="CHAR" />
+    <result column="evaluate_nurseid" property="evaluateNurseid" jdbcType="CHAR" />
+    <result column="evaluate_order_send_id" property="evaluateOrderSendId" jdbcType="CHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_mark" property="evaluateMark" jdbcType="DECIMAL" />
+    <result column="evaluate_createtime" property="evaluateCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.EvaluateVO" id="BaseResultMap2"  >
+   <result column="evaluate_id" property="evaluateId" jdbcType="CHAR" />
+    <result column="evaluate_userid" property="evaluateUserid" jdbcType="CHAR" />
+    <result column="evaluate_nurseid" property="evaluateNurseid" jdbcType="CHAR" />
+    <result column="evaluate_order_send_id" property="evaluateOrderSendId" jdbcType="CHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_mark" property="evaluateMark" jdbcType="DECIMAL" />
+    <result column="evaluate_createtime" property="evaluateCreatetime" jdbcType="TIMESTAMP" />
+  	<result column="user_header" property="userHeader" jdbcType="CHAR" />
+  	 <result column="user_nick" property="userNike" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.EvaluateVO" id="BaseResultMap3" >
+  	<result column="user_header" property="userHeader" jdbcType="CHAR" />
+  	 <result column="user_nick" property="userNike" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="evaluate_id" property="evaluateId" jdbcType="CHAR" />
+    <result column="evaluate_userid" property="evaluateUserid" jdbcType="CHAR" />
+    <result column="evaluate_nurseid" property="evaluateNurseid" jdbcType="CHAR" />
+    <result column="evaluate_order_send_id" property="evaluateOrderSendId" jdbcType="CHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_mark" property="evaluateMark" jdbcType="DECIMAL" />
+    <result column="evaluate_createtime" property="evaluateCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.EvaluateUserAndNurseVO" id="BaseResultMap4" >
+  	<result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_header" property="userHeader" jdbcType="CHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="order_send_numbers" property="orderSendNumbers" jdbcType="CHAR" />
+    <result column="evaluate_id" property="evaluateId" jdbcType="CHAR" />
+    <result column="evaluate_userid" property="evaluateUserid" jdbcType="CHAR" />
+    <result column="evaluate_nurseid" property="evaluateNurseid" jdbcType="CHAR" />
+    <result column="evaluate_order_send_id" property="evaluateOrderSendId" jdbcType="CHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_mark" property="evaluateMark" jdbcType="DECIMAL" />
+    <result column="evaluate_createtime" property="evaluateCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    evaluate_id, evaluate_userid, evaluate_nurseid, evaluate_order_send_id, evaluate_content, 
+    evaluate_mark, evaluate_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.EvaluateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate
+    where evaluate_id = #{evaluateId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from evaluate
+    where evaluate_id = #{evaluateId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.EvaluateExample" >
+    delete from evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Evaluate" >
+    insert into evaluate (evaluate_id, evaluate_userid, evaluate_nurseid, 
+      evaluate_order_send_id, evaluate_content, evaluate_mark, 
+      evaluate_createtime)
+    values (#{evaluateId,jdbcType=CHAR}, #{evaluateUserid,jdbcType=CHAR}, #{evaluateNurseid,jdbcType=CHAR}, 
+      #{evaluateOrderSendId,jdbcType=CHAR}, #{evaluateContent,jdbcType=VARCHAR}, #{evaluateMark,jdbcType=DECIMAL}, 
+      #{evaluateCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Evaluate" >
+    insert into evaluate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evaluateId != null" >
+        evaluate_id,
+      </if>
+      <if test="evaluateUserid != null" >
+        evaluate_userid,
+      </if>
+      <if test="evaluateNurseid != null" >
+        evaluate_nurseid,
+      </if>
+      <if test="evaluateOrderSendId != null" >
+        evaluate_order_send_id,
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content,
+      </if>
+      <if test="evaluateMark != null" >
+        evaluate_mark,
+      </if>
+      <if test="evaluateCreatetime != null" >
+        evaluate_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evaluateId != null" >
+        #{evaluateId,jdbcType=CHAR},
+      </if>
+      <if test="evaluateUserid != null" >
+        #{evaluateUserid,jdbcType=CHAR},
+      </if>
+      <if test="evaluateNurseid != null" >
+        #{evaluateNurseid,jdbcType=CHAR},
+      </if>
+      <if test="evaluateOrderSendId != null" >
+        #{evaluateOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateMark != null" >
+        #{evaluateMark,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateCreatetime != null" >
+        #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.EvaluateExample" resultType="java.lang.Integer" >
+    select count(*) from evaluate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update evaluate
+    <set >
+      <if test="record.evaluateId != null" >
+        evaluate_id = #{record.evaluateId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateUserid != null" >
+        evaluate_userid = #{record.evaluateUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateNurseid != null" >
+        evaluate_nurseid = #{record.evaluateNurseid,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateOrderSendId != null" >
+        evaluate_order_send_id = #{record.evaluateOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="record.evaluateContent != null" >
+        evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateMark != null" >
+        evaluate_mark = #{record.evaluateMark,jdbcType=DECIMAL},
+      </if>
+      <if test="record.evaluateCreatetime != null" >
+        evaluate_createtime = #{record.evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update evaluate
+    set evaluate_id = #{record.evaluateId,jdbcType=CHAR},
+      evaluate_userid = #{record.evaluateUserid,jdbcType=CHAR},
+      evaluate_nurseid = #{record.evaluateNurseid,jdbcType=CHAR},
+      evaluate_order_send_id = #{record.evaluateOrderSendId,jdbcType=CHAR},
+      evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR},
+      evaluate_mark = #{record.evaluateMark,jdbcType=DECIMAL},
+      evaluate_createtime = #{record.evaluateCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Evaluate" >
+    update evaluate
+    <set >
+      <if test="evaluateUserid != null" >
+        evaluate_userid = #{evaluateUserid,jdbcType=CHAR},
+      </if>
+      <if test="evaluateNurseid != null" >
+        evaluate_nurseid = #{evaluateNurseid,jdbcType=CHAR},
+      </if>
+      <if test="evaluateOrderSendId != null" >
+        evaluate_order_send_id = #{evaluateOrderSendId,jdbcType=CHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateMark != null" >
+        evaluate_mark = #{evaluateMark,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateCreatetime != null" >
+        evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where evaluate_id = #{evaluateId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Evaluate" >
+    update evaluate
+    set evaluate_userid = #{evaluateUserid,jdbcType=CHAR},
+      evaluate_nurseid = #{evaluateNurseid,jdbcType=CHAR},
+      evaluate_order_send_id = #{evaluateOrderSendId,jdbcType=CHAR},
+      evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      evaluate_mark = #{evaluateMark,jdbcType=DECIMAL},
+      evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+    where evaluate_id = #{evaluateId,jdbcType=CHAR}
+  </update>
+  <!-- 根据订单id查询评价内容 -->
+  <select id="selectEvaluateInfoByOrderid" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM evaluate WHERE evaluate_order_send_id = #{evaluateOrderSendId,jdbcType=CHAR} ORDER BY evaluate_createtime DESC LIMIT 0,1
+  </select>
+  
+  <!-- 根据条件查询数据，返回VO扩展类 -->
+   <select id="selectByExampleRuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.EvaluateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,user_header , user_nick,user_phone  from evaluate LEFT JOIN USER ON evaluate_userid=user_id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据二级服务ID查询对该服务所有的评价 -->
+	<select id="selectEvaluateByContentId" resultMap="BaseResultMap3" parameterType="java.lang.String">
+	<!--  SELECT 
+	 user_id,
+	 user_header,
+	 user_nick, 
+	 evaluate.* 
+	 FROM 
+	 USER, 
+	 evaluate 
+	 WHERE 
+	 evaluate_order_send_id IN
+	(
+	SELECT 
+	order_send_id 
+	FROM 
+	order_send 
+	WHERE 
+	order_send_servicecontent=#{0}
+	AND 
+	order_send_state=3
+	)
+	AND 
+	evaluate_userid=user_id -->
+	SELECT user_id,user_header,user_nick, evaluate.* FROM USER, evaluate 
+	WHERE evaluate_order_send_id IN(
+	SELECT order_send_id FROM order_send WHERE order_send_servicecontent IN
+	(SELECT goods_id FROM goods WHERE goods_content=#{0})AND order_send_state=3)
+	AND evaluate_userid=user_id
+	ORDER BY evaluate_createtime DESC 
+	 </select>
+	 
+	 <!-- 查询用户有没有对订单进行评价 -->
+	<select id="selectRvaluateIsNo" resultMap="BaseResultMap">
+	SELECT * FROM evaluate WHERE evaluate_userid=#{0} AND evaluate_order_send_id=#{1}
+	</select>
+	<!-- 查询好评(包括模糊查询) -->
+	<select id="selectGoodEvaluateInfoOfKeyWord" resultMap="BaseResultMap4" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	SELECT nurse_id ,
+	  nurse_header,
+	  nurse_nick ,
+	  nurse_name,
+	  user_id,
+	  user_header,
+	  user_nick,
+	  user_name,
+	  evaluate_id,
+	  evaluate_order_send_id,
+	  evaluate_content,
+	  evaluate_mark,
+	  evaluate_createtime,
+	  order_send_numbers
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	   AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  5 AND evaluate_mark >=  4 
+	   AND
+	  (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	  LIMIT
+	  #{start},
+	  #{rows}
+	</select>
+	<!-- 查询好评(包括模糊查询)数量 -->
+	<select id="selectGoodEvaluateInfoOfKeyWordCount" resultType="java.lang.Integer" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	SELECT COUNT(*)
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	  AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  5 AND evaluate_mark >=  4 
+	   AND
+	  (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	</select>
+	<!-- 查询中评(包括模糊查询) -->
+	<select id="selectMiddleEvaluateInfoOfKeyWord" resultMap="BaseResultMap4" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	 SELECT nurse_id ,
+	  nurse_header,
+	  nurse_nick ,
+	  nurse_name,
+	  user_id,
+	  user_header,
+	  user_nick,
+	  user_name,
+	  evaluate_id,
+	  evaluate_order_send_id,
+	  evaluate_content,
+	  evaluate_mark,
+	  evaluate_createtime,
+	  order_send_numbers
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	  AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  3 AND evaluate_mark >=  2 
+	   AND
+	   (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	  LIMIT
+	  #{start},
+	  #{rows}
+	</select>
+	<!-- 查询中评(包括模糊查询)数量 -->
+	<select id="selectMiddleEvaluateInfoOfKeyWordCount" resultType="java.lang.Integer" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	 SELECT COUNT(*)
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	  AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  3 AND evaluate_mark >=  2 
+	   AND
+	   (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	</select>
+	<!-- 查询差评(包括模糊查询) -->
+	<select id="selectBadEvaluateInfoOfKeyWord" resultMap="BaseResultMap4" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	  SELECT nurse_id ,
+	  nurse_header,
+	  nurse_nick ,
+	  nurse_name,
+	  user_id,
+	  user_header,
+	  user_nick,
+	  user_name,
+	  evaluate_id,
+	  evaluate_order_send_id,
+	  evaluate_content,
+	  evaluate_mark,
+	  evaluate_createtime,
+	  order_send_numbers
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	  AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  1 
+	   AND
+	   (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	  LIMIT
+	  #{start},
+	  #{rows}
+	</select>
+	<!-- 查询差评(包括模糊查询) -->
+	<select id="selectBadEvaluateInfoOfKeyWordCOUNT" resultType="java.lang.Integer" parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+	  SELECT COUNT(*)
+	  FROM evaluate,USER,nurse,order_send
+	  WHERE 
+	  evaluate_userid = user_id
+	  AND 
+	  evaluate_nurseid = nurse_id
+	  AND 
+	  evaluate_order_send_id = order_send_id
+	  AND 
+	   <![CDATA[ evaluate_mark <=  1 
+	   AND
+	   (DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(evaluate_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+	  <if test="parameter != null">
+	  and 
+	  (
+	  nurse_name like '%${parameter}%'
+	  </if>
+	  <if test="parameter != null">
+	  OR
+	  user_name like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  evaluate_content like '%${parameter}%'
+	  </if>
+	   <if test="parameter != null">
+	  OR
+	  order_send_numbers like '%${parameter}%'
+	  )
+	  </if>
+	  ORDER BY evaluate_createtime DESC 
+	</select>
+</mapper>

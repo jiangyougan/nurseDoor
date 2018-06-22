@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.complaintmapper.ComplaintMapper" >
+ <resultMap id="BaseResultMap" type="com.chance.ssm.po.Complaint" >
+    <id column="complaint_id" property="complaintId" jdbcType="CHAR" />
+    <result column="complaint_number" property="complaintNumber" jdbcType="CHAR" />
+    <result column="complaint_userid" property="complaintUserid" jdbcType="CHAR" />
+    <result column="complaint_identity" property="complaintIdentity" jdbcType="INTEGER" />
+    <result column="complaint_content" property="complaintContent" jdbcType="VARCHAR" />
+    <result column="complaint_content_note" property="complaintContentNote" jdbcType="VARCHAR" />
+    <result column="complaint_content_speak" property="complaintContentSpeak" jdbcType="VARCHAR" />
+    <result column="complaint_content_record" property="complaintContentRecord" jdbcType="VARCHAR" />
+    <result column="complaint_content_pic" property="complaintContentPic" jdbcType="VARCHAR" />
+    <result column="complaint_content_over" property="complaintContentOver" jdbcType="VARCHAR" />
+    <result column="complaint_handle_mode" property="complaintHandleMode" jdbcType="INTEGER" />
+    <result column="complaint_content_overtow" property="complaintContentOvertow" jdbcType="VARCHAR" />
+    <result column="complaint_spareone" property="complaintSpareone" jdbcType="VARCHAR" />
+    <result column="complaint_sparetwo" property="complaintSparetwo" jdbcType="VARCHAR" />
+    <result column="complaint_sparethree" property="complaintSparethree" jdbcType="VARCHAR" />
+    <result column="complaint_sparefour" property="complaintSparefour" jdbcType="VARCHAR" />
+    <result column="complaint_sparefive" property="complaintSparefive" jdbcType="VARCHAR" />
+    <result column="complaint_handle_admin" property="complaintHandleAdmin" jdbcType="CHAR" />
+    <result column="complaint_handle_admin_createtime" property="complaintHandleAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_approval_admin" property="complaintApprovalAdmin" jdbcType="CHAR" />
+    <result column="complaint_approval_admin_createtime" property="complaintApprovalAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_overone" property="complaintOverone" jdbcType="VARCHAR" />
+    <result column="complaint_overtwo" property="complaintOvertwo" jdbcType="VARCHAR" />
+    <result column="complaint_content_createtime" property="complaintContentCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.chance.ssm.po.vo.UserComplaintVo" >
+  	<result column="userid" property="userId" jdbcType="CHAR" />
+    <result column="userheader" property="userHeader" jdbcType="CHAR" />
+    <result column="usernick" property="userNick" jdbcType="VARCHAR" />
+    <result column="username" property="userName" jdbcType="CHAR" />
+    <result column="complaint_id" property="complaintId" jdbcType="CHAR" />
+    <result column="complaint_number" property="complaintNumber" jdbcType="CHAR" />
+    <result column="complaint_userid" property="complaintUserid" jdbcType="CHAR" />
+    <result column="complaint_identity" property="complaintIdentity" jdbcType="INTEGER" />
+    <result column="complaint_content" property="complaintContent" jdbcType="VARCHAR" />
+    <result column="complaint_content_note" property="complaintContentNote" jdbcType="VARCHAR" />
+    <result column="complaint_content_speak" property="complaintContentSpeak" jdbcType="VARCHAR" />
+    <result column="complaint_content_record" property="complaintContentRecord" jdbcType="VARCHAR" />
+    <result column="complaint_content_pic" property="complaintContentPic" jdbcType="VARCHAR" />
+    <result column="complaint_content_over" property="complaintContentOver" jdbcType="VARCHAR" />
+    <result column="complaint_handle_mode" property="complaintHandleMode" jdbcType="INTEGER" />
+    <result column="complaint_content_overtow" property="complaintContentOvertow" jdbcType="VARCHAR" />
+    <result column="complaint_spareone" property="complaintSpareone" jdbcType="VARCHAR" />
+    <result column="complaint_sparetwo" property="complaintSparetwo" jdbcType="VARCHAR" />
+    <result column="complaint_sparethree" property="complaintSparethree" jdbcType="VARCHAR" />
+    <result column="complaint_sparefour" property="complaintSparefour" jdbcType="VARCHAR" />
+    <result column="complaint_sparefive" property="complaintSparefive" jdbcType="VARCHAR" />
+     <result column="complaint_handle_admin" property="complaintHandleAdmin" jdbcType="CHAR" />
+    <result column="complaint_handle_admin_createtime" property="complaintHandleAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_approval_admin" property="complaintApprovalAdmin" jdbcType="CHAR" />
+    <result column="complaint_approval_admin_createtime" property="complaintApprovalAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_overone" property="complaintOverone" jdbcType="VARCHAR" />
+    <result column="complaint_overtwo" property="complaintOvertwo" jdbcType="VARCHAR" />
+    <result column="complaint_content_createtime" property="complaintContentCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap3" type="com.chance.ssm.po.vo.ComplaintUserAndNurseVo" >
+  	<result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="user_header" property="userHeader" jdbcType="CHAR" />
+    <result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="complaint_id" property="complaintId" jdbcType="CHAR" />
+    <result column="complaint_number" property="complaintNumber" jdbcType="CHAR" />
+    <result column="complaint_userid" property="complaintUserid" jdbcType="CHAR" />
+    <result column="complaint_identity" property="complaintIdentity" jdbcType="INTEGER" />
+    <result column="complaint_content" property="complaintContent" jdbcType="VARCHAR" />
+    <result column="complaint_content_note" property="complaintContentNote" jdbcType="VARCHAR" />
+    <result column="complaint_content_speak" property="complaintContentSpeak" jdbcType="VARCHAR" />
+    <result column="complaint_content_record" property="complaintContentRecord" jdbcType="VARCHAR" />
+    <result column="complaint_content_pic" property="complaintContentPic" jdbcType="VARCHAR" />
+    <result column="complaint_content_over" property="complaintContentOver" jdbcType="VARCHAR" />
+    <result column="complaint_handle_mode" property="complaintHandleMode" jdbcType="INTEGER" />
+    <result column="complaint_content_overtow" property="complaintContentOvertow" jdbcType="VARCHAR" />
+    <result column="complaint_spareone" property="complaintSpareone" jdbcType="VARCHAR" />
+    <result column="complaint_sparetwo" property="complaintSparetwo" jdbcType="VARCHAR" />
+    <result column="complaint_sparethree" property="complaintSparethree" jdbcType="VARCHAR" />
+    <result column="complaint_sparefour" property="complaintSparefour" jdbcType="VARCHAR" />
+    <result column="complaint_sparefive" property="complaintSparefive" jdbcType="VARCHAR" />
+     <result column="complaint_handle_admin" property="complaintHandleAdmin" jdbcType="CHAR" />
+    <result column="complaint_handle_admin_createtime" property="complaintHandleAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_approval_admin" property="complaintApprovalAdmin" jdbcType="CHAR" />
+    <result column="complaint_approval_admin_createtime" property="complaintApprovalAdminCreatetime" jdbcType="TIMESTAMP" />
+    <result column="complaint_overone" property="complaintOverone" jdbcType="VARCHAR" />
+    <result column="complaint_overtwo" property="complaintOvertwo" jdbcType="VARCHAR" />
+    <result column="complaint_content_createtime" property="complaintContentCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    complaint_id, complaint_number, complaint_userid, complaint_identity, complaint_content, 
+    complaint_content_note, complaint_content_speak, complaint_content_record, complaint_content_pic, 
+    complaint_content_over, complaint_handle_mode, complaint_content_overtow, complaint_spareone, 
+    complaint_sparetwo, complaint_sparethree, complaint_sparefour, complaint_sparefive, 
+    complaint_handle_admin, complaint_handle_admin_createtime, complaint_approval_admin, 
+    complaint_approval_admin_createtime, complaint_overone, complaint_overtwo, complaint_content_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ComplaintExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from complaint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from complaint
+    where complaint_id = #{complaintId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from complaint
+    where complaint_id = #{complaintId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ComplaintExample" >
+    delete from complaint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Complaint" >
+    insert into complaint (complaint_id, complaint_number, complaint_userid, 
+      complaint_identity, complaint_content, complaint_content_note, 
+      complaint_content_speak, complaint_content_record, 
+      complaint_content_pic, complaint_content_over, 
+      complaint_handle_mode, complaint_content_overtow, 
+      complaint_spareone, complaint_sparetwo, complaint_sparethree, 
+      complaint_sparefour, complaint_sparefive, 
+      complaint_handle_admin, complaint_handle_admin_createtime, 
+      complaint_approval_admin, complaint_approval_admin_createtime, 
+      complaint_overone, complaint_overtwo, complaint_content_createtime
+      )
+    values (#{complaintId,jdbcType=CHAR}, #{complaintNumber,jdbcType=CHAR}, #{complaintUserid,jdbcType=CHAR}, 
+      #{complaintIdentity,jdbcType=INTEGER}, #{complaintContent,jdbcType=VARCHAR}, #{complaintContentNote,jdbcType=VARCHAR}, 
+      #{complaintContentSpeak,jdbcType=VARCHAR}, #{complaintContentRecord,jdbcType=VARCHAR}, 
+      #{complaintContentPic,jdbcType=VARCHAR}, #{complaintContentOver,jdbcType=VARCHAR}, 
+      #{complaintHandleMode,jdbcType=INTEGER}, #{complaintContentOvertow,jdbcType=VARCHAR}, 
+      #{complaintSpareone,jdbcType=VARCHAR}, #{complaintSparetwo,jdbcType=VARCHAR}, #{complaintSparethree,jdbcType=VARCHAR}, 
+      #{complaintSparefour,jdbcType=VARCHAR}, #{complaintSparefive,jdbcType=VARCHAR}, 
+      #{complaintHandleAdmin,jdbcType=CHAR}, #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP}, 
+      #{complaintApprovalAdmin,jdbcType=CHAR}, #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP}, 
+      #{complaintOverone,jdbcType=VARCHAR}, #{complaintOvertwo,jdbcType=VARCHAR}, #{complaintContentCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Complaint" >
+    insert into complaint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="complaintId != null" >
+        complaint_id,
+      </if>
+      <if test="complaintNumber != null" >
+        complaint_number,
+      </if>
+      <if test="complaintUserid != null" >
+        complaint_userid,
+      </if>
+      <if test="complaintIdentity != null" >
+        complaint_identity,
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content,
+      </if>
+      <if test="complaintContentNote != null" >
+        complaint_content_note,
+      </if>
+      <if test="complaintContentSpeak != null" >
+        complaint_content_speak,
+      </if>
+      <if test="complaintContentRecord != null" >
+        complaint_content_record,
+      </if>
+      <if test="complaintContentPic != null" >
+        complaint_content_pic,
+      </if>
+      <if test="complaintContentOver != null" >
+        complaint_content_over,
+      </if>
+      <if test="complaintHandleMode != null" >
+        complaint_handle_mode,
+      </if>
+      <if test="complaintContentOvertow != null" >
+        complaint_content_overtow,
+      </if>
+      <if test="complaintSpareone != null" >
+        complaint_spareone,
+      </if>
+      <if test="complaintSparetwo != null" >
+        complaint_sparetwo,
+      </if>
+      <if test="complaintSparethree != null" >
+        complaint_sparethree,
+      </if>
+      <if test="complaintSparefour != null" >
+        complaint_sparefour,
+      </if>
+      <if test="complaintSparefive != null" >
+        complaint_sparefive,
+      </if>
+      <if test="complaintHandleAdmin != null" >
+        complaint_handle_admin,
+      </if>
+      <if test="complaintHandleAdminCreatetime != null" >
+        complaint_handle_admin_createtime,
+      </if>
+      <if test="complaintApprovalAdmin != null" >
+        complaint_approval_admin,
+      </if>
+      <if test="complaintApprovalAdminCreatetime != null" >
+        complaint_approval_admin_createtime,
+      </if>
+      <if test="complaintOverone != null" >
+        complaint_overone,
+      </if>
+      <if test="complaintOvertwo != null" >
+        complaint_overtwo,
+      </if>
+      <if test="complaintContentCreatetime != null" >
+        complaint_content_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="complaintId != null" >
+        #{complaintId,jdbcType=CHAR},
+      </if>
+      <if test="complaintNumber != null" >
+        #{complaintNumber,jdbcType=CHAR},
+      </if>
+      <if test="complaintUserid != null" >
+        #{complaintUserid,jdbcType=CHAR},
+      </if>
+      <if test="complaintIdentity != null" >
+        #{complaintIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContent != null" >
+        #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentNote != null" >
+        #{complaintContentNote,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentSpeak != null" >
+        #{complaintContentSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentRecord != null" >
+        #{complaintContentRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentPic != null" >
+        #{complaintContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentOver != null" >
+        #{complaintContentOver,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleMode != null" >
+        #{complaintHandleMode,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContentOvertow != null" >
+        #{complaintContentOvertow,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSpareone != null" >
+        #{complaintSpareone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparetwo != null" >
+        #{complaintSparetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparethree != null" >
+        #{complaintSparethree,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefour != null" >
+        #{complaintSparefour,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefive != null" >
+        #{complaintSparefive,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleAdmin != null" >
+        #{complaintHandleAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintHandleAdminCreatetime != null" >
+        #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintApprovalAdmin != null" >
+        #{complaintApprovalAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintApprovalAdminCreatetime != null" >
+        #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintOverone != null" >
+        #{complaintOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintOvertwo != null" >
+        #{complaintOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentCreatetime != null" >
+        #{complaintContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ComplaintExample" resultType="java.lang.Integer" >
+    select count(*) from complaint
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update complaint
+    <set >
+      <if test="record.complaintId != null" >
+        complaint_id = #{record.complaintId,jdbcType=CHAR},
+      </if>
+      <if test="record.complaintNumber != null" >
+        complaint_number = #{record.complaintNumber,jdbcType=CHAR},
+      </if>
+      <if test="record.complaintUserid != null" >
+        complaint_userid = #{record.complaintUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.complaintIdentity != null" >
+        complaint_identity = #{record.complaintIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="record.complaintContent != null" >
+        complaint_content = #{record.complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentNote != null" >
+        complaint_content_note = #{record.complaintContentNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentSpeak != null" >
+        complaint_content_speak = #{record.complaintContentSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentRecord != null" >
+        complaint_content_record = #{record.complaintContentRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentPic != null" >
+        complaint_content_pic = #{record.complaintContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentOver != null" >
+        complaint_content_over = #{record.complaintContentOver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintHandleMode != null" >
+        complaint_handle_mode = #{record.complaintHandleMode,jdbcType=INTEGER},
+      </if>
+      <if test="record.complaintContentOvertow != null" >
+        complaint_content_overtow = #{record.complaintContentOvertow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintSpareone != null" >
+        complaint_spareone = #{record.complaintSpareone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintSparetwo != null" >
+        complaint_sparetwo = #{record.complaintSparetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintSparethree != null" >
+        complaint_sparethree = #{record.complaintSparethree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintSparefour != null" >
+        complaint_sparefour = #{record.complaintSparefour,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintSparefive != null" >
+        complaint_sparefive = #{record.complaintSparefive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintHandleAdmin != null" >
+        complaint_handle_admin = #{record.complaintHandleAdmin,jdbcType=CHAR},
+      </if>
+      <if test="record.complaintHandleAdminCreatetime != null" >
+        complaint_handle_admin_createtime = #{record.complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.complaintApprovalAdmin != null" >
+        complaint_approval_admin = #{record.complaintApprovalAdmin,jdbcType=CHAR},
+      </if>
+      <if test="record.complaintApprovalAdminCreatetime != null" >
+        complaint_approval_admin_createtime = #{record.complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.complaintOverone != null" >
+        complaint_overone = #{record.complaintOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintOvertwo != null" >
+        complaint_overtwo = #{record.complaintOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.complaintContentCreatetime != null" >
+        complaint_content_createtime = #{record.complaintContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update complaint
+    set complaint_id = #{record.complaintId,jdbcType=CHAR},
+      complaint_number = #{record.complaintNumber,jdbcType=CHAR},
+      complaint_userid = #{record.complaintUserid,jdbcType=CHAR},
+      complaint_identity = #{record.complaintIdentity,jdbcType=INTEGER},
+      complaint_content = #{record.complaintContent,jdbcType=VARCHAR},
+      complaint_content_note = #{record.complaintContentNote,jdbcType=VARCHAR},
+      complaint_content_speak = #{record.complaintContentSpeak,jdbcType=VARCHAR},
+      complaint_content_record = #{record.complaintContentRecord,jdbcType=VARCHAR},
+      complaint_content_pic = #{record.complaintContentPic,jdbcType=VARCHAR},
+      complaint_content_over = #{record.complaintContentOver,jdbcType=VARCHAR},
+      complaint_handle_mode = #{record.complaintHandleMode,jdbcType=INTEGER},
+      complaint_content_overtow = #{record.complaintContentOvertow,jdbcType=VARCHAR},
+      complaint_spareone = #{record.complaintSpareone,jdbcType=VARCHAR},
+      complaint_sparetwo = #{record.complaintSparetwo,jdbcType=VARCHAR},
+      complaint_sparethree = #{record.complaintSparethree,jdbcType=VARCHAR},
+      complaint_sparefour = #{record.complaintSparefour,jdbcType=VARCHAR},
+      complaint_sparefive = #{record.complaintSparefive,jdbcType=VARCHAR},
+      complaint_handle_admin = #{record.complaintHandleAdmin,jdbcType=CHAR},
+      complaint_handle_admin_createtime = #{record.complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      complaint_approval_admin = #{record.complaintApprovalAdmin,jdbcType=CHAR},
+      complaint_approval_admin_createtime = #{record.complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      complaint_overone = #{record.complaintOverone,jdbcType=VARCHAR},
+      complaint_overtwo = #{record.complaintOvertwo,jdbcType=VARCHAR},
+      complaint_content_createtime = #{record.complaintContentCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Complaint" >
+    update complaint
+    <set >
+      <if test="complaintNumber != null" >
+        complaint_number = #{complaintNumber,jdbcType=CHAR},
+      </if>
+      <if test="complaintUserid != null" >
+        complaint_userid = #{complaintUserid,jdbcType=CHAR},
+      </if>
+      <if test="complaintIdentity != null" >
+        complaint_identity = #{complaintIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentNote != null" >
+        complaint_content_note = #{complaintContentNote,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentSpeak != null" >
+        complaint_content_speak = #{complaintContentSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentRecord != null" >
+        complaint_content_record = #{complaintContentRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentPic != null" >
+        complaint_content_pic = #{complaintContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentOver != null" >
+        complaint_content_over = #{complaintContentOver,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleMode != null" >
+        complaint_handle_mode = #{complaintHandleMode,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContentOvertow != null" >
+        complaint_content_overtow = #{complaintContentOvertow,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSpareone != null" >
+        complaint_spareone = #{complaintSpareone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparetwo != null" >
+        complaint_sparetwo = #{complaintSparetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparethree != null" >
+        complaint_sparethree = #{complaintSparethree,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefour != null" >
+        complaint_sparefour = #{complaintSparefour,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefive != null" >
+        complaint_sparefive = #{complaintSparefive,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleAdmin != null" >
+        complaint_handle_admin = #{complaintHandleAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintHandleAdminCreatetime != null" >
+        complaint_handle_admin_createtime = #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintApprovalAdmin != null" >
+        complaint_approval_admin = #{complaintApprovalAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintApprovalAdminCreatetime != null" >
+        complaint_approval_admin_createtime = #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintOverone != null" >
+        complaint_overone = #{complaintOverone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintOvertwo != null" >
+        complaint_overtwo = #{complaintOvertwo,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentCreatetime != null" >
+        complaint_content_createtime = #{complaintContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where complaint_id = #{complaintId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Complaint" >
+    update complaint
+    set complaint_number = #{complaintNumber,jdbcType=CHAR},
+      complaint_userid = #{complaintUserid,jdbcType=CHAR},
+      complaint_identity = #{complaintIdentity,jdbcType=INTEGER},
+      complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      complaint_content_note = #{complaintContentNote,jdbcType=VARCHAR},
+      complaint_content_speak = #{complaintContentSpeak,jdbcType=VARCHAR},
+      complaint_content_record = #{complaintContentRecord,jdbcType=VARCHAR},
+      complaint_content_pic = #{complaintContentPic,jdbcType=VARCHAR},
+      complaint_content_over = #{complaintContentOver,jdbcType=VARCHAR},
+      complaint_handle_mode = #{complaintHandleMode,jdbcType=INTEGER},
+      complaint_content_overtow = #{complaintContentOvertow,jdbcType=VARCHAR},
+      complaint_spareone = #{complaintSpareone,jdbcType=VARCHAR},
+      complaint_sparetwo = #{complaintSparetwo,jdbcType=VARCHAR},
+      complaint_sparethree = #{complaintSparethree,jdbcType=VARCHAR},
+      complaint_sparefour = #{complaintSparefour,jdbcType=VARCHAR},
+      complaint_sparefive = #{complaintSparefive,jdbcType=VARCHAR},
+      complaint_handle_admin = #{complaintHandleAdmin,jdbcType=CHAR},
+      complaint_handle_admin_createtime = #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      complaint_approval_admin = #{complaintApprovalAdmin,jdbcType=CHAR},
+      complaint_approval_admin_createtime = #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      complaint_overone = #{complaintOverone,jdbcType=VARCHAR},
+      complaint_overtwo = #{complaintOvertwo,jdbcType=VARCHAR},
+      complaint_content_createtime = #{complaintContentCreatetime,jdbcType=TIMESTAMP}
+    where complaint_id = #{complaintId,jdbcType=CHAR}
+  </update>
+  
+ <!-- 查询护士对平台的投诉-->
+ <select id="selectCompatilByNurse" resultMap="BaseResultMap2"  parameterType="java.util.Map">
+  SELECT nurse_id AS userid,
+ nurse_header AS userheader,
+ nurse_nick AS usernick,
+ nurse_name AS username,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+ complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+ complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+ FROM complaint,nurse 
+ WHERE complaint_userid = nurse_id
+   AND complaint_spareone=1
+   AND complaint_sparethree = 1
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+ </select>
+ <!-- 关键字查询护士对平台的投诉-->
+ <select id="selectCompatilByNurseKeyWord" resultMap="BaseResultMap2"   parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+ SELECT nurse_id AS userid,
+ nurse_header AS userheader,
+ nurse_nick AS usernick,
+ nurse_name AS username,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+  complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+  complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+ FROM complaint,nurse 
+ WHERE complaint_userid = nurse_id
+ AND complaint_spareone=1
+ AND complaint_sparethree = 1
+ AND 
+ <!-- complaint_content_createtime
+ BETWEEN #{minTime} AND  #{maxTime} -->
+ <![CDATA[(DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+ <if test="parameter != null">
+ and 
+ (
+ nurse_name like '%${parameter}%'
+ </if>
+  <if test="parameter != null">
+ OR
+ complaint_number like '%${parameter}%'
+ )
+ </if>
+ 
+ ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+ </select>
+ <!-- 查询护士对平台的投诉数量 -->
+ <select id="selectCompatilByNurseCount" resultType="java.lang.Integer"  >
+ SELECT COUNT(*)
+ FROM complaint,nurse 
+ WHERE complaint_userid = nurse_id
+   AND complaint_spareone=1
+   AND complaint_sparethree = 1
+ </select>
+ <!-- 查询护士对用户的投诉(包括模糊查询) -->
+  <select id="selectCompatilByNurseToUser" resultMap="BaseResultMap3"  parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+  SELECT nurse_id ,
+  nurse_header,
+  nurse_nick ,
+  nurse_name,
+  user_id,
+  user_header,
+  user_nick,
+  user_name,
+  complaint_id,
+  complaint_number,
+  complaint_identity,
+  complaint_content,
+   complaint_content_speak,
+ complaint_content_record,
+  complaint_content_pic,
+  complaint_content_note,
+  complaint_content_createtime,
+  complaint_content_over,
+  complaint_sparethree,
+   complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+  FROM complaint,nurse,USER 
+  WHERE complaint_userid = nurse_id
+  AND complaint_sparefour = user_id
+  AND complaint_spareone=1
+  AND complaint_sparethree = 3
+  AND 
+ <!--  complaint_content_createtime
+  BETWEEN #{minTime} AND  #{maxTime} -->
+  <![CDATA[(DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+  <if test="parameter != null">
+  and 
+  (
+  nurse_name like '%${parameter}%'
+  </if>
+  <if test="parameter != null">
+  OR
+  user_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null">
+  OR
+  complaint_number like '%${parameter}%'
+  )
+  </if>
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+ </select>
+ <!-- 查询护士对用户的投诉数量 -->
+   <select id="selectCompatilByNurseToUserCount" resultType="java.lang.Integer">
+  SELECT COUNT(*)
+  FROM complaint,nurse,USER 
+  WHERE complaint_userid = nurse_id
+  AND complaint_sparefour = user_id
+  AND complaint_spareone=1
+  AND complaint_sparethree = 3
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+ </select>
+ <!-- 查询用户对护士的投诉(包括模糊查询) -->
+  <select id="selectCompatilByUserToNurse" resultMap="BaseResultMap3"  parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+ SELECT nurse_id ,
+ nurse_header,
+ nurse_nick ,
+ nurse_name,
+ user_id,
+ user_header,
+ user_nick,
+ user_name,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+  complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+ complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+ FROM complaint,nurse,USER 
+ WHERE complaint_userid =  user_id
+ AND complaint_sparefour = nurse_id
+ AND complaint_spareone=1
+ AND complaint_sparethree = 2
+  AND 
+  <!-- complaint_content_createtime
+  BETWEEN #{minTime} AND  #{maxTime} -->
+  <![CDATA[(DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+  <if test="parameter != null">
+  and 
+  (
+  nurse_name like '%${parameter}%'
+  </if>
+  <if test="parameter != null">
+  OR
+  user_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null">
+  OR
+  complaint_number like '%${parameter}%'
+  )
+  </if>
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+ </select>
+ <!-- 查询护士对用户的投诉数量 -->
+   <select id="selectCompatilByUserToNurseCount" resultType="java.lang.Integer">
+   SELECT COUNT(*)
+   FROM complaint,nurse,USER 
+   WHERE complaint_userid =  user_id
+   AND complaint_sparefour = nurse_id
+   AND complaint_spareone=1
+   AND complaint_sparethree = 2
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+ </select>
+ 
+ <!--查询用户的对平台的投诉  -->
+ <select id="selectCompatilByUser" resultMap="BaseResultMap2"  parameterType="java.util.Map">
+SELECT user_id AS userid,
+ user_header AS userheader,
+ user_nick AS usernick,
+ user_name AS username,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+  complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+ complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+ FROM complaint,USER 
+ WHERE complaint_userid = user_id
+ AND complaint_spareone=1
+ AND complaint_sparethree = 0
+ ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+ </select> 
+ <!-- 关键字查询查询用户的对平台的投诉-->
+ <select id="selectCompatilByUserKeyWord" resultMap="BaseResultMap2"   parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+ SELECT user_id AS userid,
+ user_header AS userheader,
+ user_nick AS usernick,
+ user_name AS username,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+  complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+ complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+ FROM complaint,USER 
+ WHERE complaint_userid = user_id
+ AND 
+ complaint_spareone=1
+ AND complaint_sparethree = 0
+ AND 
+ <!-- complaint_content_createtime
+ BETWEEN #{minTime} AND  #{maxTime} -->
+ <![CDATA[(DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+ <if test="parameter != null">
+ and 
+ (
+ user_name like '%${parameter}%'
+ </if>
+  <if test="parameter != null">
+ OR
+ complaint_number like '%${parameter}%'
+ )
+ </if>
+ ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+ </select>
+ <!--查询用户的所有评论与反馈数量  -->
+ <select id="selectCompatilByUserCount" resultType="java.lang.Integer">
+ SELECT COUNT(*) 
+ FROM complaint,USER 
+ WHERE complaint_userid = user_id
+ AND complaint_spareone=1
+ AND complaint_sparethree = 0
+ </select> 
+ <!-- 查询护士对订单的投诉  -->
+ <select id="selectComplaintByUserTo" resultMap="BaseResultMap3"  parameterType="com.chance.ssm.po.vo.ComplaintVagueVo">
+ SELECT nurse_id ,
+ nurse_header,
+ nurse_nick ,
+ nurse_name,
+ user_id,
+ user_header,
+ user_nick,
+ user_name,
+ complaint_id,
+ complaint_number,
+ complaint_identity,
+ complaint_content,
+ complaint_content_speak,
+ complaint_content_record,
+ complaint_content_pic,
+ complaint_content_note,
+ complaint_content_createtime,
+ complaint_content_over,
+ complaint_sparethree,
+ complaint_spareone,
+  complaint_sparetwo,
+  complaint_handle_admin,
+ complaint_handle_admin_createtime,
+ complaint_approval_admin,
+ complaint_approval_admin_createtime
+  FROM complaint,nurse,USER,order_send
+<!--  WHERE complaint_userid =  nurse_id
+ AND complaint_sparefour = user_id
+ AND 
+ complaint_spareone=1
+ AND complaint_sparethree = 4 -->
+  WHERE ((complaint_userid =  nurse_id
+ AND complaint_sparefour = user_id)OR(complaint_userid=user_id ))
+ AND 
+ ((complaint_spareone=1
+ AND complaint_sparethree = 4) OR complaint_spareone = 2)
+ AND complaint_content_note = order_send_id
+  OR complaint_spareone = '0'
+  AND 
+ <!--  complaint_content_createtime
+  BETWEEN #{minTime} AND  #{maxTime} -->
+  <![CDATA[(DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') >= #{minTime} AND DATE_FORMAT(complaint_content_createtime,'%Y-%m-%d') <=DATE_FORMAT(#{maxTime},'%Y-%m-%d')) ]]>
+  <if test="parameter != null">
+  and(
+  nurse_name like '%${parameter}%'
+  </if>
+  <if test="parameter != null">
+  OR
+  user_name like '%${parameter}%'
+  </if>
+   <if test="parameter != null">
+  OR
+  complaint_number like '%${parameter}%'
+  </if>
+  <if test="parameter != null">
+  OR
+  order_send_numbers like '%${parameter}%'
+  )
+  </if>
+   GROUP BY complaint_id
+  ORDER BY complaint_content_over ASC,complaint_content_createtime ASC
+  LIMIT
+  #{start},
+  #{rows}
+ </select>
+  <!--查询对订单的投诉的数量  -->
+ <select id="selectComplaintByUserToCount" resultType="java.lang.Integer">
+ SELECT COUNT(DISTINCT complaint_id)
+ FROM complaint,nurse,USER ,order_send
+ <!-- WHERE complaint_userid =  nurse_id
+ AND complaint_sparefour = user_id
+ AND 
+ complaint_spareone=1
+ AND complaint_sparethree = 4 -->
+  WHERE ((complaint_userid =  nurse_id
+ AND complaint_sparefour = user_id)OR(complaint_userid=user_id ))
+ AND 
+ ((complaint_spareone=1
+ AND complaint_sparethree = 4) OR complaint_spareone = 2)
+  AND complaint_content_note = order_send_id
+  OR complaint_spareone = '0'
+ </select> 
+ <!--取消的订单反馈修改  -->
+ <update id="updateCancelOrderComplaint" parameterType="com.chance.ssm.po.Complaint" >
+    update complaint
+    <set >
+      <if test="complaintNumber != null" >
+        complaint_number = #{complaintNumber,jdbcType=CHAR},
+      </if>
+      <if test="complaintUserid != null" >
+        complaint_userid = #{complaintUserid,jdbcType=CHAR},
+      </if>
+      <if test="complaintIdentity != null" >
+        complaint_identity = #{complaintIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentNote != null" >
+        complaint_content_note = #{complaintContentNote,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentSpeak != null" >
+        complaint_content_speak = #{complaintContentSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentRecord != null" >
+        complaint_content_record = #{complaintContentRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentPic != null" >
+        complaint_content_pic = #{complaintContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentOver != null" >
+        complaint_content_over = #{complaintContentOver,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleMode != null" >
+        complaint_handle_mode = #{complaintHandleMode,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContentOvertow != null" >
+        complaint_content_overtow = #{complaintContentOvertow,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSpareone != null" >
+        complaint_spareone = #{complaintSpareone,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparethree != null" >
+        complaint_sparethree = #{complaintSparethree,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefour != null" >
+        complaint_sparefour = #{complaintSparefour,jdbcType=VARCHAR},
+      </if>
+       <if test="complaintHandleAdmin != null" >
+        complaint_handle_admin = #{complaintHandleAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintHandleAdminCreatetime != null" >
+        complaint_handle_admin_createtime = #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintApprovalAdmin != null" >
+        complaint_approval_admin = #{complaintApprovalAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintApprovalAdminCreatetime != null" >
+        complaint_approval_admin_createtime = #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintContentCreatetime != null" >
+        complaint_content_createtime = #{complaintContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where complaint_content_note = #{complaintContentNote,jdbcType=VARCHAR} and complaint_sparetwo = #{complaintSparetwo,jdbcType=VARCHAR} and complaint_sparefive =  #{complaintSparefive,jdbcType=VARCHAR}
+  </update>
+  <!--用户或护士沟通反馈修改 -->
+ <update id="updateUserOrNurseComplaintTo" parameterType="com.chance.ssm.po.Complaint" >
+    update complaint
+    <set >
+      <if test="complaintNumber != null" >
+        complaint_number = #{complaintNumber,jdbcType=CHAR},
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentNote != null" >
+        complaint_content_note = #{complaintContentNote,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentSpeak != null" >
+        complaint_content_speak = #{complaintContentSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentRecord != null" >
+        complaint_content_record = #{complaintContentRecord,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentPic != null" >
+        complaint_content_pic = #{complaintContentPic,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContentOver != null" >
+        complaint_content_over = #{complaintContentOver,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintHandleMode != null" >
+        complaint_handle_mode = #{complaintHandleMode,jdbcType=INTEGER},
+      </if>
+      <if test="complaintContentOvertow != null" >
+        complaint_content_overtow = #{complaintContentOvertow,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparethree != null" >
+        complaint_sparethree = #{complaintSparethree,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefour != null" >
+        complaint_sparefour = #{complaintSparefour,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSparefive != null" >
+        complaint_sparefive = #{complaintSparefive,jdbcType=VARCHAR},
+      </if>
+       <if test="complaintHandleAdmin != null" >
+        complaint_handle_admin = #{complaintHandleAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintHandleAdminCreatetime != null" >
+        complaint_handle_admin_createtime = #{complaintHandleAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintApprovalAdmin != null" >
+        complaint_approval_admin = #{complaintApprovalAdmin,jdbcType=CHAR},
+      </if>
+      <if test="complaintApprovalAdminCreatetime != null" >
+        complaint_approval_admin_createtime = #{complaintApprovalAdminCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="complaintContentCreatetime != null" >
+        complaint_content_createtime = #{complaintContentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where complaint_userid = #{complaintUserid,jdbcType=CHAR} and complaint_identity = #{complaintIdentity,jdbcType=INTEGER}  AND complaint_spareone = '3'
+  </update>
+  <!-- 根据订单ID和反馈的状态(取消和完成)查询反馈信息 -->
+  <select id="selectComplaintByOrderSendIDAndSpare" resultMap="BaseResultMap" >
+    SELECT * FROM complaint WHERE complaint_content_note = #{0} AND complaint_sparetwo = #{1} AND complaint_sparefive = #{2} ORDER BY complaint_content_createtime DESC LIMIT 0,1
+  </select>
+  <!-- 查询用户或护士沟通 -->
+  <select id="selectComplaintByUserOrNurseTo" resultMap="BaseResultMap">
+   SELECT * FROM complaint WHERE complaint_userid = #{0} AND complaint_identity = #{1} AND complaint_spareone = '3'
+  </select>
+  <!-- 查询沟通用户待付款订单-->
+  <select id="selectComplaintByUserToGoutong" resultMap="BaseResultMap">
+   SELECT * FROM complaint WHERE complaint_content_note = #{0}  AND complaint_spareone = '0' AND complaint_sparefive = #{1}
+  </select>
+  <!-- 投诉统计 -->
+  <select id="selectcomplaintByType" resultMap="BaseResultMap">
+  SELECT complaint_id,complaint_content_createtime FROM  complaint WHERE DATE_FORMAT(complaint_content_createtime,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') AND complaint_sparethree = #{0}
+  </select>
+</mapper>

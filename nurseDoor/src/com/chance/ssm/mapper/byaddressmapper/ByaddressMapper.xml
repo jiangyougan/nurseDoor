@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.byaddressmapper.ByaddressMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Byaddress" >
+    <result column="byaddress_id" property="byaddressId" jdbcType="CHAR" />
+    <result column="byaddress_userid" property="byaddressUserid" jdbcType="CHAR" />
+    <result column="byaddress_position_x" property="byaddressPositionX" jdbcType="DOUBLE" />
+    <result column="byaddress_position_y" property="byaddressPositionY" jdbcType="DOUBLE" />
+    <result column="byaddress_address" property="byaddressAddress" jdbcType="VARCHAR" />
+    <result column="byaddress_createtime" property="byaddressCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    byaddress_id, byaddress_userid, byaddress_position_x, byaddress_position_y, byaddress_address, 
+    byaddress_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ByaddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from byaddress
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ByaddressExample" >
+    delete from byaddress
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Byaddress" >
+    insert into byaddress (byaddress_id, byaddress_userid, byaddress_position_x, 
+      byaddress_position_y, byaddress_address, byaddress_createtime
+      )
+    values (#{byaddressId,jdbcType=CHAR}, #{byaddressUserid,jdbcType=CHAR}, #{byaddressPositionX,jdbcType=DOUBLE}, 
+      #{byaddressPositionY,jdbcType=DOUBLE}, #{byaddressAddress,jdbcType=VARCHAR}, #{byaddressCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Byaddress" >
+    insert into byaddress
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="byaddressId != null" >
+        byaddress_id,
+      </if>
+      <if test="byaddressUserid != null" >
+        byaddress_userid,
+      </if>
+      <if test="byaddressPositionX != null" >
+        byaddress_position_x,
+      </if>
+      <if test="byaddressPositionY != null" >
+        byaddress_position_y,
+      </if>
+      <if test="byaddressAddress != null" >
+        byaddress_address,
+      </if>
+      <if test="byaddressCreatetime != null" >
+        byaddress_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="byaddressId != null" >
+        #{byaddressId,jdbcType=CHAR},
+      </if>
+      <if test="byaddressUserid != null" >
+        #{byaddressUserid,jdbcType=CHAR},
+      </if>
+      <if test="byaddressPositionX != null" >
+        #{byaddressPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="byaddressPositionY != null" >
+        #{byaddressPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="byaddressAddress != null" >
+        #{byaddressAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="byaddressCreatetime != null" >
+        #{byaddressCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ByaddressExample" resultType="java.lang.Integer" >
+    select count(*) from byaddress
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update byaddress
+    <set >
+      <if test="record.byaddressId != null" >
+        byaddress_id = #{record.byaddressId,jdbcType=CHAR},
+      </if>
+      <if test="record.byaddressUserid != null" >
+        byaddress_userid = #{record.byaddressUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.byaddressPositionX != null" >
+        byaddress_position_x = #{record.byaddressPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="record.byaddressPositionY != null" >
+        byaddress_position_y = #{record.byaddressPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="record.byaddressAddress != null" >
+        byaddress_address = #{record.byaddressAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byaddressCreatetime != null" >
+        byaddress_createtime = #{record.byaddressCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update byaddress
+    set byaddress_id = #{record.byaddressId,jdbcType=CHAR},
+      byaddress_userid = #{record.byaddressUserid,jdbcType=CHAR},
+      byaddress_position_x = #{record.byaddressPositionX,jdbcType=DOUBLE},
+      byaddress_position_y = #{record.byaddressPositionY,jdbcType=DOUBLE},
+      byaddress_address = #{record.byaddressAddress,jdbcType=VARCHAR},
+      byaddress_createtime = #{record.byaddressCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chance.ssm.mapper.redpacketsmapper.RedPacketsMapper">
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.RedPackets">
+    <id column="red_packets" jdbcType="CHAR" property="redPackets" />
+    <result column="red_packets_pic" jdbcType="VARCHAR" property="redPacketsPic" />
+    <result column="red_packets_money" jdbcType="DECIMAL" property="redPacketsMoney" />
+    <result column="red_packets_note" jdbcType="VARCHAR" property="redPacketsNote" />
+    <result column="red_packets_speak" jdbcType="VARCHAR" property="redPacketsSpeak" />
+    <result column="red_packets_type" jdbcType="INTEGER" property="redPacketsType" />
+    <result column="red_packets_createtime" jdbcType="TIMESTAMP" property="redPacketsCreatetime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    red_packets, red_packets_pic, red_packets_money, red_packets_note, red_packets_speak, 
+    red_packets_type, red_packets_createtime
+  </sql>
+  <select id="selectByExample" parameterType="com.chance.ssm.po.RedPacketsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from red_packets
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from red_packets
+    where red_packets = #{redPackets,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.RedPackets">
+    insert into red_packets (red_packets, red_packets_pic, red_packets_money, 
+      red_packets_note, red_packets_speak, red_packets_type, 
+      red_packets_createtime)
+    values (#{redPackets,jdbcType=CHAR}, #{redPacketsPic,jdbcType=VARCHAR}, #{redPacketsMoney,jdbcType=DECIMAL}, 
+      #{redPacketsNote,jdbcType=VARCHAR}, #{redPacketsSpeak,jdbcType=VARCHAR}, #{redPacketsType,jdbcType=INTEGER}, 
+      #{redPacketsCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.RedPackets">
+    insert into red_packets
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="redPackets != null">
+        red_packets,
+      </if>
+      <if test="redPacketsPic != null">
+        red_packets_pic,
+      </if>
+      <if test="redPacketsMoney != null">
+        red_packets_money,
+      </if>
+      <if test="redPacketsNote != null">
+        red_packets_note,
+      </if>
+      <if test="redPacketsSpeak != null">
+        red_packets_speak,
+      </if>
+      <if test="redPacketsType != null">
+        red_packets_type,
+      </if>
+      <if test="redPacketsCreatetime != null">
+        red_packets_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="redPackets != null">
+        #{redPackets,jdbcType=CHAR},
+      </if>
+      <if test="redPacketsPic != null">
+        #{redPacketsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsMoney != null">
+        #{redPacketsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="redPacketsNote != null">
+        #{redPacketsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsSpeak != null">
+        #{redPacketsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsType != null">
+        #{redPacketsType,jdbcType=INTEGER},
+      </if>
+      <if test="redPacketsCreatetime != null">
+        #{redPacketsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.RedPacketsExample" resultType="java.lang.Integer">
+    select count(*) from red_packets
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update red_packets
+    <set>
+      <if test="record.redPackets != null">
+        red_packets = #{record.redPackets,jdbcType=CHAR},
+      </if>
+      <if test="record.redPacketsPic != null">
+        red_packets_pic = #{record.redPacketsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsMoney != null">
+        red_packets_money = #{record.redPacketsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.redPacketsNote != null">
+        red_packets_note = #{record.redPacketsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsSpeak != null">
+        red_packets_speak = #{record.redPacketsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redPacketsType != null">
+        red_packets_type = #{record.redPacketsType,jdbcType=INTEGER},
+      </if>
+      <if test="record.redPacketsCreatetime != null">
+        red_packets_createtime = #{record.redPacketsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update red_packets
+    set red_packets = #{record.redPackets,jdbcType=CHAR},
+      red_packets_pic = #{record.redPacketsPic,jdbcType=VARCHAR},
+      red_packets_money = #{record.redPacketsMoney,jdbcType=DECIMAL},
+      red_packets_note = #{record.redPacketsNote,jdbcType=VARCHAR},
+      red_packets_speak = #{record.redPacketsSpeak,jdbcType=VARCHAR},
+      red_packets_type = #{record.redPacketsType,jdbcType=INTEGER},
+      red_packets_createtime = #{record.redPacketsCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.RedPackets">
+    update red_packets
+    <set>
+      <if test="redPacketsPic != null">
+        red_packets_pic = #{redPacketsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsMoney != null">
+        red_packets_money = #{redPacketsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="redPacketsNote != null">
+        red_packets_note = #{redPacketsNote,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsSpeak != null">
+        red_packets_speak = #{redPacketsSpeak,jdbcType=VARCHAR},
+      </if>
+      <if test="redPacketsType != null">
+        red_packets_type = #{redPacketsType,jdbcType=INTEGER},
+      </if>
+      <if test="redPacketsCreatetime != null">
+        red_packets_createtime = #{redPacketsCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where red_packets = #{redPackets,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.RedPackets">
+    update red_packets
+    set red_packets_pic = #{redPacketsPic,jdbcType=VARCHAR},
+      red_packets_money = #{redPacketsMoney,jdbcType=DECIMAL},
+      red_packets_note = #{redPacketsNote,jdbcType=VARCHAR},
+      red_packets_speak = #{redPacketsSpeak,jdbcType=VARCHAR},
+      red_packets_type = #{redPacketsType,jdbcType=INTEGER},
+      red_packets_createtime = #{redPacketsCreatetime,jdbcType=TIMESTAMP}
+    where red_packets = #{redPackets,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKeyByResPacketsId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from red_packets
+    where red_packets = #{redPackets,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.RedPacketsExample">
+    delete from red_packets
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <!-- 判断有没有添加过该类别的红包 -->
+  <select id="selectRedpacketsInfoByType" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  SELECT * FROM red_packets WHERE red_packets_type = #{redPacketsType,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.protectedaddressmapper.ProtectedAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.ProtectedAddress" >
+    <id column="protected_address_id" property="protectedAddressId" jdbcType="CHAR" />
+    <result column="protected_address_userid" property="protectedAddressUserid" jdbcType="CHAR" />
+    <result column="protected_address_position_x" property="protectedAddressPositionX" jdbcType="DOUBLE" />
+    <result column="protected_address_position_y" property="protectedAddressPositionY" jdbcType="DOUBLE" />
+    <result column="protected_address_address" property="protectedAddressAddress" jdbcType="VARCHAR" />
+    <result column="protected_address_createtime" property="protectedAddressCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    protected_address_id, protected_address_userid, protected_address_position_x, protected_address_position_y, 
+    protected_address_address, protected_address_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.ProtectedAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from protected_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from protected_address
+    where protected_address_id = #{protectedAddressId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from protected_address
+    where protected_address_id = #{protectedAddressId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.ProtectedAddressExample" >
+    delete from protected_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.ProtectedAddress" >
+    insert into protected_address (protected_address_id, protected_address_userid, 
+      protected_address_position_x, protected_address_position_y, 
+      protected_address_address, protected_address_createtime
+      )
+    values (#{protectedAddressId,jdbcType=CHAR}, #{protectedAddressUserid,jdbcType=CHAR}, 
+      #{protectedAddressPositionX,jdbcType=DOUBLE}, #{protectedAddressPositionY,jdbcType=DOUBLE}, 
+      #{protectedAddressAddress,jdbcType=VARCHAR}, #{protectedAddressCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.ProtectedAddress" >
+    insert into protected_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="protectedAddressId != null" >
+        protected_address_id,
+      </if>
+      <if test="protectedAddressUserid != null" >
+        protected_address_userid,
+      </if>
+      <if test="protectedAddressPositionX != null" >
+        protected_address_position_x,
+      </if>
+      <if test="protectedAddressPositionY != null" >
+        protected_address_position_y,
+      </if>
+      <if test="protectedAddressAddress != null" >
+        protected_address_address,
+      </if>
+      <if test="protectedAddressCreatetime != null" >
+        protected_address_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="protectedAddressId != null" >
+        #{protectedAddressId,jdbcType=CHAR},
+      </if>
+      <if test="protectedAddressUserid != null" >
+        #{protectedAddressUserid,jdbcType=CHAR},
+      </if>
+      <if test="protectedAddressPositionX != null" >
+        #{protectedAddressPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedAddressPositionY != null" >
+        #{protectedAddressPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedAddressAddress != null" >
+        #{protectedAddressAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddressCreatetime != null" >
+        #{protectedAddressCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.ProtectedAddressExample" resultType="java.lang.Integer" >
+    select count(*) from protected_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update protected_address
+    <set >
+      <if test="record.protectedAddressId != null" >
+        protected_address_id = #{record.protectedAddressId,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedAddressUserid != null" >
+        protected_address_userid = #{record.protectedAddressUserid,jdbcType=CHAR},
+      </if>
+      <if test="record.protectedAddressPositionX != null" >
+        protected_address_position_x = #{record.protectedAddressPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="record.protectedAddressPositionY != null" >
+        protected_address_position_y = #{record.protectedAddressPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="record.protectedAddressAddress != null" >
+        protected_address_address = #{record.protectedAddressAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protectedAddressCreatetime != null" >
+        protected_address_createtime = #{record.protectedAddressCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update protected_address
+    set protected_address_id = #{record.protectedAddressId,jdbcType=CHAR},
+      protected_address_userid = #{record.protectedAddressUserid,jdbcType=CHAR},
+      protected_address_position_x = #{record.protectedAddressPositionX,jdbcType=DOUBLE},
+      protected_address_position_y = #{record.protectedAddressPositionY,jdbcType=DOUBLE},
+      protected_address_address = #{record.protectedAddressAddress,jdbcType=VARCHAR},
+      protected_address_createtime = #{record.protectedAddressCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.ProtectedAddress" >
+    update protected_address
+    <set >
+      <if test="protectedAddressUserid != null" >
+        protected_address_userid = #{protectedAddressUserid,jdbcType=CHAR},
+      </if>
+      <if test="protectedAddressPositionX != null" >
+        protected_address_position_x = #{protectedAddressPositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedAddressPositionY != null" >
+        protected_address_position_y = #{protectedAddressPositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="protectedAddressAddress != null" >
+        protected_address_address = #{protectedAddressAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="protectedAddressCreatetime != null" >
+        protected_address_createtime = #{protectedAddressCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where protected_address_id = #{protectedAddressId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.ProtectedAddress" >
+    update protected_address
+    set protected_address_userid = #{protectedAddressUserid,jdbcType=CHAR},
+      protected_address_position_x = #{protectedAddressPositionX,jdbcType=DOUBLE},
+      protected_address_position_y = #{protectedAddressPositionY,jdbcType=DOUBLE},
+      protected_address_address = #{protectedAddressAddress,jdbcType=VARCHAR},
+      protected_address_createtime = #{protectedAddressCreatetime,jdbcType=TIMESTAMP}
+    where protected_address_id = #{protectedAddressId,jdbcType=CHAR}
+  </update>
+</mapper>

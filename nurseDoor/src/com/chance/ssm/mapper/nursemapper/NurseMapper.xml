@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chance.ssm.mapper.nursemapper.NurseMapper" >
+  <resultMap id="BaseResultMap" type="com.chance.ssm.po.Nurse" >
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="nurse_pwd" property="nursePwd" jdbcType="VARCHAR" />
+    <result column="nurse_phone" property="nursePhone" jdbcType="CHAR" />
+    <result column="nurse_address" property="nurseAddress" jdbcType="VARCHAR" />
+    <result column="nurse_invitationcode" property="nurseInvitationcode" jdbcType="CHAR" />
+    <result column="nurse_invitationlink" property="nurseInvitationlink" jdbcType="VARCHAR" />
+    <result column="nurse_sex" property="nurseSex" jdbcType="CHAR" />
+    <result column="nurse_age" property="nurseAge" jdbcType="CHAR" />
+    <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+    <result column="nurse_work_unit" property="nurseWorkUnit" jdbcType="VARCHAR" />
+    <result column="nurse_job" property="nurseJob" jdbcType="VARCHAR" />
+    <result column="nurse_office" property="nurseOffice" jdbcType="VARCHAR" />
+    <result column="nurse_number" property="nurseNumber" jdbcType="VARCHAR" />
+    <result column="nurse_yearsofservice" property="nurseYearsofservice" jdbcType="CHAR" />
+    <result column="nurse_note" property="nurseNote" jdbcType="VARCHAR" />
+    <result column="nurse_place" property="nursePlace" jdbcType="VARCHAR" />
+    <result column="nurse_goodservice" property="nurseGoodservice" jdbcType="VARCHAR" />
+    <result column="nurse_nurse_licensepic" property="nurseNurseLicensepic" jdbcType="VARCHAR" />
+    <result column="nurse_email" property="nurseEmail" jdbcType="CHAR" />
+    <result column="nurse_truename" property="nurseTruename" jdbcType="CHAR" />
+    <result column="nurse_cardpic" property="nurseCardpic" jdbcType="VARCHAR" />
+    <result column="nurse_card" property="nurseCard" jdbcType="CHAR" />
+    <result column="nurse_province" property="nurseProvince" jdbcType="VARCHAR" />
+    <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+    <result column="nurse_district" property="nurseDistrict" jdbcType="VARCHAR" />
+    <result column="nurse_sign" property="nurseSign" jdbcType="VARCHAR" />
+    <result column="nurse_position_x" property="nursePositionX" jdbcType="DOUBLE" />
+    <result column="nurse_position_y" property="nursePositionY" jdbcType="DOUBLE" />
+    <result column="nurse_balance" property="nurseBalance" jdbcType="DECIMAL" />
+    <result column="nurse_usestate" property="nurseUsestate" jdbcType="INTEGER" />
+    <result column="nurse_communicate" property="nurseCommunicate" jdbcType="INTEGER" />
+    <result column="nurse_mark" property="nurseMark" jdbcType="DECIMAL" />
+    <result column="nurse_createtime" property="nurseCreatetime" jdbcType="TIMESTAMP" />
+    <result column="orderCounts" property="orderCounts" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.NurseVO" id="BaseResultMap2">
+  	<result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="nurse_pwd" property="nursePwd" jdbcType="VARCHAR" />
+    <result column="nurse_phone" property="nursePhone" jdbcType="CHAR" />
+    <result column="nurse_address" property="nurseAddress" jdbcType="VARCHAR" />
+    <result column="nurse_invitationcode" property="nurseInvitationcode" jdbcType="CHAR" />
+    <result column="nurse_invitationlink" property="nurseInvitationlink" jdbcType="VARCHAR" />
+    <result column="nurse_sex" property="nurseSex" jdbcType="CHAR" />
+    <result column="nurse_age" property="nurseAge" jdbcType="CHAR" />
+    <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+    <result column="nurse_work_unit" property="nurseWorkUnit" jdbcType="VARCHAR" />
+    <result column="nurse_job" property="nurseJob" jdbcType="VARCHAR" />
+    <result column="nurse_office" property="nurseOffice" jdbcType="VARCHAR" />
+    <result column="nurse_number" property="nurseNumber" jdbcType="VARCHAR" />
+    <result column="nurse_yearsofservice" property="nurseYearsofservice" jdbcType="CHAR" />
+    <result column="nurse_note" property="nurseNote" jdbcType="VARCHAR" />
+    <result column="nurse_place" property="nursePlace" jdbcType="VARCHAR" />
+    <result column="nurse_goodservice" property="nurseGoodservice" jdbcType="VARCHAR" />
+    <result column="nurse_nurse_licensepic" property="nurseNurseLicensepic" jdbcType="VARCHAR" />
+    <result column="nurse_email" property="nurseEmail" jdbcType="CHAR" />
+    <result column="nurse_truename" property="nurseTruename" jdbcType="CHAR" />
+    <result column="nurse_cardpic" property="nurseCardpic" jdbcType="VARCHAR" />
+    <result column="nurse_card" property="nurseCard" jdbcType="CHAR" />
+    <result column="nurse_province" property="nurseProvince" jdbcType="VARCHAR" />
+    <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+    <result column="nurse_district" property="nurseDistrict" jdbcType="VARCHAR" />
+    <result column="nurse_sign" property="nurseSign" jdbcType="VARCHAR" />
+    <result column="nurse_position_x" property="nursePositionX" jdbcType="DOUBLE" />
+    <result column="nurse_position_y" property="nursePositionY" jdbcType="DOUBLE" />
+    <result column="nurse_balance" property="nurseBalance" jdbcType="DECIMAL" />
+    <result column="nurse_usestate" property="nurseUsestate" jdbcType="INTEGER" />
+    <result column="nurse_mark" property="nurseMark" jdbcType="DECIMAL" />
+    <result column="nurse_createtime" property="nurseCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap type="com.chance.ssm.po.vo.NurseBillsOrderVO" id="BaseResultMap3">
+  	<result column="user_nick" property="userNick" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="CHAR" />
+    <result column="user_header" property="userHeader" jdbcType="CHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="order_send_servicecontent" property="orderSendServicecontent" jdbcType="VARCHAR" />
+    <result column="order_send_finish_order_time" property="orderSendFinishOrderTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <resultMap type="com.chance.ssm.po.vo.NurseRankingVO" id="BaseResultMap4">
+  	<result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+     <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_mark" property="nurseMark" jdbcType="DECIMAL" />
+     <result column="ranks" property="ranks" jdbcType="INTEGER" />
+     <result column="followCounts" property="followCounts" jdbcType="INTEGER" />
+  </resultMap>
+  
+  
+  <resultMap id="BaseResultMap5" type="com.chance.ssm.po.NursePaymentSettings" >
+    <result column="nurse_id" property="nurseId" jdbcType="CHAR" />
+    <result column="nurse_header" property="nurseHeader" jdbcType="CHAR" />
+    <result column="nurse_nick" property="nurseNick" jdbcType="CHAR" />
+    <result column="nurse_name" property="nurseName" jdbcType="CHAR" />
+    <result column="nurse_pwd" property="nursePwd" jdbcType="VARCHAR" />
+    <result column="nurse_phone" property="nursePhone" jdbcType="CHAR" />
+    <result column="nurse_address" property="nurseAddress" jdbcType="VARCHAR" />
+    <result column="nurse_invitationcode" property="nurseInvitationcode" jdbcType="CHAR" />
+    <result column="nurse_invitationlink" property="nurseInvitationlink" jdbcType="VARCHAR" />
+    <result column="nurse_sex" property="nurseSex" jdbcType="CHAR" />
+    <result column="nurse_age" property="nurseAge" jdbcType="CHAR" />
+    <result column="nurse_language" property="nurseLanguage" jdbcType="VARCHAR" />
+    <result column="nurse_work_unit" property="nurseWorkUnit" jdbcType="VARCHAR" />
+    <result column="nurse_job" property="nurseJob" jdbcType="VARCHAR" />
+    <result column="nurse_office" property="nurseOffice" jdbcType="VARCHAR" />
+    <result column="nurse_number" property="nurseNumber" jdbcType="VARCHAR" />
+    <result column="nurse_yearsofservice" property="nurseYearsofservice" jdbcType="CHAR" />
+    <result column="nurse_note" property="nurseNote" jdbcType="VARCHAR" />
+    <result column="nurse_place" property="nursePlace" jdbcType="VARCHAR" />
+    <result column="nurse_goodservice" property="nurseGoodservice" jdbcType="VARCHAR" />
+    <result column="nurse_nurse_licensepic" property="nurseNurseLicensepic" jdbcType="VARCHAR" />
+    <result column="nurse_email" property="nurseEmail" jdbcType="CHAR" />
+    <result column="nurse_truename" property="nurseTruename" jdbcType="CHAR" />
+    <result column="nurse_cardpic" property="nurseCardpic" jdbcType="VARCHAR" />
+    <result column="nurse_card" property="nurseCard" jdbcType="CHAR" />
+    <result column="nurse_province" property="nurseProvince" jdbcType="VARCHAR" />
+    <result column="nurse_city" property="nurseCity" jdbcType="VARCHAR" />
+    <result column="nurse_district" property="nurseDistrict" jdbcType="VARCHAR" />
+    <result column="nurse_sign" property="nurseSign" jdbcType="VARCHAR" />
+    <result column="nurse_position_x" property="nursePositionX" jdbcType="DOUBLE" />
+    <result column="nurse_position_y" property="nursePositionY" jdbcType="DOUBLE" />
+    <result column="nurse_balance" property="nurseBalance" jdbcType="DECIMAL" />
+    <result column="nurse_usestate" property="nurseUsestate" jdbcType="INTEGER" />
+    <result column="nurse_mark" property="nurseMark" jdbcType="DECIMAL" />
+    <result column="nurse_createtime" property="nurseCreatetime" jdbcType="TIMESTAMP" />
+    <result column="nurse_payment_settings_nurse_id" property="nursePaymentSettingsNurseId" jdbcType="CHAR" />
+    <result column="nurse_payment_settings_pwd" property="nursePaymentSettingsPwd" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_account" property="nursePaymentSettingsAccount" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_overone" property="nursePaymentSettingsOverone" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_overtwo" property="nursePaymentSettingsOvertwo" jdbcType="VARCHAR" />
+    <result column="nurse_payment_settings_createtime" property="nursePaymentSettingsCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+ <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nurse_id, nurse_header, nurse_nick, nurse_name, nurse_pwd, nurse_phone, nurse_address, 
+    nurse_invitationcode, nurse_invitationlink, nurse_sex, nurse_age, nurse_language, 
+    nurse_work_unit, nurse_job, nurse_office, nurse_number, nurse_yearsofservice, nurse_note, 
+    nurse_place, nurse_goodservice, nurse_nurse_licensepic, nurse_email, nurse_truename, 
+    nurse_cardpic, nurse_card, nurse_province, nurse_city, nurse_district, nurse_sign, 
+    nurse_position_x, nurse_position_y, nurse_balance, nurse_usestate, nurse_communicate, 
+    nurse_mark, nurse_createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chance.ssm.po.NurseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurse
+    where nurse_id = #{nurseId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from nurse
+    where nurse_id = #{nurseId,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chance.ssm.po.NurseExample" >
+    delete from nurse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chance.ssm.po.Nurse" >
+    insert into nurse (nurse_id, nurse_header, nurse_nick, 
+      nurse_name, nurse_pwd, nurse_phone, 
+      nurse_address, nurse_invitationcode, nurse_invitationlink, 
+      nurse_sex, nurse_age, nurse_language, 
+      nurse_work_unit, nurse_job, nurse_office, 
+      nurse_number, nurse_yearsofservice, nurse_note, 
+      nurse_place, nurse_goodservice, nurse_nurse_licensepic, 
+      nurse_email, nurse_truename, nurse_cardpic, 
+      nurse_card, nurse_province, nurse_city, 
+      nurse_district, nurse_sign, nurse_position_x, 
+      nurse_position_y, nurse_balance, nurse_usestate, 
+      nurse_communicate, nurse_mark, nurse_createtime
+      )
+    values (#{nurseId,jdbcType=CHAR}, #{nurseHeader,jdbcType=CHAR}, #{nurseNick,jdbcType=CHAR}, 
+      #{nurseName,jdbcType=CHAR}, #{nursePwd,jdbcType=VARCHAR}, #{nursePhone,jdbcType=CHAR}, 
+      #{nurseAddress,jdbcType=VARCHAR}, #{nurseInvitationcode,jdbcType=CHAR}, #{nurseInvitationlink,jdbcType=VARCHAR}, 
+      #{nurseSex,jdbcType=CHAR}, #{nurseAge,jdbcType=CHAR}, #{nurseLanguage,jdbcType=VARCHAR}, 
+      #{nurseWorkUnit,jdbcType=VARCHAR}, #{nurseJob,jdbcType=VARCHAR}, #{nurseOffice,jdbcType=VARCHAR}, 
+      #{nurseNumber,jdbcType=VARCHAR}, #{nurseYearsofservice,jdbcType=CHAR}, #{nurseNote,jdbcType=VARCHAR}, 
+      #{nursePlace,jdbcType=VARCHAR}, #{nurseGoodservice,jdbcType=VARCHAR}, #{nurseNurseLicensepic,jdbcType=VARCHAR}, 
+      #{nurseEmail,jdbcType=CHAR}, #{nurseTruename,jdbcType=CHAR}, #{nurseCardpic,jdbcType=VARCHAR}, 
+      #{nurseCard,jdbcType=CHAR}, #{nurseProvince,jdbcType=VARCHAR}, #{nurseCity,jdbcType=VARCHAR}, 
+      #{nurseDistrict,jdbcType=VARCHAR}, #{nurseSign,jdbcType=VARCHAR}, #{nursePositionX,jdbcType=DOUBLE}, 
+      #{nursePositionY,jdbcType=DOUBLE}, #{nurseBalance,jdbcType=DECIMAL}, #{nurseUsestate,jdbcType=INTEGER}, 
+      #{nurseCommunicate,jdbcType=INTEGER}, #{nurseMark,jdbcType=DECIMAL}, #{nurseCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chance.ssm.po.Nurse" >
+    insert into nurse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        nurse_id,
+      </if>
+      <if test="nurseHeader != null" >
+        nurse_header,
+      </if>
+      <if test="nurseNick != null" >
+        nurse_nick,
+      </if>
+      <if test="nurseName != null" >
+        nurse_name,
+      </if>
+      <if test="nursePwd != null" >
+        nurse_pwd,
+      </if>
+      <if test="nursePhone != null" >
+        nurse_phone,
+      </if>
+      <if test="nurseAddress != null" >
+        nurse_address,
+      </if>
+      <if test="nurseInvitationcode != null" >
+        nurse_invitationcode,
+      </if>
+      <if test="nurseInvitationlink != null" >
+        nurse_invitationlink,
+      </if>
+      <if test="nurseSex != null" >
+        nurse_sex,
+      </if>
+      <if test="nurseAge != null" >
+        nurse_age,
+      </if>
+      <if test="nurseLanguage != null" >
+        nurse_language,
+      </if>
+      <if test="nurseWorkUnit != null" >
+        nurse_work_unit,
+      </if>
+      <if test="nurseJob != null" >
+        nurse_job,
+      </if>
+      <if test="nurseOffice != null" >
+        nurse_office,
+      </if>
+      <if test="nurseNumber != null" >
+        nurse_number,
+      </if>
+      <if test="nurseYearsofservice != null" >
+        nurse_yearsofservice,
+      </if>
+      <if test="nurseNote != null" >
+        nurse_note,
+      </if>
+      <if test="nursePlace != null" >
+        nurse_place,
+      </if>
+      <if test="nurseGoodservice != null" >
+        nurse_goodservice,
+      </if>
+      <if test="nurseNurseLicensepic != null" >
+        nurse_nurse_licensepic,
+      </if>
+      <if test="nurseEmail != null" >
+        nurse_email,
+      </if>
+      <if test="nurseTruename != null" >
+        nurse_truename,
+      </if>
+      <if test="nurseCardpic != null" >
+        nurse_cardpic,
+      </if>
+      <if test="nurseCard != null" >
+        nurse_card,
+      </if>
+      <if test="nurseProvince != null" >
+        nurse_province,
+      </if>
+      <if test="nurseCity != null" >
+        nurse_city,
+      </if>
+      <if test="nurseDistrict != null" >
+        nurse_district,
+      </if>
+      <if test="nurseSign != null" >
+        nurse_sign,
+      </if>
+      <if test="nursePositionX != null" >
+        nurse_position_x,
+      </if>
+      <if test="nursePositionY != null" >
+        nurse_position_y,
+      </if>
+      <if test="nurseBalance != null" >
+        nurse_balance,
+      </if>
+      <if test="nurseUsestate != null" >
+        nurse_usestate,
+      </if>
+      <if test="nurseCommunicate != null" >
+        nurse_communicate,
+      </if>
+      <if test="nurseMark != null" >
+        nurse_mark,
+      </if>
+      <if test="nurseCreatetime != null" >
+        nurse_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nurseId != null" >
+        #{nurseId,jdbcType=CHAR},
+      </if>
+      <if test="nurseHeader != null" >
+        #{nurseHeader,jdbcType=CHAR},
+      </if>
+      <if test="nurseNick != null" >
+        #{nurseNick,jdbcType=CHAR},
+      </if>
+      <if test="nurseName != null" >
+        #{nurseName,jdbcType=CHAR},
+      </if>
+      <if test="nursePwd != null" >
+        #{nursePwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePhone != null" >
+        #{nursePhone,jdbcType=CHAR},
+      </if>
+      <if test="nurseAddress != null" >
+        #{nurseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseInvitationcode != null" >
+        #{nurseInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="nurseInvitationlink != null" >
+        #{nurseInvitationlink,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseSex != null" >
+        #{nurseSex,jdbcType=CHAR},
+      </if>
+      <if test="nurseAge != null" >
+        #{nurseAge,jdbcType=CHAR},
+      </if>
+      <if test="nurseLanguage != null" >
+        #{nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseWorkUnit != null" >
+        #{nurseWorkUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseJob != null" >
+        #{nurseJob,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseOffice != null" >
+        #{nurseOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNumber != null" >
+        #{nurseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseYearsofservice != null" >
+        #{nurseYearsofservice,jdbcType=CHAR},
+      </if>
+      <if test="nurseNote != null" >
+        #{nurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePlace != null" >
+        #{nursePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseGoodservice != null" >
+        #{nurseGoodservice,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNurseLicensepic != null" >
+        #{nurseNurseLicensepic,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseEmail != null" >
+        #{nurseEmail,jdbcType=CHAR},
+      </if>
+      <if test="nurseTruename != null" >
+        #{nurseTruename,jdbcType=CHAR},
+      </if>
+      <if test="nurseCardpic != null" >
+        #{nurseCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCard != null" >
+        #{nurseCard,jdbcType=CHAR},
+      </if>
+      <if test="nurseProvince != null" >
+        #{nurseProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCity != null" >
+        #{nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseDistrict != null" >
+        #{nurseDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseSign != null" >
+        #{nurseSign,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePositionX != null" >
+        #{nursePositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="nursePositionY != null" >
+        #{nursePositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="nurseBalance != null" >
+        #{nurseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="nurseUsestate != null" >
+        #{nurseUsestate,jdbcType=INTEGER},
+      </if>
+      <if test="nurseCommunicate != null" >
+        #{nurseCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="nurseMark != null" >
+        #{nurseMark,jdbcType=DECIMAL},
+      </if>
+      <if test="nurseCreatetime != null" >
+        #{nurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chance.ssm.po.NurseExample" resultType="java.lang.Integer" >
+    select count(*) from nurse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurse
+    <set >
+      <if test="record.nurseId != null" >
+        nurse_id = #{record.nurseId,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseHeader != null" >
+        nurse_header = #{record.nurseHeader,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseNick != null" >
+        nurse_nick = #{record.nurseNick,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseName != null" >
+        nurse_name = #{record.nurseName,jdbcType=CHAR},
+      </if>
+      <if test="record.nursePwd != null" >
+        nurse_pwd = #{record.nursePwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePhone != null" >
+        nurse_phone = #{record.nursePhone,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseAddress != null" >
+        nurse_address = #{record.nurseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseInvitationcode != null" >
+        nurse_invitationcode = #{record.nurseInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseInvitationlink != null" >
+        nurse_invitationlink = #{record.nurseInvitationlink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseSex != null" >
+        nurse_sex = #{record.nurseSex,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseAge != null" >
+        nurse_age = #{record.nurseAge,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseLanguage != null" >
+        nurse_language = #{record.nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseWorkUnit != null" >
+        nurse_work_unit = #{record.nurseWorkUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseJob != null" >
+        nurse_job = #{record.nurseJob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseOffice != null" >
+        nurse_office = #{record.nurseOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseNumber != null" >
+        nurse_number = #{record.nurseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseYearsofservice != null" >
+        nurse_yearsofservice = #{record.nurseYearsofservice,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseNote != null" >
+        nurse_note = #{record.nurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePlace != null" >
+        nurse_place = #{record.nursePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseGoodservice != null" >
+        nurse_goodservice = #{record.nurseGoodservice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseNurseLicensepic != null" >
+        nurse_nurse_licensepic = #{record.nurseNurseLicensepic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseEmail != null" >
+        nurse_email = #{record.nurseEmail,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseTruename != null" >
+        nurse_truename = #{record.nurseTruename,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseCardpic != null" >
+        nurse_cardpic = #{record.nurseCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseCard != null" >
+        nurse_card = #{record.nurseCard,jdbcType=CHAR},
+      </if>
+      <if test="record.nurseProvince != null" >
+        nurse_province = #{record.nurseProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseCity != null" >
+        nurse_city = #{record.nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseDistrict != null" >
+        nurse_district = #{record.nurseDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseSign != null" >
+        nurse_sign = #{record.nurseSign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nursePositionX != null" >
+        nurse_position_x = #{record.nursePositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="record.nursePositionY != null" >
+        nurse_position_y = #{record.nursePositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="record.nurseBalance != null" >
+        nurse_balance = #{record.nurseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nurseUsestate != null" >
+        nurse_usestate = #{record.nurseUsestate,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseCommunicate != null" >
+        nurse_communicate = #{record.nurseCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="record.nurseMark != null" >
+        nurse_mark = #{record.nurseMark,jdbcType=DECIMAL},
+      </if>
+      <if test="record.nurseCreatetime != null" >
+        nurse_createtime = #{record.nurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurse
+    set nurse_id = #{record.nurseId,jdbcType=CHAR},
+      nurse_header = #{record.nurseHeader,jdbcType=CHAR},
+      nurse_nick = #{record.nurseNick,jdbcType=CHAR},
+      nurse_name = #{record.nurseName,jdbcType=CHAR},
+      nurse_pwd = #{record.nursePwd,jdbcType=VARCHAR},
+      nurse_phone = #{record.nursePhone,jdbcType=CHAR},
+      nurse_address = #{record.nurseAddress,jdbcType=VARCHAR},
+      nurse_invitationcode = #{record.nurseInvitationcode,jdbcType=CHAR},
+      nurse_invitationlink = #{record.nurseInvitationlink,jdbcType=VARCHAR},
+      nurse_sex = #{record.nurseSex,jdbcType=CHAR},
+      nurse_age = #{record.nurseAge,jdbcType=CHAR},
+      nurse_language = #{record.nurseLanguage,jdbcType=VARCHAR},
+      nurse_work_unit = #{record.nurseWorkUnit,jdbcType=VARCHAR},
+      nurse_job = #{record.nurseJob,jdbcType=VARCHAR},
+      nurse_office = #{record.nurseOffice,jdbcType=VARCHAR},
+      nurse_number = #{record.nurseNumber,jdbcType=VARCHAR},
+      nurse_yearsofservice = #{record.nurseYearsofservice,jdbcType=CHAR},
+      nurse_note = #{record.nurseNote,jdbcType=VARCHAR},
+      nurse_place = #{record.nursePlace,jdbcType=VARCHAR},
+      nurse_goodservice = #{record.nurseGoodservice,jdbcType=VARCHAR},
+      nurse_nurse_licensepic = #{record.nurseNurseLicensepic,jdbcType=VARCHAR},
+      nurse_email = #{record.nurseEmail,jdbcType=CHAR},
+      nurse_truename = #{record.nurseTruename,jdbcType=CHAR},
+      nurse_cardpic = #{record.nurseCardpic,jdbcType=VARCHAR},
+      nurse_card = #{record.nurseCard,jdbcType=CHAR},
+      nurse_province = #{record.nurseProvince,jdbcType=VARCHAR},
+      nurse_city = #{record.nurseCity,jdbcType=VARCHAR},
+      nurse_district = #{record.nurseDistrict,jdbcType=VARCHAR},
+      nurse_sign = #{record.nurseSign,jdbcType=VARCHAR},
+      nurse_position_x = #{record.nursePositionX,jdbcType=DOUBLE},
+      nurse_position_y = #{record.nursePositionY,jdbcType=DOUBLE},
+      nurse_balance = #{record.nurseBalance,jdbcType=DECIMAL},
+      nurse_usestate = #{record.nurseUsestate,jdbcType=INTEGER},
+      nurse_communicate = #{record.nurseCommunicate,jdbcType=INTEGER},
+      nurse_mark = #{record.nurseMark,jdbcType=DECIMAL},
+      nurse_createtime = #{record.nurseCreatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chance.ssm.po.Nurse" >
+    update nurse
+    <set >
+      <if test="nurseHeader != null" >
+        nurse_header = #{nurseHeader,jdbcType=CHAR},
+      </if>
+      <if test="nurseNick != null" >
+        nurse_nick = #{nurseNick,jdbcType=CHAR},
+      </if>
+      <if test="nurseName != null" >
+        nurse_name = #{nurseName,jdbcType=CHAR},
+      </if>
+      <if test="nursePwd != null" >
+        nurse_pwd = #{nursePwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePhone != null" >
+        nurse_phone = #{nursePhone,jdbcType=CHAR},
+      </if>
+      <if test="nurseAddress != null" >
+        nurse_address = #{nurseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseInvitationcode != null" >
+        nurse_invitationcode = #{nurseInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test="nurseInvitationlink != null" >
+        nurse_invitationlink = #{nurseInvitationlink,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseSex != null" >
+        nurse_sex = #{nurseSex,jdbcType=CHAR},
+      </if>
+      <if test="nurseAge != null" >
+        nurse_age = #{nurseAge,jdbcType=CHAR},
+      </if>
+      <if test="nurseLanguage != null" >
+        nurse_language = #{nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseWorkUnit != null" >
+        nurse_work_unit = #{nurseWorkUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseJob != null" >
+        nurse_job = #{nurseJob,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseOffice != null" >
+        nurse_office = #{nurseOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNumber != null" >
+        nurse_number = #{nurseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseYearsofservice != null" >
+        nurse_yearsofservice = #{nurseYearsofservice,jdbcType=CHAR},
+      </if>
+      <if test="nurseNote != null" >
+        nurse_note = #{nurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePlace != null" >
+        nurse_place = #{nursePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseGoodservice != null" >
+        nurse_goodservice = #{nurseGoodservice,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseNurseLicensepic != null" >
+        nurse_nurse_licensepic = #{nurseNurseLicensepic,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseEmail != null" >
+        nurse_email = #{nurseEmail,jdbcType=CHAR},
+      </if>
+      <if test="nurseTruename != null" >
+        nurse_truename = #{nurseTruename,jdbcType=CHAR},
+      </if>
+      <if test="nurseCardpic != null" >
+        nurse_cardpic = #{nurseCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCard != null" >
+        nurse_card = #{nurseCard,jdbcType=CHAR},
+      </if>
+      <if test="nurseProvince != null" >
+        nurse_province = #{nurseProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseCity != null" >
+        nurse_city = #{nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseDistrict != null" >
+        nurse_district = #{nurseDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseSign != null" >
+        nurse_sign = #{nurseSign,jdbcType=VARCHAR},
+      </if>
+      <if test="nursePositionX != null" >
+        nurse_position_x = #{nursePositionX,jdbcType=DOUBLE},
+      </if>
+      <if test="nursePositionY != null" >
+        nurse_position_y = #{nursePositionY,jdbcType=DOUBLE},
+      </if>
+      <if test="nurseBalance != null" >
+        nurse_balance = #{nurseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="nurseUsestate != null" >
+        nurse_usestate = #{nurseUsestate,jdbcType=INTEGER},
+      </if>
+      <if test="nurseCommunicate != null" >
+        nurse_communicate = #{nurseCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test="nurseMark != null" >
+        nurse_mark = #{nurseMark,jdbcType=DECIMAL},
+      </if>
+      <if test="nurseCreatetime != null" >
+        nurse_createtime = #{nurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where nurse_id = #{nurseId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chance.ssm.po.Nurse" >
+    update nurse
+    set nurse_header = #{nurseHeader,jdbcType=CHAR},
+      nurse_nick = #{nurseNick,jdbcType=CHAR},
+      nurse_name = #{nurseName,jdbcType=CHAR},
+      nurse_pwd = #{nursePwd,jdbcType=VARCHAR},
+      nurse_phone = #{nursePhone,jdbcType=CHAR},
+      nurse_address = #{nurseAddress,jdbcType=VARCHAR},
+      nurse_invitationcode = #{nurseInvitationcode,jdbcType=CHAR},
+      nurse_invitationlink = #{nurseInvitationlink,jdbcType=VARCHAR},
+      nurse_sex = #{nurseSex,jdbcType=CHAR},
+      nurse_age = #{nurseAge,jdbcType=CHAR},
+      nurse_language = #{nurseLanguage,jdbcType=VARCHAR},
+      nurse_work_unit = #{nurseWorkUnit,jdbcType=VARCHAR},
+      nurse_job = #{nurseJob,jdbcType=VARCHAR},
+      nurse_office = #{nurseOffice,jdbcType=VARCHAR},
+      nurse_number = #{nurseNumber,jdbcType=VARCHAR},
+      nurse_yearsofservice = #{nurseYearsofservice,jdbcType=CHAR},
+      nurse_note = #{nurseNote,jdbcType=VARCHAR},
+      nurse_place = #{nursePlace,jdbcType=VARCHAR},
+      nurse_goodservice = #{nurseGoodservice,jdbcType=VARCHAR},
+      nurse_nurse_licensepic = #{nurseNurseLicensepic,jdbcType=VARCHAR},
+      nurse_email = #{nurseEmail,jdbcType=CHAR},
+      nurse_truename = #{nurseTruename,jdbcType=CHAR},
+      nurse_cardpic = #{nurseCardpic,jdbcType=VARCHAR},
+      nurse_card = #{nurseCard,jdbcType=CHAR},
+      nurse_province = #{nurseProvince,jdbcType=VARCHAR},
+      nurse_city = #{nurseCity,jdbcType=VARCHAR},
+      nurse_district = #{nurseDistrict,jdbcType=VARCHAR},
+      nurse_sign = #{nurseSign,jdbcType=VARCHAR},
+      nurse_position_x = #{nursePositionX,jdbcType=DOUBLE},
+      nurse_position_y = #{nursePositionY,jdbcType=DOUBLE},
+      nurse_balance = #{nurseBalance,jdbcType=DECIMAL},
+      nurse_usestate = #{nurseUsestate,jdbcType=INTEGER},
+      nurse_communicate = #{nurseCommunicate,jdbcType=INTEGER},
+      nurse_mark = #{nurseMark,jdbcType=DECIMAL},
+      nurse_createtime = #{nurseCreatetime,jdbcType=TIMESTAMP}
+    where nurse_id = #{nurseId,jdbcType=CHAR}
+  </update>
+  
+  
+  <!-- 通过id完善信息 -->
+    <update id="updateByNurseId" parameterType="com.chance.ssm.po.Nurse" >
+    update nurse
+    <set >
+      <if test=" nurseId != null" >
+        nurse_id = #{ nurseId,jdbcType=CHAR},
+      </if>
+      <if test=" nurseHeader != null" >
+        nurse_header = #{ nurseHeader,jdbcType=CHAR},
+      </if>
+      <if test=" nurseNick != null" >
+        nurse_nick = #{ nurseNick,jdbcType=CHAR},
+      </if>
+      <if test=" nurseName != null" >
+        nurse_name = #{ nurseName,jdbcType=CHAR},
+      </if>
+      <if test=" nursePwd != null" >
+        nurse_pwd = #{ nursePwd,jdbcType=VARCHAR},
+      </if>
+      <if test=" nursePhone != null" >
+        nurse_phone = #{ nursePhone,jdbcType=CHAR},
+      </if>
+      <if test=" nurseAddress != null" >
+        nurse_address = #{ nurseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseInvitationcode != null" >
+        nurse_invitationcode = #{ nurseInvitationcode,jdbcType=CHAR},
+      </if>
+      <if test=" nurseInvitationlink != null" >
+        nurse_invitationlink = #{ nurseInvitationlink,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseSex != null" >
+        nurse_sex = #{ nurseSex,jdbcType=CHAR},
+      </if>
+      <if test=" nurseAge != null" >
+        nurse_age = #{ nurseAge,jdbcType=CHAR},
+      </if>
+      <if test=" nurseLanguage != null" >
+        nurse_language = #{ nurseLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseWorkUnit != null" >
+        nurse_work_unit = #{ nurseWorkUnit,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseJob != null" >
+        nurse_job = #{ nurseJob,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseOffice != null" >
+        nurse_office = #{ nurseOffice,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseNumber != null" >
+        nurse_number = #{ nurseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseYearsofservice != null" >
+        nurse_yearsofservice = #{ nurseYearsofservice,jdbcType=CHAR},
+      </if>
+      <if test=" nurseNote != null" >
+        nurse_note = #{ nurseNote,jdbcType=VARCHAR},
+      </if>
+      <if test=" nursePlace != null" >
+        nurse_place = #{ nursePlace,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseGoodservice != null" >
+        nurse_goodservice = #{ nurseGoodservice,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseNurseLicensepic != null" >
+        nurse_nurse_licensepic = #{ nurseNurseLicensepic,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseEmail != null" >
+        nurse_email = #{ nurseEmail,jdbcType=CHAR},
+      </if>
+      <if test=" nurseTruename != null" >
+        nurse_truename = #{ nurseTruename,jdbcType=CHAR},
+      </if>
+      <if test=" nurseCardpic != null" >
+        nurse_cardpic = #{ nurseCardpic,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseCard != null" >
+        nurse_card = #{ nurseCard,jdbcType=CHAR},
+      </if>
+      <if test=" nurseProvince != null" >
+        nurse_province = #{ nurseProvince,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseCity != null" >
+        nurse_city = #{ nurseCity,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseDistrict != null" >
+        nurse_district = #{ nurseDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test=" nurseSign != null" >
+        nurse_sign = #{ nurseSign,jdbcType=VARCHAR},
+      </if>
+      <if test=" nursePositionX != null" >
+        nurse_position_x = #{ nursePositionX,jdbcType=DOUBLE},
+      </if>
+      <if test=" nursePositionY != null" >
+        nurse_position_y = #{ nursePositionY,jdbcType=DOUBLE},
+      </if>
+      <if test=" nurseBalance != null" >
+        nurse_balance = #{ nurseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test=" nurseUsestate != null" >
+        nurse_usestate = #{ nurseUsestate,jdbcType=INTEGER},
+      </if>
+      <if test=" nurseCommunicate != null" >
+         nurse_communicate = #{nurseCommunicate,jdbcType=INTEGER},
+      </if>
+      <if test=" nurseMark != null" >
+        nurse_mark = #{ nurseMark,jdbcType=DECIMAL},
+      </if>
+      <if test=" nurseCreatetime != null" >
+        nurse_createtime = #{ nurseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    Where 
+     nurse_id = #{ nurseId,jdbcType=CHAR}
+  </update>
+ 
+  <!-- 通过账号查询用户存不存在 -->
+  <select id="selectForNurseName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM nurse WHERE nurse_name=#{nurseName,jdbcType=CHAR}
+  </select>
+<!-- 通过账号查询用户存不存在 -->
+  <select id="selectForNurseId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM nurse WHERE nurse_id=#{nurseId,jdbcType=CHAR}
+  </select>
+  
+  <!-- 通过ID查询用户信息，返回护士的VO扩展类 -->
+  <select id="selectForNurseIdreultVO" resultMap="BaseResultMap2" parameterType="java.lang.String">
+  	SELECT * FROM nurse WHERE nurse_id=#{nurseId,jdbcType=CHAR}
+  </select>
+  
+  <!-- 通过订单id查询接取的护士信息 -->
+  <select id="selectNurseInfoByOrder" resultMap="BaseResultMap">
+  SELECT nurse.*
+  FROM order_receiver,nurse WHERE order_nurseid = nurse_id AND order_ordersendid =#{0}
+  </select>
+  
+  <!-- 通过传入的条件不同查询记录，并返回vo扩展类 -->
+  <select id="selectByExampleRsuVO" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.NurseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据经纬度排序护士 -->
+  <select id="selectNurseDistance" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.vo.Params" >
+ <!--   SELECT * FROM nurse   
+   WHERE nurse_position_x &lt;&gt; 0  
+   AND nurse_position_x &lt; #{minY,jdbcType=DOUBLE}
+   AND nurse_position_x &gt; #{maxY,jdbcType=DOUBLE}  
+   AND nurse_position_y &lt;#{minX,jdbcType=DOUBLE}  
+   AND nurse_position_y &gt;#{maxX,jdbcType=DOUBLE}  
+   <if test=" nurseWorkUnit != null " >
+        nurse_work_unit = #{ nurseWorkUnit,jdbcType=VARCHAR},
+   </if>
+   <if test=" nurseOffice != null " >
+        nurse_office = #{ nurseOffice,jdbcType=VARCHAR},
+   </if>
+   ORDER BY ACOS(SIN((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) 
+	* SIN((nurse_position_x * 3.1415) / 180 )   
+   +COS((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) 
+   * COS((nurse_position_x * 3.1415) / 180 )   
+   *COS((#{locationY,jdbcType=DOUBLE} * 3.1415) / 180 - 
+   (nurse_position_y * 3.1415) / 180 ) )   
+   * 6380 ASC -->
+   
+   
+    SELECT * FROM nurse 
+    where  
+    nurse_position_y &gt; #{minY,jdbcType=DOUBLE}
+   AND nurse_position_y &lt; #{maxY,jdbcType=DOUBLE}  
+   AND nurse_position_x &gt;#{minX,jdbcType=DOUBLE}  
+   AND nurse_position_x &lt; #{maxX,jdbcType=DOUBLE}  
+   and nurse_district = 0
+   <if test=" nurseWorkUnit != null " >
+   and
+        nurse_work_unit = #{ nurseWorkUnit,jdbcType=VARCHAR}
+   </if>
+   <if test=" nurseOffice != null " >
+   and
+        nurse_office = #{ nurseOffice,jdbcType=VARCHAR}
+   </if>
+   ORDER BY ACOS(SIN((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * SIN((nurse_position_x * 3.1415) / 180 )   
+   +COS((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * COS((nurse_position_x * 3.1415) / 180 )   
+   *COS((#{locationY,jdbcType=DOUBLE} * 3.1415) / 180 - (nurse_position_y * 3.1415) / 180 ) )   
+   * 6380 DESC
+   LIMIT 0,100
+  </select>
+  
+    <!-- 查询附近的人新sql -->
+  <select id="selectFindFujinPeople" resultMap="BaseResultMap2" parameterType="com.chance.ssm.po.vo.Params">
+   SELECT * FROM nurse   
+   WHERE nurse_position_x &lt;&gt; 0  
+   AND nurse_position_y &gt; #{minY,jdbcType=DOUBLE}
+   AND nurse_position_y &lt; #{maxY,jdbcType=DOUBLE}  
+   AND nurse_position_x &gt;#{minX,jdbcType=DOUBLE}  
+   AND nurse_position_x &lt; #{maxX,jdbcType=DOUBLE}  
+   AND nurse_work_unit &lt;&gt; #{userId,jdbcType=CHAR}
+   AND nurse_office &lt;&gt; #{majorId,jdbcType=CHAR}
+   ORDER BY ACOS(SIN((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * SIN((user_position_x * 3.1415) / 180 )   
+   +COS((#{locationX,jdbcType=DOUBLE} * 3.1415) / 180 ) * COS((user_position_x * 3.1415) / 180 )   
+   *COS((#{locationY,jdbcType=DOUBLE} * 3.1415) / 180 - (user_position_y * 3.1415) / 180 ) )   
+   * 6380 ASC
+  </select>
+  
+  <!-- 查询护士订单到账的数据 -->
+  <select id="selectNurseOrder" resultMap="BaseResultMap3" parameterType="java.lang.String">
+  	SELECT u.user_nick, u.user_phone, u.user_header,(os.order_send_trafficmoney + os.order_send_costmoney) AS price,os.order_send_servicecontent, os.order_send_finish_order_time 
+	FROM capital_nurse_pool, order_send os INNER JOIN order_receiver orr ON os.order_send_id = orr.order_ordersendid INNER JOIN USER u ON u.user_id = os.order_send_userid 
+	WHERE orr.order_nurseid = #{nurseId,jdbcType=CHAR} AND os.order_send_id = capital_nurse_pool_ordersendid  order by os.order_send_finish_order_time DESC;
+  </select>
+  <!-- 护士积分排行 -->
+  <select id="selectNurseMarkDesc" resultMap="BaseResultMap4"  >
+  	SELECT nurse_id,nurse_header,nurse_mark,nurse_nick, @rownum := @rownum +1 AS ranks,nurse_createtime
+	FROM nurse t, (SELECT@rownum :=0) r ORDER BY nurse_mark DESC,nurse_createtime ASC 
+  </select>
+  <!-- 根据积分查询该护士的排名 -->
+  <select id="selectNurseRanking" resultMap="BaseResultMap4" parameterType="java.lang.String">
+  <!-- SET @c=0; -->
+  <!-- SELECT * FROM (
+  SELECT nurse_id,nurse_header,nurse_mark,  #{key} :=#{key}+1 AS rank FROM nurse ORDER BY nurse_mark DESC
+  ) nurse WHERE nurse_id = #{1}; -->
+ <!--  SET @c=0;
+  SELECT * FROM (
+  SELECT nurse_id,nurse_header,nurse_mark,@c:=@c+1 AS ranks FROM nurse ORDER BY nurse_mark DESC
+  ) nurse WHERE nurse_id = #{nurseId,jdbcType=CHAR} -->
+  SELECT nurse_id,nurse_header,nurse_mark,nurse_nick, @rownum := @rownum +1 AS ranks,nurse_createtime
+  FROM nurse t, (SELECT@rownum :=0) r 
+  WHERE nurse_id = #{nurseId,jdbcType=CHAR}
+  ORDER BY nurse_mark DESC,nurse_createtime ASC 
+  </select>
+  <!-- 根据积分查询30天之内的护士的排名 -->
+  <select id="selectNurseThirtyDayRanking" resultMap="BaseResultMap4">
+    SELECT a.nurse_id,a.nurse_header,a.nurse_nick,
+	SUM(
+	IFNULL(c.nurse_finish_order_nurse_signin,0)
+	+IFNULL(b.signin_integral,0)
+	)AS nurse_mark
+	FROM  nurse a 
+	LEFT JOIN nurse_finish_order_signin c
+	ON 
+	a.nurse_id = c.nurse_finish_order_nurse_id 
+	AND 
+	DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=  DATE(c.nurse_finish_order_createtime) 
+	LEFT JOIN nurse_signin b 
+	ON 
+	a.nurse_id = b.nurse_id
+	AND
+	DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= DATE(b.signin_time) 
+	GROUP BY a.nurse_id
+	ORDER BY nurse_mark DESC,a.nurse_createtime ASC
+  </select>
+  <!-- 查询该护士30之内的排名 -->
+  <select id="selectNurseThirtyDayRankingByNurseId" resultMap="BaseResultMap4" parameterType="java.lang.String">
+    SELECT a.nurse_id,a.nurse_header,a.nurse_nick,
+	SUM(
+	IFNULL(c.nurse_finish_order_nurse_signin,0)
+	+IFNULL(b.signin_integral,0)
+	)AS nurse_mark
+	FROM  nurse a 
+	LEFT JOIN nurse_finish_order_signin c
+	ON 
+	a.nurse_id = c.nurse_finish_order_nurse_id 
+	AND 
+	DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=  DATE(c.nurse_finish_order_createtime) 
+	LEFT JOIN nurse_signin b 
+	ON 
+	a.nurse_id = b.nurse_id
+	AND
+	DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= DATE(b.signin_time) 
+	WHERE a.nurse_id= #{nurseId,jdbcType=CHAR}
+	GROUP BY a.nurse_id
+	ORDER BY nurse_mark DESC,a.nurse_createtime ASC
+  </select>
+  <!-- 查询护士7天排行总榜 -->
+  <select id="selectNurseSevenDayRanking" resultMap="BaseResultMap4">
+   SELECT a.nurse_id,a.nurse_header,a.nurse_nick,
+	SUM(
+	IFNULL(c.nurse_finish_order_nurse_signin,0)
+	+IFNULL(b.signin_integral,0)
+	)AS nurse_mark
+	FROM  nurse a 
+	LEFT JOIN nurse_finish_order_signin c
+	ON 
+	a.nurse_id = c.nurse_finish_order_nurse_id 
+	AND 
+	DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;=  DATE(c.nurse_finish_order_createtime) 
+	LEFT JOIN nurse_signin b 
+	ON 
+	a.nurse_id = b.nurse_id
+	AND
+	DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(b.signin_time) 
+	GROUP BY a.nurse_id
+	ORDER BY nurse_mark DESC,a.nurse_createtime ASC
+  </select>
+  <!-- 查询护士7天排行榜排名 -->
+  <select id="selectNurseSevenDayRankingByNurseId" resultMap="BaseResultMap4">
+   SELECT a.nurse_id,a.nurse_header,a.nurse_nick,
+	SUM(
+	IFNULL(c.nurse_finish_order_nurse_signin,0)
+	+IFNULL(b.signin_integral,0)
+	)AS nurse_mark
+	FROM  nurse a 
+	LEFT JOIN nurse_finish_order_signin c
+	ON 
+	a.nurse_id = c.nurse_finish_order_nurse_id 
+	AND 
+	DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;=  DATE(c.nurse_finish_order_createtime) 
+	LEFT JOIN nurse_signin b 
+	ON 
+	a.nurse_id = b.nurse_id
+	AND
+	DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(b.signin_time) 
+	WHERE a.nurse_id= #{nurseId,jdbcType=CHAR}
+	GROUP BY a.nurse_id
+	ORDER BY nurse_mark DESC,a.nurse_createtime ASC
+  </select>
+    <!-- 通过邀请码查看护士 -->
+  <select id="selectNurseForInvitationcode" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT nurse_id FROM  nurse WHERE nurse_invitationcode=#{nurseInvitationcode,jdbcType=CHAR};
+  </select>
+  
+  <!-- 查询护士总数 -->
+  <select id="selectNurseCount" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse;
+  </select>
+  
+  <!-- 新增护士统计	当日 -->
+  <select id="selectNurseCountOnDay" resultType="java.lang.Integer">
+  	SELECT COUNT(*), DATE_FORMAT(nurse_createtime,"%Y-%m-%d") FROM nurse WHERE DATE_FORMAT(nurse_createtime,"%Y-%m-%d") = DATE_FORMAT(NOW(),"%Y-%m-%d");
+  </select>
+  
+  <!-- 新增护士统计	当周 -->
+  <select id="selectNurseCountOnWeek" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM nurse WHERE DATE_FORMAT(nurse_createtime,"%X-%V") = DATE_FORMAT(NOW(),"%X-%V");
+  </select>
+  
+  <!-- 新增护士统计	当月 -->
+  <select id="selectNurseCountOnMonth" resultType="java.lang.Integer">
+  	SELECT COUNT(*), DATE_FORMAT(nurse_createtime,"%Y-%m") FROM nurse WHERE DATE_FORMAT(nurse_createtime,"%Y-%m") = DATE_FORMAT(NOW(),"%Y-%m");
+  </select>
+  <!-- 通过关注排行 -->
+  <select id="selectNurseForFollow" resultMap="BaseResultMap4">
+   SELECT n.nurse_id,nurse_header,nurse_nick, COUNT(f.follow_followid) AS followCounts
+  FROM nurse n LEFT JOIN follow f ON n.nurse_id=follow_befollowid 
+  AND follow_befollowid_iden =1  GROUP BY nurse_id ORDER BY followCounts DESC,nurse_createtime ASC;
+  </select>
+  <!-- 查询所有护士 -->
+  <select id="selectAllNurseInfo" resultMap="BaseResultMap" parameterType="java.util.Map">
+  <!--  SELECT * FROM nurse ORDER BY nurse_communicate DESC 
+   LIMIT
+	 #{start},
+	 #{rows} -->
+	 SELECT *,COUNT(order_receive_id)AS orderCounts FROM nurse LEFT JOIN order_receiver ON nurse_id = order_nurseid GROUP BY nurse_id ORDER BY nurse_communicate ASC,orderCounts ASC
+	  LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+  <!-- 查询所有认证中的护士 -->
+  <select id="selectAllNurseInfodistrict" resultMap="BaseResultMap" parameterType="java.util.Map">
+   SELECT * FROM nurse WHERE nurse_district=2
+   LIMIT
+	 #{start},
+	 #{rows} 
+  </select>
+  <!-- 查询所有认证中的护士数量 -->
+  <select id="selectAllNurseInfodistrictCount" resultType="java.lang.Integer">
+   SELECT COUNT(*) FROM nurse WHERE nurse_district=2
+  </select>
+  <!-- 根据用户账号，昵称，真实姓名，手机号，邀请码,支付宝账号查找用户  -->
+ <select id="selectKeyWordFromNurse" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from 
+  nurse
+  WHERE 
+  <if test="_parameter != null">
+  nurse_nick like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_name like '%${_parameter}%'
+  </if> 
+   OR
+  <if test="_parameter != null">
+  nurse_phone like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_invitationcode like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_job like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_number like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_yearsofservice like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_place like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_truename like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_card like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_province like '%${_parameter}%'
+  </if>
+ </select>
+ 
+ <select id="selectKeyWordFromNurseKdh" resultMap="BaseResultMap" parameterType="java.lang.String">
+  select * from 
+  nurse
+  WHERE 
+  <if test="_parameter != null">
+  nurse_nick like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_name like '%${_parameter}%'
+  </if> 
+   OR
+  <if test="_parameter != null">
+  nurse_phone like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_invitationcode like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_job like '%${_parameter}%'
+  </if>
+   OR
+  <if test="_parameter != null">
+  nurse_number like '%${_parameter}%'
+  </if>
+  and nurse_district = '0'
+ </select>
+ <!-- 根据护士ID查询护士的信息和真实照片等信息 -->
+ <select id="selectNurseInfoAndNursePaymentSettings" resultMap="BaseResultMap5" parameterType="java.lang.String">
+  SELECT * FROM nurse LEFT JOIN nurse_payment_settings ON nurse_id = nurse_payment_settings_nurse_id
+  WHERE nurse_id = #{nurseId,jdbcType=CHAR}
+ </select>
+ <!-- 后台图表统计 -->
+ <!-- 当月注册人数 -->
+  <select id="selectStatisticsNurseSuccessMonth" resultMap="BaseResultMap">
+  		SELECT * FROM nurse   WHERE DATE_FORMAT(nurse_createtime,'%Y-%m')=DATE_FORMAT(NOW(),'%Y-%m') 
+  </select>
+  <!-- 当年注册人数 -->
+  <select id="selectStatisticsNurseSuccessYear" resultMap="BaseResultMap" >
+  		SELECT * FROM nurse   WHERE DATE_FORMAT(nurse_createtime,'%Y')=DATE_FORMAT(NOW(),'%Y') 
+  </select>
+</mapper>
